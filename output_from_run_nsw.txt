@@ -64,7 +64,7 @@ CASEB,data/NSW19/Barwon.txt,9,46174,15392,285
 1Q,data/NSW19/Oxley.txt,5,48540,16181,115
 1Q,data/NSW19/Parramatta.txt,7,48728,16243,27
 1Q,data/NSW19/Penrith.txt,10,48853,16285,40
-1Q,data/NSW19/Pittwater.txt,8,49119,16374,190
+1Q,data/NSW19/Pittwater.txt,8,49119,16374,277
 1Q,data/NSW19/Port_Macquarie.txt,4,52735,17579,46
 1Q,data/NSW19/Port_Stephens.txt,6,49642,16548,18
 1Q,data/NSW19/Prospect.txt,5,46845,15616,27

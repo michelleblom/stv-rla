@@ -25,6 +25,10 @@ from utils import read_ballots_stv, read_outcome, subsupermajority_sample_size,\
     cand_vs_cand_sample_size, read_ballots_txt, index_of
 
 
+# Returns 'c1' if in the ballot ranking 'prefs', 'c1' appears earlier 
+# than 'c2', or if 'c1' appears and 'c2' does not. Returns 'c2' if 
+# that candidates appears before 'c1', or 'c2' appears and 'c1' does not.
+# Returns 'None' if neither candidates is mentioned in the ranking. 
 def vote_for_cand_over_cand(c1, c2, prefs):
     for p in prefs:
         if p == c1:
@@ -36,11 +40,24 @@ def vote_for_cand_over_cand(c1, c2, prefs):
     return None
 
 
-
-# 'c_neb' denotes the candidates 'd' for which candidate 'c' cannot be 
-# eliminated before (ie. c NEB d). Is 'c' the first preferenced candidate 
-# in the ranking 'prefs' if we exclude those in 'c_neb'. Keep track of the
-# audit difficulty of any NEBs relied on.
+# This function is used to determine whether a ballot should contribute
+# to a lower bound on the tally of a candidate 'c' when it is acting as the
+# 'winner' in a NEB* assertion.
+#
+# Determines if candidate 'c' is the first ranked candidate in the ranking
+# 'prefs' once we remove all candidates 'd' for which 'c' NL 'd'. These
+# NLs are stored in the map 'c_neb'. 
+#
+#     c_neb[d] gives the ASN of the NL ('c' NL 'd')
+#
+# If we use any NLs in the determination of whether the ballot should be
+# awarded to 'c', then we return the maximum ASN of those NLs. If the 
+# provided threshold is not None, we do not make use of any NL assertions that
+# have an ASN of greater than the threshold.
+#
+# If the ballot should be awarded to 'c', we return True,Max ASN of NLs used.
+#
+# If the ballot should not be awarded to 'c', we return False,None.
 def vote_for_cand_nebs1(c, prefs, c_neb, threshold):
     nebs_used = 0
 
@@ -57,9 +74,35 @@ def vote_for_cand_nebs1(c, prefs, c_neb, threshold):
     return False,None
 
 
-
-# Does c1 get this vote over c2 assuming winning candidates are in
-# list 'winners'
+# This function is used to determine whether a ballot should contribute
+# to the upper bound on the tally of a candidate 'c1' when it is acting as the
+# 'loser' in a NEB* assertion with winner 'c2'.
+#
+# The ballot in question has the ranking 'prefs'.
+#
+# We assume that the candidates in 'winners' are seated at some point.
+#
+# Candidate c1 will not get this ballot if:
+# -- It does not appear (returns False,None)
+# -- Candidate 'c2' appears before 'c1'
+# -- A candidate 'd', for which 'd' NL 'c1' appears before 'c1'. If we 
+#    use such an NL to determine that this ballot does not go to 'c1', 
+#    we keep track of the maximum NL assertion ASN used. 
+#
+# Note, we do not use an NL assertion with an ASN above a certain threshold
+# when determining if we should count ballots with ranking 'prefs' in the
+# maximum tally of 'c1'.
+#
+# The input 'neb_matrix' contains NL relationships between candidates.
+#
+#      neb_matrix[d][c1] gives the ASN of the NL assertion 'd' NL 'c1'
+#          if it exists (neb_matrix[d][c1] will be None otherwise).
+#
+# Returns False,None or False,Max ASN of NLs used if the ballot should
+# not be counted toward the maximum tally of 'c1' in the NEB* assertion
+# 'c2' NEB* 'c1'.
+#
+# Return True,_ if the ballot should be counted toward 'c1's max tally.
 def vote_for_cand_nebs2(c1, c2, prefs, neb_matrix, winners, threshold):
     neb_present = False
     neb_min_ss = np.inf
@@ -133,6 +176,10 @@ if __name__ == "__main__":
 
     # Output: Log file 
     parser.add_argument('-log', dest='log', type=str)
+    
+    # Flags
+    parser.add_argument('-twoq', dest='twoq', default=False,action='store_true')
+    parser.add_argument('-gen', dest='gen', default=False,action='store_true')
 
     args = parser.parse_args()
 
@@ -154,13 +201,14 @@ if __name__ == "__main__":
     # Read STV outcome file
     outcome = read_outcome(args.outcome, cid2num)
 
+    # Count of informal votes.
     INVALID = args.voters - valid_ballots
 
     ncand = len(outcome.cand)
     cands = []
-    winners = []
-    winners_on_fp = []
-    losers = []
+    winners = [] # Reported winners
+    winners_on_fp = [] # Identifiers for candidates that win seat in 1st round
+    losers = [] # Reported losers
 
     for i in range(ncand):
         c = outcome.cand[i]
@@ -173,9 +221,7 @@ if __name__ == "__main__":
         else:
             losers.append(c)
 
-    # TODO: add parameter to control whether we want to run 2 quota 
-    # method and replace 'False' below with that.
-    if False and args.seats == 2 and outcome.action[0] == 1 and \
+    if args.twoq and args.seats == 2 and outcome.action[0] == 1 and \
         outcome.action[1] == 1:
 
         max_sample_size = 0
@@ -204,7 +250,7 @@ if __name__ == "__main__":
         print("2Q,{},{},{},{},{}".format(args.data, ncand, valid_ballots, \
             args.quota, max_sample_size))
 
-    elif args.seats == 2 and outcome.action[0] == 1:
+    elif (not args.gen) and args.seats == 2 and outcome.action[0] == 1:
         # CASE: 2 seats and first winner has more than a quota on
         # first preferences.
 
@@ -221,11 +267,36 @@ if __name__ == "__main__":
 
         max_sample_size = max(max_sample_size, ss)
 
+        # For candidate upper bounds on the transfer value of the ballots
+        # leaving the first winner's tally pile -- denoted aud_tv -- find
+        # the ASN of assertions that show that the second winner cannot be
+        # eliminated (NEB*'s) before any reported loser. 
+        
+        # We start with aud_tv equalling the reported transfer value plus
+        # a small delta (0.01).
+
+        # For each choice of upper bound, we use it in the construction of
+        # NEB*s between the second winner and reported loser. Having a lower
+        # upper bound on the transfer value makes it easier to create these
+        # NEB*'s. 
+
+        # We consider the overall ASN of an audit configuration for a given
+        # choice of aud_tv. This includes:
+        # -- ASN for determining that the first winner has quota in round 1
+        # -- ASN for checking that the first winners' transfer value is 
+        #    below aud_tv
+        # -- The ASN for 'd' NEB* 'second winner' for each reported loser 'd'
+
+        # We keep increasing aud_tv while the overall ASN of the resulting
+        # audit is decreasing. Once it starts increasing, we stop. 
+
         act_tv = (first_winner.fp_votes - args.quota)/first_winner.fp_votes
         aud_tv = act_tv + 0.01
 
         max_in_loop = np.inf
 
+        # Compute basic NL relationships between candidates, without
+        # any assumptions around who is seated.
         neb_matrix = [[None for c in cands] for o in cands]
 
         for c in cands:
@@ -237,6 +308,8 @@ if __name__ == "__main__":
                 max_vote_o = 0
 
                 for b in ballots:
+                    # Function will return which of 'c' and 'o' should
+                    # be awarded this ballot (None if neither).
                     awarded = vote_for_cand_over_cand(c, o, b.prefs)
 
                     if awarded == o:
@@ -249,7 +322,8 @@ if __name__ == "__main__":
                     if ss != np.inf:
                         neb_matrix[c][o] = ss
 
-        while aud_tv < 2/3:
+        # MAIN LOOP OF ONE QUOTA METHOD
+        while aud_tv < 2/3: # 2/3 is theoretical max on TV for 2 seat election
             # Check that TV of first winner is at most aud_TV
             T = args.quota/(1 - aud_tv)
 
@@ -272,7 +346,11 @@ if __name__ == "__main__":
             max_with_nlts = ss
             max_with_nebs = ss
 
-            # Compute NLTs between original losers and second winner
+            # Compute NLs between original losers and second winner
+            # Note: we do this for each different upper bound on the 
+            # transfer value as we can form more NLs this way -- utilising
+            # the fact that ballots leaving the first winner will be reduced
+            # in value to aud_tv.
             for c in cands:
                 if c in winners:
                     continue
@@ -307,25 +385,36 @@ if __name__ == "__main__":
                     max_with_nlts = np.inf
 
 
-            # Determine NEBs between original losers and second winner
+            # Determine NEB*s between original losers and second winner
             for c in cands:
                 if c in winners:
                     continue
 
                 cand_c = candidates[c]
 
-                min_sw_w_extra = 0
+                min_sw_w_extra = 0 # Min tally for second winner.
 
-                max_c = cand_c.fp_votes
+                max_c = cand_c.fp_votes # Max tally for candidate c.
 
-                max_nlts_used = 0
+                # Max ASN of any NLs used to increase/decrease the minimum
+                # /maximum tallies of second winner/candidate c when forming
+                # NEB*.
+                max_nlts_used = 0  
 
+                # Compute maximum tally for 'c' in context where the first
+                # winner is seated, and we have underlying NL assertions
+                # that can be used to determine if we should give a ballot
+                # to 'c' or not. We don't want to give any ballots to 'c'
+                # if there is a candidate 'd' for which 'd' NL 'c' holds and
+                # 'd' appears before 'c' on the ballot. 
                 for b in ballots:
                     if b.prefs[0] == c or not c in b.prefs:
                         continue
 
                     weight = 1
 
+                    # Any ballot that was originally sitting in the first
+                    # winner's pile can be worth at most 'aud_tv' votes to 'c'. 
                     if b.prefs[0] == first_winner.num:
                         weight = aud_tv
 
@@ -335,8 +424,8 @@ if __name__ == "__main__":
                     if awarded:
                         max_c += weight * b.votes
 
-                        if used_ss != None:
-                            max_nlts_used = max(max_nlts_used, used_ss)
+                    if used_ss != None:
+                        max_nlts_used = max(max_nlts_used, used_ss)
 
                 for b in ballots:
                     if not sw.num in b.prefs:
@@ -401,7 +490,7 @@ if __name__ == "__main__":
         print("1Q,{},{},{},{},{}".format(args.data, ncand, valid_ballots, \
             args.quota, max_sample_size))
 
-    else: # args.seats == 2 and outcome.action[0] == 0:
+    else:
         # CASE: 2 seats and no candidate has a quota on first preferences
         # according to reported results.
         neb_matrix = [[None for c in cands] for o in cands]
@@ -534,8 +623,8 @@ if __name__ == "__main__":
                     if awarded:
                         max_vote_c2 += weight * b.votes
 
-                        if used_ss != None:
-                            used_nebs1 = max(used_nebs1, used_ss)
+                    if used_ss != None:
+                        used_nebs1 = max(used_nebs1, used_ss)
 
                 used_nebs1 = max(used_nebs1, used_nebs_mt_o)
 
@@ -582,8 +671,8 @@ if __name__ == "__main__":
                     if awarded:
                         max_vote_c1 += weight * b.votes
 
-                        if used_ss != None:
-                            used_nebs2 = max(used_nebs2, used_ss)
+                    if used_ss != None:
+                        used_nebs2 = max(used_nebs2, used_ss)
 
                 print("   (2) can we show that {} NEB* {}? ".format(cand_o.id,\
                     candidates[c1].id), file=log)
@@ -626,7 +715,6 @@ if __name__ == "__main__":
             best_asn = max(best_asn, asn)
 
         print("Best sample size: {}".format(best_asn), file=log)
-        #print("{}, Sample size: {}".format(args.data, best_asn))
         print("CASEB,{},{},{},{},{}".format(args.data, ncand, valid_ballots,\
             args.quota, best_asn))
 
