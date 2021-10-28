@@ -5,4 +5,10 @@ To run you will need to grab assertion_audit_utils.py from Philip Stark's SHANGR
 
 To get assertion_audit_utils.py, go to the repository: https://github.com/pbstark/SHANGRLA/tree/main/Code
 
-More detail to come.
+When running any of the scripts, you will see output in the following format:
+
+method used (1Q,2Q,CASEB -- represents general method), Instance (path to ballots file), # Candidates, # Voters, Quota, ASN for audit configuration
+
+If the ASN for an instance is 'inf' it means we couldn't find an 'auditable' set of assertions for the instance using the chosen method.
+
+
