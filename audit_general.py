@@ -228,7 +228,7 @@ if __name__ == "__main__":
 
         # Check that first winner's FP is greater than a quota
         first_winner = candidates[winners[0]]
-        thresh = args.quota/valid_ballots
+        thresh = 1.0/(args.seats + 1);
     
         ss, _, _ = subsupermajority_sample_size(thresh,first_winner.fp_votes,\
             INVALID, args)
@@ -258,7 +258,7 @@ if __name__ == "__main__":
 
         # Check that first winner's FP is greater than a quota
         first_winner = candidates[winners[0]]
-        thresh = args.quota/valid_ballots
+        thresh = 1.0/(args.seats + 1);
     
         ss, _, _ = subsupermajority_sample_size(thresh,first_winner.fp_votes,\
             INVALID, args)
@@ -325,10 +325,11 @@ if __name__ == "__main__":
         # MAIN LOOP OF ONE QUOTA METHOD
         while aud_tv < 2/3: # 2/3 is theoretical max on TV for 2 seat election
             # Check that TV of first winner is at most aud_TV
-            T = args.quota/(1 - aud_tv)
-
-            # Check that first winner's FP is less than T
-            threshold = 1 - (T - 1)/valid_ballots
+            a = 1 / (1 - aud_tv)
+            thresholdT = a * valid_ballots / (args.seats + 1)
+            thresholdProp = thresholdT / valid_ballots
+            threshold = 1 - thresholdProp
+    
             tally_others = valid_ballots - first_winner.fp_votes
 
             ss, _, _ = subsupermajority_sample_size(threshold, tally_others, \
