@@ -1042,6 +1042,8 @@ if __name__ == "__main__":
     else:
         # CASE: 2 seats and no candidate has a quota on first preferences
         # according to reported results.
+        
+        remcase = outcome.action[ncand-2:] == [1,1]
 
         for w in winners:
             print("Winner {}".format(candidates[w].id), file=log)
@@ -1055,7 +1057,6 @@ if __name__ == "__main__":
         ruled_out = []
 
         delta_ut = 0.01
-        
         # possibilities[c] will give you all the sample sizes of 
         # AG relationships where 'c' is the loser.
         possibilities = [[] for c in cands]
@@ -1152,17 +1153,21 @@ if __name__ == "__main__":
 
             for o in cands:
                 if o == c1 or o == c2 or o in ruled_out: continue
-              
-                ctvmax1, ctvmax_ss1 = max_tv_by_z(c1, c2, o, cands, \
-                    candidates, ballots, 0.005, args, log, valid_ballots,\
-                    INVALID, asn_overall, ag_matrix)
+           
+                ctvmax1, ctvmax_ss1 = 0, 0
+                ctvmax2, ctvmax_ss2 = 0, 0
+   
+                if not remcase:
+                    ctvmax1, ctvmax_ss1 = max_tv_by_z(c1, \
+                        c2, o, cands, candidates, ballots, 0.005, args, log, \
+                        valid_ballots, INVALID, asn_overall, ag_matrix)
 
-                ctvmax2, ctvmax_ss2 = max_tv_by_z(c2, c1, o, cands, \
-                    candidates, ballots, 0.005, args, log, valid_ballots,\
-                    INVALID, asn_overall, ag_matrix)
+                    ctvmax2, ctvmax_ss2 = max_tv_by_z(c2, \
+                        c1, o, cands, candidates, ballots, 0.005, args, log, \
+                        valid_ballots, INVALID, asn_overall, ag_matrix)
 
                 # Find set of candididates 'c' for which o AG c.
-                # Keep track of cost of each of those AGs
+                # Keep track of cost of each of those AGs
 
                 # Keep running tally of total votes we can increase the margin
                 # of assertion 'o' NL 'c' by using 'AG' relationships
@@ -1198,8 +1203,16 @@ if __name__ == "__main__":
 
                     weight = 1
 
-                    if b.prefs[0] == c1:
+                    if remcase:
+                        idx_c1 = index_of(c1, b.prefs)
+                        idx_c2 = index_of(c2, b.prefs)
+
+                        if idx_c1 != None and idx_c1 < idx_c2:
+                            weight = 0 
+
+                    elif b.prefs[0] == c1:
                         weight = ctvmax1
+
 
                     # In this analysis, we are assuming that no one other
                     # than c1 and c2 has won -- so if AG(d, c2) and 'd'
@@ -1303,7 +1316,14 @@ if __name__ == "__main__":
 
                     weight = 1
 
-                    if b.prefs[0] == c2:
+                    if remcase:
+                        idx_c1 = index_of(c1, b.prefs)
+                        idx_c2 = index_of(c2, b.prefs)
+
+                        if idx_c2 != None and idx_c2 < idx_c1:
+                            weight = 0 
+
+                    elif b.prefs[0] == c2:
                         weight = ctvmax2 
    
                     awarded, ag_present, used_ss = vote_for_cand_ags2(c1, o, \
@@ -1405,7 +1425,11 @@ if __name__ == "__main__":
 
 
         print("Best sample size: {}".format(asn_overall), file=log)
-        print("CASEB,{},{},{},{},{}".format(args.data, ncand, valid_ballots,\
-            args.quota, asn_overall))
+        if remcase:
+            print("CASEC,{},{},{},{},{}".format(args.data, ncand, \
+                valid_ballots, args.quota, asn_overall))
+        else:
+            print("CASEB,{},{},{},{},{}".format(args.data, ncand, \
+                valid_ballots, args.quota, asn_overall))
 
     log.close() 
