@@ -166,41 +166,43 @@ def rule_out_for_max(prefs, loser, ag_matrix, winners):
 
     return False, np.inf
 
-# Compute max possible tally of z upon its elimination.
+# Compute max possible tally of z upon its elimination and the portion of
+# that tally that could move to a givem candidate w.
 #
 # Compute number of ballots on which 'z' is preferenced before any of
 # the candidates in 'standing', or where 'z' appears and standing == [].
 #
 # Exclude ballots where a 'c' is preferenced before 'z' and 'c' AG 'z' if
 # the cost of that AG is less than current asn of audit. 
-def max_tally_z_exc(z, ballots, ag_matrix, standing, asn_overall):
-    count = 0
+def max_tally_z_exc(z, w, ballots, ag_matrix, standing, asn_overall):
+    count_max = 0
+    count_z_to_w = 0
     for blt in ballots:
         for p in blt.prefs:
             if p in standing:
                 break
 
             if p == z:
-                count += blt.votes
+                count_max += blt.votes
+                if w in blt.prefs:
+                    count_z_to_w += blt.votes
                 break
 
             ag = ag_matrix[p][z] 
             if ag != None and ag <= asn_overall:
                 break
 
-    return count
+    return count_max, count_z_to_w
 
 def max_tv_by_z(c1, c2, o, cands, candidates, ballots, delta_ut, args, log,
     valid_ballots, INVALID, asn_overall, ag_matrix):
 
-    # Place upper bound on the transfer value for the FIRST
-    # of c1/c2 given a quota. It will be the same for either
-    # candidate.
+    # NOTE: C1 is the assumed winner for which we are computing TV.
+
     zeds_maxtv = []
     max_maxtv_v = -1
 
-    # 'z' is the candidate who will give either 'c1' or 
-    # 'c2' a quota.
+    # 'z' is the candidate who will give 'c1' its quota 
     for z in cands:
         if z == c1 or z == c2 or z == o: continue
 
@@ -211,19 +213,27 @@ def max_tv_by_z(c1, c2, o, cands, candidates, ballots, delta_ut, args, log,
         if ag_matrix[z][o] != None and ag_matrix[z][o] <= asn_overall:
             continue
 
-        # Compute maximum tally of z when [c1, c2, o]
-        # are still standing. 
-        max_t_z = min(args.quota, max_tally_z_exc(z, ballots, ag_matrix, \
-            [c1, c2, o], asn_overall))
+        # Compute maximum tally of z when [c1, c2, o] are still standing.
+        # Also return the portion of those votes that could move to c1. 
+        max_t_z, max_t_z_c = max_tally_z_exc(z, c1, ballots, \
+            ag_matrix, [c1, c2, o], asn_overall)
 
-        # If cand z gives c1 or c2 its quota, maximum transfer 
-        # value will be: max_t_z / (max_t_z + args.quota)
+        if max_t_z_c > args.quota:
+            max_t_z = args.quota
+            max_t_z_c = args.quota
 
-        max_tv_poss = max_t_z / (max_t_z + args.quota)
 
-        zeds_maxtv.append((z, max_t_z))
+        # If cand z gives c1 its quota, maximum transfer 
+        # value will be: max_t_z_c / (max_t_z_c + args.quota)
+
+        max_tv_poss = max_t_z_c / (max_t_z_c + args.quota)
+
+        zeds_maxtv.append((z, max_t_z, max_t_z_c))
         max_maxtv_v = max(max_maxtv_v, max_tv_poss)
+        #print("{}, {}".format(candidates[z].id, max_maxtv_v), file=log)
 
+    #for z,mt1,mt2 in zeds_maxtv:
+    #    print("{} - {}, {}".format(candidates[z].id, mt1, mt2), file=log)
 
     if max_maxtv_v >= args.maxtv or max_maxtv_v is -1:
         return args.maxtv, 0
@@ -233,25 +243,25 @@ def max_tv_by_z(c1, c2, o, cands, candidates, ballots, delta_ut, args, log,
                 
     while cmax < args.maxtv:
         # Estimate difficulty of ensuring that for all z in
-        # zeds_maxtv, their maximum tally V <= cmax * Q / (1-cmax) 
+        # zeds_maxtv, their maximum "to c1" tally Vz,c <= cmax * Q / (1-cmax) 
 
-        # Upper boud on max tally of z for the current cmax
-        Vz = (cmax * args.quota) / (1 - cmax)
+        # Upper boud on max z-c tally for the current cmax
+        Vzc = (cmax * args.quota) / (1 - cmax)
 
-        prop_other = 1 - (Vz / valid_ballots) 
+        prop_other = 1 - (Vzc / valid_ballots) 
 
         # Continue to increase cmax until we can form all 
         # |zeds_maxtv| with less than certain cost
         max_ss = 0
-        for z,mtz in zeds_maxtv:
-            # Want a mtz < Vz assertion
+        for z,mtz,mtzc in zeds_maxtv:
+            # Want a mtzc < Vzc assertion
 
             # Imagine all ballots that we do not categorise
-            # as belonging in the maximum tally of z belong
+            # as belonging in the maximum tally of z->c belong
             # to an imaginary candidate "other". We want
             # to show that "other" has more than prop_other
             # proportion of the ballots.
-            tally_other = valid_ballots - mtz
+            tally_other = valid_ballots - mtzc
 
             ss, _, _ = subsupermajority_sample_size(prop_other, \
                 tally_other, INVALID, args)
@@ -267,7 +277,7 @@ def max_tv_by_z(c1, c2, o, cands, candidates, ballots, delta_ut, args, log,
     if cmax >= args.maxtv or final_ss == np.inf:
         return args.maxtv, 0
 
-    print("    REV MAX TV for C1/C2 = {}, {}, o = {}, is {}, asn {}".format(\
+    print("    REV MAX TV for C1,C2 = {}, {}, o = {}, is {}, asn {}".format(\
         candidates[c1].id, candidates[c2].id, candidates[o].id, \
         cmax, final_ss), file=log)
 
@@ -1143,7 +1153,11 @@ if __name__ == "__main__":
             for o in cands:
                 if o == c1 or o == c2 or o in ruled_out: continue
               
-                ctvmax, ctvmax_ss = max_tv_by_z(c1, c2, o, cands, \
+                ctvmax1, ctvmax_ss1 = max_tv_by_z(c1, c2, o, cands, \
+                    candidates, ballots, 0.005, args, log, valid_ballots,\
+                    INVALID, asn_overall, ag_matrix)
+
+                ctvmax2, ctvmax_ss2 = max_tv_by_z(c2, c1, o, cands, \
                     candidates, ballots, 0.005, args, log, valid_ballots,\
                     INVALID, asn_overall, ag_matrix)
 
@@ -1185,7 +1199,7 @@ if __name__ == "__main__":
                     weight = 1
 
                     if b.prefs[0] == c1:
-                        weight = ctvmax
+                        weight = ctvmax1
 
                     # In this analysis, we are assuming that no one other
                     # than c1 and c2 has won -- so if AG(d, c2) and 'd'
@@ -1203,7 +1217,7 @@ if __name__ == "__main__":
 
                 # Max ASN of any AGs used to increase/decrease the minimum
                 # /maximum tallies of second winner/candidate c when forming NL.
-                max_ags_used1 = ctvmax_ss 
+                max_ags_used1 = ctvmax_ss1 
                 merged_helpful_ags = merge_helpful_ags(helpful_ags, \
                     pot_margin_inc)
   
@@ -1290,7 +1304,7 @@ if __name__ == "__main__":
                     weight = 1
 
                     if b.prefs[0] == c2:
-                        weight = ctvmax 
+                        weight = ctvmax2 
    
                     awarded, ag_present, used_ss = vote_for_cand_ags2(c1, o, \
                         b.prefs, ag_matrix, [c2])
@@ -1305,7 +1319,7 @@ if __name__ == "__main__":
                 # Max ASN of any AGs used to increase/decrease the minimum
                 # /maximum tallies of second winner/candidate c when forming
                 # NL.
-                max_ags_used2 =  ctvmax_ss 
+                max_ags_used2 =  ctvmax_ss2 
                 merged_helpful_ags = merge_helpful_ags(helpful_ags, \
                     pot_margin_inc)
   
