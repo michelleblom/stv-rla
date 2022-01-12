@@ -22,7 +22,7 @@ import sys
 
 
 from utils import read_ballots_stv, read_outcome, subsupermajority_sample_size,\
-    cand_vs_cand_sample_size, read_ballots_txt, index_of
+    cand_vs_cand_sample_size, read_ballots_txt, index_of, next_cand
 
 
 # Returns 'c1' if in the ballot ranking 'prefs', 'c1' appears earlier 
@@ -206,6 +206,8 @@ def max_tv_by_z(c1, c2, o, cands, candidates, ballots, delta_ut, args, log,
     for z in cands:
         if z == c1 or z == c2 or z == o: continue
 
+        # NOTE: Can we exclude reported winners as z? as the reported
+        # winner is inflating the bounds on the transfer value.
         if ag_matrix[z][c1] != None and ag_matrix[z][c1] <= asn_overall:
             continue
         if ag_matrix[z][c2] != None and ag_matrix[z][c2] <= asn_overall:
@@ -230,10 +232,6 @@ def max_tv_by_z(c1, c2, o, cands, candidates, ballots, delta_ut, args, log,
 
         zeds_maxtv.append((z, max_t_z, max_t_z_c))
         max_maxtv_v = max(max_maxtv_v, max_tv_poss)
-        #print("{}, {}".format(candidates[z].id, max_maxtv_v), file=log)
-
-    #for z,mt1,mt2 in zeds_maxtv:
-    #    print("{} - {}, {}".format(candidates[z].id, mt1, mt2), file=log)
 
     if max_maxtv_v >= args.maxtv or max_maxtv_v is -1:
         return args.maxtv, 0
@@ -266,6 +264,8 @@ def max_tv_by_z(c1, c2, o, cands, candidates, ballots, delta_ut, args, log,
             ss, _, _ = subsupermajority_sample_size(prop_other, \
                 tally_other, INVALID, args)
 
+            #print("With z = {}, ASN = {}".format(candidates[z].id,\
+            #    ss), file=log)
             max_ss = max(max_ss, ss)
 
         if max_ss <= asn_overall:
@@ -1039,14 +1039,130 @@ if __name__ == "__main__":
         print("1Q,{},{},{},{},{}".format(args.data, ncand, valid_ballots, \
             args.quota, max_sample_size))
 
-    else:
+    else: 
         # CASE: 2 seats and no candidate has a quota on first preferences
-        # according to reported results.
-        
+        # according to reported results.   else:
+        overall_asn = 0
+
         remcase = outcome.action[ncand-2:] == [1,1]
 
         for w in winners:
             print("Winner {}".format(candidates[w].id), file=log)
+
+        # First look at whether we can batch eliminate some candidates at
+        # the start of counting. If we can show that E are eliminated first,
+        # before any candidate can get a quota, then for all other candidates
+        # 'c' (not in E) we can give 'c' votes from any candidate in E in
+        # their minimum tally as part of any NL calculation. 
+        batch_asn = np.inf
+        first_elim = [None for c in candidates]
+
+        if ncand > 4 and outcome.action[:3] == [0,0,0]:
+            idx = -1
+
+            # Can we batch eliminate the first few candidates?
+            for i in range(2,ncand):
+                if outcome.action[i] == 1:
+                    break
+
+                ilosers = outcome.cand[:i]
+                iwinners = outcome.cand[i:]
+       
+                # compute total fp's of the losers
+                tally_losers = 0
+                for c in ilosers:
+                    tally_losers += candidates[c].fp_votes
+
+                # minimum fp of the winners
+                tally_winner = candidates[iwinners[0]].fp_votes
+
+                # Can we audit the winner vs losers comparison?
+                ss, m, _ = cand_vs_cand_sample_size(tally_winner, \
+                    tally_losers, valid_ballots, args) 
+
+                if ss < np.inf:
+                    batch_asn = ss
+                    idx = i
+
+            if idx != -1:
+                # we can perform a batch elimination
+                ilosers = outcome.cand[:idx]
+                iwinners = outcome.cand[idx:]
+
+                loser_ids = [candidates[c].id for c in ilosers]
+
+                print("Batch elimination of {} with ASN {}".format(loser_ids,\
+                    batch_asn), file=log)
+
+                # check that no candidate has a quota upon the elimination
+                # of ilosers
+                tallies_on_be = [0 for c in candidates]
+        
+                for blt in ballots:
+                    # Who is the first ranked candidate excluding ilosers
+                    next_c = next_cand(blt.prefs, ilosers)
+
+                    if next_c != None:
+                        tallies_on_be[next_c] += blt.votes
+
+                for c in iwinners:
+                    tally = tallies_on_be[c]
+
+                    # Can we show that 'c' does not have a quota? We need 
+                    # to show that the super candidate C \ {c} has a prop
+                    # of the votes that is more than 1 - 1/(seats + 1)
+                    thresh = 1 -(1.0/(args.seats + 1));
+
+                    ss, _, _ = subsupermajority_sample_size(thresh, \
+                        valid_ballots-tally, INVALID, args)
+
+                    print("Show that {} does not have a quota after "\
+                        "batch elim of {}, ASN = {}".format(candidates[c].id,\
+                        loser_ids, ss), file=log)
+
+                    batch_asn = max(batch_asn, ss)
+            
+                    if batch_asn is np.inf:
+                        break
+
+                
+                # If we can show that no one has a quota after the elimination
+                # of ilosers, then we know that there must be at least one
+                # more IRV elimination! Create an assertion to show that 
+                # the next eliminated candidate in the reported outcome is 
+                # the correct one.
+                if batch_asn != np.inf:
+                    for c in ilosers:
+                        first_elim[c] = batch_asn
+
+                    next_c = outcome.cand[idx]
+
+                    asn_next_elim = 0
+                
+                    # Assert that next_c has less votes at this point than
+                    # all other remaining candidates
+                    tally_next_c = tallies_on_be[next_c]
+                
+                    for i in range(idx+1, ncand):
+                        next_w = outcome.cand[i]
+
+                        ss,_,_ =  cand_vs_cand_sample_size(\
+                            tallies_on_be[next_w],tally_next_c, \
+                            valid_ballots, args) 
+
+                        print("{} vs {}, ASN {}".format(candidates[next_w].id,\
+                            candidates[next_c].id, ss), file=log)
+                        asn_next_elim = max(asn_next_elim, ss)
+                        if ss is np.inf:
+                            break
+
+                    if asn_next_elim < np.inf:
+                        comb_asn = max(batch_asn, asn_next_elim)
+                        first_elim[next_c] = comb_asn
+
+                        print("Candidate {}".format(candidates[next_c].id)\
+                            + " is the next eliminated, ASN {}".format(\
+                            comb_asn), file=log)
 
         # ag_matrix[c][o] will give you the sample size required to show
         # that c AG o. It will be None if no such AG relationship exists.
@@ -1057,10 +1173,12 @@ if __name__ == "__main__":
         ruled_out = []
 
         delta_ut = 0.01
+
         # possibilities[c] will give you all the sample sizes of 
         # AG relationships where 'c' is the loser.
         possibilities = [[] for c in cands]
 
+        print("Computing AG relationships", file=log)
         # Compute "Always greater" AG relationships.
         for c in cands:
             # Cand 'c' is always greater than 'o' if c's first preference
@@ -1091,6 +1209,28 @@ if __name__ == "__main__":
 
                         print("{} AG {} = {}".format(candidates[c].id, \
                             candidates[o].id, ss), file=log)
+
+        # Supplement AG matrix with information obtained from the batch
+        # elimination matrix. 
+        for i in range(ncand):
+            iv = first_elim[i]
+
+            if iv is None: continue
+
+            for j in range(ncand):
+                if j == i: continue
+
+                jv = first_elim[j]
+
+                if jv != None: continue
+
+                # Here 'i' is known to be first eliminated, and 'j' not.
+                agv = ag_matrix[j][i]
+
+                if agv is None or iv < agv:
+                    ag_matrix[j][i] = iv
+                    possibilities[i].append(iv)
+                   
 
         # Now, we are looking for candidates c where there are at least
         # 2 other candidates o such that o AG c. This is the case where
@@ -1154,20 +1294,16 @@ if __name__ == "__main__":
             for o in cands:
                 if o == c1 or o == c2 or o in ruled_out: continue
            
-                ctvmax1, ctvmax_ss1 = 0, 0
-                ctvmax2, ctvmax_ss2 = 0, 0
-   
-                if not remcase:
-                    ctvmax1, ctvmax_ss1 = max_tv_by_z(c1, \
-                        c2, o, cands, candidates, ballots, 0.005, args, log, \
-                        valid_ballots, INVALID, asn_overall, ag_matrix)
+                ctvmax1, ctvmax_ss1 = max_tv_by_z(c1, \
+                    c2, o, cands, candidates, ballots, 0.005, args, log, \
+                    valid_ballots, INVALID, asn_overall, ag_matrix)
 
-                    ctvmax2, ctvmax_ss2 = max_tv_by_z(c2, \
-                        c1, o, cands, candidates, ballots, 0.005, args, log, \
-                        valid_ballots, INVALID, asn_overall, ag_matrix)
+                ctvmax2, ctvmax_ss2 = max_tv_by_z(c2, \
+                    c1, o, cands, candidates, ballots, 0.005, args, log, \
+                    valid_ballots, INVALID, asn_overall, ag_matrix)
 
                 # Find set of candididates 'c' for which o AG c.
-                # Keep track of cost of each of those AGs
+                # Keep track of cost of each of those AGs
 
                 # Keep running tally of total votes we can increase the margin
                 # of assertion 'o' NL 'c' by using 'AG' relationships
@@ -1203,14 +1339,7 @@ if __name__ == "__main__":
 
                     weight = 1
 
-                    if remcase:
-                        idx_c1 = index_of(c1, b.prefs)
-                        idx_c2 = index_of(c2, b.prefs)
-
-                        if idx_c1 != None and idx_c1 < idx_c2:
-                            weight = 0 
-
-                    elif b.prefs[0] == c1:
+                    if b.prefs[0] == c1:
                         weight = ctvmax1
 
 
@@ -1316,14 +1445,7 @@ if __name__ == "__main__":
 
                     weight = 1
 
-                    if remcase:
-                        idx_c1 = index_of(c1, b.prefs)
-                        idx_c2 = index_of(c2, b.prefs)
-
-                        if idx_c2 != None and idx_c2 < idx_c1:
-                            weight = 0 
-
-                    elif b.prefs[0] == c2:
+                    if b.prefs[0] == c2:
                         weight = ctvmax2 
    
                     awarded, ag_present, used_ss = vote_for_cand_ags2(c1, o, \
@@ -1387,7 +1509,7 @@ if __name__ == "__main__":
                 print("   (2) can we show that {} NL {}? ".format(cand_o.id,\
                     candidates[c1].id), file=log)
                 print("      min tally {} is {}".format(cand_o.id, \
-                    min_tally_o), file=log)
+                    min_tally_o_extra), file=log)
                 print("      max tally {} is {}".format(candidates[c1].id, \
                     max_vote_c1), file=log)
 

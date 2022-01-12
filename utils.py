@@ -349,3 +349,12 @@ def index_of(item, values):
         idx += 1
 
     return None 
+
+def next_cand(prefs, excluded):
+    for p in prefs:
+        if p in excluded:
+            continue
+
+        return p
+
+    return None
