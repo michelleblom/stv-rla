@@ -166,6 +166,7 @@ def rule_out_for_max(prefs, loser, ag_matrix, winners):
 
     return False, np.inf
 
+
 # Compute max possible tally of z upon its elimination and the portion of
 # that tally that could move to a givem candidate w.
 #
@@ -194,6 +195,11 @@ def max_tally_z_exc(z, w, ballots, ag_matrix, standing, asn_overall):
 
     return count_max, count_z_to_w
 
+
+# Compute an upper bound on the possible transfer value for a candidate c1
+# assuming they are elected with a quota. Return upper bound and ASN required
+# to show that the transfer value for c1, if they are at any point elected
+# with a quota, is less than that upper bound. 
 def max_tv_by_z(c1, c2, o, cands, candidates, ballots, delta_ut, args, log,
     valid_ballots, INVALID, asn_overall, ag_matrix):
 
@@ -283,7 +289,18 @@ def max_tv_by_z(c1, c2, o, cands, candidates, ballots, delta_ut, args, log,
 
     return cmax, final_ss
 
-
+# Merge a sequence of AG relationships that could be used to reduce the 
+# margin of an NL. Input list 'helpful_ags' will be a list of (asn,cand,votes),
+# where 'asn' is the cost of auditing the AG assertion, 'cand' is either the
+# winner or loser in an NL being constructed, and 'votes' is the number of 
+# votes that we can reduce the margin of that NL by if we audit this AG. If
+# 'cand' is the winner, we can increase their minimum tally by 'votes'. If
+# 'cand' is the loser, we can reduce their maximum tally by 'votes'. This 
+# function takes a list of these AGs, and merges consecutive entries if: the
+# candidate is the same; and the ASN is the same. So, two consecutive
+# entries (50, a, 10) and (50, a, 20) will be merged into a single entry
+# (50, a, 30) -- the two AGs can be used to reduce the margin of the NL by
+# 30 votes. 
 def merge_helpful_ags(helpful_ags, exp_merged_total):
     helpful_ags.sort()
     merged_helpful_ags = []
@@ -936,7 +953,7 @@ if __name__ == "__main__":
                 # possible, or whose ASN is already within/equal to current
                 # lower bound on audit difficulty.
                 while min_sw_w_extra < max_c and merged_helpful_ags != []:
-                    ag_asn, cand, votes = merged_helpful_ags.pop()
+                    ag_asn, cand, votes = merged_helpful_ags.pop(0)
 
                     if cand == sw.num:
                         min_sw_w_extra += votes
@@ -1230,7 +1247,6 @@ if __name__ == "__main__":
                 if agv is None or iv < agv:
                     ag_matrix[j][i] = iv
                     possibilities[i].append(iv)
-                   
 
         # Now, we are looking for candidates c where there are at least
         # 2 other candidates o such that o AG c. This is the case where
@@ -1252,6 +1268,12 @@ if __name__ == "__main__":
         print("Sample size for ruling out cands: {}".format(max_rule_out_ss),\
             file=log)
 
+        # Initially, our ASN consists of the ballot samples required to
+        # establish the set of alternative winner pairs, ruling out candidates
+        # c where there are at least 2 candidates o such that o AG c.
+        asn_overall = max_rule_out_ss
+
+
         # Form pairs of alternate winner outcomes
         pairs = []
         assertions = []
@@ -1268,10 +1290,6 @@ if __name__ == "__main__":
 
                 pairs.append((c,o))
 
-        # Initially, our ASN consists of the ballot samples required to
-        # establish the set of alternative winner pairs, ruling out candidates
-        # c where there are at least 2 candidates o such that o AG c.
-        asn_overall = max_rule_out_ss
 
         assertions = []
         for c1,c2 in pairs:
@@ -1378,7 +1396,7 @@ if __name__ == "__main__":
                 while min_tally_o_extra < max_vote_c2 and \
                     merged_helpful_ags != []:
                     
-                    ag_asn, cand, votes = merged_helpful_ags.pop()
+                    ag_asn, cand, votes = merged_helpful_ags.pop(0)
 
                     if cand == o:
                         min_tally_o_extra += votes
@@ -1389,7 +1407,7 @@ if __name__ == "__main__":
                         max_vote_c2 -= votes
                         max_ags_used1 = max(max_ags_used1, ag_asn)
                         pot_margin_inc -= votes
-                        
+
                 cntr = 0
                 for ag_asn, cand, votes in merged_helpful_ags:
                     if ag_asn > max(max_ags_used1, asn_overall):
@@ -1425,10 +1443,13 @@ if __name__ == "__main__":
                     ss, m, _ = cand_vs_cand_sample_size(min_tally_o_extra, \
                         max_vote_c2, valid_ballots, args) 
 
-                    best_asn1 = min(max(ss, max_ags_used1), best_asn1)
-                    not_applicable = False
-                    print("      yes, {}, ags used {} = {}".format(ss, \
-                         max_ags_used1, max(ss, max_ags_used1)), file=log)
+                    if ss != np.inf:
+                        best_asn1 = min(max(ss, max_ags_used1), best_asn1)
+                        not_applicable = False
+                        print("      yes, {}, ags used {} = {}".format(ss, \
+                             max_ags_used1, max(ss, max_ags_used1)), file=log)
+                    else:
+                        print("      no", file=log)
 
                 else:
                     print("      no", file=log)
@@ -1461,7 +1482,7 @@ if __name__ == "__main__":
                 # Max ASN of any AGs used to increase/decrease the minimum
                 # /maximum tallies of second winner/candidate c when forming
                 # NL.
-                max_ags_used2 =  ctvmax_ss2 
+                max_ags_used2 = ctvmax_ss2 
                 merged_helpful_ags = merge_helpful_ags(helpful_ags, \
                     pot_margin_inc)
   
@@ -1473,7 +1494,7 @@ if __name__ == "__main__":
                 while min_tally_o_extra < max_vote_c1 and \
                     merged_helpful_ags != []:
                     
-                    ag_asn, cand, votes = merged_helpful_ags.pop()
+                    ag_asn, cand, votes = merged_helpful_ags.pop(0)
 
                     if cand == o:
                         min_tally_o_extra += votes
@@ -1484,7 +1505,7 @@ if __name__ == "__main__":
                         max_vote_c1 -= votes
                         max_ags_used2 = max(max_ags_used2, ag_asn)
                         pot_margin_inc -= votes
-                        
+ 
                 cntr = 0
                 for ag_asn, cand, votes in merged_helpful_ags:
                     if ag_asn > max(max_ags_used2, asn_overall):
@@ -1521,10 +1542,13 @@ if __name__ == "__main__":
                     ss, m, _ = cand_vs_cand_sample_size(min_tally_o_extra, \
                         max_vote_c1, valid_ballots, args) 
 
-                    best_asn2 = min(max(ss,max_ags_used2), best_asn2)
-                    not_applicable = False
-                    print("      yes, {}, ags used {} = {}".format(ss, \
-                        max_ags_used2, max(ss,max_ags_used2)), file=log)
+                    if ss != np.inf:
+                        best_asn2 = min(max(ss,max_ags_used2), best_asn2)
+                        not_applicable = False
+                        print("      yes, {}, ags used {} = {}".format(ss, \
+                            max_ags_used2, max(ss,max_ags_used2)), file=log)
+                    else:
+                        print("      no", file=log)
 
                 else:
                     print("      no", file=log)
