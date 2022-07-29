@@ -1,0 +1,63 @@
+data/US/2014_OAK_MAYOR.us,17,101431,33811,inf
+ -- Cannot verify that non-winners 12, 10, 1, and 14 lost.
+
+data/US/BK_CC_D8_2014.us,5,4497,1500,inf
+ -- Cannot verify that non-winners 1 and 2 lost.
+
+data/US/test_Aspen09CC_ballots.us,11,2487,830,inf
+ -- Cannot verify that non-winners 4, 5, 3 lost.
+
+data/US/test_Pierce08CAS_ballots.us,7,262447,87483,inf
+ -- Cannot verify that non-winners 122 and 121 lost.
+
+data/Ireland/DublinNorth2002_ballots.txt,12,43942,14648,inf
+ -- Cannot verify that 6, 7, 2, 12, and 9 lost. 
+
+data/Ireland/DublinWest2002_ballots.txt,9,29988,9997,inf
+ -- Cannot verify that 2 and 9 lost.
+
+data/Ireland/GCC_07_Anderson_ballots.txt,9,6900,2301,inf
+ -- Cannot verify that 6, 8, and 1 lost.
+
+data/Ireland/GCC_07_Craigton_ballots.txt,10,11052,3685,inf
+ -- Cannot verify that 6 and 10 lost.
+
+data/Ireland/GCC_07_Drumchapel_ballots.txt,10,8680,2894,inf
+ -- Cannot verify that 10 lost.
+
+data/Ireland/GCC_07_EastCentre_ballots.txt,13,9078,3027,inf
+ -- Cannot verify that 5 lost.
+
+data/Ireland/GCC_07_Garscadden_ballots.txt,10,10160,3387,inf
+ -- Cannot verify that 7 and 9 lost.
+
+data/Ireland/GCC_07_Govan_ballots.txt,11,9560,3187,inf
+ --- Cannot verify that 1 and 4 lost.
+
+data/Ireland/GCC_07_GreaterPollock_ballots.txt,9,8682,2895,inf
+ --- Cannot verify that 5 and 7 lost.
+
+data/Ireland/GCC_07_Hillhead_ballots.txt,10,8984,2995,inf
+ --- Cannot verify that 5, 8, 7, and 3 lost. 
+
+data/Ireland/GCC_07_Linn_ballots.txt,11,9567,3190,inf
+ --- Cannot verify that 8, 2, and 6 lost.
+
+data/Ireland/GCC_07_Maryhill_ballots.txt,8,9901,3301,inf
+ --- Cannot verify that 3 and 5 lost.
+
+data/Ireland/GCC_07_Newlands_ballots.txt,9,8654,2885,inf
+ --- Cannot verify that 7 lost.
+
+data/Ireland/GCC_07_NorthEast_ballots.txt,10,8363,2788,inf
+ --- Cannot verify that 3 and 6 lost.
+
+data/Ireland/GCC_07_Partick_ballots.txt,9,12744,4249,inf
+ --- Cannot verify that 2, 4, and 6 lost.
+
+data/Ireland/GCC_07_Shettleston_ballots.txt,11,8803,2935,inf
+ --- Cannot verify that 9, and 10 lost.
+
+data/Ireland/GCC_07_Springburn_ballots.txt,10,5410,1804,inf
+ --- Cannot verify that 10 lost.
+

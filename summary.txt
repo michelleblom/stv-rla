@@ -1,0 +1,238 @@
+26 general cases of interest: 4 US; remainder from Ireland. The 4 US cases are
+IRV elections reimagined as 2 seat STV elections. The Irish instances are 3+
+seat STV elections reimagined as 2 seat STV elections.
+
+Run basic general algorithm with max tv of any candidate at 2/3.
+
+4/26 successes (all Irish)
+
+Run basic general algorithm with max tv set to 0.429.
+
+5/26 successes (all Irish)
+
+Basic algorithm does incorporate the selective use of AGs in order to increase
+the margins of NL assertions (or try to make them possible).
+
+--------------------------------
+NEW STRATEGY (Elimination of Z)
+--------------------------------
+
+Given an alternate winner pair C1, C2. 
+
+Assume C1 gets a seat.
+
+1) We want to show that there exists a candidate O \= C1 such that O NL C2.
+
+In computing the maximum tally of C2, we need to determine how to count
+ballots that move from C1 (surplus transfer) to C2. We can use 0.429 as a 
+general maximum transfer value, but can we do better?
+
+C1 cannot have a quota to start with and so must achieve that quota 
+after an elimination of some candidate Z. 
+
+Surplus of C1 when it gets a quota can be at most MaxTally(Z). (We can
+factor in that ballots sitting in a candidate c's pile where c AG Z, are not
+included in MaxTally(Z)).
+
+--------------------------------
+Case Study: BK_CC_D8_2014
+--------------------------------
+
+Simulation:
+Quota: 1500
+First preference tallies: 
+    Candidate 4 0
+    Candidate 2 832
+    Candidate 1 1161
+    Candidate 0 1190
+    Candidate 3 1314
+The quota for election is 1500
+Candidate 4 has 0 votes 
+Candidate 2 has 832 votes 
+Candidate 1 has 1161 votes 
+Candidate 0 has 1190 votes 
+Candidate 3 has 1314 votes 
+Candidate 4 eliminated on 0 votes
+Candidate 2 has 832 votes 
+Candidate 1 has 1161 votes 
+Candidate 0 has 1190 votes 
+Candidate 3 has 1314 votes 
+Candidate 2 eliminated on 832 votes
+Candidate 3 elected (votes 1610) 
+TVALUE 0.068323
+Candidate 0 elected (votes 1503.99) 
+TVALUE 0.00193591
+4,2,3,0,1
+0,0,1,1,0
+
+Winners: 3,0
+
+Look at the alternate winner pair 2,3. We want to show 0 NL 2 assuming 3 wins.
+
+With the current elimination-of-z strategy, the candidate with the highest
+maximum tally (that is not 2, 3, or 0) is 1 with a max-tally of 1161 votes.
+
+But, if we made the assumption that candidate 3's surplus could be at most
+1161 votes, then that equates to a maximum TV of 0.4363, which is higher 
+than the global upper bound of 0.429. So we would use 0.429 instead. This
+massively overestimates what the actual transfer value ends up being.
+
+The issue is that even if candidate 1 was the one to be eliminated and give
+canidate 3 its surplus, not ALL of the 1161 votes would be going to 3. In
+the simulated outcome, 296 of candidate 2's 832 ballots go to 3.
+
+Perhaps we can refine the elim-of-z strategy a bit.
+
+For a candidate Z, can we define MaxTransfer(Z, C) where in this case C = 3?
+
+MaxTransfer(Z, C) is the set of ballots that would be allocated to MaxTally(Z)
+that have C as a later preference. 
+
+If we do this, then 617 of the 1161 ballots in MaxTally(Z = 1) would go to
+candidate 3. That would give a max tv value of 0.2915.
+
+Before tweak in elim-of-z strategy:
+   (1) can we show that 0 NL 3? 
+      min tally 0 is 1190
+      max tally 3 is 1865.866
+      no
+   (2) can we show that 0 NL 2? 
+      min tally 0 is 1190
+      max tally 2 is 1304.062
+      no
+
+After:
+    REV MAX TV for C1,C2 = 2, 3, o = 0, is 0.2138607594936709, asn 1692
+    REV MAX TV for C1,C2 = 3, 2, o = 0, is 0.29645016532829477, asn 1187
+   (1) can we show that 0 NL 3? 
+      min tally 0 is 1190
+      max tally 3 is 1789.7067088607594
+      no
+   (2) can we show that 0 NL 2? 
+      min tally 0 is 1190
+      max tally 2 is 1240.7031790269248
+      no
+
+So it is helpful, but just not helpful enough in this case.
+
+Note that for each possible Z, I am computing MaxTransfer(Z,C) where C is
+the assumed winner. I then compute the maximum starting value for an upper
+bound on the transfer value of C, denote cmax_0. 
+
+I increment cmax_0 by a small amount (eg. cmax = cmax_0 + 0.005), and 
+then determine, for each Z, what the corresponding upper bound on 
+MaxTransfer(Z, C) would be for C to have a transfer value of cmax. 
+Let this be Vzc. I then look at the difficulty of an assertion that is 
+designed to show that MaxTransfer(Z,C) < Vzc. I do that by creating a 
+scenario where we have two candidates A and B. A gets all ballots that 
+would belong to MaxTransfer(Z,C) and B gets all other ballots. I then 
+create an assertion to show that the proportion of the vote that B has 
+is greater than 1 - (Vzc / valid_ballots). B has the tally valid_ballots - 
+MaxTransfer(Z, C). 
+  
+- Can we figure out that Z has to be canididate 2 rather than 1?
+
+--------------------------------
+Case Study: Oakland 2014 Mayor
+--------------------------------
+
+Winners are 13 and 2.
+
+Outcome:
+15,16,6,8,7,5,9,11,0,3,4,12,10,13,1,14,2
+0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1
+
+We can form AG relationships for 2 against all candidates except 1, 10, 12, 13, and 14. 
+
+NOTE: We can form AG relationships for 13 against all other candidates with a
+max ASN of 418. Perhaps this eans we can just exclude all pairs that do not
+have 13 in them. 
+
+We have a large number of eliminations until 13 gets a quota, and then
+candidate 2 is left at the end (does not achieve a quota, but is close).
+Candidate 13's actual transfer value is 0.151628.
+
+Alternate pair of interest is C1/C2 = 12, 13 with o = 2. We want to show that 2
+NL 12 given 13 is assumed to get a seat.
+
+    REV MAX TV for C1,C2 = 12, 13, o = 2, is 0.10332524401301403, asn 2908
+    REV MAX TV for C1,C2 = 13, 12, o = 2, is 0.19102243728634022, asn 1856
+   (1) can we show that 2 NL 13? 
+      min tally 2 is 15609
+      max tally 13 is 46475.899809056486
+      no
+   (2) can we show that 2 NL 12? 
+      min tally 2 is 14608
+      max tally 12 is 16103.443853820601
+      no
+
+Above we stop increasing cmax when we can form elim-of-z assertions with
+ASNs that are less than np.inf -- we could continue until ASN is less than
+the current minimum ASN of the audit.
+
+If we do that, we get:
+    REV MAX TV for C1,C2 = 12, 13, o = 2, is 0.12332524401301405, asn 261
+    REV MAX TV for C1,C2 = 13, 12, o = 2, is 0.20602243728634023, asn 267
+   (1) can we show that 2 NL 13? 
+      min tally 2 is 15609
+      max tally 13 is 46525.81980905649
+      no
+   (2) can we show that 2 NL 12? 
+      min tally 2 is 14608
+      max tally 12 is 16186.243853820599
+      no
+
+Without the tweak to the elim-of-z strategy, we would have the
+following:
+
+    REV MAX TV for C1/C2 = 12, 13, o = 2, is 0.3778620423238548, asn 218
+   (1) can we show that 2 NL 13? 
+      min tally 2 is 15609
+      max tally 13 is 47161.14365764035
+      no
+   (2) can we show that 2 NL 12? 
+      min tally 2 is 14608
+      max tally 12 is 17134.79847362768
+      no
+
+
+-------------------
+The elimination of Z strategy does not allow us to audit any of the
+currently unauditable 26 instances. 
+-------------------
+
+Other observations:
+
+- The Oakland 2014 instance does look like it might be difficult to
+audit. 
+
+The step before the election of 13 looks like this:
+Candidate 10 has 14816 votes 
+Candidate 1 has 15764 votes 
+Candidate 14 has 17053 votes 
+Candidate 2 has 16929 votes 
+Candidate 13 has 33099 votes 
+
+There is not that much difference between 10, 1, 2, and 14 here.
+
+Remainder of the election:
+Candidate 13 elected (votes 39854) 
+TVALUE 0.151628
+Candidate 1 has 18153.1 votes 
+Candidate 14 has 18831.9 votes 
+Candidate 2 has 20100.4 votes 
+Candidate 1 eliminated on 18153.1 votes
+Candidate 14 has 21998.6 votes 
+Candidate 2 has 25796.4 votes 
+Candidate 14 eliminated on 21998.6 votes
+Number of candidates left standing equals  the number of remaining seats.
+Candidate 2 elected (votes 32052.2) 
+
+- For 2 of the US cases  [Aspen09CC, and Pierce08CAS], the actual outcome was a
+  series of eliminations until there were 2 candidates left (at that point,
+they did actually have a quota but there was never any transfer of a surplus).
+Perhaps we can look at that category of outcomes and treat it more like a
+multi-seat IRV with additional assertions to validate that the actual outcome
+was consistent with multi-seat IRV. 
+
+

@@ -1,0 +1,530 @@
+First preference tallies: 
+    Candidate 0 94630
+    Candidate 1 554
+    Candidate 2 1563
+    Candidate 3 75
+    Candidate 4 5983
+    Candidate 5 129
+    Candidate 6 69562
+    Candidate 7 1177
+    Candidate 8 60313
+    Candidate 9 93
+    Candidate 10 12463
+    Candidate 11 159
+    Candidate 12 678
+    Candidate 13 48
+    Candidate 14 28870
+    Candidate 15 490
+    Candidate 16 4440
+    Candidate 17 76
+    Candidate 18 1852
+    Candidate 19 37
+    Candidate 20 1380
+    Candidate 21 78
+    Candidate 22 567
+The quota for election is 95073
+Candidate GALLAGHER, Katy has 94630 votes
+Candidate NORTHAM, Maddy has 554 votes
+Candidate ANGEL, Joy has 1563 votes
+Candidate HAYDON, John has 75 votes
+Candidate SAVOULIDIS, James has 5983 votes
+Candidate PAGE, Tracey has 129 votes
+Candidate SESELJA, Zed has 69562 votes
+Candidate LAM, Kacey has 1177 votes
+Candidate POCOCK, David has 60313 votes
+Candidate DOUBE, Clare has 93 votes
+Candidate RUBENSTEIN, Kim has 12463 votes
+Candidate HUYNH, Kim has 159 votes
+Candidate FAULKNER, Therese has 678 votes
+Candidate LIN, Stephen has 48 votes
+Candidate GORENG GORENG, Tjanara has 28870 votes
+Candidate CRUZ, James has 490 votes
+Candidate KATELARIS, Andrew has 4440 votes
+Candidate STANVIC, Michelle has 76 votes
+Candidate del VALLE, Yana has 1852 votes
+Candidate FAHIZ, Jannah has 37 votes
+Candidate SIMMS, Michael has 1380 votes
+Candidate LIDDICOAT, Mary-Jane has 78 votes
+Candidate LI, Fuxin has 567 votes
+Candidate FAHIZ, Jannah eliminated on 37 votes
+1 votes distributed from FAHIZ, Jannah to NORTHAM, Maddy
+1 votes distributed from FAHIZ, Jannah to ANGEL, Joy
+1 votes distributed from FAHIZ, Jannah to PAGE, Tracey
+2 votes distributed from FAHIZ, Jannah to POCOCK, David
+1 votes distributed from FAHIZ, Jannah to DOUBE, Clare
+1 votes distributed from FAHIZ, Jannah to LIN, Stephen
+1 votes distributed from FAHIZ, Jannah to GORENG GORENG, Tjanara
+1 votes distributed from FAHIZ, Jannah to CRUZ, James
+1 votes distributed from FAHIZ, Jannah to KATELARIS, Andrew
+1 votes distributed from FAHIZ, Jannah to STANVIC, Michelle
+22 votes distributed from FAHIZ, Jannah to del VALLE, Yana
+3 votes distributed from FAHIZ, Jannah to LIDDICOAT, Mary-Jane
+1 votes distributed from FAHIZ, Jannah to LI, Fuxin
+Candidate GALLAGHER, Katy has 94630 votes
+Candidate NORTHAM, Maddy has 555 votes
+Candidate ANGEL, Joy has 1564 votes
+Candidate HAYDON, John has 75 votes
+Candidate SAVOULIDIS, James has 5983 votes
+Candidate PAGE, Tracey has 130 votes
+Candidate SESELJA, Zed has 69562 votes
+Candidate LAM, Kacey has 1177 votes
+Candidate POCOCK, David has 60315 votes
+Candidate DOUBE, Clare has 94 votes
+Candidate RUBENSTEIN, Kim has 12463 votes
+Candidate HUYNH, Kim has 159 votes
+Candidate FAULKNER, Therese has 678 votes
+Candidate LIN, Stephen has 49 votes
+Candidate GORENG GORENG, Tjanara has 28871 votes
+Candidate CRUZ, James has 491 votes
+Candidate KATELARIS, Andrew has 4441 votes
+Candidate STANVIC, Michelle has 77 votes
+Candidate del VALLE, Yana has 1874 votes
+Candidate SIMMS, Michael has 1380 votes
+Candidate LIDDICOAT, Mary-Jane has 81 votes
+Candidate LI, Fuxin has 568 votes
+Candidate LIN, Stephen eliminated on 49 votes
+1 votes distributed from LIN, Stephen to GALLAGHER, Katy
+1 votes distributed from LIN, Stephen to ANGEL, Joy
+1 votes distributed from LIN, Stephen to HAYDON, John
+1 votes distributed from LIN, Stephen to SESELJA, Zed
+2 votes distributed from LIN, Stephen to LAM, Kacey
+2 votes distributed from LIN, Stephen to POCOCK, David
+1 votes distributed from LIN, Stephen to DOUBE, Clare
+3 votes distributed from LIN, Stephen to HUYNH, Kim
+21 votes distributed from LIN, Stephen to FAULKNER, Therese
+3 votes distributed from LIN, Stephen to GORENG GORENG, Tjanara
+1 votes distributed from LIN, Stephen to CRUZ, James
+3 votes distributed from LIN, Stephen to KATELARIS, Andrew
+1 votes distributed from LIN, Stephen to del VALLE, Yana
+8 votes distributed from LIN, Stephen to LI, Fuxin
+Candidate GALLAGHER, Katy has 94631 votes
+Candidate NORTHAM, Maddy has 555 votes
+Candidate ANGEL, Joy has 1565 votes
+Candidate HAYDON, John has 76 votes
+Candidate SAVOULIDIS, James has 5983 votes
+Candidate PAGE, Tracey has 130 votes
+Candidate SESELJA, Zed has 69563 votes
+Candidate LAM, Kacey has 1179 votes
+Candidate POCOCK, David has 60317 votes
+Candidate DOUBE, Clare has 95 votes
+Candidate RUBENSTEIN, Kim has 12463 votes
+Candidate HUYNH, Kim has 162 votes
+Candidate FAULKNER, Therese has 699 votes
+Candidate GORENG GORENG, Tjanara has 28874 votes
+Candidate CRUZ, James has 492 votes
+Candidate KATELARIS, Andrew has 4444 votes
+Candidate STANVIC, Michelle has 77 votes
+Candidate del VALLE, Yana has 1875 votes
+Candidate SIMMS, Michael has 1380 votes
+Candidate LIDDICOAT, Mary-Jane has 81 votes
+Candidate LI, Fuxin has 576 votes
+Candidate HAYDON, John eliminated on 76 votes
+3 votes distributed from HAYDON, John to GALLAGHER, Katy
+1 votes distributed from HAYDON, John to NORTHAM, Maddy
+56 votes distributed from HAYDON, John to ANGEL, Joy
+4 votes distributed from HAYDON, John to SAVOULIDIS, James
+1 votes distributed from HAYDON, John to SESELJA, Zed
+4 votes distributed from HAYDON, John to POCOCK, David
+2 votes distributed from HAYDON, John to RUBENSTEIN, Kim
+2 votes distributed from HAYDON, John to STANVIC, Michelle
+1 votes distributed from HAYDON, John to del VALLE, Yana
+1 votes distributed from HAYDON, John to SIMMS, Michael
+1 votes distributed from HAYDON, John to LI, Fuxin
+Candidate GALLAGHER, Katy has 94634 votes
+Candidate NORTHAM, Maddy has 556 votes
+Candidate ANGEL, Joy has 1621 votes
+Candidate SAVOULIDIS, James has 5987 votes
+Candidate PAGE, Tracey has 130 votes
+Candidate SESELJA, Zed has 69564 votes
+Candidate LAM, Kacey has 1179 votes
+Candidate POCOCK, David has 60321 votes
+Candidate DOUBE, Clare has 95 votes
+Candidate RUBENSTEIN, Kim has 12465 votes
+Candidate HUYNH, Kim has 162 votes
+Candidate FAULKNER, Therese has 699 votes
+Candidate GORENG GORENG, Tjanara has 28874 votes
+Candidate CRUZ, James has 492 votes
+Candidate KATELARIS, Andrew has 4444 votes
+Candidate STANVIC, Michelle has 79 votes
+Candidate del VALLE, Yana has 1876 votes
+Candidate SIMMS, Michael has 1381 votes
+Candidate LIDDICOAT, Mary-Jane has 81 votes
+Candidate LI, Fuxin has 577 votes
+Candidate STANVIC, Michelle eliminated on 79 votes
+2 votes distributed from STANVIC, Michelle to GALLAGHER, Katy
+1 votes distributed from STANVIC, Michelle to NORTHAM, Maddy
+2 votes distributed from STANVIC, Michelle to ANGEL, Joy
+1 votes distributed from STANVIC, Michelle to PAGE, Tracey
+2 votes distributed from STANVIC, Michelle to LAM, Kacey
+3 votes distributed from STANVIC, Michelle to POCOCK, David
+1 votes distributed from STANVIC, Michelle to RUBENSTEIN, Kim
+2 votes distributed from STANVIC, Michelle to HUYNH, Kim
+2 votes distributed from STANVIC, Michelle to FAULKNER, Therese
+1 votes distributed from STANVIC, Michelle to GORENG GORENG, Tjanara
+3 votes distributed from STANVIC, Michelle to CRUZ, James
+51 votes distributed from STANVIC, Michelle to KATELARIS, Andrew
+2 votes distributed from STANVIC, Michelle to del VALLE, Yana
+1 votes distributed from STANVIC, Michelle to SIMMS, Michael
+3 votes distributed from STANVIC, Michelle to LIDDICOAT, Mary-Jane
+2 votes distributed from STANVIC, Michelle to LI, Fuxin
+Candidate GALLAGHER, Katy has 94636 votes
+Candidate NORTHAM, Maddy has 557 votes
+Candidate ANGEL, Joy has 1623 votes
+Candidate SAVOULIDIS, James has 5987 votes
+Candidate PAGE, Tracey has 131 votes
+Candidate SESELJA, Zed has 69564 votes
+Candidate LAM, Kacey has 1181 votes
+Candidate POCOCK, David has 60324 votes
+Candidate DOUBE, Clare has 95 votes
+Candidate RUBENSTEIN, Kim has 12466 votes
+Candidate HUYNH, Kim has 164 votes
+Candidate FAULKNER, Therese has 701 votes
+Candidate GORENG GORENG, Tjanara has 28875 votes
+Candidate CRUZ, James has 495 votes
+Candidate KATELARIS, Andrew has 4495 votes
+Candidate del VALLE, Yana has 1878 votes
+Candidate SIMMS, Michael has 1382 votes
+Candidate LIDDICOAT, Mary-Jane has 84 votes
+Candidate LI, Fuxin has 579 votes
+Candidate LIDDICOAT, Mary-Jane eliminated on 84 votes
+3 votes distributed from LIDDICOAT, Mary-Jane to ANGEL, Joy
+1 votes distributed from LIDDICOAT, Mary-Jane to PAGE, Tracey
+1 votes distributed from LIDDICOAT, Mary-Jane to SESELJA, Zed
+1 votes distributed from LIDDICOAT, Mary-Jane to POCOCK, David
+1 votes distributed from LIDDICOAT, Mary-Jane to DOUBE, Clare
+2 votes distributed from LIDDICOAT, Mary-Jane to RUBENSTEIN, Kim
+1 votes distributed from LIDDICOAT, Mary-Jane to GORENG GORENG, Tjanara
+1 votes distributed from LIDDICOAT, Mary-Jane to CRUZ, James
+1 votes distributed from LIDDICOAT, Mary-Jane to KATELARIS, Andrew
+2 votes distributed from LIDDICOAT, Mary-Jane to del VALLE, Yana
+67 votes distributed from LIDDICOAT, Mary-Jane to SIMMS, Michael
+3 votes distributed from LIDDICOAT, Mary-Jane to LI, Fuxin
+Candidate GALLAGHER, Katy has 94636 votes
+Candidate NORTHAM, Maddy has 557 votes
+Candidate ANGEL, Joy has 1626 votes
+Candidate SAVOULIDIS, James has 5987 votes
+Candidate PAGE, Tracey has 132 votes
+Candidate SESELJA, Zed has 69565 votes
+Candidate LAM, Kacey has 1181 votes
+Candidate POCOCK, David has 60325 votes
+Candidate DOUBE, Clare has 96 votes
+Candidate RUBENSTEIN, Kim has 12468 votes
+Candidate HUYNH, Kim has 164 votes
+Candidate FAULKNER, Therese has 701 votes
+Candidate GORENG GORENG, Tjanara has 28876 votes
+Candidate CRUZ, James has 496 votes
+Candidate KATELARIS, Andrew has 4496 votes
+Candidate del VALLE, Yana has 1880 votes
+Candidate SIMMS, Michael has 1449 votes
+Candidate LI, Fuxin has 582 votes
+Candidate DOUBE, Clare eliminated on 96 votes
+5 votes distributed from DOUBE, Clare to GALLAGHER, Katy
+3 votes distributed from DOUBE, Clare to NORTHAM, Maddy
+1 votes distributed from DOUBE, Clare to ANGEL, Joy
+1 votes distributed from DOUBE, Clare to PAGE, Tracey
+2 votes distributed from DOUBE, Clare to LAM, Kacey
+55 votes distributed from DOUBE, Clare to POCOCK, David
+6 votes distributed from DOUBE, Clare to RUBENSTEIN, Kim
+9 votes distributed from DOUBE, Clare to HUYNH, Kim
+4 votes distributed from DOUBE, Clare to FAULKNER, Therese
+3 votes distributed from DOUBE, Clare to GORENG GORENG, Tjanara
+4 votes distributed from DOUBE, Clare to CRUZ, James
+1 votes distributed from DOUBE, Clare to KATELARIS, Andrew
+2 votes distributed from DOUBE, Clare to LI, Fuxin
+Candidate GALLAGHER, Katy has 94641 votes
+Candidate NORTHAM, Maddy has 560 votes
+Candidate ANGEL, Joy has 1627 votes
+Candidate SAVOULIDIS, James has 5987 votes
+Candidate PAGE, Tracey has 133 votes
+Candidate SESELJA, Zed has 69565 votes
+Candidate LAM, Kacey has 1183 votes
+Candidate POCOCK, David has 60380 votes
+Candidate RUBENSTEIN, Kim has 12474 votes
+Candidate HUYNH, Kim has 173 votes
+Candidate FAULKNER, Therese has 705 votes
+Candidate GORENG GORENG, Tjanara has 28879 votes
+Candidate CRUZ, James has 500 votes
+Candidate KATELARIS, Andrew has 4497 votes
+Candidate del VALLE, Yana has 1880 votes
+Candidate SIMMS, Michael has 1449 votes
+Candidate LI, Fuxin has 584 votes
+Candidate PAGE, Tracey eliminated on 133 votes
+3 votes distributed from PAGE, Tracey to GALLAGHER, Katy
+2 votes distributed from PAGE, Tracey to ANGEL, Joy
+97 votes distributed from PAGE, Tracey to SAVOULIDIS, James
+3 votes distributed from PAGE, Tracey to SESELJA, Zed
+6 votes distributed from PAGE, Tracey to LAM, Kacey
+7 votes distributed from PAGE, Tracey to POCOCK, David
+1 votes distributed from PAGE, Tracey to RUBENSTEIN, Kim
+1 votes distributed from PAGE, Tracey to HUYNH, Kim
+1 votes distributed from PAGE, Tracey to FAULKNER, Therese
+2 votes distributed from PAGE, Tracey to KATELARIS, Andrew
+1 votes distributed from PAGE, Tracey to del VALLE, Yana
+7 votes distributed from PAGE, Tracey to SIMMS, Michael
+2 votes distributed from PAGE, Tracey to LI, Fuxin
+Candidate GALLAGHER, Katy has 94644 votes
+Candidate NORTHAM, Maddy has 560 votes
+Candidate ANGEL, Joy has 1629 votes
+Candidate SAVOULIDIS, James has 6084 votes
+Candidate SESELJA, Zed has 69568 votes
+Candidate LAM, Kacey has 1189 votes
+Candidate POCOCK, David has 60387 votes
+Candidate RUBENSTEIN, Kim has 12475 votes
+Candidate HUYNH, Kim has 174 votes
+Candidate FAULKNER, Therese has 706 votes
+Candidate GORENG GORENG, Tjanara has 28879 votes
+Candidate CRUZ, James has 500 votes
+Candidate KATELARIS, Andrew has 4499 votes
+Candidate del VALLE, Yana has 1881 votes
+Candidate SIMMS, Michael has 1456 votes
+Candidate LI, Fuxin has 586 votes
+Candidate HUYNH, Kim eliminated on 174 votes
+12 votes distributed from HUYNH, Kim to GALLAGHER, Katy
+6 votes distributed from HUYNH, Kim to NORTHAM, Maddy
+1 votes distributed from HUYNH, Kim to ANGEL, Joy
+1 votes distributed from HUYNH, Kim to SAVOULIDIS, James
+9 votes distributed from HUYNH, Kim to SESELJA, Zed
+8 votes distributed from HUYNH, Kim to LAM, Kacey
+27 votes distributed from HUYNH, Kim to POCOCK, David
+86 votes distributed from HUYNH, Kim to RUBENSTEIN, Kim
+3 votes distributed from HUYNH, Kim to FAULKNER, Therese
+7 votes distributed from HUYNH, Kim to GORENG GORENG, Tjanara
+6 votes distributed from HUYNH, Kim to CRUZ, James
+1 votes distributed from HUYNH, Kim to KATELARIS, Andrew
+1 votes distributed from HUYNH, Kim to SIMMS, Michael
+6 votes distributed from HUYNH, Kim to LI, Fuxin
+Candidate GALLAGHER, Katy has 94656 votes
+Candidate NORTHAM, Maddy has 566 votes
+Candidate ANGEL, Joy has 1630 votes
+Candidate SAVOULIDIS, James has 6085 votes
+Candidate SESELJA, Zed has 69577 votes
+Candidate LAM, Kacey has 1197 votes
+Candidate POCOCK, David has 60414 votes
+Candidate RUBENSTEIN, Kim has 12561 votes
+Candidate FAULKNER, Therese has 709 votes
+Candidate GORENG GORENG, Tjanara has 28886 votes
+Candidate CRUZ, James has 506 votes
+Candidate KATELARIS, Andrew has 4500 votes
+Candidate del VALLE, Yana has 1881 votes
+Candidate SIMMS, Michael has 1457 votes
+Candidate LI, Fuxin has 592 votes
+Candidate CRUZ, James eliminated on 506 votes
+46 votes distributed from CRUZ, James to GALLAGHER, Katy
+4 votes distributed from CRUZ, James to NORTHAM, Maddy
+3 votes distributed from CRUZ, James to SAVOULIDIS, James
+2 votes distributed from CRUZ, James to SESELJA, Zed
+7 votes distributed from CRUZ, James to LAM, Kacey
+50 votes distributed from CRUZ, James to POCOCK, David
+14 votes distributed from CRUZ, James to RUBENSTEIN, Kim
+2 votes distributed from CRUZ, James to FAULKNER, Therese
+366 votes distributed from CRUZ, James to GORENG GORENG, Tjanara
+6 votes distributed from CRUZ, James to KATELARIS, Andrew
+3 votes distributed from CRUZ, James to del VALLE, Yana
+1 votes distributed from CRUZ, James to SIMMS, Michael
+1 votes distributed from CRUZ, James to LI, Fuxin
+Candidate GALLAGHER, Katy has 94702 votes
+Candidate NORTHAM, Maddy has 570 votes
+Candidate ANGEL, Joy has 1630 votes
+Candidate SAVOULIDIS, James has 6088 votes
+Candidate SESELJA, Zed has 69579 votes
+Candidate LAM, Kacey has 1204 votes
+Candidate POCOCK, David has 60464 votes
+Candidate RUBENSTEIN, Kim has 12575 votes
+Candidate FAULKNER, Therese has 711 votes
+Candidate GORENG GORENG, Tjanara has 29252 votes
+Candidate KATELARIS, Andrew has 4506 votes
+Candidate del VALLE, Yana has 1884 votes
+Candidate SIMMS, Michael has 1458 votes
+Candidate LI, Fuxin has 593 votes
+Candidate NORTHAM, Maddy eliminated on 570 votes
+340 votes distributed from NORTHAM, Maddy to GALLAGHER, Katy
+20 votes distributed from NORTHAM, Maddy to ANGEL, Joy
+10 votes distributed from NORTHAM, Maddy to SAVOULIDIS, James
+23 votes distributed from NORTHAM, Maddy to SESELJA, Zed
+30 votes distributed from NORTHAM, Maddy to LAM, Kacey
+75 votes distributed from NORTHAM, Maddy to POCOCK, David
+18 votes distributed from NORTHAM, Maddy to RUBENSTEIN, Kim
+5 votes distributed from NORTHAM, Maddy to FAULKNER, Therese
+31 votes distributed from NORTHAM, Maddy to GORENG GORENG, Tjanara
+4 votes distributed from NORTHAM, Maddy to KATELARIS, Andrew
+4 votes distributed from NORTHAM, Maddy to del VALLE, Yana
+4 votes distributed from NORTHAM, Maddy to SIMMS, Michael
+5 votes distributed from NORTHAM, Maddy to LI, Fuxin
+Candidate GALLAGHER, Katy has 95042 votes
+Candidate ANGEL, Joy has 1650 votes
+Candidate SAVOULIDIS, James has 6098 votes
+Candidate SESELJA, Zed has 69602 votes
+Candidate LAM, Kacey has 1234 votes
+Candidate POCOCK, David has 60539 votes
+Candidate RUBENSTEIN, Kim has 12593 votes
+Candidate FAULKNER, Therese has 716 votes
+Candidate GORENG GORENG, Tjanara has 29283 votes
+Candidate KATELARIS, Andrew has 4510 votes
+Candidate del VALLE, Yana has 1888 votes
+Candidate SIMMS, Michael has 1462 votes
+Candidate LI, Fuxin has 598 votes
+Candidate LI, Fuxin eliminated on 598 votes
+195 votes distributed from LI, Fuxin to GALLAGHER, Katy
+16 votes distributed from LI, Fuxin to ANGEL, Joy
+11 votes distributed from LI, Fuxin to SAVOULIDIS, James
+53 votes distributed from LI, Fuxin to SESELJA, Zed
+33 votes distributed from LI, Fuxin to LAM, Kacey
+75 votes distributed from LI, Fuxin to POCOCK, David
+57 votes distributed from LI, Fuxin to RUBENSTEIN, Kim
+22 votes distributed from LI, Fuxin to FAULKNER, Therese
+43 votes distributed from LI, Fuxin to GORENG GORENG, Tjanara
+27 votes distributed from LI, Fuxin to KATELARIS, Andrew
+22 votes distributed from LI, Fuxin to del VALLE, Yana
+44 votes distributed from LI, Fuxin to SIMMS, Michael
+Candidate GALLAGHER, Katy elected (votes 95237)
+Transfer value is 0.0017220198032277371
+0 votes distributed from GALLAGHER, Katy to GALLAGHER, Katy
+0 votes distributed from GALLAGHER, Katy to NORTHAM, Maddy
+5.880697628022609 votes distributed from GALLAGHER, Katy to ANGEL, Joy
+0 votes distributed from GALLAGHER, Katy to HAYDON, John
+3.821161943362499 votes distributed from GALLAGHER, Katy to SAVOULIDIS, James
+0 votes distributed from GALLAGHER, Katy to PAGE, Tracey
+16.643321398197482 votes distributed from GALLAGHER, Katy to SESELJA, Zed
+0.4270609112004769 votes distributed from GALLAGHER, Katy to LAM, Kacey
+78.40528366072994 votes distributed from GALLAGHER, Katy to POCOCK, David
+0 votes distributed from GALLAGHER, Katy to DOUBE, Clare
+12.109243256298784 votes distributed from GALLAGHER, Katy to RUBENSTEIN, Kim
+0 votes distributed from GALLAGHER, Katy to HUYNH, Kim
+0.8162373867299433 votes distributed from GALLAGHER, Katy to FAULKNER, Therese
+0 votes distributed from GALLAGHER, Katy to LIN, Stephen
+38.225395592042624 votes distributed from GALLAGHER, Katy to GORENG GORENG, Tjanara
+0 votes distributed from GALLAGHER, Katy to CRUZ, James
+3.4647038440943394 votes distributed from GALLAGHER, Katy to KATELARIS, Andrew
+0 votes distributed from GALLAGHER, Katy to STANVIC, Michelle
+2.0612577044635967 votes distributed from GALLAGHER, Katy to del VALLE, Yana
+0 votes distributed from GALLAGHER, Katy to FAHIZ, Jannah
+0.9230026145300623 votes distributed from GALLAGHER, Katy to SIMMS, Michael
+0 votes distributed from GALLAGHER, Katy to LIDDICOAT, Mary-Jane
+0 votes distributed from GALLAGHER, Katy to LI, Fuxin
+Candidate ANGEL, Joy has 1671.8806976281448 votes
+Candidate SAVOULIDIS, James has 6112.821161943518 votes
+Candidate SESELJA, Zed has 69671.64332140819 votes
+Candidate LAM, Kacey has 1267.427060911221 votes
+Candidate POCOCK, David has 60692.405283694854 votes
+Candidate RUBENSTEIN, Kim has 12662.109243253388 votes
+Candidate FAULKNER, Therese has 738.8162373867184 votes
+Candidate GORENG GORENG, Tjanara has 29364.225395584814 votes
+Candidate KATELARIS, Andrew has 4540.464703844251 votes
+Candidate del VALLE, Yana has 1912.0612577045342 votes
+Candidate SIMMS, Michael has 1506.9230026145672 votes
+Candidate FAULKNER, Therese eliminated on 738.8162373867184 votes
+75.0551046337032 votes distributed from FAULKNER, Therese to ANGEL, Joy
+28.039606455474253 votes distributed from FAULKNER, Therese to SAVOULIDIS, James
+37.04993857429355 votes distributed from FAULKNER, Therese to SESELJA, Zed
+3.003444039606456 votes distributed from FAULKNER, Therese to LAM, Kacey
+165.153259762487 votes distributed from FAULKNER, Therese to POCOCK, David
+138.10159916839027 votes distributed from FAULKNER, Therese to RUBENSTEIN, Kim
+193.28241124772887 votes distributed from FAULKNER, Therese to GORENG GORENG, Tjanara
+39.0551046337032 votes distributed from FAULKNER, Therese to KATELARIS, Andrew
+32.044772514883846 votes distributed from FAULKNER, Therese to del VALLE, Yana
+24.025830297048426 votes distributed from FAULKNER, Therese to SIMMS, Michael
+Candidate ANGEL, Joy has 1746.9358022618508 votes
+Candidate SAVOULIDIS, James has 6140.860768398994 votes
+Candidate SESELJA, Zed has 69708.69325998255 votes
+Candidate LAM, Kacey has 1270.4305049508275 votes
+Candidate POCOCK, David has 60857.55854345754 votes
+Candidate RUBENSTEIN, Kim has 12800.210842421735 votes
+Candidate GORENG GORENG, Tjanara has 29557.507806832426 votes
+Candidate KATELARIS, Andrew has 4579.519808477957 votes
+Candidate del VALLE, Yana has 1944.1060302194203 votes
+Candidate SIMMS, Michael has 1530.9488329116168 votes
+Candidate LAM, Kacey eliminated on 1270.4305049508275 votes
+36.01894221783547 votes distributed from LAM, Kacey to ANGEL, Joy
+48.01033211881935 votes distributed from LAM, Kacey to SAVOULIDIS, James
+704.16703592091 votes distributed from LAM, Kacey to SESELJA, Zed
+279.1136533070147 votes distributed from LAM, Kacey to POCOCK, David
+99.05166059409675 votes distributed from LAM, Kacey to RUBENSTEIN, Kim
+34.03616241586772 votes distributed from LAM, Kacey to GORENG GORENG, Tjanara
+26.005166059409685 votes distributed from LAM, Kacey to KATELARIS, Andrew
+14.018942217835512 votes distributed from LAM, Kacey to del VALLE, Yana
+18.006888079212914 votes distributed from LAM, Kacey to SIMMS, Michael
+Candidate ANGEL, Joy has 1782.9547444796872 votes
+Candidate SAVOULIDIS, James has 6188.871100517814 votes
+Candidate SESELJA, Zed has 70412.86029590374 votes
+Candidate POCOCK, David has 61136.67219676474 votes
+Candidate RUBENSTEIN, Kim has 12899.262503015807 votes
+Candidate GORENG GORENG, Tjanara has 29591.543969248276 votes
+Candidate KATELARIS, Andrew has 4605.524974537367 votes
+Candidate del VALLE, Yana has 1958.1249724372567 votes
+Candidate SIMMS, Michael has 1548.95572099083 votes
+Candidate SIMMS, Michael eliminated on 1548.95572099083 votes
+114.10159916839027 votes distributed from SIMMS, Michael to ANGEL, Joy
+540.0585486733088 votes distributed from SIMMS, Michael to SAVOULIDIS, James
+69.06715877232577 votes distributed from SIMMS, Michael to SESELJA, Zed
+115.11365330701284 votes distributed from SIMMS, Michael to POCOCK, David
+64.09298906937417 votes distributed from SIMMS, Michael to RUBENSTEIN, Kim
+60.130873505045095 votes distributed from SIMMS, Michael to GORENG GORENG, Tjanara
+334.12742946544057 votes distributed from SIMMS, Michael to KATELARIS, Andrew
+221.25830297048375 votes distributed from SIMMS, Michael to del VALLE, Yana
+Candidate ANGEL, Joy has 1897.0563436480816 votes
+Candidate SAVOULIDIS, James has 6728.929649191126 votes
+Candidate SESELJA, Zed has 70481.92745467617 votes
+Candidate POCOCK, David has 61251.78585007193 votes
+Candidate RUBENSTEIN, Kim has 12963.355492085142 votes
+Candidate GORENG GORENG, Tjanara has 29651.67484275326 votes
+Candidate KATELARIS, Andrew has 4939.652404002812 votes
+Candidate del VALLE, Yana has 2179.383275407751 votes
+Candidate ANGEL, Joy eliminated on 1897.0563436480816 votes
+277.7426840408657 votes distributed from ANGEL, Joy to SAVOULIDIS, James
+251.49249766372242 votes distributed from ANGEL, Joy to SESELJA, Zed
+457.5790921595691 votes distributed from ANGEL, Joy to POCOCK, David
+237.48044352509976 votes distributed from ANGEL, Joy to RUBENSTEIN, Kim
+314.09864863446865 votes distributed from ANGEL, Joy to GORENG GORENG, Tjanara
+156.27207912890955 votes distributed from ANGEL, Joy to KATELARIS, Andrew
+185.3116855843837 votes distributed from ANGEL, Joy to del VALLE, Yana
+Candidate SAVOULIDIS, James has 7006.672333232024 votes
+Candidate SESELJA, Zed has 70733.41995234047 votes
+Candidate POCOCK, David has 61709.36494223242 votes
+Candidate RUBENSTEIN, Kim has 13200.83593561008 votes
+Candidate GORENG GORENG, Tjanara has 29965.773491387365 votes
+Candidate KATELARIS, Andrew has 5095.924483131735 votes
+Candidate del VALLE, Yana has 2364.69496099215 votes
+Candidate del VALLE, Yana eliminated on 2364.69496099215 votes
+152.20319833678053 votes distributed from del VALLE, Yana to SAVOULIDIS, James
+202.18942217835473 votes distributed from del VALLE, Yana to SESELJA, Zed
+406.51832796077696 votes distributed from del VALLE, Yana to POCOCK, David
+265.29963144576163 votes distributed from del VALLE, Yana to RUBENSTEIN, Kim
+677.8248474857365 votes distributed from del VALLE, Yana to GORENG GORENG, Tjanara
+623.6405913668041 votes distributed from del VALLE, Yana to KATELARIS, Andrew
+Candidate SAVOULIDIS, James has 7158.875531568815 votes
+Candidate SESELJA, Zed has 70935.60937451913 votes
+Candidate POCOCK, David has 62115.88327019375 votes
+Candidate RUBENSTEIN, Kim has 13466.135567055713 votes
+Candidate GORENG GORENG, Tjanara has 30643.598338872755 votes
+Candidate KATELARIS, Andrew has 5719.565074498566 votes
+Candidate KATELARIS, Andrew eliminated on 5719.565074498566 votes
+976.5579344162392 votes distributed from KATELARIS, Andrew to SAVOULIDIS, James
+800.3908984953282 votes distributed from KATELARIS, Andrew to SESELJA, Zed
+1479.1348110503625 votes distributed from KATELARIS, Andrew to POCOCK, David
+576.6268152083792 votes distributed from KATELARIS, Andrew to RUBENSTEIN, Kim
+1682.684135367602 votes distributed from KATELARIS, Andrew to GORENG GORENG, Tjanara
+Candidate SAVOULIDIS, James has 8135.4334659850865 votes
+Candidate SESELJA, Zed has 71736.00027301503 votes
+Candidate POCOCK, David has 63595.018081245296 votes
+Candidate RUBENSTEIN, Kim has 14042.762382263856 votes
+Candidate GORENG GORENG, Tjanara has 32326.282474239706 votes
+Candidate SAVOULIDIS, James eliminated on 8135.4334659850865 votes
+3676.3574451106615 votes distributed from SAVOULIDIS, James to SESELJA, Zed
+2207.0061530708094 votes distributed from SAVOULIDIS, James to POCOCK, David
+1103.7025840797144 votes distributed from SAVOULIDIS, James to RUBENSTEIN, Kim
+576.0159916839124 votes distributed from SAVOULIDIS, James to GORENG GORENG, Tjanara
+Candidate SESELJA, Zed has 75412.35771812711 votes
+Candidate POCOCK, David has 65802.02423431767 votes
+Candidate RUBENSTEIN, Kim has 15146.464966343328 votes
+Candidate GORENG GORENG, Tjanara has 32902.298465923595 votes
+Candidate RUBENSTEIN, Kim eliminated on 15146.464966343328 votes
+1426.2415762781625 votes distributed from RUBENSTEIN, Kim to SESELJA, Zed
+9801.778363449237 votes distributed from RUBENSTEIN, Kim to POCOCK, David
+3290.7476085976305 votes distributed from RUBENSTEIN, Kim to GORENG GORENG, Tjanara
+Candidate SESELJA, Zed has 76838.59929440667 votes
+Candidate POCOCK, David has 75603.80259777601 votes
+Candidate GORENG GORENG, Tjanara has 36193.046074524944 votes
+Candidate GORENG GORENG, Tjanara eliminated on 36193.046074524944 votes
+4659.060039690681 votes distributed from GORENG GORENG, Tjanara to SESELJA, Zed
+28049.11911336328 votes distributed from GORENG GORENG, Tjanara to POCOCK, David
+Candidate POCOCK, David elected (votes 103652.92171116704)

@@ -24,6 +24,7 @@ import numpy as np
 import statistics
 import math
 import re
+import json
 
 class Ballot:
     def __init__(self, num, votes, prefs, atl=False):
@@ -31,6 +32,8 @@ class Ballot:
         self.votes = votes
         self.prefs = prefs[:]
         self.atl = atl
+
+        self.papers = votes
 
 class Candidate:
     def __init__(self, num, idn):
@@ -44,6 +47,14 @@ class Candidate:
         self.fp_votes = 0
 
         self.mentions = []
+
+        # For simulation purposes
+        self.sim_votes = 0
+        self.max_votes = 0
+        self.bweights = []
+        self.standing = 1
+        self.seat = -1
+        self.surplus = 0
 
 class Outcome:
     def __init__(self):
@@ -137,6 +148,95 @@ def read_ballots_txt(path):
             bcntr += 1
 
     return candidates,ballots,{},cid2num,total_votes
+
+def read_ballots_json(path):
+    ballots = []
+    candidates = []
+    id2group = {}
+    cid2num = {}
+
+    total_votes = 0
+
+    with open(path, "r") as cvr:
+        data = json.load(cvr)
+
+        # get candidates
+        cid = 0
+        for cand in data["metadata"]["candidates"]:
+            name = cand["name"]
+            party = int(cand["party"])
+            pos = int(cand["position"])
+
+            cobj = Candidate(cid, cid)
+            cobj.name = name
+            cobj.group_id = party
+            cobj.position = pos
+
+            candidates.append(cobj)
+
+            # Candidate id to number mapping not needed for this
+            # file type, but required for consistency across file
+            # types
+            cid2num[cid] = cid
+            cid += 1
+
+
+        # get party info
+        pid = 0
+        for party in data["metadata"]["parties"]:
+            group = Group(pid)
+
+            for num in party["candidates"]:
+                group.cands.append(num)
+
+            id2group[pid] = group
+
+            pid += 1
+
+        # process atl ballots
+        bcntr = 0
+        for atl in data["atl"]:
+            n = int(atl["n"])
+
+            groups = [id2group[int(g)] for g in atl["parties"]]
+
+            prefs = []
+            for g in groups:
+                prefs.extend(g.cands)
+                
+
+            blt = Ballot(bcntr, n, prefs, atl=True)
+
+            fcand = candidates[prefs[0]]
+            fcand.ballots.append(bcntr)
+            fcand.fp_votes += n
+
+            total_votes += n
+
+            ballots.append(blt)
+            bcntr += 1
+
+        # process btl ballots
+        for btl in data["btl"]:
+            n = int(btl["n"])
+
+            # no need to use cid2num since candidate ids range from 0 to 
+            # num_cands -1 already.
+            prefs = [int(c) for c in btl["candidates"]]
+
+            blt = Ballot(bcntr, n, prefs, atl=False)
+
+            fcand = candidates[prefs[0]]
+            fcand.ballots.append(bcntr)
+            fcand.fp_votes += n
+
+            total_votes += n
+            ballots.append(blt)
+
+            bcntr += 1
+    
+    return candidates,ballots,id2group,cid2num,total_votes
+            
 
 def read_ballots_stv(path):
     ballots = []
@@ -358,3 +458,224 @@ def next_cand(prefs, excluded):
         return p
 
     return None
+
+
+def simulate_stv(ballots, candidates, nseats, order_c, order_a, log):
+    totvotes = 0
+    print("First preference tallies: ", file=log)
+
+    for cand in candidates:
+        cand.sim_votes = 0
+        cand.max_votes = 0
+        cand.bweights = []
+        cand.standing = 1
+        cand.seat = -1
+        cand.surplus = -1
+
+        for bid in cand.ballots:
+            cand.bweights.append((bid, 1))
+            cand.sim_votes += ballots[bid].votes
+
+        cand.max_votes = cand.sim_votes
+        totvotes += cand.sim_votes
+
+        print(f"    Candidate {cand.id} {cand.sim_votes}", file=log)
+
+    # Step 1: Determine quota
+    quota = (int)(1.0 + (totvotes/(nseats+1.0))) 
+
+    print(f"The quota for election is {quota}", file=log)
+
+    surpluses = []      
+
+    currseat = 0
+
+    while currseat < nseats:
+        standing = 0
+
+        # if a candidate has a quota, add them to the list of 
+        # candidates with a surplus
+        for cand in candidates:
+            if cand.standing:
+                standing += 1
+
+            if cand.surplus != -1 or not cand.standing:
+                continue
+
+            if cand.standing and cand.sim_votes >= quota:
+                cand.surplus = max(0, cand.sim_votes - quota)
+                surpluses.append(cand)
+
+        if standing == nseats - currseat:
+            print("Number of candidates left standing equals number of "\
+                "remaining seats", file=log)
+
+            slist = []
+            for cand in candidates:
+                if cand.standing:
+                    inserted = False
+                    for i in range(len(slist)):
+                        if cand.sim_votes > candidates[slist[i]].sim_votes:
+                            slist.insert(i)
+                            inserted = True
+                            break
+
+                    if not inserted:
+                        standing_list.append(cand.num)
+
+            for cnum in slist:
+                cand = candidates[cnum]
+
+                print("Candidate {} elected (votes {})".format(\
+                    cand.name, cand.sim_votes), file=log)
+
+                cand.seat = currseat
+                currseat += 1
+
+                cand.standing = 0
+                order_c.append(cnum)
+                order_a.append(1)
+
+        if surpluses == []:
+            # Eliminated candidate with fewest votes.
+            # Distribute votes at their current value.
+            leastvotes = -1
+            toeliminate = -1
+
+            for cand in candidates:
+                if cand.standing:
+                    print("Candidate {} has {} votes".format(cand.name,\
+                        cand.sim_votes), file=log)
+                    
+                    if leastvotes == -1 or cand.sim_votes < leastvotes:
+                        leastvotes = cand.sim_votes
+                        toeliminate = cand
+
+            
+            order_c.append(toeliminate.num)
+            order_a.append(0)
+
+            print("Candidate {} eliminated on {} votes".format(\
+                toeliminate.name, toeliminate.sim_votes), file=log)
+
+            eliminate_candidate(toeliminate, candidates, ballots, log)
+
+        else:
+            # Start with candidate with the largest surplus
+            elect = surpluses.pop(0)
+
+            elect.seat = currseat
+            currseat += 1
+
+            order_c.append(elect.num)
+            order_a.append(1)
+
+            print("Candidate {} elected (votes {})".format(elect.name,\
+                elect.sim_votes), file=log)
+
+            if currseat < nseats:
+                # Distribute surplus
+                distribute_surplus(elect, candidates, ballots, log)
+
+
+        if currseat == nseats:
+            # All seats filled.
+            if len(order_c) != len(candidates):
+                for cand in candidates:
+                    if cand.standing:
+                        order_c.append(cand.num)
+                        order_a.append(0)
+
+            break
+
+
+def next_candidate(prefs, cnum, candidates):
+    idx = prefs.index(cnum)
+
+    for p in prefs[idx+1:]:
+        cand = candidates[p]
+        if not cand.standing or cand.surplus != -1:
+            continue
+
+        return p
+
+    return -1 
+
+
+def distribute_surplus(elect, candidates, ballots, log):
+    elect.standing = 0
+
+    if elect.surplus < 0.001: return
+
+
+    # Compute total number of papers in candidates tally
+    totalpapers = sum([ballots[bid].votes for bid,_ in elect.bweights])
+
+    tvalue = elect.surplus/totalpapers
+
+    print("Transfer value is {}".format(tvalue), file=log)
+
+    # Each ballot in elect's tally now has value of 'tvalue'
+    totransfer = [[] for c in candidates]
+
+    for bid,_ in elect.bweights:
+        blt = ballots[bid]
+
+        nextc = next_candidate(blt.prefs, elect.num, candidates)
+
+        if nextc != -1:
+            totransfer[nextc].append((bid, tvalue))
+
+    for cand in candidates:
+        tlist = totransfer[cand.num]
+
+        total = 0
+        for bid,weight in tlist:
+            blt = ballots[bid]
+
+            cand.ballots.append(bid)
+            cand.sim_votes += weight*blt.votes
+
+            total += weight*blt.votes
+
+            cand.bweights.append((bid,weight))
+
+        print("{} votes distributed from {} to {}".format(\
+            total, elect.name, cand.name), file=log)
+
+    elect.sim_votes -= elect.surplus
+    elect.surplus = -1
+        
+
+def eliminate_candidate(toelim, candidates, ballots, log):
+    toelim.standing = 0
+
+    totransfer = [[] for c in candidates]
+
+    # Distribute all ballots (at their current value) to rem candidates
+    for bid,weight in toelim.bweights:
+        nextc = next_candidate(ballots[bid].prefs, toelim.num, candidates)
+
+        if nextc != -1:
+            totransfer[nextc].append((bid, weight))
+
+    toelim.sim_votes = 0
+
+    for cand in candidates:
+        tlist = totransfer[cand.num]
+
+        total = 0
+        for bid,weight in tlist:
+            blt = ballots[bid]
+
+            cand.ballots.append(bid)
+            cand.sim_votes += weight*blt.votes
+
+            total += weight*blt.votes
+
+            cand.bweights.append((bid,weight))
+
+        if total > 0:
+            print("{} votes distributed from {} to {}".format(\
+                total, toelim.name, cand.name), file=log)
+

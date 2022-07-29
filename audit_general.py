@@ -22,7 +22,8 @@ import sys
 
 
 from utils import read_ballots_stv, read_outcome, subsupermajority_sample_size,\
-    cand_vs_cand_sample_size, read_ballots_txt, index_of, next_cand
+    cand_vs_cand_sample_size, read_ballots_txt, index_of, next_cand, \
+    read_ballots_json, simulate_stv
 
 
 # Returns 'c1' if in the ballot ranking 'prefs', 'c1' appears earlier 
@@ -126,6 +127,7 @@ def vote_for_cand_ags2(c1, c2, prefs, ag_matrix, winners):
     return False, False, None
 
 
+
 # Determine if there is a candidate 'd' for which 'd' AG loser, based 
 # on the AG relationships in neb_matrix, preferenced before 'loser' in
 # the preference ranking 'prefs'. Return a boolean indicating whether
@@ -212,8 +214,6 @@ def max_tv_by_z(c1, c2, o, cands, candidates, ballots, delta_ut, args, log,
     for z in cands:
         if z == c1 or z == c2 or z == o: continue
 
-        # NOTE: Can we exclude reported winners as z? as the reported
-        # winner is inflating the bounds on the transfer value.
         if ag_matrix[z][c1] != None and ag_matrix[z][c1] <= asn_overall:
             continue
         if ag_matrix[z][c2] != None and ag_matrix[z][c2] <= asn_overall:
@@ -239,7 +239,7 @@ def max_tv_by_z(c1, c2, o, cands, candidates, ballots, delta_ut, args, log,
         zeds_maxtv.append((z, max_t_z, max_t_z_c))
         max_maxtv_v = max(max_maxtv_v, max_tv_poss)
 
-    if max_maxtv_v >= args.maxtv or max_maxtv_v is -1:
+    if max_maxtv_v >= args.maxtv or max_maxtv_v == -1:
         return args.maxtv, 0
 
     cmax = max_maxtv_v + delta_ut
@@ -352,7 +352,7 @@ if __name__ == "__main__":
     parser.add_argument('-d', dest='data')
 
     # Input: anticipated error rate (default value is 0)
-    parser.add_argument('-e', dest='erate', default=0.02, type=float)
+    parser.add_argument('-e', dest='erate', default=0.002, type=float)
 
     # Input: risk limit (default is 5%)
     parser.add_argument('-r', dest='rlimit', default=0.10, type=float)
@@ -393,6 +393,10 @@ if __name__ == "__main__":
     parser.add_argument('-log', dest='log', type=str)
     
     # Flags
+    # Just simulate STV election
+    parser.add_argument('-justsim', dest='justsim', default=False,\
+        action='store_true')
+    
     # Run two quota method, instead of 1 quota method, if the instance is 
     # suitable
     parser.add_argument('-twoq', dest='twoq', default=False,action='store_true')
@@ -417,9 +421,31 @@ if __name__ == "__main__":
     if args.data.endswith(".stv"):
         candidates, ballots, id2group, cid2num, valid_ballots = \
             read_ballots_stv(args.data)
+    elif args.data.endswith(".json"):
+        candidates, ballots, id2group, cid2num, valid_ballots = \
+            read_ballots_json(args.data)
     else:
         candidates, ballots, id2group, cid2num, valid_ballots = \
             read_ballots_txt(args.data)
+
+    if args.justsim:
+        order_c = []
+        order_a = []
+
+        simulate_stv(ballots, candidates, args.seats, order_c, order_a, log)   
+
+        print("{}".format(candidates[order_c[0]].id), end='')
+
+        for i in range(1, len(candidates)):
+            print(",{}".format(candidates[order_c[i]].id), end='')
+
+        print("")
+
+        print("{}".format(order_a[0]), end='')
+        for i in range(1, len(candidates)):
+            print(",{}".format(order_a[i]), end='')
+        exit()
+
 
     # Read STV outcome file
     outcome = read_outcome(args.outcome, cid2num)
@@ -1181,6 +1207,7 @@ if __name__ == "__main__":
                             + " is the next eliminated, ASN {}".format(\
                             comb_asn), file=log)
 
+        print("H1")
         # ag_matrix[c][o] will give you the sample size required to show
         # that c AG o. It will be None if no such AG relationship exists.
         ag_matrix = [[None for c in cands] for o in cands]
@@ -1227,6 +1254,7 @@ if __name__ == "__main__":
                         print("{} AG {} = {}".format(candidates[c].id, \
                             candidates[o].id, ss), file=log)
 
+        print("H2")
         # Supplement AG matrix with information obtained from the batch
         # elimination matrix. 
         for i in range(ncand):
@@ -1248,6 +1276,7 @@ if __name__ == "__main__":
                     ag_matrix[j][i] = iv
                     possibilities[i].append(iv)
 
+        print("H3")
         # Now, we are looking for candidates c where there are at least
         # 2 other candidates o such that o AG c. This is the case where
         # possibilities[c] contains at least two sample sizes.
@@ -1295,6 +1324,9 @@ if __name__ == "__main__":
         for c1,c2 in pairs:
             print("ALTERNATE OUTCOME PAIR: {},{}".format(candidates[c1].id,\
                 candidates[c2].id), file=log)
+
+            print("ALTERNATE OUTCOME PAIR: {},{}".format(candidates[c1].id,\
+                candidates[c2].id))
 
             # If we assume 'c1' gets a seat at some stage, does there
             # exist a candidate 'o' \= 'c1' that cannot be eliminated before 
@@ -1408,7 +1440,6 @@ if __name__ == "__main__":
                         max_ags_used1 = max(max_ags_used1, ag_asn)
                         pot_margin_inc -= votes
 
-                cntr = 0
                 for ag_asn, cand, votes in merged_helpful_ags:
                     if ag_asn > max(max_ags_used1, asn_overall):
                         break
@@ -1422,12 +1453,6 @@ if __name__ == "__main__":
                         max_vote_c2 -= votes
                         max_ags_used1 = max(max_ags_used1, ag_asn)
                         pot_margin_inc -= votes
-   
-                    cntr += 1
-
-                if cntr > 0 and merged_helpful_ags != []:
-                    merged_helpful_ags = merged_helpful_ags[cntr:]
-
 
                 print("   (1) can we show that {} NL {}? ".format(cand_o.id,\
                     candidates[c2].id), file=log)
@@ -1506,7 +1531,6 @@ if __name__ == "__main__":
                         max_ags_used2 = max(max_ags_used2, ag_asn)
                         pot_margin_inc -= votes
  
-                cntr = 0
                 for ag_asn, cand, votes in merged_helpful_ags:
                     if ag_asn > max(max_ags_used2, asn_overall):
                         break
@@ -1520,11 +1544,6 @@ if __name__ == "__main__":
                         max_vote_c1 -= votes
                         max_ags_used2 = max(max_ags_used2, ag_asn)
                         pot_margin_inc -= votes
-   
-                    cntr += 1
-
-                if cntr > 0 and merged_helpful_ags != []:
-                    merged_helpful_ags = merged_helpful_ags[cntr:]
 
 
                 print("   (2) can we show that {} NL {}? ".format(cand_o.id,\
@@ -1552,7 +1571,141 @@ if __name__ == "__main__":
 
                 else:
                     print("      no", file=log)
-            
+           
+           # if not_applicable:
+                # REALLY inefficient as we are REDOING computations we 
+                # have already done -- but just to check whether the idea
+                # of ruling out one possible way in which C1,C2 could win
+                # (that is, they are left as the last two candidates standing).
+
+                # Can we show that c1,c2 could not be left at the end 
+                # together? To do so we would need to show that there is
+                # a candidate o such that o NEB c1 or c2 in the context
+                # where o gets votes from the batch eliminated, and neither
+                # c1 or c2 get any votes from eachother.
+           #     for o in cands:
+           #         if o == c1 or o == c2 or o in ruled_out: continue
+      
+           #         helpful_ags = []
+
+           #         pot_margin_inc = 0
+
+           #         cand_o = candidates[o]
+           #         o_ag = {}
+           #         for c in cands:
+           #             if c != c1 and c != c2 and ag_matrix[o][c] != None \
+           #                 and ag_matrix[o][c] != np.inf:
+           #                 o_ag[c] = ag_matrix[o][c]
+
+           #         min_tally_o = 0
+
+                    # Max vote of c2 given c1 and c2 will be left at the end
+           #         max_vote_c1 = 0
+           #         max_vote_c2 = 0
+
+           #         for b in ballots:
+           #             awarded, used_ss = vote_for_cand_ags1(o, b.prefs, o_ag)
+
+           #             if awarded:
+           #                 if used_ss != None and used_ss > 0:
+           #                     helpful_ags.append((used_ss, o, b.votes))
+           #                     pot_margin_inc += b.votes
+           #                 else:
+           #                     min_tally_o += b.votes
+
+           #             index_o = index_of(o, b.prefs)
+           #             index_c1 = index_of(c1, b.prefs)
+           #             index_c2 = index_of(c2, b.prefs)
+
+           #             if index_c1 != None:
+           #                 if (index_o is None or index_o > index_c1) and \
+           #                     (index_c2 is None or index_c1 < index_c2):
+           #                     max_vote_c1 += b.votes
+
+           #             if index_c2 != None:
+           #                 if (index_o is None or index_o > index_c2) and \
+           #                     (index_c1 is None or index_c2 < index_c1):
+           #                     max_vote_c2 += b.votes
+
+           #         max_ags_used_c1 = 0
+           #         merged_helpful_ags1 = merge_helpful_ags(helpful_ags, \
+           #             pot_margin_inc)
+                    
+           #         max_ags_used_c2 = 0
+           #         merged_helpful_ags2 = merged_helpful_ags1[:]
+ 
+           #         min_tally_o_extra = min_tally_o
+
+           #         while min_tally_o_extra < max_vote_c1 and \
+           #             merged_helpful_ags1 != []:
+                    
+           #             ag_asn, cand, votes = merged_helpful_ags1.pop(0)
+
+           #             if cand == o:
+           #                 min_tally_o_extra += votes
+           #                 max_ags_used_c1 = max(max_ags_used_c1, ag_asn)
+           #                 pot_margin_inc -= votes
+
+           #         for ag_asn, cand, votes in merged_helpful_ags1:
+           #             if ag_asn > max(max_ags_used_c1, asn_overall):
+           #                 break
+
+           #             if cand == o:
+           #                 min_tally_o_extra += votes
+           #                 max_ags_used_c1 = max(max_ags_used_c1, ag_asn)
+           #                 pot_margin_inc -= votes
+
+           #         print("   RULE OUT c1,c2 END? ", file=log)
+           #         print("      min tally {} is {}".format(cand_o.id, \
+           #             min_tally_o_extra), file=log)
+           #         print("      max tally c1:{} is {}".format(\
+           #             candidates[c1].id, max_vote_c1), file=log)
+
+           #         if min_tally_o_extra > max_vote_c1:
+           #             ss, m, _ = cand_vs_cand_sample_size(min_tally_o_extra, \
+           #                 max_vote_c1, valid_ballots, args) 
+
+           #             if ss != np.inf:
+           #                 print("      yes, {}, ags used {} = {}".format(ss, \
+           #                     max_ags_used_c1, max(ss,max_ags_used_c1)), \
+           #                     file=log)
+
+           #         min_tally_o_extra = min_tally_o
+
+           #         while min_tally_o_extra < max_vote_c2 and \
+           #             merged_helpful_ags2 != []:
+                    
+           #             ag_asn, cand, votes = merged_helpful_ags2.pop(0)
+
+           #             if cand == o:
+           #                 min_tally_o_extra += votes
+           #                 max_ags_used_c2 = max(max_ags_used_c2, ag_asn)
+
+           #         for ag_asn, cand, votes in merged_helpful_ags2:
+           #             if ag_asn > max(max_ags_used_c2, asn_overall):
+           #                 break
+
+           #             if cand == o:
+           #                 min_tally_o_extra += votes
+           #                 max_ags_used_c2 = max(max_ags_used_c2, ag_asn)
+
+           #         print("   RULE OUT c1,c2 END? ", file=log)
+           #         print("      min tally {} is {}".format(cand_o.id, \
+           #             min_tally_o_extra), file=log)
+           #         print("      max tally c2:{} is {}".format(\
+           #             candidates[c2].id, max_vote_c2), file=log)
+
+           #         if min_tally_o_extra > max_vote_c2:
+           #             ss, m, _ = cand_vs_cand_sample_size(min_tally_o_extra, \
+           #                 max_vote_c2, valid_ballots, args) 
+
+           #             if ss != np.inf:
+           #                 print("      yes, {}, ags used {} = {}".format(ss, \
+           #                     max_ags_used_c2, max(ss,max_ags_used_c2)), \
+           #                     file=log)
+
+
+
             best_asn = min(best_asn1, best_asn2)
             assertions.append((best_asn, (c1,c2), not_applicable)) 
 
