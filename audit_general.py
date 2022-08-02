@@ -243,7 +243,7 @@ def max_tv_by_z(c1, c2, o, cands, candidates, ballots, delta_ut, args, log,
         return args.maxtv, 0
 
     cmax = max_maxtv_v + delta_ut
-    final_ss = 0
+    final_ss = -1
                 
     while cmax < args.maxtv:
         # Estimate difficulty of ensuring that for all z in
@@ -1207,7 +1207,6 @@ if __name__ == "__main__":
                             + " is the next eliminated, ASN {}".format(\
                             comb_asn), file=log)
 
-        print("H1")
         # ag_matrix[c][o] will give you the sample size required to show
         # that c AG o. It will be None if no such AG relationship exists.
         ag_matrix = [[None for c in cands] for o in cands]
@@ -1254,7 +1253,6 @@ if __name__ == "__main__":
                         print("{} AG {} = {}".format(candidates[c].id, \
                             candidates[o].id, ss), file=log)
 
-        print("H2")
         # Supplement AG matrix with information obtained from the batch
         # elimination matrix. 
         for i in range(ncand):
@@ -1276,7 +1274,6 @@ if __name__ == "__main__":
                     ag_matrix[j][i] = iv
                     possibilities[i].append(iv)
 
-        print("H3")
         # Now, we are looking for candidates c where there are at least
         # 2 other candidates o such that o AG c. This is the case where
         # possibilities[c] contains at least two sample sizes.
@@ -1571,140 +1568,6 @@ if __name__ == "__main__":
 
                 else:
                     print("      no", file=log)
-           
-           # if not_applicable:
-                # REALLY inefficient as we are REDOING computations we 
-                # have already done -- but just to check whether the idea
-                # of ruling out one possible way in which C1,C2 could win
-                # (that is, they are left as the last two candidates standing).
-
-                # Can we show that c1,c2 could not be left at the end 
-                # together? To do so we would need to show that there is
-                # a candidate o such that o NEB c1 or c2 in the context
-                # where o gets votes from the batch eliminated, and neither
-                # c1 or c2 get any votes from eachother.
-           #     for o in cands:
-           #         if o == c1 or o == c2 or o in ruled_out: continue
-      
-           #         helpful_ags = []
-
-           #         pot_margin_inc = 0
-
-           #         cand_o = candidates[o]
-           #         o_ag = {}
-           #         for c in cands:
-           #             if c != c1 and c != c2 and ag_matrix[o][c] != None \
-           #                 and ag_matrix[o][c] != np.inf:
-           #                 o_ag[c] = ag_matrix[o][c]
-
-           #         min_tally_o = 0
-
-                    # Max vote of c2 given c1 and c2 will be left at the end
-           #         max_vote_c1 = 0
-           #         max_vote_c2 = 0
-
-           #         for b in ballots:
-           #             awarded, used_ss = vote_for_cand_ags1(o, b.prefs, o_ag)
-
-           #             if awarded:
-           #                 if used_ss != None and used_ss > 0:
-           #                     helpful_ags.append((used_ss, o, b.votes))
-           #                     pot_margin_inc += b.votes
-           #                 else:
-           #                     min_tally_o += b.votes
-
-           #             index_o = index_of(o, b.prefs)
-           #             index_c1 = index_of(c1, b.prefs)
-           #             index_c2 = index_of(c2, b.prefs)
-
-           #             if index_c1 != None:
-           #                 if (index_o is None or index_o > index_c1) and \
-           #                     (index_c2 is None or index_c1 < index_c2):
-           #                     max_vote_c1 += b.votes
-
-           #             if index_c2 != None:
-           #                 if (index_o is None or index_o > index_c2) and \
-           #                     (index_c1 is None or index_c2 < index_c1):
-           #                     max_vote_c2 += b.votes
-
-           #         max_ags_used_c1 = 0
-           #         merged_helpful_ags1 = merge_helpful_ags(helpful_ags, \
-           #             pot_margin_inc)
-                    
-           #         max_ags_used_c2 = 0
-           #         merged_helpful_ags2 = merged_helpful_ags1[:]
- 
-           #         min_tally_o_extra = min_tally_o
-
-           #         while min_tally_o_extra < max_vote_c1 and \
-           #             merged_helpful_ags1 != []:
-                    
-           #             ag_asn, cand, votes = merged_helpful_ags1.pop(0)
-
-           #             if cand == o:
-           #                 min_tally_o_extra += votes
-           #                 max_ags_used_c1 = max(max_ags_used_c1, ag_asn)
-           #                 pot_margin_inc -= votes
-
-           #         for ag_asn, cand, votes in merged_helpful_ags1:
-           #             if ag_asn > max(max_ags_used_c1, asn_overall):
-           #                 break
-
-           #             if cand == o:
-           #                 min_tally_o_extra += votes
-           #                 max_ags_used_c1 = max(max_ags_used_c1, ag_asn)
-           #                 pot_margin_inc -= votes
-
-           #         print("   RULE OUT c1,c2 END? ", file=log)
-           #         print("      min tally {} is {}".format(cand_o.id, \
-           #             min_tally_o_extra), file=log)
-           #         print("      max tally c1:{} is {}".format(\
-           #             candidates[c1].id, max_vote_c1), file=log)
-
-           #         if min_tally_o_extra > max_vote_c1:
-           #             ss, m, _ = cand_vs_cand_sample_size(min_tally_o_extra, \
-           #                 max_vote_c1, valid_ballots, args) 
-
-           #             if ss != np.inf:
-           #                 print("      yes, {}, ags used {} = {}".format(ss, \
-           #                     max_ags_used_c1, max(ss,max_ags_used_c1)), \
-           #                     file=log)
-
-           #         min_tally_o_extra = min_tally_o
-
-           #         while min_tally_o_extra < max_vote_c2 and \
-           #             merged_helpful_ags2 != []:
-                    
-           #             ag_asn, cand, votes = merged_helpful_ags2.pop(0)
-
-           #             if cand == o:
-           #                 min_tally_o_extra += votes
-           #                 max_ags_used_c2 = max(max_ags_used_c2, ag_asn)
-
-           #         for ag_asn, cand, votes in merged_helpful_ags2:
-           #             if ag_asn > max(max_ags_used_c2, asn_overall):
-           #                 break
-
-           #             if cand == o:
-           #                 min_tally_o_extra += votes
-           #                 max_ags_used_c2 = max(max_ags_used_c2, ag_asn)
-
-           #         print("   RULE OUT c1,c2 END? ", file=log)
-           #         print("      min tally {} is {}".format(cand_o.id, \
-           #             min_tally_o_extra), file=log)
-           #         print("      max tally c2:{} is {}".format(\
-           #             candidates[c2].id, max_vote_c2), file=log)
-
-           #         if min_tally_o_extra > max_vote_c2:
-           #             ss, m, _ = cand_vs_cand_sample_size(min_tally_o_extra, \
-           #                 max_vote_c2, valid_ballots, args) 
-
-           #             if ss != np.inf:
-           #                 print("      yes, {}, ags used {} = {}".format(ss, \
-           #                     max_ags_used_c2, max(ss,max_ags_used_c2)), \
-           #                     file=log)
-
-
 
             best_asn = min(best_asn1, best_asn2)
             assertions.append((best_asn, (c1,c2), not_applicable)) 
