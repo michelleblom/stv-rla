@@ -561,22 +561,34 @@ def simulate_stv(ballots, candidates, nseats, order_c, order_a, log):
             eliminate_candidate(toeliminate, candidates, ballots, log)
 
         else:
-            # Start with candidate with the largest surplus
-            elect = surpluses.pop(0)
+            new_surpluses = []
 
-            elect.seat = currseat
-            currseat += 1
+            while surpluses != []:
+                # Start with candidate with the largest surplus
+                elect = surpluses.pop(0)
 
-            order_c.append(elect.num)
-            order_a.append(1)
+                elect.seat = currseat
+                currseat += 1
 
-            print("Candidate {} elected (votes {})".format(elect.name,\
-                elect.sim_votes), file=log)
+                order_c.append(elect.num)
+                order_a.append(1)
 
-            if currseat < nseats:
-                # Distribute surplus
-                distribute_surplus(elect, candidates, ballots, log)
+                print("Candidate {} elected (votes {})".format(elect.name,\
+                    elect.sim_votes), file=log)
 
+                if currseat < nseats:
+                    # Distribute surplus
+                    distribute_surplus(elect, candidates, ballots, log)
+
+                for cand in candidates:
+                    if cand.surplus != -1 or not cand.standing:
+                        continue
+
+                    if cand.sim_votes >= quota:
+                        cand.surplus = max(0, cand.sim_votes - quota)
+                        new_surpluses.append(cand)
+
+            surpluses = new_surpluses
 
         if currseat == nseats:
             # All seats filled.
