@@ -432,7 +432,7 @@ if __name__ == "__main__":
         order_c = []
         order_a = []
 
-        simulate_stv(ballots, candidates, args.seats, order_c, order_a, log)   
+        simulate_stv(ballots, candidates, args.seats, order_c, order_a,log=log)   
 
         print("{}".format(candidates[order_c[0]].id), end='')
 

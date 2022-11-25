@@ -43,6 +43,9 @@ class Candidate:
         self.group_id = None
         self.position = None
 
+        self.num_atls = 0
+        self.num_btls = 0
+
         self.ballots = []
         self.fp_votes = 0
 
@@ -211,6 +214,8 @@ def read_ballots_json(path):
             fcand.ballots.append(bcntr)
             fcand.fp_votes += n
 
+            fcand.num_atls += n
+
             total_votes += n
 
             ballots.append(blt)
@@ -229,6 +234,8 @@ def read_ballots_json(path):
             fcand = candidates[prefs[0]]
             fcand.ballots.append(bcntr)
             fcand.fp_votes += n
+
+            fcand.num_btls += n
 
             total_votes += n
             ballots.append(blt)
@@ -325,6 +332,8 @@ def read_ballots_stv(path):
             fpcand.ballots.append(bcntr)
             fpcand.fp_votes += votes
 
+            fpcand.num_atls += votes
+
             total_votes += votes
 
             bcntr += 1
@@ -344,6 +353,8 @@ def read_ballots_stv(path):
             fpcand = candidates[prefs[0]]
             fpcand.ballots.append(bcntr)
             fpcand.fp_votes += votes
+
+            fpcand.num_btls += votes
 
             total_votes += votes
 
@@ -460,9 +471,10 @@ def next_cand(prefs, excluded):
     return None
 
 
-def simulate_stv(ballots, candidates, nseats, order_c, order_a, log):
+def simulate_stv(ballots, candidates, nseats, order_c, order_a, log=None):
     totvotes = 0
-    print("First preference tallies: ", file=log)
+    if log != None:
+        print("First preference tallies: ", file=log)
 
     for cand in candidates:
         cand.sim_votes = 0
@@ -479,12 +491,14 @@ def simulate_stv(ballots, candidates, nseats, order_c, order_a, log):
         cand.max_votes = cand.sim_votes
         totvotes += cand.sim_votes
 
-        print(f"    Candidate {cand.id} {cand.sim_votes}", file=log)
+        if log != None:
+            print(f"    Candidate {cand.id} {cand.sim_votes}", file=log)
 
     # Step 1: Determine quota
     quota = (int)(1.0 + (totvotes/(nseats+1.0))) 
 
-    print(f"The quota for election is {quota}", file=log)
+    if log != None:
+        print(f"The quota for election is {quota}", file=log)
 
     surpluses = []      
 
@@ -506,9 +520,13 @@ def simulate_stv(ballots, candidates, nseats, order_c, order_a, log):
                 cand.surplus = max(0, cand.sim_votes - quota)
                 surpluses.append(cand)
 
+        if standing == 0:
+            break
+
         if standing == nseats - currseat:
-            print("Number of candidates left standing equals number of "\
-                "remaining seats", file=log)
+            if log != None:
+                print("Number of candidates left standing equals number of "\
+                    "remaining seats", file=log)
 
             slist = []
             for cand in candidates:
@@ -521,13 +539,14 @@ def simulate_stv(ballots, candidates, nseats, order_c, order_a, log):
                             break
 
                     if not inserted:
-                        standing_list.append(cand.num)
+                        slist.append(cand.num)
 
             for cnum in slist:
                 cand = candidates[cnum]
 
-                print("Candidate {} elected (votes {})".format(\
-                    cand.name, cand.sim_votes), file=log)
+                if log != None:
+                    print("Candidate {} elected (votes {})".format(\
+                        cand.name, cand.sim_votes), file=log)
 
                 cand.seat = currseat
                 currseat += 1
@@ -544,21 +563,24 @@ def simulate_stv(ballots, candidates, nseats, order_c, order_a, log):
 
             for cand in candidates:
                 if cand.standing:
-                    print("Candidate {} has {} votes".format(cand.name,\
-                        cand.sim_votes), file=log)
+                    if log != None:
+                        print("Candidate {} has {} votes".format(cand.name,\
+                            cand.sim_votes), file=log)
                     
                     if leastvotes == -1 or cand.sim_votes < leastvotes:
                         leastvotes = cand.sim_votes
                         toeliminate = cand
 
-            
-            order_c.append(toeliminate.num)
-            order_a.append(0)
+           
+            if toeliminate != -1: 
+                order_c.append(toeliminate.num)
+                order_a.append(0)
 
-            print("Candidate {} eliminated on {} votes".format(\
-                toeliminate.name, toeliminate.sim_votes), file=log)
+                if log != None:
+                    print("Candidate {} eliminated on {} votes".format(\
+                        toeliminate.name, toeliminate.sim_votes), file=log)
 
-            eliminate_candidate(toeliminate, candidates, ballots, log)
+                eliminate_candidate(toeliminate, candidates, ballots, log)
 
         else:
             new_surpluses = []
@@ -573,8 +595,9 @@ def simulate_stv(ballots, candidates, nseats, order_c, order_a, log):
                 order_c.append(elect.num)
                 order_a.append(1)
 
-                print("Candidate {} elected (votes {})".format(elect.name,\
-                    elect.sim_votes), file=log)
+                if log != None:
+                    print("Candidate {} elected (votes {})".format(elect.name,\
+                        elect.sim_votes), file=log)
 
                 if currseat < nseats:
                     # Distribute surplus
@@ -600,6 +623,7 @@ def simulate_stv(ballots, candidates, nseats, order_c, order_a, log):
 
             break
 
+    return quota
 
 def next_candidate(prefs, cnum, candidates):
     idx = prefs.index(cnum)
@@ -625,7 +649,8 @@ def distribute_surplus(elect, candidates, ballots, log):
 
     tvalue = elect.surplus/totalpapers
 
-    print("Transfer value is {}".format(tvalue), file=log)
+    if log != None:
+        print("Transfer value is {}".format(tvalue), file=log)
 
     # Each ballot in elect's tally now has value of 'tvalue'
     totransfer = [[] for c in candidates]
@@ -652,8 +677,9 @@ def distribute_surplus(elect, candidates, ballots, log):
 
             cand.bweights.append((bid,weight))
 
-        print("{} votes distributed from {} to {}".format(\
-            total, elect.name, cand.name), file=log)
+        if log != None:
+            print("{} votes distributed from {} to {}".format(\
+                total, elect.name, cand.name), file=log)
 
     elect.sim_votes -= elect.surplus
     elect.surplus = -1
@@ -688,6 +714,41 @@ def eliminate_candidate(toelim, candidates, ballots, log):
             cand.bweights.append((bid,weight))
 
         if total > 0:
-            print("{} votes distributed from {} to {}".format(\
-                total, toelim.name, cand.name), file=log)
+            if log != None:
+                print("{} votes distributed from {} to {}".format(\
+                    total, toelim.name, cand.name), file=log)
 
+
+def print_summary(candidates,id2group, seats, quota, order_c, order_a):
+    print(f"Candidates,{len(candidates)},Groups,{len(id2group)}")
+    print(f"Seats,{seats}")
+    print(f"Quota,{quota}")
+    
+    order_c_ids = [str(candidates[c].id) for c in order_c]
+
+    order_c_str = "Outcome-ns"
+    order_a_str = "Outcome-ns"
+
+    for i in range(len(candidates)):
+        order_c_str += "," + order_c_ids[i]
+        order_a_str += "," + str(order_a[i])
+
+    
+    print(order_c_str)
+    print(order_a_str)
+
+    for i in range(len(id2group)):
+        gstr = "Group,{},Candidates".format(i)
+
+        group = id2group[i] 
+        for cnum in group.cands:
+            gstr += "," + str(candidates[cnum].id)
+
+        print(gstr)
+
+    for cand in candidates:
+        islast = 1 if id2group[cand.group_id].cands[-1] == cand.num else 0
+
+        print("Candidates,{},{},{},{},{},{},({})".format(cand.id,cand.num_atls,\
+            cand.num_btls,cand.group_id,cand.position-1,islast,cand.name))
+    
