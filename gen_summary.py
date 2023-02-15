@@ -25,6 +25,11 @@ if __name__ == "__main__":
     order_c = []
     order_a = []
 
-    quota = simulate_stv(ballots, candidates, args.seats, order_c, order_a) 
+    order_q = [-1]*len(candidates)
+    winners = []
 
-    print_summary(candidates, id2group, args.seats, quota, order_c, order_a)
+    quota = simulate_stv(ballots, candidates, args.seats, order_c, order_a,\
+        order_q, winners) 
+
+    print_summary(candidates, id2group, args.seats, quota, order_c, order_a,\
+        order_q, winners)

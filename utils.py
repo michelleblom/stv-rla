@@ -368,6 +368,8 @@ def read_ballots_stv(path):
 def sample_size_kaplan_kolgoromov(margin, prng, N, error_rate, rlimit, t=1/2, \
     g=0.1, upper_bound=1, quantile=0.5, reps=20):
 
+    # QUESTION: Does this work properly if ballots contribute a fractional
+    # amount in favour of the winner or loser in the assertion?
     clean = 1.0/(2 - margin/upper_bound)
     one_vote_over = (1-0.5)/(2-margin/upper_bound) 
 
@@ -417,11 +419,12 @@ def subsupermajority_sample_size(threshold, tally, invalid, args):
         args.rlimit, args.t, args.g, share, args.rfunc, args.reps)
     return sample_size, m, share
 
-
-def cand_vs_cand_sample_size(tally1, tally2, valid_votes, args):
+def cand_vs_cand_sample_size_simple(tally1, tally2, valid_votes, args):
+    
     # assorter for a ballot b yields 1 for a vote for cand 1,
     # 0 for a vote for cand 2, and 0.5 for all other votes
     other = args.voters - (tally1 + tally2)
+
     amean = (tally1 + 0.5*other)/args.voters
 
     m = 2*amean - 1
@@ -430,6 +433,14 @@ def cand_vs_cand_sample_size(tally1, tally2, valid_votes, args):
     sample_size = estimate(args.seed, m, args.voters, args.erate, \
         args.rlimit, args.t, args.g, 1, args.rfunc, args.reps)
     return sample_size, m, 1
+
+
+
+def cand_vs_cand_sample_size_amargin(amargin, args):
+    # Estimate sample size via simulation
+    sample_size = estimate(args.seed, amargin, args.voters, args.erate, \
+        args.rlimit, args.t, args.g, 1, args.rfunc, args.reps)
+    return sample_size, amargin, 1
 
 
 def estimate(seed, m, total_voters, erate, rlimit, t, g, ub, rfunc, REPS):
@@ -471,7 +482,9 @@ def next_cand(prefs, excluded):
     return None
 
 
-def simulate_stv(ballots, candidates, nseats, order_c, order_a, log=None):
+def simulate_stv(ballots, candidates, nseats, order_c, order_a, order_q, \
+    winners, log=None):
+    
     totvotes = 0
     if log != None:
         print("First preference tallies: ", file=log)
@@ -504,6 +517,8 @@ def simulate_stv(ballots, candidates, nseats, order_c, order_a, log=None):
 
     currseat = 0
 
+    r = 0
+
     while currseat < nseats:
         standing = 0
 
@@ -519,6 +534,8 @@ def simulate_stv(ballots, candidates, nseats, order_c, order_a, log=None):
             if cand.standing and cand.sim_votes >= quota:
                 cand.surplus = max(0, cand.sim_votes - quota)
                 surpluses.append(cand)
+
+                order_q[cand.num] = r
 
         if standing == 0:
             break
@@ -555,6 +572,8 @@ def simulate_stv(ballots, candidates, nseats, order_c, order_a, log=None):
                 order_c.append(cnum)
                 order_a.append(1)
 
+                winners.append(cand.num)
+
         if surpluses == []:
             # Eliminated candidate with fewest votes.
             # Distribute votes at their current value.
@@ -582,6 +601,8 @@ def simulate_stv(ballots, candidates, nseats, order_c, order_a, log=None):
 
                 eliminate_candidate(toeliminate, candidates, ballots, log)
 
+            r += 1
+
         else:
             new_surpluses = []
 
@@ -594,6 +615,8 @@ def simulate_stv(ballots, candidates, nseats, order_c, order_a, log=None):
 
                 order_c.append(elect.num)
                 order_a.append(1)
+
+                winners.append(elect.num)
 
                 if log != None:
                     print("Candidate {} elected (votes {})".format(elect.name,\
@@ -610,6 +633,9 @@ def simulate_stv(ballots, candidates, nseats, order_c, order_a, log=None):
                     if cand.sim_votes >= quota:
                         cand.surplus = max(0, cand.sim_votes - quota)
                         new_surpluses.append(cand)
+                        order_q[cand.num] = r
+
+                r += 1
 
             surpluses = new_surpluses
 
@@ -719,7 +745,8 @@ def eliminate_candidate(toelim, candidates, ballots, log):
                     total, toelim.name, cand.name), file=log)
 
 
-def print_summary(candidates,id2group, seats, quota, order_c, order_a):
+def print_summary(candidates,id2group, seats, quota, order_c, order_a,\
+    order_q, winners):
     print(f"Candidates,{len(candidates)},Groups,{len(id2group)}")
     print(f"Seats,{seats}")
     print(f"Quota,{quota}")
@@ -736,6 +763,9 @@ def print_summary(candidates,id2group, seats, quota, order_c, order_a):
     
     print(order_c_str)
     print(order_a_str)
+
+    for w in winners:
+        print("Quota,{},{}".format(w, order_q[w]))
 
     for i in range(len(id2group)):
         gstr = "Group,{},Candidates".format(i)
