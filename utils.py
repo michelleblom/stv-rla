@@ -15,10 +15,6 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-# Importing code from Philip's SHANGRLA repository:
-# https://github.com/pbstark/SHANGRLA/tree/main/Code
-from assertion_audit_utils import TestNonnegMean
-
 import os
 import numpy as np
 import statistics
@@ -363,50 +359,32 @@ def read_ballots_stv(path):
     return candidates,ballots,id2group,cid2num,total_votes
 
 
-# This function extracts code from audit_assertion_utils.py in the 
-# SHANGRLA repository.
-def sample_size_kaplan_kolgoromov(margin, prng, N, error_rate, rlimit, t=1/2, \
-    g=0.1, upper_bound=1, quantile=0.5, reps=20):
+def sample_size(margin, args, test, upper_bound=1, reps=20):
+    # over: (1 - o/u)/(2 - v/u)
+    # where o is the overstatement, u is the upper bound on the value
+    # assorter assigns to any ballot, v is the assorter margin.
+    big = 1.0/(2 - margin/upper_bound) # o=0
+    small = 0.5/(2-margin/upper_bound) # o=0.5
 
-    # QUESTION: Does this work properly if ballots contribute a fractional
-    # amount in favour of the winner or loser in the assertion?
-    clean = 1.0/(2 - margin/upper_bound)
-    one_vote_over = (1-0.5)/(2-margin/upper_bound) 
-
+    N = args.voters
     samples = [0]*reps
 
-    for i in range(reps):
-        pop = clean*np.ones(N)
-        inx = (prng.random(size=N) <= error_rate)  # randomly allocate errors
-        pop[inx] = one_vote_over
+    r1 = args.erate1
+    r2 = args.erate2
 
-        sample_total = 0
-        mart = (pop[0]+g)/(t+g) if t > 0 else  1
-        p = min(1.0/mart,1.0)
-        j = 1
+    x = big*np.ones(N)
+    rate_1_i = np.arange(0, N, step=int(1/r1), dtype=int) if r1 else []
+    rate_2_i = np.arange(0, N, step=int(1/r2), dtype=int) if r2 else []
 
-        while p > rlimit and j < N:
-            mart *= (pop[j]+g)*(1-j/N)/(t+g - (1/N)*sample_total)
-    
-            if mart < 0:
-                break
-            else:
-                sample_total += pop[j] + g
+    x[rate_1_i] = small
+    x[rate_2_i] = 0
 
-            
-            p = min(1.0/mart,1.0) if mart > 1.0 else 1.0
-
-            j += 1;
-
-        if p <= rlimit:
-            samples[i] = j
-        else:
-            return np.inf 
-
-    return np.quantile(samples, quantile)
+    return test.sample_size(x, alpha=args.rlimit, reps=reps, seed=args.seed,\
+       random_order=False, t=0.5, g=0.1)
 
 
-def subsupermajority_sample_size(threshold, tally, invalid, args):
+
+def ssm_sample_size(threshold, tally, invalid, args, test):
     # supermajority assertion: party p1 achieved 
     # more than 'threshold' of the vote.
     share = 1.0/(2*threshold)
@@ -415,12 +393,11 @@ def subsupermajority_sample_size(threshold, tally, invalid, args):
 
     m = 2*amean - 1
 
-    sample_size = estimate(args.seed, m, args.voters, args.erate, \
-        args.rlimit, args.t, args.g, share, args.rfunc, args.reps)
-    return sample_size, m, share
+    sam_size = sample_size(m, args, test,  upper_bound = share)
+    return sam_size, m, share
 
-def cand_vs_cand_sample_size_simple(tally1, tally2, valid_votes, args):
-    
+
+def c_vs_c_sample_size_simple(tally1, tally2, valid_votes, args, test):
     # assorter for a ballot b yields 1 for a vote for cand 1,
     # 0 for a vote for cand 2, and 0.5 for all other votes
     other = args.voters - (tally1 + tally2)
@@ -430,37 +407,14 @@ def cand_vs_cand_sample_size_simple(tally1, tally2, valid_votes, args):
     m = 2*amean - 1
 
     # Estimate sample size via simulation
-    sample_size = estimate(args.seed, m, args.voters, args.erate, \
-        args.rlimit, args.t, args.g, 1, args.rfunc, args.reps)
-    return sample_size, m, 1
+    sam_size = sample_size(m, args, test)
+    return sam_size, m, 1
 
 
-
-def cand_vs_cand_sample_size_amargin(amargin, args):
+def c_vs_c_sample_size_amargin(amargin, args, test):
     # Estimate sample size via simulation
-    sample_size = estimate(args.seed, amargin, args.voters, args.erate, \
-        args.rlimit, args.t, args.g, 1, args.rfunc, args.reps)
-    return sample_size, amargin, 1
-
-
-def estimate(seed, m, total_voters, erate, rlimit, t, g, ub, rfunc, REPS):
-    sample_size = np.inf
-    if rfunc == "kaplan_kolmogorov":
-        prng = np.random.RandomState(seed) 
-        sample_size =  sample_size_kaplan_kolgoromov(m, prng, total_voters, \
-            erate, rlimit, t=t, g=g, upper_bound=ub, quantile=0.5, reps=REPS)
-    else:
-        # Use kaplan martingale
-        risk_fn=lambda x: TestNonnegMean.kaplan_martingale(x,N=total_voters)[0]
-                
-        sample_size =  TestNonnegMean.initial_sample_size(risk_fn, \
-            total_voters, m, erate, alpha=rlimit, t=t, upper_bound=ub,\
-            reps=REPS, bias_up=True, quantile=0.5, seed=seed)
-
-    if sample_size is np.inf:
-        return np.inf
-
-    return math.ceil(sample_size)
+    sam_size = sample_size(amargin, args, test)
+    return sam_size, amargin, 1
 
 
 def index_of(item, values):
