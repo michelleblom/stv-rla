@@ -204,7 +204,10 @@ def max_tally_z_exc(z, w, ballots, ag_matrix, standing, asn_overall):
 # Compute an upper bound on the possible transfer value for a candidate c1
 # assuming they are elected with a quota. Return upper bound and ASN required
 # to show that the transfer value for c1, if they are at any point elected
-# with a quota, is less than that upper bound. 
+# with a quota, is less than that upper bound. Idea: compute maximum surplus
+# for c1 given that someone has to be eliminated to elect them. Look at
+# the maximum tally that someone could have when [c1, c2, o] are still
+# standing, and the amount of that tally that could go to c1. 
 def max_tv_by_z(c1, c2, o, cands, candidates, ballots, delta_ut, args, log,
     valid_ballots, INVALID, asn_overall, ag_matrix, test):
 
@@ -236,7 +239,6 @@ def max_tv_by_z(c1, c2, o, cands, candidates, ballots, delta_ut, args, log,
 
         # If cand z gives c1 its quota, maximum transfer 
         # value will be: max_t_z_c / (max_t_z_c + args.quota)
-
         max_tv_poss = max_t_z_c / (max_t_z_c + args.quota)
 
         zeds_maxtv.append((z, max_t_z, max_t_z_c))
@@ -291,6 +293,10 @@ def max_tv_by_z(c1, c2, o, cands, candidates, ballots, delta_ut, args, log,
         cmax, final_ss), file=log)
 
     return cmax, final_ss
+
+
+
+        
 
 # Merge a sequence of AG relationships that could be used to increase the
 # assorter margin of an NL.
@@ -499,303 +505,6 @@ if __name__ == "__main__":
         print("2Q,{},{},{},{},{}".format(args.data, ncand, valid_ballots, \
             args.quota, max_sample_size))
 
-    elif (not args.gen) and args.old1q and outcome.action[0] == 1:
-        # OLD 1 QUOTA METHOD: Run only if applicable and args.old1q flag set
-        # DOES NOT FIND AS EFFICIENT AN AUDIT AS NEW 1 QUOTA METHOD
-
-        # CASE: 2 seats and first winner has more than a quota on
-        # first preferences.
-
-        max_sample_size = 0
-
-        # Check that first winner's FP is greater than a quota
-        first_winner = candidates[winners[0]]
-        thresh = 1.0/(args.seats + 1);
-    
-        ss, _, _ = ssm_sample_size(thresh,first_winner.fp_votes,\
-            INVALID, args, nnm)
-        print("{} ballot checks required to assert that first winner"\
-            " has a quota's worth of votes".format(ss), file=log)
-
-        max_sample_size = max(max_sample_size, ss)
-
-        # For candidate upper bounds on the transfer value of the ballots
-        # leaving the first winner's tally pile -- denoted aud_tv -- find
-        # the ASN of assertions that show that the second winner cannot be
-        # eliminated (NL's) before any reported loser. 
-        
-        # We start with aud_tv equalling the reported transfer value plus
-        # a small delta (0.01).
-
-        # For each choice of upper bound, we use it in the construction of
-        # NLs between the second winner and reported loser. Having a lower
-        # upper bound on the transfer value makes it easier to create these
-        # NLs. 
-
-        # We consider the overall ASN of an audit configuration for a given
-        # choice of aud_tv. This includes:
-        # -- ASN for determining that the first winner has quota in round 1
-        # -- ASN for checking that the first winners' transfer value is 
-        #    below aud_tv
-        # -- The ASN for 'd' NL 'second winner' for each reported loser 'd'
-
-        # We keep increasing aud_tv while the overall ASN of the resulting
-        # audit is decreasing. Once it starts increasing, we stop. 
-
-        act_tv = (first_winner.fp_votes - args.quota)/first_winner.fp_votes
-        aud_tv = act_tv + 0.01
-
-        max_in_loop = np.inf
-
-        # Compute basic AG relationships between candidates, without
-        # any assumptions around who is seated.
-        ag_matrix = [[None for c in cands] for o in cands]
-
-        for c in cands:
-            fpc = candidates[c].fp_votes
-
-            # Note, we are dealing with ballots with a value of 1 in this
-            # context. 
-            for o in cands:
-                if c == o: continue
-
-                max_vote_o = 0
-
-                for b in ballots:
-                    # Function will return which of 'c' and 'o' should
-                    # be awarded this ballot (None if neither).
-                    awarded = vote_for_cand_over_cand(c, o, b.prefs)
-
-                    if awarded == o:
-                        max_vote_o += b.votes
-
-                if fpc > max_vote_o:
-                    ss, m, _ = c_vs_c_sample_size_simple(fpc, \
-                        max_vote_o, valid_ballots, args, nnm) 
-
-                    if ss != np.inf:
-                        ag_matrix[c][o] = ss
-                        print("AG({},{}) = {}".format(candidates[c].id, \
-                            candidates[o].id, ss), file=log), 
-
-        # MAIN LOOP OF ONE QUOTA METHOD
-        while aud_tv < args.maxtv: 
-            # Check that TV of first winner is at most aud_TV
-            a = 1 / (1 - aud_tv)
-            thresholdT = a * valid_ballots / (args.seats + 1)
-            thresholdProp = thresholdT / valid_ballots
-            threshold = 1 - thresholdProp
-    
-            tally_others = valid_ballots - first_winner.fp_votes
-
-            ss, _, _ = ssm_sample_size(threshold, tally_others, \
-                INVALID, args, nnm)
-
-            max_this_loop = ss
-
-            print("AUD TV {}".format(aud_tv), file=log)
-            # For second winner, is it the case that they cannot be 
-            # eliminated prior to all remaining candidates?
-            sw = candidates[winners[1]]
-
-            ags = {}
-
-            max_with_ags = ss
-            max_with_nls = ss
-
-            # Compute AGs between original losers and second winner
-            # Note: we do this for each different upper bound on the 
-            # transfer value as we can form more AGs this way -- utilising
-            # the fact that ballots leaving the first winner will be reduced
-            # in value to aud_tv.
-            for c in cands:
-                if c in winners:
-                    continue
-
-                # assertion: fpc(sw) > maxc
-                min_sw = 0
-                max_c = 0
-
-                assorter = 0 # h(b) = ((b_sw - b_c) + 1)/2
-                for b in ballots:
-                    if b.prefs[0] == sw.num:
-                        # assorter value is 1 per instance of ballot type
-                        assorter += b.votes
-                        min_sw += b.votes
-                        continue
-
-                    if b.prefs[0] == c: 
-                        # assorter value is 0 per instance of ballot type
-                        max_c += b.votes
-                        continue
-
-                    weight = 1
-
-                    if b.prefs[0] in winners_on_fp:
-                        weight = aud_tv
-
-                    # Default contribution of each instance of ballot type
-                    # to assorter.
-                    contrib = 0.5 * b.votes 
-                    for p in b.prefs:
-                        if p == sw.num:
-                            # We are only treating first preference votes
-                            # for sw as sitting in its pile.
-                            break
-
-                        if p == c:
-                            contrib = b.votes * ((1 - weight)/2.0)
-                            max_c += b.votes*weight
-                            break
-
-                    assorter += contrib
-
-                # Compute assorter margin
-                amargin = 2 * (assorter/args.voters) - 1
-
-                if amargin > 0:
-                    assert(min_sw > max_c)
-                    ss, _, _ = c_vs_c_sample_size_amargin(amargin,args,nnm) 
-
-                    ags[c] = ss
-
-                    max_with_ags = max(max_with_ags, ss)
-                    print("AG({},{}) = {}".format(sw.id, cand_c.id, ss),\
-                        file=log)
-                else:
-                    assert(min_sw <= max_c)
-                    max_with_ags = np.inf
-                    print("AG({},{}) NOT POSSIBLE".format(sw.id, \
-                        cand_c.id),file=log)
-
-
-            # Determine NLs between original losers and second winner
-            for c in cands:
-                if c in winners:
-                    continue
-
-                cand_c = candidates[c]
-
-                # Max ASN of any AGs used to help increase the assorter 
-                # margin when forming NLs.
-                max_ags_used = 0  
-
-                # Context: the first winner is seated, and we have underlying 
-                # AG assertions that can be used to determine if we should 
-                # give a ballot to 'c' or not. We don't want to give any 
-                # ballots to 'c' if there is a candidate 'd' for which 'd' 
-                # AG 'c' holds and 'd' appears before 'c' on the ballot.
-                assorter = 0 # min_sw > max_c
-                min_sw = 0
-                max_c = 0
-                for b in ballots:
-                    if b.prefs[0] == c:
-                        # Contribution of 0 per instance of this ballot type
-                        max_c += b.votes
-                        continue
-
-                    if b.prefs[0] == sw.num:
-                        # Contribution of 1 per instance of this ballot type
-                        assorter += b.votes
-                        min_sw += b.votes
-                        continue
-
-                    c_in = c in b.prefs
-                    sw_in = sw.num in b.prefs
-
-                    if not(c_in or sw_in):
-                        assorter += b.votes*0.5
-                        continue
-
-                    weight = 1
-
-                    # Any ballot that was originally sitting in the first
-                    # winner's pile can be worth at most 'aud_tv' votes to 'c'. 
-                    if b.prefs[0] == first_winner.num:
-                        weight = aud_tv
-
-                    contrib = 0.5*b.votes
-                    awarded = False
-                    if c_in:
-                        awarded, used_ss = vote_for_cand_ags2(c, sw.num, \
-                            b.prefs, ag_matrix, [first_winner.num], 500)
-
-                        if awarded:
-                            contrib = b.votes * ((1 - weight)/2.0)
-                            max_c += weight*b.votes
-
-                        if (not awarded) and used_ss != None: 
-                            max_ags_used = max(max_ags_used, used_ss)
-
-                    if (not awarded) and sw_in:
-                        idx_sw = b.prefs.index(sw.num)
-                        if first_winner.num in b.prefs and \
-                            b.prefs.index(first_winner.num) < idx_sw:
-                            # this might be a bit conservative to not give
-                            # the second winner votes from the first winner. 
-                            # The only way these votes skip the second winner
-                            # is if the second winner gets a quota. 
-                            contrib = 0.5*b.votes
-
-                        else:
-                            prefs = b.prefs[:]
-
-                            # remove candidates 'd' for which sw AG 'd' where
-                            # d != any of {'c', sw.num}
-                            for d,dval in ags.items():
-                                if d != c and d in prefs and dval < 500:
-                                    idx_d = prefs.index(d)
-                                    if idx_d < idx_sw:
-                                        prefs.remove(d)
-                                        idx_sw -= 1
-                                        max_ags_used = max(max_ags_used, dval)
-
-                            if prefs[0] == sw.num:
-                                contrib = b.votes
-                                min_sw += b.votes
-                       
-                amargin = 2*(assorter/args.voters) - 1
- 
-                if amargin > 0:
-                    assert(min_sw > max_c)
-
-                    ss, _, _ = c_vs_c_sample_size_amargin(amargin,args,nnm)
-
-                    max_with_nls = max(max_with_nls, max(max_ags_used,ss))
-                    print("NL({},{}) = {}, AGs used {}".format(sw.id, \
-                        cand_c.id, max(max_ags_used,ss),max_ags_used),file=log)
-
-                else:
-                    assert(min_sw <= max_c)
-
-                    max_with_nls = np.inf
-                    print("NL({},{}) NOT POSSIBLE, amargin {}".format(\
-                        sw.id, cand_c.id, amargin),file=log)
-
-            max_this_loop=max(max_this_loop,min(max_with_ags,max_with_nls))
-
-            print("Max in loop {}, {}".format(max_this_loop, aud_tv), file=log)
-            if max_this_loop <= max_in_loop:
-                max_in_loop = max_this_loop
-                act_tv = aud_tv
-                aud_tv += 0.01
-            else:
-                break
-
-        max_sample_size = max(max_sample_size, max_in_loop)
-    
-        if max_in_loop is np.inf:
-            print("Not possible to show that second winner could not be "\
-                "eliminated prior to all remaining candidates.", file=log)
-        else:
-            print("Demonstrating that first winner's TV is less"\
-                " than {}".format(act_tv), file=log)
-
-        print("Sample size required for audit is {} ballots".format(\
-            max_sample_size), file=log)
-
-        print("1Q,{},{},{},{},{}".format(args.data, ncand, valid_ballots, \
-            args.quota, max_sample_size))
 
     elif (not args.gen) and outcome.action[0] == 1:
         # NEW 1 QUOTA METHOD
@@ -1185,7 +894,7 @@ if __name__ == "__main__":
 
     else: 
         # CASE: 2 seats and no candidate has a quota on first preferences
-        # according to reported results.   else:
+        # according to reported results.  
         overall_asn = 0
 
         remcase = outcome.action[ncand-2:] == [1,1]
@@ -1424,6 +1133,16 @@ if __name__ == "__main__":
             print("ALTERNATE OUTCOME PAIR: {},{}".format(candidates[c1].id,\
                 candidates[c2].id), file=log)
 
+            # ==============================================================
+            # First option: split the pair into two nodes, where we assume
+            # a specific ordering over when the two winners are elected.
+
+
+
+            # ==============================================================
+            # Second option: No assumption around order in which candidates
+            # are elected required.
+            # -------------------------------------------------------------
             # If we assume 'c1' gets a seat at some stage, does there
             # exist a candidate 'o' \= 'c1' that cannot be eliminated before 
             # 'c2'? If so, 'c2' cannot get a seat.
