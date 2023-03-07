@@ -933,7 +933,12 @@ if __name__ == "__main__":
                 ss, m, _ = c_vs_c_sample_size_simple(tally_winner, \
                     tally_losers, valid_ballots, args, nnm) 
 
-                if ss < np.inf:
+                print(ss, file=log)
+                if ss < args.voters/5 and ss < batch_asn:
+                    # NOTE: this is a hack, if we don't specify some 
+                    # modest number of ballots here, danger is that
+                    # we keep increasing the number of candidates we
+                    # batch eliminate while incurring a massive audit ASN.
                     batch_asn = ss
                     idx = i
 
@@ -1085,6 +1090,40 @@ if __name__ == "__main__":
                     ag_matrix[j][i] = iv
                     possibilities[i].append(iv)
 
+        # Can we establish a winner based on the fact that they are AG
+        # at least NCAND - 1 candidates? If there is one candidate that 
+        # we cannot establish an AG relationship with that is OK. Then
+        # we can rule out all alternate outcomes that do not involve that
+        # known winner.
+        known_winners = []
+
+        for w in winners:
+            # for how many candidates c can we show that w AG c
+            cost = 0
+            num_ag = 0
+            for c in cands:
+                if c == w:
+                    continue
+
+                if ag_matrix[w][c] != None:
+                    num_ag += 1
+                    cost = max(cost, ag_matrix[w][c])
+
+            if num_ag >= ncand - 2:
+                print("Candidate {} is a known winner, cost {}".format(w,cost),\
+                    file = log)
+                known_winners.append((w,cost))
+
+        if len(known_winners) == args.seats:
+            print("All winners can be established with AG relationships.",\
+                file=log)
+            print("ASN: {}".format(max([cost for _,cost in known_winners])),\
+                file=log)
+
+            
+            log.close()
+            exit(0)   
+
         # Now, we are looking for candidates c where there are at least
         # 2 other candidates o such that o AG c. This is the case where
         # possibilities[c] contains at least two sample sizes.
@@ -1110,10 +1149,14 @@ if __name__ == "__main__":
         # c where there are at least 2 candidates o such that o AG c.
         asn_overall = max_rule_out_ss
 
-
         # Form pairs of alternate winner outcomes
         pairs = []
         assertions = []
+
+        must_win = None
+        if known_winners != []:
+            must_win = known_winners[0][0]
+            asn_overall = max(asn_overall, known_winners[0][1]) 
 
         for i in range(ncand):
             c = cands[i]
@@ -1125,6 +1168,9 @@ if __name__ == "__main__":
                 if o in ruled_out: continue
                 if c in winners and o in winners: continue
 
+                if must_win != None and c != must_win and o != must_win:
+                    continue
+
                 pairs.append((c,o))
 
 
@@ -1134,13 +1180,7 @@ if __name__ == "__main__":
                 candidates[c2].id), file=log)
 
             # ==============================================================
-            # First option: split the pair into two nodes, where we assume
-            # a specific ordering over when the two winners are elected.
-
-
-
-            # ==============================================================
-            # Second option: No assumption around order in which candidates
+            # No assumption around order in which candidates
             # are elected required.
             # -------------------------------------------------------------
             # If we assume 'c1' gets a seat at some stage, does there
@@ -1180,10 +1220,13 @@ if __name__ == "__main__":
                 # ASSUMING C1 IS SEATED
                 pot_margin_inc = 0
                 helpful_ags = []
+                poss_add_min = 0
+                poss_del_max = 0
 
                 # Consider max vote of 'c2' given 'c1' seated at some stage and 
                 # 'o' is still standing.
                 assorter_o_v_c2 = 0
+                mint, maxt = 0, 0
                 for b in ballots:
                     awarded, used_ss = vote_for_cand_ags1(o, b.prefs, o_ag)
 
@@ -1193,8 +1236,10 @@ if __name__ == "__main__":
                             pot_margin_inc += b.votes*0.5
 
                             assorter_o_v_c2 += b.votes*0.5
+                            poss_add_min += b.votes
                         else:
                             assorter_o_v_c2 += b.votes
+                            mint += b.votes
                         
                         continue    
                         
@@ -1219,11 +1264,15 @@ if __name__ == "__main__":
 
                         assorter_o_v_c2 += contrib
 
+                        maxt += weight*b.votes
+
                         if ag_present:
                             alt_contrib = 0.5*b.votes
                             helpful_ags.append((used_ss, alt_contrib-contrib))
                             pot_margin_inc += alt_contrib-contrib
-
+                            poss_del_max += weight*b.votes
+                    else:
+                        assorter_o_v_c2 += b.votes*0.5
 
                 # Max ASN of any AGs used to increase/decrease the minimum
                 # /maximum tallies of second winner/candidate c when forming NL.
@@ -1234,6 +1283,11 @@ if __name__ == "__main__":
                 # Incorporate use of all AGs that either make the assertion
                 # possible, or whose ASN is already within/equal to current
                 # lower bound on audit difficulty.
+                if o == 8 and c2 == 14:
+                    print(merged_helpful_ags, file=log)
+                    print(assorter_o_v_c2, file=log)
+          
+
                 amargin = 2*(assorter_o_v_c2/args.voters) - 1
                 while amargin <= 0 and merged_helpful_ags != []:
                     
@@ -1257,6 +1311,7 @@ if __name__ == "__main__":
 
                 print("   (1) can we show that {} NL {}? ".format(cand_o.id,\
                     candidates[c2].id), file=log)
+                print("        a. margin {}".format(amargin), file=log)
 
                 # Is the minimum tally for 'o' larger than the maximum
                 # possible tally for 'c2'? This means 'o' cannot be 
@@ -1272,7 +1327,8 @@ if __name__ == "__main__":
                     else:
                         print("      no", file=log)
                 else:
-                    print("      no", file=log)
+                    print("      no, min {} vs max {}".format(mint + \
+                        poss_add_min, maxt - poss_del_max), file=log)
 
                 #=============================================================
                 # ASSUMING C2 IS SEATED
@@ -1282,6 +1338,8 @@ if __name__ == "__main__":
                 # Consider max vote of 'c1' given 'c2' seated at some stage and 
                 # 'o' is still standing.
                 assorter_o_v_c1 = 0
+                mint, maxt = 0, 0
+                poss_add_min, poss_del_max = 0, 0
                 for b in ballots:
                     awarded, used_ss = vote_for_cand_ags1(o, b.prefs, o_ag)
 
@@ -1291,8 +1349,10 @@ if __name__ == "__main__":
                             pot_margin_inc += b.votes*0.5
 
                             assorter_o_v_c1 += b.votes*0.5
+                            poss_add_min += b.votes
                         else:
                             assorter_o_v_c1 += b.votes
+                            mint += b.votes
                         
                         continue    
                         
@@ -1312,11 +1372,19 @@ if __name__ == "__main__":
                         contrib = b.votes*((1 - weight)/2)
 
                         assorter_o_v_c1 += contrib
+                        maxt += weight*b.votes
 
                         if ag_present:
                             alt_contrib = 0.5*b.votes
                             helpful_ags.append((used_ss, alt_contrib-contrib))
                             pot_margin_inc += alt_contrib-contrib
+                            poss_del_max += weight*b.votes
+                    else:
+                        assorter_o_v_c1 += b.votes*0.5
+                
+                if o == 8 and c1 == 14:
+                    print(merged_helpful_ags, file=log)
+                    print(assorter_o_v_c1, file=log) 
 
                 # Max ASN of any AGs used to increase/decrease the minimum/
                 # maximum tallies of second winner/candidate c when forming NL.
@@ -1350,6 +1418,7 @@ if __name__ == "__main__":
 
                 print("   (1) can we show that {} NL {}? ".format(cand_o.id,\
                     candidates[c1].id), file=log)
+                print("        a. margin {}".format(amargin), file=log)
 
 
                 # Is the minimum tally for 'o' larger than the maximum
@@ -1366,7 +1435,8 @@ if __name__ == "__main__":
                     else:
                         print("      no", file=log)
                 else:
-                    print("      no", file=log)
+                    print("      no, min {} vs max {}".format(mint + \
+                        poss_add_min, maxt - poss_del_max), file=log)
 
             best_asn = min(best_asn1, best_asn2)
             assertions.append((best_asn, (c1,c2), not_applicable)) 
