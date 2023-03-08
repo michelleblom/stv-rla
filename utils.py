@@ -23,11 +23,10 @@ import re
 import json
 
 class Ballot:
-    def __init__(self, num, votes, prefs, atl=False):
+    def __init__(self, num, votes, prefs):
         self.num = num
         self.votes = votes
         self.prefs = prefs[:]
-        self.atl = atl
 
         self.papers = votes
 
@@ -38,9 +37,6 @@ class Candidate:
         self.name = None
         self.group_id = None
         self.position = None
-
-        self.num_atls = 0
-        self.num_btls = 0
 
         self.ballots = []
         self.fp_votes = 0
@@ -132,7 +128,7 @@ def read_ballots_txt(path):
             votes = int(toks[1])
 
             cprefs = [cid2num[p] for p in prefs]
-            ballot = Ballot(bcntr, votes, cprefs, atl=False)
+            ballot = Ballot(bcntr, votes, cprefs)
             ballots.append(ballot)
 
             fpcand = candidates[cprefs[0]]
@@ -155,6 +151,8 @@ def read_ballots_json(path):
     cid2num = {}
 
     total_votes = 0
+
+    prefs2ballot = {}
 
     with open(path, "r") as cvr:
         data = json.load(cvr)
@@ -203,19 +201,22 @@ def read_ballots_json(path):
             for g in groups:
                 prefs.extend(g.cands)
                 
-
-            blt = Ballot(bcntr, n, prefs, atl=True)
-
+            blt = None
             fcand = candidates[prefs[0]]
-            fcand.ballots.append(bcntr)
+            tprefs = tuple(prefs)
+            if tprefs in prefs2ballot:
+                blt = prefs2ballot[tprefs]
+                blt.votes += n
+            else:
+                blt = Ballot(bcntr, n, prefs)
+                prefs2ballot[tprefs] = blt
+                ballots.append(blt)
+                fcand.ballots.append(blt.num)
+                bcntr += 1
+
             fcand.fp_votes += n
 
-            fcand.num_atls += n
-
             total_votes += n
-
-            ballots.append(blt)
-            bcntr += 1
 
         # process btl ballots
         for btl in data["btl"]:
@@ -225,145 +226,31 @@ def read_ballots_json(path):
             # num_cands -1 already.
             prefs = [int(c) for c in btl["candidates"]]
 
-            blt = Ballot(bcntr, n, prefs, atl=False)
-
+            blt = None
+            tprefs = tuple(prefs)
             fcand = candidates[prefs[0]]
-            fcand.ballots.append(bcntr)
+            if tprefs in prefs2ballot:
+                blt = prefs2ballot[tprefs]
+                blt.votes += n
+            else:
+                blt = Ballot(bcntr, n, prefs)
+                prefs2ballot[tprefs] = blt
+                ballots.append(blt)
+                fcand.ballots.append(blt.num)
+                bcntr += 1
+
             fcand.fp_votes += n
 
-            fcand.num_btls += n
-
             total_votes += n
-            ballots.append(blt)
-
-            bcntr += 1
-    
-    return candidates,ballots,id2group,cid2num,total_votes
-            
-
-def read_ballots_stv(path):
-    ballots = []
-    candidates = []
-    id2group = {}
-    cid2num = {}
-
-    total_votes = 0
-
-    with open(path, "r") as cvr:
-        lines = cvr.readlines()
-
-        # Skip the first 3 lines, the fourth line
-        # indicates the number of candidates
-        ncands = int(lines[3].strip())
-
-        # The next 'ncands' lines represent candidate 
-        # details
-        cntr = 0
-        for i in range(4, 4+ncands):
-            toks = lines[i].strip().split('\t')
-
-            # toks = [Name, Group, Position in Group]
-            cand = Candidate(cntr,cntr)
-            cand.name = toks[0]
-            cand.group_id = toks[1]
-            cand.position = int(toks[2])
-
-            cid2num[cntr] = cntr
-            candidates.append(cand)
-            cntr += 1
-
-        # Get group info
-        ngroups = int(lines[5+ncands].strip())
-
-        for i in range(6+ncands, 6+ncands+ngroups):
-            toks = lines[i].strip().split('\t')
-
-            # toks = [Group ID, Group name]
-            group = Group(toks[0])
-            group.name = "" if len(toks) < 2 else toks[1]
-    
-            id2group[group.id] = group
-
-        # Add candidates to their groups
-        for cand in candidates:
-            id2group[cand.group_id].cands.append(cand.num)
-
-        # Continue until we get to RATLS (above the line entries)
-        lcntr = 6+ncands+ngroups
-        numratls = 0
-        for i in range(6+ncands+ngroups, len(lines)):
-            line = lines[i].strip()
-
-            if line.startswith("RATLs"):
-                # Next line details the number of RATLs
-                numratls = int(lines[i+1].strip())
-                
-                lcntr = i+2
-                break
-
-        bcntr = 0
-
-        assert(lcntr > 0)
-
-        # Read above the line votes
-        for i in range(lcntr, lcntr + numratls):
-            toks = lines[i].strip().split()
-               
-            # Last element of toks is the number of votes with
-            # the given ranking of groups. We translate the above
-            # the line vote into the sequence of candidates that the
-            # vote would move between.
-            votes = int(toks[-1])
-            prefs = []
-
-            for gid in toks[:-1]:
-                group = id2group[gid]
-                for c in group.cands:
-                    prefs.append(c)
-
-            ballot = Ballot(bcntr, votes, prefs, atl=True)
-            ballots.append(ballot)
-
-            fpcand = candidates[prefs[0]]
-            fpcand.ballots.append(bcntr)
-            fpcand.fp_votes += votes
-
-            fpcand.num_atls += votes
-
-            total_votes += votes
-
-            bcntr += 1
-
-        # lcntr+numratls+1 is the line detailing the nubmer of BTL entries
-        numbtls = int(lines[lcntr+numratls+1].strip())
-
-        for i in range(lcntr+numratls+2,lcntr+numratls+2+numbtls):
-            toks = lines[i].strip().split()
-
-            votes = int(toks[-1])
-            prefs = [int(c) for c in toks[0].split(',')]
-
-            ballot = Ballot(bcntr, votes, prefs)
-            ballots.append(ballot)
-            
-            fpcand = candidates[prefs[0]]
-            fpcand.ballots.append(bcntr)
-            fpcand.fp_votes += votes
-
-            fpcand.num_btls += votes
-
-            total_votes += votes
-
-            bcntr += 1
 
     return candidates,ballots,id2group,cid2num,total_votes
-
+            
 
 def sample_size(margin, args, test, upper_bound=1, reps=20):
     # over: (1 - o/u)/(2 - v/u)
     # where o is the overstatement, u is the upper bound on the value
     # assorter assigns to any ballot, v is the assorter margin.
-    big = 1.0/(2 - margin/upper_bound) # o=0
+    big = 1.0/(2-margin/upper_bound) # o=0
     small = 0.5/(2-margin/upper_bound) # o=0.5
 
     N = args.voters
