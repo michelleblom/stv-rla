@@ -279,7 +279,7 @@ def max_tv_by_z(c1, c2, o, cands, candidates, ballots, delta_ut, args, log,
             #    ss), file=log)
             max_ss = max(max_ss, ss)
 
-        if max_ss != np.inf: #<= (valid_ballots+INVALID)/10: #asn_overall:
+        if max_ss <= asn_overall:
             final_ss = max_ss
             break
 
@@ -931,7 +931,10 @@ if __name__ == "__main__":
                 min_tv += 0.01
 
         max_sample_size = max(max_sample_size, max_in_outer_loop)
-    
+
+        if max_sample_siz >= args.voters:
+            max_sample_siz = np.inf 
+
         print("Sample size required for audit is {} ballots".format(\
             max_sample_size), file=log)
 
@@ -1151,8 +1154,8 @@ if __name__ == "__main__":
                     cost = max(cost, ag_matrix[w][c])
 
             if num_ag >= ncand - 2:
-                print("Candidate {} is a known winner, cost {}".format(w,cost),\
-                    file = log)
+                print("Candidate {} is a known winner, cost {}".format(\
+                    candidates[w].id, cost), file = log)
                 known_winners.append((w,cost))
 
         if len(known_winners) == args.seats:
@@ -1444,6 +1447,9 @@ if __name__ == "__main__":
                 print("Alternate outcome cannot be ruled out: {},{}".format(\
                     c1o.id, c2o.id), file=log)
 
+        if asn_overall >= args.voters:
+            asn_overall = np.inf
+        
 
         print("Best sample size: {}".format(asn_overall), file=log)
         if remcase:
