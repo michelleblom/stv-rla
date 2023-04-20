@@ -374,7 +374,7 @@ def simulate_stv(ballots, candidates, nseats, order_c, order_a, order_q, \
 
             if cand.standing and cand.sim_votes >= quota:
                 cand.surplus = max(0, cand.sim_votes - quota)
-                surpluses.append(cand)
+                insert_surplus(surpluses, cand)
 
                 order_q[cand.num] = r
 
@@ -467,14 +467,17 @@ def simulate_stv(ballots, candidates, nseats, order_c, order_a, order_q, \
                     # Distribute surplus
                     distribute_surplus(elect, candidates, ballots, log)
 
+                next_surpluses = []
                 for cand in candidates:
                     if cand.surplus != -1 or not cand.standing:
                         continue
 
                     if cand.sim_votes >= quota:
                         cand.surplus = max(0, cand.sim_votes - quota)
-                        new_surpluses.append(cand)
+                        insert_surplus(next_surpluses, cand)
                         order_q[cand.num] = r
+
+                new_surpluses.extend(next_surpluses)
 
                 r += 1
 
@@ -491,6 +494,15 @@ def simulate_stv(ballots, candidates, nseats, order_c, order_a, order_q, \
             break
 
     return quota
+
+def insert_surplus(surpluses, cand):
+    for i in range(len(surpluses)):
+        if cand.surplus >= surpluses[i].surplus:
+            surpluses.insert(i, cand)
+            return
+
+    surpluses.append(cand)
+
 
 def next_candidate(prefs, cnum, candidates):
     idx = prefs.index(cnum)

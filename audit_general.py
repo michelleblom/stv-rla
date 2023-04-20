@@ -468,9 +468,12 @@ if __name__ == "__main__":
         candidates, ballots, id2group, cid2num, valid_ballots = \
             read_ballots_json(args.data)
 
-    else:
+    elif args.data.endswith(".txt") or args.data.endswith(".us"):
         candidates, ballots, id2group, cid2num, valid_ballots = \
             read_ballots_txt(args.data)
+    else:
+        print("Unsupported data file type.")
+        exit()
 
     if args.justsim:
         order_c = []
@@ -932,8 +935,8 @@ if __name__ == "__main__":
 
         max_sample_size = max(max_sample_size, max_in_outer_loop)
 
-        if max_sample_siz >= args.voters:
-            max_sample_siz = np.inf 
+        if max_sample_size >= args.voters:
+            max_sample_size = np.inf 
 
         print("Sample size required for audit is {} ballots".format(\
             max_sample_size), file=log)
