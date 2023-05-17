@@ -453,6 +453,10 @@ if __name__ == "__main__":
     # Run general method for instance irrespective of outcome structure
     parser.add_argument('-gen', dest='gen', default=False,action='store_true')
 
+    # If present, and running general method -- just check validity of 
+    # first winner.
+    parser.add_argument('-cfw', dest='cfw', default=False,action='store_true')
+
     args = parser.parse_args()
 
     log = open(args.log, "w")
@@ -478,19 +482,23 @@ if __name__ == "__main__":
     if args.justsim:
         order_c = []
         order_a = []
+        order_q = {}
+        sim_winners = []
 
-        simulate_stv(ballots, candidates, args.seats, order_c, order_a,log=log)   
+        simulate_stv(ballots, candidates, args.seats, order_c, order_a,\
+            order_q, sim_winners, log=log)   
 
-        print("{}".format(candidates[order_c[0]].id), end='')
+        if log != None:
+            print("{}".format(candidates[order_c[0]].id), end='', file=log)
 
-        for i in range(1, len(candidates)):
-            print(",{}".format(candidates[order_c[i]].id), end='')
+            for i in range(1, len(candidates)):
+                print(",{}".format(candidates[order_c[i]].id), end='',file=log)
 
-        print("")
+            print("", file=log)
 
-        print("{}".format(order_a[0]), end='')
-        for i in range(1, len(candidates)):
-            print(",{}".format(order_a[i]), end='')
+            print("{}".format(order_a[0]), end='', file=log)
+            for i in range(1, len(candidates)):
+                print(",{}".format(order_a[i]), end='', file=log)
         exit()
 
 
@@ -962,6 +970,8 @@ if __name__ == "__main__":
         batch_asn = np.inf
         first_elim = [None for c in candidates]
 
+        fw = winners[0]
+
         if ncand > 4 and outcome.action[:3] == [0,0,0]:
             idx = -1
 
@@ -1209,11 +1219,15 @@ if __name__ == "__main__":
             c = cands[i]
             if c in ruled_out: continue
 
+            if args.cfw and c == fw: continue
+
             for j in range(i+1, ncand):
                 o = cands[j]
 
                 if o in ruled_out: continue
                 if c in winners and o in winners: continue
+
+                if args.cfw and o == fw: continue
 
                 if must_win != None and c != must_win and o != must_win:
                     continue

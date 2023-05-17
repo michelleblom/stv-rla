@@ -103,7 +103,7 @@ def read_ballots_txt(path):
 
         for i in range(len(clist)):
             cand = Candidate(i, clist[i])
-            cand.name = ""
+            cand.name = str(clist[i])
             cand.group_id = -1
             cand.position = -1
 
@@ -392,7 +392,7 @@ def simulate_stv(ballots, candidates, nseats, order_c, order_a, order_q, \
                     inserted = False
                     for i in range(len(slist)):
                         if cand.sim_votes > candidates[slist[i]].sim_votes:
-                            slist.insert(i)
+                            slist.insert(i, cand.num)
                             inserted = True
                             break
 
@@ -415,7 +415,7 @@ def simulate_stv(ballots, candidates, nseats, order_c, order_a, order_q, \
 
                 winners.append(cand.num)
 
-        if surpluses == []:
+        elif surpluses == []:
             # Eliminated candidate with fewest votes.
             # Distribute votes at their current value.
             leastvotes = -1
