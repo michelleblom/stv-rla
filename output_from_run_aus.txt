@@ -1,4 +1,0 @@
-1Q,data/FedAus/federal_2016_ACT.stv,22,254767,84923,66
-1Q,data/FedAus/federal_2019_ACT.stv,17,270231,90078,107
-1Q,data/FedAus/federal_2016_NT.stv,19,102027,34010,74
-1Q,data/FedAus/federal_2019_NT.stv,18,105027,35010,72
