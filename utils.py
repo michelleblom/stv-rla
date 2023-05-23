@@ -22,6 +22,10 @@ import math
 import re
 import json
 
+# Make sure shangrla is in your PYTHONPATH
+from shangrla.NonnegMean import NonnegMean
+
+
 class Ballot:
     def __init__(self, num, votes, prefs):
         self.num = num
@@ -86,6 +90,174 @@ def read_outcome(path, cid2num):
         outcome.action = [int(a) for a in toks]
 
     return outcome
+
+
+def read_ballots_blt(path):
+    ballots = []
+    candidates = []
+    cid2num = {}
+
+    total_votes = 0
+
+    with open(path, "r") as cvr:
+        lines = [l.strip() for l in cvr.readlines() if l.strip() != ""]
+
+        cands,seats = [int(tok) for tok in lines[0].split()]
+
+        split_idx = lines.index("0")
+
+        ballot_strs = lines[:split_idx]
+        cand_strs = lines[split_idx+1:-1]
+
+        for i in range(len(cand_strs)):
+            cand = Candidate(i, cand_strs[i])
+            cand.name = str(clist[i])
+            cand.group_id = -1
+            cand.position = -1
+
+            candidates.append(cand)
+            cid2num[clist[i]] = i
+
+
+        bcntr = 0
+
+        for bline in ballot_strs:
+            toks = [int(t) for t in bline.split()]
+
+            n = toks[0]
+            prefs = toks[1:-1]
+
+            ballot = Ballot(bcntr, n, prefs)
+            ballots.append(ballot)
+
+            fpcand = candidates[cprefs[0]]
+            fpcand.ballots.append(bcntr)
+            fpcand.fp_votes += votes
+
+            total_votes += votes
+
+            for p in prefs:
+                candidates[p].mentions.append(bcntr)
+
+            bcntr += 1
+
+    return candidates,ballots,{},cid2num,total_votes
+
+
+def read_ballots_stv(path):
+    ballots = []
+    candidates = []
+    id2group = {}
+    cid2num = {}
+
+    total_votes = 0
+
+    with open(path, "r") as cvr:
+        lines = cvr.readlines()
+
+        # Skip the first 3 lines, the fourth line
+        # indicates the number of candidates
+        ncands = int(lines[3].strip())
+
+        # The next 'ncands' lines represent candidate 
+        # details
+        cntr = 0
+        for i in range(4, 4+ncands):
+            toks = lines[i].strip().split('\t')
+
+            # toks = [Name, Group, Position in Group]
+            cand = Candidate(cntr,cntr)
+            cand.name = toks[0]
+            cand.group_id = toks[1]
+            cand.position = int(toks[2])
+
+            cid2num[cntr] = cntr
+            candidates.append(cand)
+            cntr += 1
+
+        # Get group info
+        ngroups = int(lines[5+ncands].strip())
+
+        for i in range(6+ncands, 6+ncands+ngroups):
+            toks = lines[i].strip().split('\t')
+
+            # toks = [Group ID, Group name]
+            group = Group(toks[0])
+            group.name = "" if len(toks) < 2 else toks[1]
+    
+            id2group[group.id] = group
+
+        # Add candidates to their groups
+        for cand in candidates:
+            id2group[cand.group_id].cands.append(cand.num)
+
+        # Continue until we get to RATLS (above the line entries)
+        lcntr = 6+ncands+ngroups
+        numratls = 0
+        for i in range(6+ncands+ngroups, len(lines)):
+            line = lines[i].strip()
+
+            if line.startswith("RATLs"):
+                # Next line details the number of RATLs
+                numratls = int(lines[i+1].strip())
+                
+                lcntr = i+2
+                break
+
+        bcntr = 0
+
+        assert(lcntr > 0)
+
+        # Read above the line votes
+        for i in range(lcntr, lcntr + numratls):
+            toks = lines[i].strip().split()
+               
+            # Last element of toks is the number of votes with
+            # the given ranking of groups. We translate the above
+            # the line vote into the sequence of candidates that the
+            # vote would move between.
+            votes = int(toks[-1])
+            prefs = []
+
+            for gid in toks[:-1]:
+                group = id2group[gid]
+                for c in group.cands:
+                    prefs.append(c)
+
+            ballot = Ballot(bcntr, votes, prefs)
+            ballots.append(ballot)
+
+            fpcand = candidates[prefs[0]]
+            fpcand.ballots.append(bcntr)
+            fpcand.fp_votes += votes
+
+            total_votes += votes
+
+            bcntr += 1
+
+        # lcntr+numratls+1 is the line detailing the nubmer of BTL entries
+        numbtls = int(lines[lcntr+numratls+1].strip())
+
+        for i in range(lcntr+numratls+2,lcntr+numratls+2+numbtls):
+            toks = lines[i].strip().split()
+
+            votes = int(toks[-1])
+            prefs = [int(c) for c in toks[0].split(',')]
+
+            ballot = Ballot(bcntr, votes, prefs)
+            ballots.append(ballot)
+            
+            fpcand = candidates[prefs[0]]
+            fpcand.ballots.append(bcntr)
+            fpcand.fp_votes += votes
+
+            total_votes += votes
+
+            bcntr += 1
+
+    return candidates,ballots,id2group,cid2num,total_votes
+
+
 
 def read_ballots_txt(path):
     ballots = []
@@ -246,62 +418,59 @@ def read_ballots_json(path):
     return candidates,ballots,id2group,cid2num,total_votes
             
 
-def sample_size(margin, args, test, upper_bound=1, reps=20):
+
+def sample_size(mean, args, upper_bound=1): # just for comparison audits
+    N = args.voters
+    margin = 2*mean - 1
+    u = 2/(2-(margin/upper_bound))
+
+    test = NonnegMean(test=NonnegMean.alpha_mart, \
+        estim=NonnegMean.optimal_comparison, N=N, u=u, eta=mean)
+
     # over: (1 - o/u)/(2 - v/u)
+
     # where o is the overstatement, u is the upper bound on the value
     # assorter assigns to any ballot, v is the assorter margin.
-    big = 1.0/(2-margin/upper_bound) # o=0
-    small = 0.5/(2-margin/upper_bound) # o=0.5
-
-    N = args.voters
-    samples = [0]*reps
+    big =  (1 / (2 - margin/upper_bound)) # o=0
+    small = (0.5 / (2 - margin/upper_bound)) # o=0.5
 
     r1 = args.erate1
     r2 = args.erate2
 
     x = big*np.ones(N)
+
     rate_1_i = np.arange(0, N, step=int(1/r1), dtype=int) if r1 else []
     rate_2_i = np.arange(0, N, step=int(1/r2), dtype=int) if r2 else []
 
     x[rate_1_i] = small
     x[rate_2_i] = 0
 
-    return test.sample_size(x, alpha=args.rlimit, reps=reps, seed=args.seed,\
-       random_order=False, t=0.5, g=0.1)
+    return test.sample_size(x, alpha=args.rlimit, reps=args.reps, \
+        seed=args.seed, random_order=True)
 
 
-
-def ssm_sample_size(threshold, tally, invalid, args, test):
+def ssm_sample_size(threshold, tally, invalid, args):
     # supermajority assertion: party p1 achieved 
-    # more than 'threshold' of the vote.
+    # more than 'threshold' of the vote. 
     share = 1.0/(2*threshold)
     
     amean = (tally*share + 0.5*invalid)/args.voters
 
-    m = 2*amean - 1
-
-    sam_size = sample_size(m, args, test,  upper_bound = share)
-    return sam_size, m, share
+    sam_size = sample_size(amean, args, upper_bound = share)
+    return sam_size
 
 
-def c_vs_c_sample_size_simple(tally1, tally2, valid_votes, args, test):
+def tally_vs_tally_sample_size(tally1, tally2, valid_votes, args):
     # assorter for a ballot b yields 1 for a vote for cand 1,
     # 0 for a vote for cand 2, and 0.5 for all other votes
     other = args.voters - (tally1 + tally2)
 
     amean = (tally1 + 0.5*other)/args.voters
 
-    m = 2*amean - 1
-
     # Estimate sample size via simulation
-    sam_size = sample_size(m, args, test)
-    return sam_size, m, 1
+    sam_size = sample_size(amean, args)
+    return sam_size 
 
-
-def c_vs_c_sample_size_amargin(amargin, args, test):
-    # Estimate sample size via simulation
-    sam_size = sample_size(amargin, args, test)
-    return sam_size, amargin, 1
 
 
 def index_of(item, values):
