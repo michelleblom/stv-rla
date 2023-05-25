@@ -42,10 +42,12 @@ class Candidate:
         self.group_id = None
         self.position = None
 
+        self.reset()
+
+    def reset(self):
+        self.mentions = []
         self.ballots = []
         self.fp_votes = 0
-
-        self.mentions = []
 
         # For simulation purposes
         self.sim_votes = 0
@@ -54,6 +56,8 @@ class Candidate:
         self.standing = 1
         self.seat = -1
         self.surplus = 0
+
+        
 
 class Outcome:
     def __init__(self):
