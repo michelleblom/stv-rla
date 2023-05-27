@@ -63,7 +63,7 @@ def vote_for_cand_over_cand(c1, c2, prefs):
 def vote_for_cand_ags1(c, prefs, c_ag, candidates):
     ags_used = 0
 
-    descs = []
+    descs = set()
 
     for p in prefs:
         if p == c:
@@ -72,11 +72,11 @@ def vote_for_cand_ags1(c, prefs, c_ag, candidates):
         if p != c:
             if p in c_ag:
                 ags_used = max(ags_used, c_ag[p])
-                descs.append((candidates[c].id,"AG",candidates[p].id,c_ag[p]))
+                descs.add((candidates[c].id,"AG",candidates[p].id,c_ag[p]))
             else:
-                return False, None, []
+                return False, None, set()
 
-    return False, None, []
+    return False, None, set()
 
 
 # This function is used to determine whether a ballot should contribute
@@ -112,13 +112,13 @@ def vote_for_cand_ags2(c1, c2, prefs, ag_matrix, winners, candidates):
     ag_present = False
     ag_min_ss = np.inf
 
-    descs = []
+    descs = set()
     for p in prefs:
         if p == c1:
             return True, ag_present, ag_min_ss, descs
 
         if p == c2:
-            return False, False, None, []
+            return False, False, None, set()
 
         if p in winners:
             # c1 could still get this vote as it could skip over 'p'
@@ -129,9 +129,9 @@ def vote_for_cand_ags2(c1, c2, prefs, ag_matrix, winners, candidates):
             ag_present = True
             ag_min_ss = min(ag_min_ss, ag)
 
-            descs.append((candidates[p].id, "AG", candidates[c1].id, ag))
+            descs.add((candidates[p].id, "AG", candidates[c1].id, ag))
 
-    return False, False, None, []
+    return False, False, None, set()
 
 
 
@@ -160,7 +160,7 @@ def rule_out_for_max(prefs, loser, ag_matrix, winners, candidates):
     ag_min_ss = np.inf
     ag_present = False
 
-    ags_used = []
+    ags_used = set()
 
     for p in prefs:
         if p == loser:
@@ -173,10 +173,10 @@ def rule_out_for_max(prefs, loser, ag_matrix, winners, candidates):
         ag = ag_matrix[p][loser]
         if ag != None and ag != np.inf:
             ag_present = True
-            ags_used.append((candidates[p].id,"AG",candidates[loser].id, ag))
+            ags_used.add((candidates[p].id,"AG",candidates[loser].id, ag))
             ag_min_ss = min(ag_min_ss, ag)
 
-    return False, np.inf, []
+    return False, np.inf, set()
 
 
 # Compute max possible tally of z upon its elimination and the portion of
@@ -337,7 +337,7 @@ def merge_helpful_ags(helpful_ags, exp_merged_total):
                 curr_desc = desc
             else:
                 curr_extra += extra
-                curr_desc.extend(desc)
+                curr_desc.update(desc)
 
             cntr += 1                    
 
@@ -498,7 +498,7 @@ if __name__ == "__main__":
 
     # List of text descriptions, and associated sample sizes, of all
     # assertions needed in an audit.
-    assertions_used = []
+    assertions_used = set()
 
     # List of candidates that are eliminated in an initial group elimination
     # phase.
@@ -539,7 +539,7 @@ if __name__ == "__main__":
                         print("GELIM AG({},{}) = {}".format(candidates[c].id, \
                             candidates[g].id, ss), file=log)
 
-                        assertions_used.append((candidates[c].id, "AG",\
+                        assertions_used.add((candidates[c].id, "AG",\
                             candidates[g].id, ss))
                     else:
                         failed_to_verify.append(g)
@@ -616,7 +616,7 @@ if __name__ == "__main__":
         print("{} ballot checks required to assert that first winner"\
             " has a quota's worth of votes".format(ss), file=log)
 
-        assertions_used.append((first_winner.id, "QT", ss))
+        assertions_used.add((first_winner.id, "QT", ss))
 
         max_sample_size = max(max_sample_size, ss)
 
@@ -629,7 +629,7 @@ if __name__ == "__main__":
 
         max_sample_size = max(max_sample_size, ss)
         
-        assertions_used.append((second_winner.id, "QT", ss))
+        assertions_used.add((second_winner.id, "QT", ss))
 
         print("------------------------------------------------",file=log)
         print("Final set of assertions generated:", file=log)
@@ -693,7 +693,7 @@ if __name__ == "__main__":
         print("{} ballot checks required to assert that first winner"\
             " has a quota's worth of votes".format(ss), file=log)
 
-        assertions_used.append((first_winner.id, "QT", None, ss))
+        assertions_used.add((first_winner.id, "QT", None, ss))
 
         max_sample_size = max(max_sample_size, ss)
 
@@ -726,12 +726,12 @@ if __name__ == "__main__":
 
         max_in_outer_loop = np.inf
 
-        best_outer_assertions = []
+        best_outer_assertions = set()
 
         while min_tv < act_tv - 0.01:
             mintv_ss = 0
            
-            outer_loop_assertions = []
+            lts = set()
 
             # First imagine that min tv for first winner is 0, so we are       
             # not generating any LT assertions. 
@@ -747,19 +747,18 @@ if __name__ == "__main__":
                 if mintv_ss >= max_in_outer_loop:
                     break
 
-                outer_loop_assertions.append((first_winner.id, "LT", \
-                    min_tv, mintv_ss))
+                lts.add((first_winner.id, "LT", min_tv, mintv_ss))
 
             aud_tv = act_tv + 0.01
 
             max_in_loop = np.inf
 
-            best_inner_assertions = []
+            best_inner_assertions = None
 
             # MAIN LOOP OF ONE QUOTA METHOD
             while aud_tv < args.maxtv:
 
-                inner_loop_assertions = []
+                inner_loop_assertions = set()
 
                 # Check that TV of first winner is at most aud_TV
                 a = 1 / (1 - aud_tv)
@@ -771,7 +770,7 @@ if __name__ == "__main__":
 
                 ss = ssm_sample_size(threshold, tally_others, INVALID, args)
 
-                inner_loop_assertions.append((first_winner.id, "MT", \
+                inner_loop_assertions.add((first_winner.id, "MT", \
                     aud_tv, ss))
 
                 max_this_loop = max(ss, max(mintv_ss, max_sample_size))
@@ -789,10 +788,8 @@ if __name__ == "__main__":
 
                 ags = {}
 
-                max_with_ags = ss
                 max_with_nls = ss
 
-                revised_ags = []
                 print("AUD TV {}, ss {}".format(aud_tv, ss), file=log)
                 # Compute AGs between original losers and second winner
                 # Note: we do this for each different upper bound on the 
@@ -856,20 +853,10 @@ if __name__ == "__main__":
 
                         ags[c] = ss
 
-                        max_with_ags = max(max_with_ags, ss)
                         print("R-AG({},{}) = {}".format(sw.id, cand_c.id, ss),\
                             file=log)
 
-                        revised_ags.append((sw.id, "R-AG", cand_c.id, ss))
-                    else:
-                        max_with_ags = np.inf
-                        print("R-AG({},{}) NOT POSSIBLE".format(sw.id, \
-                            cand_c.id),file=log)
-                        print("min {}, max {}, amargin {}".format(min_sw,\
-                            max_c, 2*amean - 1), file=log)
-
                 
-                nls = []
                 # Determine NL's between original losers and second winner
                 for c in cands:
                     if c in winners:
@@ -941,7 +928,7 @@ if __name__ == "__main__":
                                 # these ballots to the min tally of 'sw'.
                                 prefs = b.prefs[:]
 
-                                descs = []
+                                descs = set()
                                 max_ags_here = 0
                                             
                                 for d,dval in ags.items():
@@ -950,7 +937,7 @@ if __name__ == "__main__":
                                         if idx_d < s_idx:
                                             prefs.remove(d)
                                             s_idx -= 1
-                                            descs.append((second_winner.id, 
+                                            descs.add((second_winner.id, 
                                                 "R-AG",candidates[d].id, dval)) 
                                             max_ags_here=max(max_ags_here,dval)
 
@@ -986,7 +973,7 @@ if __name__ == "__main__":
                     max_ags_used = 0  
                     merged_helpful_ags = merge_helpful_ags(helpful_ags, \
                         pot_margin_inc)
-      
+
                     # Incorporate use of all AGs that either make the assertion
                     # possible, or whose ASN is already within/equal to current
                     # lower bound on audit difficulty.
@@ -998,21 +985,9 @@ if __name__ == "__main__":
                         assorter += extra_contrib
                         max_ags_used = max(max_ags_used, ag_asn)
 
-                        nls.extend(descs)
+                        inner_loop_assertions.update(descs)
 
-                    cntr = 0
-                    for ag_asn, extra_contrib, descs in merged_helpful_ags:
-                        if ag_asn > max(max_ags_used, max_with_nls):
-                            break
 
-                        assorter += extra_contrib
-                        nls.extend(descs)
-                        
-                        cntr += 1
-
-                    if cntr > 0 and merged_helpful_ags != []:
-                        merged_helpful_ags = merged_helpful_ags[cntr:]
-            
                     # Can we reduce the sample size required for the assertion
                     # by including more AGs?
                     amean = assorter/args.voters
@@ -1033,41 +1008,35 @@ if __name__ == "__main__":
                             ss  = sample_size(amean, args)
                             max_ags_used = max(max_ags_used, ag_asn)
                         
-                            nls.extend(descs)
+                            inner_loop_assertions.update(descs)
                                 
                         max_with_nls = max(max_with_nls, max(max_ags_used,ss))
                         print("NL({},{}) = {}, AGs used {}".format(sw.id, \
-                            cand_c.id, max(max_ags_used,ss), max_ags_used),\
-                            file=log)
+                            cand_c.id, ss, max_ags_used), file=log)
     
-                        nls.append((sw.id, "NL", cand_c.id, ss))
+                        inner_loop_assertions.add((sw.id, "NL", cand_c.id, ss))
                     else:
                         max_with_nls = np.inf
                         print("NL({},{}) NOT POSSIBLE".format(\
                             sw.id, cand_c.id),file=log)
 
-                if max_with_nls < max_with_ags:
-                    inner_loop_assertions.extend(nls)
-                else:
-                    inner_loop_assertions.extend(revised_ags)
-
-                max_this_loop=max(max_this_loop,min(max_with_ags,max_with_nls))
+                max_this_loop=max(max_this_loop,max_with_nls)
 
                 print("Max in loop {}, {}".format(max_this_loop, aud_tv), \
                     file=log)
 
                 if max_this_loop <= max_in_loop:
-                    best_inner_assertions = inner_loop_assertions[:]
+                    best_inner_assertions = inner_loop_assertions
                     max_in_loop = max_this_loop
                     aud_tv += 0.01
                 else:
                     break
 
-            outer_loop_assertions.extend(best_inner_assertions)
-
+            
             if max_in_loop <= max_in_outer_loop:
                 max_in_outer_loop = max_in_loop
-                best_outer_assertions = outer_loop_assertions[:]
+                best_outer_assertions = lts
+                best_outer_assertions.update(best_inner_assertions)
             else:
                 break    
 
@@ -1076,9 +1045,7 @@ if __name__ == "__main__":
             else:
                 min_tv += 0.01
 
-        assertions_used.extend(best_outer_assertions)
-        assertions_used = set(assertions_used)
-         
+        assertions_used.update(best_outer_assertions)
         assertions_text = [(w,n,l) for w,n,l,_ in assertions_used]
 
         # Filter out redundant assertions (eg. an A NL B when we have 
@@ -1212,7 +1179,7 @@ if __name__ == "__main__":
                     candidates[w].id, cost), file = log)
                 known_winners.append((w,cost))
 
-                assertions_used.extend(descs)
+                assertions_used.update(descs)
 
         if len(known_winners) == args.seats:
             print("All winners can be established with AG relationships.",\
