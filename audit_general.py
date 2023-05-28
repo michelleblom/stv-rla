@@ -179,128 +179,6 @@ def rule_out_for_max(prefs, loser, ag_matrix, winners, candidates):
     return False, np.inf, set()
 
 
-# Compute max possible tally of z upon its elimination and the portion of
-# that tally that could move to a given candidate w.
-#
-# Compute number of ballots on which 'z' is preferenced before any of
-# the candidates in 'standing', or where 'z' appears and standing == [].
-#
-# Exclude ballots where a 'c' is preferenced before 'z' and 'c' AG 'z' if
-# the cost of that AG is less than current asn of audit. 
-#def max_tally_z_exc(z, w, ballots, ag_matrix, standing, asn_overall):
-#    count_max = 0
-#    count_z_to_w = 0
-#    for blt in ballots:
-#        for p in blt.prefs:
-#            if p in standing:
-#                break
-
-#            if p == z:
-#                count_max += blt.votes
-#                if w in blt.prefs:
-#                    count_z_to_w += blt.votes
-#                break
-
-#            ag = ag_matrix[p][z] 
-#            if ag != None: # and ag <= asn_overall:
-#                break
-
-#    return count_max, count_z_to_w
-
-
-# Compute an upper bound on the possible transfer value for a candidate c1
-# assuming they are elected with a quota. Return upper bound and ASN required
-# to show that the transfer value for c1, if they are at any point elected
-# with a quota, is less than that upper bound. Idea: compute maximum surplus
-# for c1 given that someone has to be eliminated to elect them. Look at
-# the maximum tally that someone could have when [c1, c2, o] are still
-# standing, and the amount of that tally that could go to c1. 
-#def max_tv_by_z(c1, c2, o, cands, candidates, ballots, delta_ut, args, log,
-#    valid_ballots, INVALID, asn_overall, ag_matrix):
-
-    # NOTE: C1 is the assumed winner for which we are computing TV.
-
-#    zeds_maxtv = []
-#    max_maxtv_v = -1
-
-    # 'z' is the candidate who will give 'c1' its quota 
-#    for z in cands:
-#        if z == c1 or z == c2 or z == o: continue
-
-#        if ag_matrix[z][c1] != None and ag_matrix[z][c1] <= asn_overall:
-#            continue
-#        if ag_matrix[z][c2] != None and ag_matrix[z][c2] <= asn_overall:
-#            continue
-#        if ag_matrix[z][o] != None and ag_matrix[z][o] <= asn_overall:
-#            continue
-
-        # Compute maximum tally of z when [c1, c2, o] are still standing.
-        # Also return the portion of those votes that could move to c1. 
-#        max_t_z, max_t_z_c = max_tally_z_exc(z, c1, ballots, \
-#            ag_matrix, [c1, c2, o], asn_overall)
-
-#        if max_t_z_c > args.quota:
-#            max_t_z = args.quota
-#            max_t_z_c = args.quota
-
-
-        # If cand z gives c1 its quota, maximum transfer 
-        # value will be: max_t_z_c / (max_t_z_c + args.quota)
-#        max_tv_poss = max_t_z_c / (max_t_z_c + args.quota)
-
-#        zeds_maxtv.append((z, max_t_z, max_t_z_c))
-#        max_maxtv_v = max(max_maxtv_v, max_tv_poss)
-
-#    if max_maxtv_v >= args.maxtv or max_maxtv_v == -1:
-#        return args.maxtv, 0
-
-#    cmax = max_maxtv_v + delta_ut
-#    final_ss = -1
-                
-#    while cmax < args.maxtv:
-        # Estimate difficulty of ensuring that for all z in
-        # zeds_maxtv, their maximum "to c1" tally Vz,c <= cmax * Q / (1-cmax) 
-
-        # Upper boud on max z-c tally for the current cmax
-#        Vzc = (cmax * args.quota) / (1 - cmax)
-
-#        prop_other = 1 - (Vzc / valid_ballots) 
-
-        # Continue to increase cmax until we can form all 
-        # |zeds_maxtv| with less than certain cost
-#        max_ss = 0
-#        for z,mtz,mtzc in zeds_maxtv:
-            # Want a mtzc < Vzc assertion
-
-            # Imagine all ballots that we do not categorise
-            # as belonging in the maximum tally of z->c belong
-            # to an imaginary candidate "other". We want
-            # to show that "other" has more than prop_other
-            # proportion of the ballots.
-#            tally_other = valid_ballots - mtzc
-
-#            ss = ssm_sample_size(prop_other, tally_other, INVALID, args)
-
-#            print("With z = {}, ASN = {}".format(candidates[z].id,\
-#                ss), file=log)
-#            max_ss = max(max_ss, ss)
-
-#        if max_ss <= asn_overall:
-#            final_ss = max_ss
-#            break
-
-#        cmax += delta_ut
-
-#    if cmax >= args.maxtv or final_ss == np.inf:
-#        return args.maxtv, 0
-
-#    print("    REV MAX TV for C1,C2 = {}, {}, o = {}, is {}, asn {}".format(\
-#        candidates[c1].id, candidates[c2].id, candidates[o].id, \
-#        cmax, final_ss), file=log)
-
-#    return cmax, final_ss
-
-
 
         
 
@@ -388,6 +266,10 @@ if __name__ == "__main__":
 
     # Output: Log file 
     parser.add_argument('-log', dest='log', type=str)
+    
+    # Input: increment to use when exploring candidate lower and upper 
+    # bounds on first winner's transfer value (for 1-quota method).
+    parser.add_argument('-deltat', dest='deltat', default=0.01, type=float)
     
     # Flags
     # Just simulate STV election
@@ -516,6 +398,8 @@ if __name__ == "__main__":
         # current tally of args.seats other candidates.    
         failed_to_verify = []
 
+        options = {g : [] for g in geliminated}
+
         for c in outcome.cand[args.gelim:]:
             fpc = candidates[c].fp_votes
 
@@ -539,15 +423,20 @@ if __name__ == "__main__":
                         print("GELIM AG({},{}) = {}".format(candidates[c].id, \
                             candidates[g].id, ss), file=log)
 
-                        assertions_used.add((candidates[c].id, "AG",\
-                            candidates[g].id, ss))
-                    else:
-                        failed_to_verify.append(g)
+                        options[g].append((ss,(candidates[c].id, "AG",\
+                            candidates[g].id, ss)))
 
-                    max_sample_size = max(max_sample_size,ss)
-                else:
-                    failed_to_verify.append(g)
-                    max_sample_size = np.inf
+        for g in geliminated:
+            ags = options[g]
+            if len(ags) < args.seats:
+                failed_to_verify.append(g)
+                max_sample_size = np.inf
+            else:
+                ags.sort()
+                for ss,assrtn in ags[:args.seats]:
+                    assertions_used.add(assrtn)
+                    max_sample_size = max(max_sample_size, ss)
+                
 
         print("Group elimination sample size {}".format(max_sample_size), \
             file=log)
@@ -697,6 +586,10 @@ if __name__ == "__main__":
 
         max_sample_size = max(max_sample_size, ss)
 
+        # Increment to use when stepping through candidate upper/lower
+        # bounds on first winner transfer value.
+        deltat = args.deltat 
+
         # For candidate upper bounds on the transfer value of the ballots
         # leaving the first winner's tally pile -- denoted aud_tv -- find
         # the ASN of assertions that show that the second winner cannot be
@@ -727,8 +620,9 @@ if __name__ == "__main__":
         max_in_outer_loop = np.inf
 
         best_outer_assertions = set()
+        best_outer_exp = set()
 
-        while min_tv < act_tv - 0.01:
+        while min_tv < act_tv - deltat:
             mintv_ss = 0
            
             lts = set()
@@ -749,11 +643,12 @@ if __name__ == "__main__":
 
                 lts.add((first_winner.id, "LT", min_tv, mintv_ss))
 
-            aud_tv = act_tv + 0.01
+            aud_tv = act_tv + deltat
 
             max_in_loop = np.inf
 
             best_inner_assertions = None
+            best_inner_explanations = None
 
             # MAIN LOOP OF ONE QUOTA METHOD
             while aud_tv < args.maxtv:
@@ -858,11 +753,16 @@ if __name__ == "__main__":
 
                 
                 # Determine NL's between original losers and second winner
+                # explanations: map between AG/R-AG and the NL's that they
+                # are supporting. 
+                explanations = {}
                 for c in cands:
                     if c in winners:
                         continue
 
                     cand_c = candidates[c]
+
+                    curr_nl = (sw.id, "NL", cand_c.id)
 
                     min_sw = 0 # Min tally for second winner.
                     max_c = 0 # Max tally for candidate c.
@@ -937,8 +837,14 @@ if __name__ == "__main__":
                                         if idx_d < s_idx:
                                             prefs.remove(d)
                                             s_idx -= 1
-                                            descs.add((second_winner.id, 
-                                                "R-AG",candidates[d].id, dval)) 
+                                            rag = (second_winner.id, "R-AG", \
+                                                candidates[d].id, dval)
+                                            descs.add(rag)
+                                            if rag in explanations:
+                                                explanations[rag].add(curr_nl)
+                                            else:
+                                                explanations[rag] = \
+                                                    set([curr_nl])
                                             max_ags_here=max(max_ags_here,dval)
 
                                 assorter += 0.5*b.votes
@@ -987,6 +893,12 @@ if __name__ == "__main__":
 
                         inner_loop_assertions.update(descs)
 
+                        for ag in descs:
+                            if ag in explanations:
+                                explanations[ag].add(curr_nl)
+                            else:
+                                explanations[rag] = set([curr_nl])
+
 
                     # Can we reduce the sample size required for the assertion
                     # by including more AGs?
@@ -1009,6 +921,12 @@ if __name__ == "__main__":
                             max_ags_used = max(max_ags_used, ag_asn)
                         
                             inner_loop_assertions.update(descs)
+
+                            for ag in descs:
+                                if ag in explanations:
+                                    explanations[ag].add(curr_nl)
+                                else:
+                                    explanations[rag] = set([curr_nl])
                                 
                         max_with_nls = max(max_with_nls, max(max_ags_used,ss))
                         print("NL({},{}) = {}, AGs used {}".format(sw.id, \
@@ -1027,8 +945,9 @@ if __name__ == "__main__":
 
                 if max_this_loop <= max_in_loop:
                     best_inner_assertions = inner_loop_assertions
+                    best_inner_explanations = explanations
                     max_in_loop = max_this_loop
-                    aud_tv += 0.01
+                    aud_tv += deltat
                 else:
                     break
 
@@ -1037,13 +956,14 @@ if __name__ == "__main__":
                 max_in_outer_loop = max_in_loop
                 best_outer_assertions = lts
                 best_outer_assertions.update(best_inner_assertions)
+                best_outer_exp = best_inner_explanations
             else:
                 break    
 
             if min_tv == 0:
                 min_tv = act_tv/2.0
             else:
-                min_tv += 0.01
+                min_tv += deltat
 
         assertions_used.update(best_outer_assertions)
         assertions_text = [(w,n,l) for w,n,l,_ in assertions_used]
@@ -1063,6 +983,14 @@ if __name__ == "__main__":
 
             final_assertions.append(assrt)
 
+        for asstn in best_outer_exp:
+            filtered = []
+            for exp in best_outer_exp[asstn]:
+                if exp in final_assertions:
+                    filtered.append(exp)
+
+            best_outer_exp[asstn] = filtered
+
 
         max_sample_size = max(max_sample_size, max_in_outer_loop)
 
@@ -1073,9 +1001,22 @@ if __name__ == "__main__":
             max_sample_size), file=log)
 
         print("------------------------------------------------",file=log)
-        print("Final set of assertions generated:", file=log)
+        print("Assertion set BEFORE filtering:", file=log)
+        for asstn in assertions_used:
+            print(asstn, file=log)
+            
+
+        print("------------------------------------------------",file=log)
+        print("Final set of assertions AFTER filtering:", file=log)
         for asstn in final_assertions:
             print(asstn, file=log)
+
+        print("------------------------------------------------",file=log)
+        print("Explanations for AG/R-AG inclusion:", file=log)
+        for asstn in final_assertions:
+            if asstn in best_outer_exp:
+                print("   Explanation for {}: {}".format(asstn, \
+                    best_outer_exp[asstn]), file=log)
         print("------------------------------------------------",file=log)
 
         print("1Q,{},{},{},{},{}".format(args.data, ncand, valid_ballots, \
@@ -1206,7 +1147,8 @@ if __name__ == "__main__":
     
                 sample = max(ss1, ss2)
 
-                assertions_used.extend([d1, d2])
+                assertions_used.add(d1)
+                assertions_used.add(d2)
 
                 # We can rule candidate 'c' out with sample size 'sample'
                 rule_out.append((candidates[c].id, sample))
