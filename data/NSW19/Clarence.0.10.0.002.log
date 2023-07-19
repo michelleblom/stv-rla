@@ -1,0 +1,86 @@
+VALID BALLOTS 49355
+17 ballot checks required to assert that first winner has a quota's worth of votes
+AUD TV 0.3336054866100588, ss 65
+AG*(2,5) = 31
+AG*(2,4) = 62
+AG*(2,1) = 53
+NL(2,5) = 31, AG*'s used 0
+NL(2,4) = 47, AG*'s used 53
+NL(2,1) = 52, AG*'s used 31
+NL(2,0) = 99, AG*'s used 62
+Max in loop 99, 0.3336054866100588
+AUD TV 0.3836054866100588, ss 30
+AG*(2,5) = 31
+AG*(2,4) = 65
+AG*(2,1) = 54
+NL(2,5) = 31, AG*'s used 0
+NL(2,4) = 49, AG*'s used 54
+NL(2,1) = 53, AG*'s used 31
+NL(2,0) = 107, AG*'s used 65
+Max in loop 107, 0.3836054866100588
+Sample size to show min tv of 0.1418027433050294 is 29
+AUD TV 0.3336054866100588, ss 65
+AG*(2,5) = 30
+AG*(2,4) = 60
+AG*(2,1) = 51
+NL(2,5) = 30, AG*'s used 0
+NL(2,4) = 46, AG*'s used 51
+NL(2,1) = 50, AG*'s used 30
+NL(2,0) = 87, AG*'s used 60
+Max in loop 87, 0.3336054866100588
+AUD TV 0.3836054866100588, ss 30
+AG*(2,5) = 31
+AG*(2,4) = 63
+AG*(2,1) = 52
+NL(2,5) = 31, AG*'s used 0
+NL(2,4) = 47, AG*'s used 52
+NL(2,1) = 51, AG*'s used 31
+NL(2,0) = 94, AG*'s used 63
+Max in loop 94, 0.3836054866100588
+Sample size to show min tv of 0.1918027433050294 is 43
+AUD TV 0.3336054866100588, ss 65
+AG*(2,5) = 30
+AG*(2,4) = 59
+AG*(2,1) = 51
+NL(2,5) = 30, AG*'s used 0
+NL(2,4) = 45, AG*'s used 51
+NL(2,1) = 50, AG*'s used 30
+NL(2,0) = 84, AG*'s used 59
+Max in loop 84, 0.3336054866100588
+AUD TV 0.3836054866100588, ss 30
+AG*(2,5) = 31
+AG*(2,4) = 62
+AG*(2,1) = 52
+NL(2,5) = 31, AG*'s used 0
+NL(2,4) = 47, AG*'s used 52
+NL(2,1) = 51, AG*'s used 31
+NL(2,0) = 90, AG*'s used 62
+Max in loop 90, 0.3836054866100588
+Sample size required for audit is 84 ballots
+------------------------------------------------
+Assertion set BEFORE filtering:
+(2, 'NL', 1, 50)
+(2, 'NL', 5, 30)
+(3, 'MT', 0.3336054866100588, 65)
+(3, 'QT', None, 17)
+(2, 'NL', 4, 45)
+(2, 'AG*', 5, 30)
+(2, 'AG*', 4, 59)
+(2, 'AG*', 1, 51)
+(3, 'LT', 0.1918027433050294, 43)
+(2, 'NL', 0, 84)
+------------------------------------------------
+Final set of assertions AFTER filtering:
+(3, 'MT', 0.3336054866100588, 65)
+(3, 'QT', None, 17)
+(2, 'AG*', 5, 30)
+(2, 'AG*', 4, 59)
+(2, 'AG*', 1, 51)
+(3, 'LT', 0.1918027433050294, 43)
+(2, 'NL', 0, 84)
+------------------------------------------------
+Explanations for AG* inclusion:
+   Explanation for (2, 'AG*', 5, 30): []
+   Explanation for (2, 'AG*', 4, 59): []
+   Explanation for (2, 'AG*', 1, 51): []
+------------------------------------------------

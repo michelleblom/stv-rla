@@ -1,0 +1,141 @@
+VALID BALLOTS 4179
+31 ballot checks required to assert that first winner has a quota's worth of votes
+AUD TV 0.2290341578327444, ss 87
+AG*(3,9) = 12
+AG*(3,8) = 14
+AG*(3,7) = 16
+AG*(3,6) = 16
+AG*(3,5) = 17
+NL(3,9) = 12, AG*'s used 0
+NL(3,8) = 14, AG*'s used 12
+NL(3,7) = 15, AG*'s used 16
+NL(3,6) = 16, AG*'s used 16
+NL(3,5) = 15, AG*'s used 16
+Max in loop 87, 0.2290341578327444
+AUD TV 0.2790341578327444, ss 40
+AG*(3,9) = 12
+AG*(3,8) = 14
+AG*(3,7) = 16
+AG*(3,6) = 17
+AG*(3,5) = 17
+NL(3,9) = 12, AG*'s used 0
+NL(3,8) = 14, AG*'s used 12
+NL(3,7) = 16, AG*'s used 14
+NL(3,6) = 16, AG*'s used 16
+NL(3,5) = 16, AG*'s used 16
+Max in loop 40, 0.2790341578327444
+AUD TV 0.32903415783274437, ss 25
+AG*(3,9) = 12
+AG*(3,8) = 15
+AG*(3,7) = 16
+AG*(3,6) = 17
+AG*(3,5) = 17
+NL(3,9) = 12, AG*'s used 0
+NL(3,8) = 14, AG*'s used 12
+NL(3,7) = 16, AG*'s used 15
+NL(3,6) = 16, AG*'s used 16
+NL(3,5) = 16, AG*'s used 16
+Max in loop 31, 0.32903415783274437
+AUD TV 0.37903415783274436, ss 17
+AG*(3,9) = 12
+AG*(3,8) = 15
+AG*(3,7) = 16
+AG*(3,6) = 17
+AG*(3,5) = 17
+NL(3,9) = 12, AG*'s used 0
+NL(3,8) = 15, AG*'s used 12
+NL(3,7) = 16, AG*'s used 15
+NL(3,6) = 16, AG*'s used 16
+NL(3,5) = 16, AG*'s used 17
+Max in loop 31, 0.37903415783274436
+AUD TV 0.42903415783274435, ss 12
+AG*(3,9) = 12
+AG*(3,8) = 15
+AG*(3,7) = 17
+AG*(3,6) = 17
+AG*(3,5) = 17
+NL(3,9) = 12, AG*'s used 0
+NL(3,8) = 15, AG*'s used 12
+NL(3,7) = 16, AG*'s used 15
+NL(3,6) = 15, AG*'s used 17
+NL(3,5) = 16, AG*'s used 17
+Max in loop 31, 0.42903415783274435
+AUD TV 0.47903415783274433, ss 9
+AG*(3,9) = 12
+AG*(3,8) = 15
+AG*(3,7) = 17
+AG*(3,6) = 18
+AG*(3,5) = 18
+NL(3,9) = 12, AG*'s used 0
+NL(3,8) = 15, AG*'s used 12
+NL(3,7) = 17, AG*'s used 15
+NL(3,6) = 17, AG*'s used 17
+NL(3,5) = 17, AG*'s used 17
+Max in loop 31, 0.47903415783274433
+AUD TV 0.5290341578327443, ss 7
+AG*(3,9) = 12
+AG*(3,8) = 15
+AG*(3,7) = 17
+AG*(3,6) = 18
+AG*(3,5) = 18
+NL(3,9) = 12, AG*'s used 0
+NL(3,8) = 15, AG*'s used 12
+NL(3,7) = 17, AG*'s used 15
+NL(3,6) = 17, AG*'s used 17
+NL(3,5) = 17, AG*'s used 17
+Max in loop 31, 0.5290341578327443
+AUD TV 0.5790341578327444, ss 5
+AG*(3,9) = 12
+AG*(3,8) = 15
+AG*(3,7) = 17
+AG*(3,6) = 18
+AG*(3,5) = 18
+NL(3,9) = 12, AG*'s used 0
+NL(3,8) = 15, AG*'s used 12
+NL(3,7) = 17, AG*'s used 15
+NL(3,6) = 17, AG*'s used 17
+NL(3,5) = 17, AG*'s used 17
+Max in loop 31, 0.5790341578327444
+AUD TV 0.6290341578327444, ss 4
+AG*(3,9) = 12
+AG*(3,8) = 15
+AG*(3,7) = 18
+AG*(3,6) = 19
+AG*(3,5) = 18
+NL(3,9) = 12, AG*'s used 0
+NL(3,8) = 15, AG*'s used 12
+NL(3,7) = 17, AG*'s used 15
+NL(3,6) = 16, AG*'s used 18
+NL(3,5) = 18, AG*'s used 18
+Max in loop 31, 0.6290341578327444
+Sample size to show min tv of 0.0895170789163722 is 57
+Sample size required for audit is 31 ballots
+------------------------------------------------
+Assertion set BEFORE filtering:
+(3, 'NL', 5, 18)
+(3, 'AG*', 9, 12)
+(3, 'AG*', 8, 15)
+(3, 'NL', 8, 15)
+(4, 'QT', None, 31)
+(3, 'NL', 7, 17)
+(3, 'AG*', 5, 18)
+(3, 'AG*', 7, 18)
+(3, 'NL', 9, 12)
+(4, 'MT', 0.6290341578327444, 4)
+(3, 'NL', 6, 16)
+------------------------------------------------
+Final set of assertions AFTER filtering:
+(3, 'AG*', 9, 12)
+(3, 'AG*', 8, 15)
+(4, 'QT', None, 31)
+(3, 'AG*', 5, 18)
+(3, 'AG*', 7, 18)
+(4, 'MT', 0.6290341578327444, 4)
+(3, 'NL', 6, 16)
+------------------------------------------------
+Explanations for AG* inclusion:
+   Explanation for (3, 'AG*', 9, 12): []
+   Explanation for (3, 'AG*', 8, 15): []
+   Explanation for (3, 'AG*', 5, 18): []
+   Explanation for (3, 'AG*', 7, 18): []
+------------------------------------------------

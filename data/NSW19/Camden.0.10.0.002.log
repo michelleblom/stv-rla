@@ -1,0 +1,105 @@
+VALID BALLOTS 62772
+23 ballot checks required to assert that first winner has a quota's worth of votes
+AUD TV 0.2749712952331568, ss 77
+AG*(2,3) = 18
+AG*(2,0) = 18
+AG*(2,6) = 19
+AG*(2,5) = 23
+AG*(2,1) = 32
+NL(2,3) = 18, AG*'s used 18
+NL(2,0) = 18, AG*'s used 18
+NL(2,6) = 19, AG*'s used 18
+NL(2,5) = 21, AG*'s used 19
+NL(2,1) = 26, AG*'s used 23
+Max in loop 77, 0.2749712952331568
+AUD TV 0.32497129523315677, ss 36
+AG*(2,3) = 18
+AG*(2,0) = 18
+AG*(2,6) = 19
+AG*(2,5) = 23
+AG*(2,1) = 32
+NL(2,3) = 18, AG*'s used 18
+NL(2,0) = 18, AG*'s used 18
+NL(2,6) = 19, AG*'s used 18
+NL(2,5) = 21, AG*'s used 19
+NL(2,1) = 26, AG*'s used 23
+Max in loop 36, 0.32497129523315677
+AUD TV 0.37497129523315675, ss 22
+AG*(2,3) = 18
+AG*(2,0) = 18
+AG*(2,6) = 19
+AG*(2,5) = 23
+AG*(2,1) = 33
+NL(2,3) = 18, AG*'s used 18
+NL(2,0) = 18, AG*'s used 18
+NL(2,6) = 19, AG*'s used 18
+NL(2,5) = 21, AG*'s used 19
+NL(2,1) = 27, AG*'s used 23
+Max in loop 27, 0.37497129523315675
+AUD TV 0.42497129523315674, ss 15
+AG*(2,3) = 18
+AG*(2,0) = 19
+AG*(2,6) = 19
+AG*(2,5) = 24
+AG*(2,1) = 34
+NL(2,3) = 18, AG*'s used 0
+NL(2,0) = 18, AG*'s used 18
+NL(2,6) = 19, AG*'s used 19
+NL(2,5) = 22, AG*'s used 19
+NL(2,1) = 27, AG*'s used 24
+Max in loop 27, 0.42497129523315674
+AUD TV 0.47497129523315673, ss 11
+AG*(2,3) = 18
+AG*(2,0) = 19
+AG*(2,6) = 19
+AG*(2,5) = 24
+AG*(2,1) = 34
+NL(2,3) = 18, AG*'s used 0
+NL(2,0) = 18, AG*'s used 19
+NL(2,6) = 19, AG*'s used 19
+NL(2,5) = 22, AG*'s used 19
+NL(2,1) = 27, AG*'s used 24
+Max in loop 27, 0.47497129523315673
+AUD TV 0.5249712952331568, ss 8
+AG*(2,3) = 19
+AG*(2,0) = 19
+AG*(2,6) = 19
+AG*(2,5) = 24
+AG*(2,1) = 35
+NL(2,3) = 17, AG*'s used 19
+NL(2,0) = 18, AG*'s used 19
+NL(2,6) = 19, AG*'s used 19
+NL(2,5) = 22, AG*'s used 19
+NL(2,1) = 28, AG*'s used 24
+Max in loop 28, 0.5249712952331568
+Sample size to show min tv of 0.1124856476165784 is 42
+Sample size required for audit is 27 ballots
+------------------------------------------------
+Assertion set BEFORE filtering:
+(2, 'AG*', 0, 19)
+(2, 'AG*', 3, 18)
+(2, 'AG*', 6, 19)
+(2, 'NL', 0, 18)
+(4, 'MT', 0.47497129523315673, 11)
+(2, 'AG*', 5, 24)
+(4, 'QT', None, 23)
+(2, 'NL', 3, 18)
+(2, 'NL', 6, 19)
+(2, 'NL', 5, 22)
+(2, 'NL', 1, 27)
+------------------------------------------------
+Final set of assertions AFTER filtering:
+(2, 'AG*', 0, 19)
+(2, 'AG*', 3, 18)
+(2, 'AG*', 6, 19)
+(4, 'MT', 0.47497129523315673, 11)
+(2, 'AG*', 5, 24)
+(4, 'QT', None, 23)
+(2, 'NL', 1, 27)
+------------------------------------------------
+Explanations for AG* inclusion:
+   Explanation for (2, 'AG*', 0, 19): []
+   Explanation for (2, 'AG*', 3, 18): []
+   Explanation for (2, 'AG*', 6, 19): []
+   Explanation for (2, 'AG*', 5, 24): []
+------------------------------------------------

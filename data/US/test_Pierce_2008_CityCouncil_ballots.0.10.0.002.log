@@ -1,0 +1,73 @@
+VALID BALLOTS 40000
+13 ballot checks required to assert that first winner has a quota's worth of votes
+AUD TV 0.3821981269094005, ss 56
+AG*(129,130) = 57
+AG*(129,39) = 14
+NL(129,130) = 57, AG*'s used 14
+NL(129,39) = 14, AG*'s used 0
+Max in loop 57, 0.3821981269094005
+AUD TV 0.4321981269094005, ss 26
+AG*(129,130) = 61
+AG*(129,39) = 14
+NL(129,130) = 61, AG*'s used 14
+NL(129,39) = 14, AG*'s used 0
+Max in loop 61, 0.4321981269094005
+Sample size to show min tv of 0.16609906345470027 is 23
+AUD TV 0.3821981269094005, ss 56
+AG*(129,130) = 46
+AG*(129,39) = 14
+NL(129,130) = 45, AG*'s used 14
+NL(129,39) = 14, AG*'s used 0
+Max in loop 56, 0.3821981269094005
+AUD TV 0.4321981269094005, ss 26
+AG*(129,130) = 48
+AG*(129,39) = 14
+NL(129,130) = 48, AG*'s used 14
+NL(129,39) = 14, AG*'s used 0
+Max in loop 48, 0.4321981269094005
+AUD TV 0.4821981269094005, ss 15
+AG*(129,130) = 50
+AG*(129,39) = 14
+NL(129,130) = 50, AG*'s used 14
+NL(129,39) = 14, AG*'s used 0
+Max in loop 50, 0.4821981269094005
+Sample size to show min tv of 0.21609906345470026 is 31
+AUD TV 0.3821981269094005, ss 56
+AG*(129,130) = 43
+AG*(129,39) = 13
+NL(129,130) = 43, AG*'s used 13
+NL(129,39) = 13, AG*'s used 0
+Max in loop 56, 0.3821981269094005
+AUD TV 0.4321981269094005, ss 26
+AG*(129,130) = 45
+AG*(129,39) = 13
+NL(129,130) = 45, AG*'s used 13
+NL(129,39) = 13, AG*'s used 0
+Max in loop 45, 0.4321981269094005
+AUD TV 0.4821981269094005, ss 15
+AG*(129,130) = 47
+AG*(129,39) = 13
+NL(129,130) = 47, AG*'s used 13
+NL(129,39) = 13, AG*'s used 0
+Max in loop 47, 0.4821981269094005
+Sample size to show min tv of 0.26609906345470025 is 51
+Sample size required for audit is 45 ballots
+------------------------------------------------
+Assertion set BEFORE filtering:
+(131, 'MT', 0.4321981269094005, 26)
+(131, 'LT', 0.21609906345470026, 31)
+(129, 'AG*', 39, 13)
+(129, 'NL', 130, 45)
+(131, 'QT', None, 13)
+(129, 'NL', 39, 13)
+------------------------------------------------
+Final set of assertions AFTER filtering:
+(131, 'MT', 0.4321981269094005, 26)
+(131, 'LT', 0.21609906345470026, 31)
+(129, 'AG*', 39, 13)
+(129, 'NL', 130, 45)
+(131, 'QT', None, 13)
+------------------------------------------------
+Explanations for AG* inclusion:
+   Explanation for (129, 'AG*', 39, 13): []
+------------------------------------------------

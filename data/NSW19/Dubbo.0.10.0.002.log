@@ -1,0 +1,163 @@
+VALID BALLOTS 48455
+56 ballot checks required to assert that first winner has a quota's worth of votes
+AUD TV 0.1591500744581104, ss 103
+AG*(1,0) = 17
+AG*(1,6) = 18
+AG*(1,3) = 22
+AG*(1,4) = 38
+AG*(1,2) = 41
+NL(1,0) = 17, AG*'s used 0
+NL(1,6) = 18, AG*'s used 17
+NL(1,3) = 22, AG*'s used 18
+NL(1,4) = 35, AG*'s used 22
+NL(1,2) = 32, AG*'s used 38
+Max in loop 103, 0.1591500744581104
+AUD TV 0.2091500744581104, ss 48
+AG*(1,0) = 17
+AG*(1,6) = 18
+AG*(1,3) = 22
+AG*(1,4) = 38
+AG*(1,2) = 42
+NL(1,0) = 17, AG*'s used 0
+NL(1,6) = 18, AG*'s used 17
+NL(1,3) = 22, AG*'s used 18
+NL(1,4) = 35, AG*'s used 22
+NL(1,2) = 32, AG*'s used 38
+Max in loop 56, 0.2091500744581104
+AUD TV 0.2591500744581104, ss 30
+AG*(1,0) = 17
+AG*(1,6) = 18
+AG*(1,3) = 22
+AG*(1,4) = 39
+AG*(1,2) = 42
+NL(1,0) = 17, AG*'s used 0
+NL(1,6) = 18, AG*'s used 17
+NL(1,3) = 22, AG*'s used 18
+NL(1,4) = 35, AG*'s used 22
+NL(1,2) = 38, AG*'s used 22
+Max in loop 56, 0.2591500744581104
+AUD TV 0.3091500744581104, ss 21
+AG*(1,0) = 17
+AG*(1,6) = 18
+AG*(1,3) = 22
+AG*(1,4) = 39
+AG*(1,2) = 42
+NL(1,0) = 17, AG*'s used 0
+NL(1,6) = 18, AG*'s used 17
+NL(1,3) = 22, AG*'s used 18
+NL(1,4) = 36, AG*'s used 22
+NL(1,2) = 32, AG*'s used 39
+Max in loop 56, 0.3091500744581104
+AUD TV 0.35915007445811037, ss 15
+AG*(1,0) = 17
+AG*(1,6) = 18
+AG*(1,3) = 22
+AG*(1,4) = 40
+AG*(1,2) = 43
+NL(1,0) = 17, AG*'s used 0
+NL(1,6) = 18, AG*'s used 17
+NL(1,3) = 22, AG*'s used 18
+NL(1,4) = 36, AG*'s used 22
+NL(1,2) = 39, AG*'s used 22
+Max in loop 56, 0.35915007445811037
+AUD TV 0.40915007445811036, ss 11
+AG*(1,0) = 17
+AG*(1,6) = 18
+AG*(1,3) = 22
+AG*(1,4) = 40
+AG*(1,2) = 43
+NL(1,0) = 17, AG*'s used 0
+NL(1,6) = 18, AG*'s used 17
+NL(1,3) = 22, AG*'s used 18
+NL(1,4) = 37, AG*'s used 22
+NL(1,2) = 39, AG*'s used 22
+Max in loop 56, 0.40915007445811036
+AUD TV 0.45915007445811035, ss 9
+AG*(1,0) = 17
+AG*(1,6) = 18
+AG*(1,3) = 22
+AG*(1,4) = 41
+AG*(1,2) = 43
+NL(1,0) = 17, AG*'s used 0
+NL(1,6) = 18, AG*'s used 17
+NL(1,3) = 22, AG*'s used 18
+NL(1,4) = 37, AG*'s used 22
+NL(1,2) = 39, AG*'s used 22
+Max in loop 56, 0.45915007445811035
+AUD TV 0.5091500744581103, ss 7
+AG*(1,0) = 17
+AG*(1,6) = 18
+AG*(1,3) = 23
+AG*(1,4) = 41
+AG*(1,2) = 44
+NL(1,0) = 17, AG*'s used 0
+NL(1,6) = 18, AG*'s used 17
+NL(1,3) = 22, AG*'s used 18
+NL(1,4) = 38, AG*'s used 23
+NL(1,2) = 40, AG*'s used 23
+Max in loop 56, 0.5091500744581103
+AUD TV 0.5591500744581104, ss 5
+AG*(1,0) = 18
+AG*(1,6) = 18
+AG*(1,3) = 23
+AG*(1,4) = 42
+AG*(1,2) = 44
+NL(1,0) = 17, AG*'s used 18
+NL(1,6) = 18, AG*'s used 18
+NL(1,3) = 22, AG*'s used 18
+NL(1,4) = 38, AG*'s used 23
+NL(1,2) = 40, AG*'s used 23
+Max in loop 56, 0.5591500744581104
+AUD TV 0.6091500744581104, ss 4
+AG*(1,0) = 18
+AG*(1,6) = 18
+AG*(1,3) = 23
+AG*(1,4) = 42
+AG*(1,2) = 44
+NL(1,0) = 17, AG*'s used 18
+NL(1,6) = 18, AG*'s used 18
+NL(1,3) = 22, AG*'s used 18
+NL(1,4) = 39, AG*'s used 23
+NL(1,2) = 40, AG*'s used 23
+Max in loop 56, 0.6091500744581104
+AUD TV 0.6591500744581105, ss 3
+AG*(1,0) = 18
+AG*(1,6) = 19
+AG*(1,3) = 23
+AG*(1,4) = 43
+AG*(1,2) = 45
+NL(1,0) = 18, AG*'s used 0
+NL(1,6) = 18, AG*'s used 18
+NL(1,3) = 22, AG*'s used 19
+NL(1,4) = 39, AG*'s used 23
+NL(1,2) = 41, AG*'s used 23
+Max in loop 56, 0.6591500744581105
+Sample size to show min tv of 0.05457503722905521 is 106
+Sample size required for audit is 56 ballots
+------------------------------------------------
+Assertion set BEFORE filtering:
+(5, 'MT', 0.6591500744581105, 3)
+(1, 'AG*', 3, 23)
+(1, 'NL', 4, 39)
+(1, 'NL', 0, 18)
+(1, 'AG*', 0, 18)
+(1, 'NL', 3, 22)
+(1, 'NL', 2, 41)
+(1, 'AG*', 6, 19)
+(5, 'QT', None, 56)
+(1, 'NL', 6, 18)
+------------------------------------------------
+Final set of assertions AFTER filtering:
+(5, 'MT', 0.6591500744581105, 3)
+(1, 'AG*', 3, 23)
+(1, 'NL', 4, 39)
+(1, 'AG*', 0, 18)
+(1, 'NL', 2, 41)
+(1, 'AG*', 6, 19)
+(5, 'QT', None, 56)
+------------------------------------------------
+Explanations for AG* inclusion:
+   Explanation for (1, 'AG*', 3, 23): []
+   Explanation for (1, 'AG*', 0, 18): []
+   Explanation for (1, 'AG*', 6, 19): []
+------------------------------------------------

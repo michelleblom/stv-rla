@@ -1,0 +1,93 @@
+VALID BALLOTS 48492
+13 ballot checks required to assert that first winner has a quota's worth of votes
+AUD TV 0.3777188604699522, ss 57
+AG*(5,1) = 17
+AG*(5,4) = 18
+AG*(5,0) = 17
+AG*(5,3) = 19
+AG*(5,7) = 19
+AG*(5,6) = 24
+NL(5,1) = 17, AG*'s used 17
+NL(5,4) = 18, AG*'s used 17
+NL(5,0) = 17, AG*'s used 17
+NL(5,3) = 18, AG*'s used 18
+NL(5,7) = 18, AG*'s used 19
+NL(5,6) = 22, AG*'s used 19
+Max in loop 57, 0.3777188604699522
+AUD TV 0.42771886046995217, ss 26
+AG*(5,1) = 17
+AG*(5,4) = 18
+AG*(5,0) = 17
+AG*(5,3) = 19
+AG*(5,7) = 19
+AG*(5,6) = 24
+NL(5,1) = 17, AG*'s used 17
+NL(5,4) = 18, AG*'s used 17
+NL(5,0) = 17, AG*'s used 17
+NL(5,3) = 18, AG*'s used 18
+NL(5,7) = 19, AG*'s used 19
+NL(5,6) = 22, AG*'s used 19
+Max in loop 26, 0.42771886046995217
+AUD TV 0.47771886046995216, ss 15
+AG*(5,1) = 17
+AG*(5,4) = 18
+AG*(5,0) = 17
+AG*(5,3) = 19
+AG*(5,7) = 20
+AG*(5,6) = 24
+NL(5,1) = 17, AG*'s used 17
+NL(5,4) = 18, AG*'s used 17
+NL(5,0) = 17, AG*'s used 17
+NL(5,3) = 19, AG*'s used 18
+NL(5,7) = 19, AG*'s used 19
+NL(5,6) = 22, AG*'s used 20
+Max in loop 22, 0.47771886046995216
+AUD TV 0.5277188604699522, ss 10
+AG*(5,1) = 17
+AG*(5,4) = 18
+AG*(5,0) = 18
+AG*(5,3) = 19
+AG*(5,7) = 20
+AG*(5,6) = 24
+NL(5,1) = 17, AG*'s used 0
+NL(5,4) = 18, AG*'s used 18
+NL(5,0) = 17, AG*'s used 18
+NL(5,3) = 19, AG*'s used 18
+NL(5,7) = 19, AG*'s used 19
+NL(5,6) = 23, AG*'s used 20
+Max in loop 23, 0.5277188604699522
+Sample size to show min tv of 0.1638594302349761 is 23
+Sample size required for audit is 22 ballots
+------------------------------------------------
+Assertion set BEFORE filtering:
+(5, 'NL', 6, 22)
+(5, 'NL', 1, 17)
+(5, 'NL', 4, 18)
+(5, 'AG*', 4, 18)
+(5, 'AG*', 0, 17)
+(5, 'AG*', 1, 17)
+(5, 'NL', 0, 17)
+(5, 'AG*', 3, 19)
+(2, 'QT', None, 13)
+(5, 'NL', 3, 19)
+(5, 'AG*', 7, 20)
+(2, 'MT', 0.47771886046995216, 15)
+(5, 'NL', 7, 19)
+------------------------------------------------
+Final set of assertions AFTER filtering:
+(5, 'NL', 6, 22)
+(5, 'AG*', 4, 18)
+(5, 'AG*', 0, 17)
+(5, 'AG*', 1, 17)
+(5, 'AG*', 3, 19)
+(2, 'QT', None, 13)
+(5, 'AG*', 7, 20)
+(2, 'MT', 0.47771886046995216, 15)
+------------------------------------------------
+Explanations for AG* inclusion:
+   Explanation for (5, 'AG*', 4, 18): []
+   Explanation for (5, 'AG*', 0, 17): []
+   Explanation for (5, 'AG*', 1, 17): []
+   Explanation for (5, 'AG*', 3, 19): []
+   Explanation for (5, 'AG*', 7, 20): []
+------------------------------------------------

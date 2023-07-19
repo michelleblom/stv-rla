@@ -1,0 +1,57 @@
+VALID BALLOTS 153528
+13 ballot checks required to assert that first winner has a quota's worth of votes
+AUD TV 0.38218936764360467, ss 56
+AG*(440,442) = 15
+AG*(440,132) = 11
+NL(440,442) = 15, AG*'s used 11
+NL(440,132) = 11, AG*'s used 0
+Max in loop 56, 0.38218936764360467
+AUD TV 0.43218936764360466, ss 26
+AG*(440,442) = 15
+AG*(440,132) = 11
+NL(440,442) = 15, AG*'s used 11
+NL(440,132) = 11, AG*'s used 0
+Max in loop 26, 0.43218936764360466
+AUD TV 0.48218936764360465, ss 15
+AG*(440,442) = 16
+AG*(440,132) = 11
+NL(440,442) = 16, AG*'s used 11
+NL(440,132) = 11, AG*'s used 0
+Max in loop 16, 0.48218936764360465
+AUD TV 0.5321893676436047, ss 10
+AG*(440,442) = 16
+AG*(440,132) = 11
+NL(440,442) = 16, AG*'s used 11
+NL(440,132) = 11, AG*'s used 0
+Max in loop 16, 0.5321893676436047
+AUD TV 0.5821893676436047, ss 7
+AG*(440,442) = 16
+AG*(440,132) = 11
+NL(440,442) = 16, AG*'s used 11
+NL(440,132) = 11, AG*'s used 0
+Max in loop 16, 0.5821893676436047
+AUD TV 0.6321893676436048, ss 5
+AG*(440,442) = 17
+AG*(440,132) = 11
+NL(440,442) = 17, AG*'s used 11
+NL(440,132) = 11, AG*'s used 0
+Max in loop 17, 0.6321893676436048
+Sample size to show min tv of 0.16609468382180234 is 23
+Sample size required for audit is 16 ballots
+------------------------------------------------
+Assertion set BEFORE filtering:
+(440, 'AG*', 132, 11)
+(441, 'MT', 0.5821893676436047, 7)
+(440, 'NL', 442, 16)
+(441, 'QT', None, 13)
+(440, 'NL', 132, 11)
+------------------------------------------------
+Final set of assertions AFTER filtering:
+(440, 'AG*', 132, 11)
+(441, 'MT', 0.5821893676436047, 7)
+(440, 'NL', 442, 16)
+(441, 'QT', None, 13)
+------------------------------------------------
+Explanations for AG* inclusion:
+   Explanation for (440, 'AG*', 132, 11): []
+------------------------------------------------

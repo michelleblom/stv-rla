@@ -1,0 +1,73 @@
+VALID BALLOTS 51936
+11 ballot checks required to assert that first winner has a quota's worth of votes
+AUD TV 0.42910629751829005, ss 48
+AG*(0,1) = 49
+AG*(0,2) = 116
+NL(0,1) = 49, AG*'s used 0
+NL(0,2) = 104, AG*'s used 49
+Max in loop 104, 0.42910629751829005
+AUD TV 0.47910629751829004, ss 22
+AG*(0,1) = 51
+AG*(0,2) = 139
+NL(0,1) = 51, AG*'s used 0
+NL(0,2) = 121, AG*'s used 51
+Max in loop 121, 0.47910629751829004
+Sample size to show min tv of 0.18955314875914503 is 18
+AUD TV 0.42910629751829005, ss 48
+AG*(0,1) = 44
+AG*(0,2) = 96
+NL(0,1) = 44, AG*'s used 0
+NL(0,2) = 83, AG*'s used 44
+Max in loop 83, 0.42910629751829005
+AUD TV 0.47910629751829004, ss 22
+AG*(0,1) = 47
+AG*(0,2) = 110
+NL(0,1) = 47, AG*'s used 0
+NL(0,2) = 93, AG*'s used 47
+Max in loop 93, 0.47910629751829004
+Sample size to show min tv of 0.23955314875914502 is 23
+AUD TV 0.42910629751829005, ss 48
+AG*(0,1) = 43
+AG*(0,2) = 91
+NL(0,1) = 43, AG*'s used 0
+NL(0,2) = 78, AG*'s used 43
+Max in loop 78, 0.42910629751829005
+AUD TV 0.47910629751829004, ss 22
+AG*(0,1) = 46
+AG*(0,2) = 105
+NL(0,1) = 46, AG*'s used 0
+NL(0,2) = 88, AG*'s used 46
+Max in loop 88, 0.47910629751829004
+Sample size to show min tv of 0.289553148759145 is 33
+AUD TV 0.42910629751829005, ss 48
+AG*(0,1) = 43
+AG*(0,2) = 87
+NL(0,1) = 43, AG*'s used 0
+NL(0,2) = 75, AG*'s used 43
+Max in loop 75, 0.42910629751829005
+AUD TV 0.47910629751829004, ss 22
+AG*(0,1) = 45
+AG*(0,2) = 100
+NL(0,1) = 45, AG*'s used 0
+NL(0,2) = 83, AG*'s used 45
+Max in loop 83, 0.47910629751829004
+Sample size required for audit is 75 ballots
+------------------------------------------------
+Assertion set BEFORE filtering:
+(3, 'QT', None, 11)
+(0, 'AG*', 1, 43)
+(0, 'NL', 1, 43)
+(3, 'MT', 0.42910629751829005, 48)
+(3, 'LT', 0.289553148759145, 33)
+(0, 'NL', 2, 75)
+------------------------------------------------
+Final set of assertions AFTER filtering:
+(3, 'QT', None, 11)
+(0, 'AG*', 1, 43)
+(3, 'MT', 0.42910629751829005, 48)
+(3, 'LT', 0.289553148759145, 33)
+(0, 'NL', 2, 75)
+------------------------------------------------
+Explanations for AG* inclusion:
+   Explanation for (0, 'AG*', 1, 43): []
+------------------------------------------------

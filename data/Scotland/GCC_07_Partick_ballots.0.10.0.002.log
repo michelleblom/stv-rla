@@ -1,0 +1,217 @@
+VALID BALLOTS 12744
+Winner 7
+Winner 3
+Computing AG relationships
+9 AG 1 = 138
+4 AG 5 = 224
+4 AG 1 = 109
+2 AG 5 = 109
+2 AG 1 = 111
+2 AG 8 = 552
+6 AG 5 = 65
+6 AG 1 = 44
+6 AG 8 = 94
+6 AG 9 = 600
+7 AG 5 = 36
+7 AG 1 = 35
+7 AG 8 = 37
+7 AG 9 = 279
+3 AG 5 = 88
+3 AG 1 = 63
+3 AG 8 = 160
+Ruling out candidates: [(5, 65), (1, 44), (8, 94), (9, 600)]
+Sample size for ruling out cands: 600
+ALTERNATE OUTCOME PAIR: 4,2
+   (1) can we show that 6 NL 2? 
+        a. margin -0.07943607449257084
+      no, min 21.70,2765 vs max 29.64,3893
+   (1) can we show that 6 NL 4? 
+        a. margin -0.10914940364092851
+      no, min 21.70,2765 vs max 32.61,4265
+   (1) can we show that 7 NL 2? 
+        a. margin -0.06481481481481499
+      no, min 24.65,3141 vs max 31.13,4111
+   (1) can we show that 7 NL 4? 
+        a. margin -0.10315965683197292
+      no, min 24.65,3141 vs max 34.96,4583
+   (1) can we show that 3 NL 2? 
+        a. margin -0.1823080142289184
+      no, min 17.00,2167 vs max 35.23,4556
+   (1) can we show that 3 NL 4? 
+        a. margin -0.060760619376438396
+      no, min 17.00,2167 vs max 23.08,3011
+ALTERNATE OUTCOME PAIR: 4,6
+   (1) can we show that 2 NL 6? 
+        a. margin -0.20456685499058413
+      no, min 14.33,1826 vs max 34.78,4571
+   (1) can we show that 2 NL 4? 
+        a. margin -0.19392132245239613
+      no, min 14.33,1826 vs max 33.72,4469
+   (1) can we show that 7 NL 6? 
+        a. margin -0.10695229127432548
+      no, min 24.65,3141 vs max 35.34,4664
+   (1) can we show that 7 NL 4? 
+        a. margin -0.09716991002301723
+      no, min 24.65,3141 vs max 34.36,4583
+   (1) can we show that 3 NL 6? 
+        a. margin -0.20085268884703922
+      no, min 17.00,2167 vs max 37.09,4799
+   (1) can we show that 3 NL 4? 
+        a. margin -0.054090813977818786
+      no, min 17.00,2167 vs max 22.41,3011
+ALTERNATE OUTCOME PAIR: 4,7
+   (1) can we show that 2 NL 7? 
+        a. margin -0.18869010253191043
+      no, min 14.33,1826 vs max 33.20,4319
+   (1) can we show that 2 NL 4? 
+        a. margin -0.19622305921741
+      no, min 14.33,1826 vs max 33.95,4469
+   (1) can we show that 6 NL 7? 
+        a. margin -0.11048336472065168
+      no, min 21.70,2765 vs max 32.74,4255
+   (1) can we show that 6 NL 4? 
+        a. margin -0.10679535467670975
+      no, min 21.70,2765 vs max 32.38,4265
+   (1) can we show that 3 NL 7? 
+        a. margin -0.18481899979075112
+      no, min 17.00,2167 vs max 35.49,4569
+   (1) can we show that 3 NL 4? 
+        a. margin -0.05634023854362791
+      no, min 17.00,2167 vs max 22.64,3011
+ALTERNATE OUTCOME PAIR: 4,3
+   (1) can we show that 2 NL 3? 
+        a. margin -0.17045930110901908
+      no, min 14.33,1826 vs max 31.37,4365
+   (1) can we show that 2 NL 4? 
+        a. margin -0.16818372044360763
+      no, min 14.33,1826 vs max 31.15,4469
+   (1) can we show that 6 NL 3? 
+        a. margin -0.08550428960033374
+      no, min 21.70,2765 vs max 30.25,4219
+   (1) can we show that 6 NL 4? 
+        a. margin -0.07794517681523283
+      no, min 21.70,2765 vs max 29.49,4265
+   (1) can we show that 7 NL 3? 
+        a. margin -0.08184243565599503
+      no, min 24.65,3141 vs max 32.83,4560
+   (1) can we show that 7 NL 4? 
+        a. margin -0.07342017158401304
+      no, min 24.65,3141 vs max 31.99,4583
+ALTERNATE OUTCOME PAIR: 2,6
+   (1) can we show that 4 NL 6? 
+        a. margin -0.22201297342540283
+      no, min 13.51,1722 vs max 35.71,4772
+   (1) can we show that 4 NL 2? 
+        a. margin -0.1971385227034942
+      no, min 13.51,1722 vs max 33.23,4534
+   (1) can we show that 7 NL 6? 
+        a. margin -0.10321196903117735
+      no, min 24.65,3141 vs max 34.97,4664
+   (1) can we show that 7 NL 2? 
+        a. margin -0.052469135802467703
+      no, min 24.65,3141 vs max 29.89,4111
+   (1) can we show that 3 NL 6? 
+        a. margin -0.1895794099183925
+      no, min 17.00,2167 vs max 35.96,4799
+   (1) can we show that 3 NL 2? 
+        a. margin -0.16368487131198994
+      no, min 17.00,2167 vs max 33.37,4556
+ALTERNATE OUTCOME PAIR: 2,7
+   (1) can we show that 4 NL 7? 
+        a. margin -0.21081816279556387
+      no, min 13.51,1722 vs max 34.59,4584
+   (1) can we show that 4 NL 2? 
+        a. margin -0.19049487340447813
+      no, min 13.51,1722 vs max 32.56,4534
+   (1) can we show that 6 NL 7? 
+        a. margin -0.10577526679221494
+      no, min 21.70,2765 vs max 32.27,4255
+   (1) can we show that 6 NL 2? 
+        a. margin -0.06306235614145073
+      no, min 21.70,2765 vs max 28.00,3893
+   (1) can we show that 3 NL 7? 
+        a. margin -0.17493199414103322
+      no, min 17.00,2167 vs max 34.50,4569
+   (1) can we show that 3 NL 2? 
+        a. margin -0.1571720025109855
+      no, min 17.00,2167 vs max 32.72,4556
+ALTERNATE OUTCOME PAIR: 2,3
+   (1) can we show that 4 NL 3? 
+        a. margin -0.14608181627955652
+      no, min 13.51,1722 vs max 28.12,3731
+   (1) can we show that 4 NL 2? 
+        a. margin -0.2155785729232057
+      no, min 13.51,1722 vs max 35.07,4534
+   (1) can we show that 6 NL 3? 
+        a. margin -0.10506905210295003
+      no, min 21.70,2765 vs max 32.20,4219
+   (1) can we show that 6 NL 2? 
+        a. margin -0.07763130362000381
+      no, min 21.70,2765 vs max 29.46,3893
+   (1) can we show that 7 NL 3? 
+        a. margin -0.10091023226616436
+      no, min 24.65,3141 vs max 34.74,4560
+   (1) can we show that 7 NL 2? 
+        a. margin -0.06162377066331848
+      no, min 24.65,3141 vs max 30.81,4111
+ALTERNATE OUTCOME PAIR: 6,7
+   (1) can we show that 4 NL 7? 
+        a. margin -0.2099550115086838
+      no, min 13.51,1722 vs max 34.51,4584
+   (1) can we show that 4 NL 6? 
+        a. margin -0.21610169491525466
+      no, min 13.51,1722 vs max 35.12,4772
+   (1) can we show that 2 NL 7? 
+        a. margin -0.1836419753086419
+      no, min 14.33,1826 vs max 32.69,4319
+   (1) can we show that 2 NL 6? 
+        a. margin -0.197740112994351
+      no, min 14.33,1826 vs max 34.10,4571
+   (1) can we show that 3 NL 7? 
+        a. margin -0.17367650136011648
+      no, min 17.00,2167 vs max 34.37,4569
+   (1) can we show that 3 NL 6? 
+        a. margin -0.18314500941619627
+      no, min 17.00,2167 vs max 35.32,4799
+ALTERNATE OUTCOME PAIR: 6,3
+   (1) can we show that 4 NL 3? 
+        a. margin -0.14579409918392972
+      no, min 13.51,1722 vs max 28.09,3731
+   (1) can we show that 4 NL 6? 
+        a. margin -0.23451558903536296
+      no, min 13.51,1722 vs max 36.96,4772
+   (1) can we show that 2 NL 3? 
+        a. margin -0.18696379995815005
+      no, min 14.33,1826 vs max 33.02,4365
+   (1) can we show that 2 NL 6? 
+        a. margin -0.20114040594266613
+      no, min 14.33,1826 vs max 34.44,4571
+   (1) can we show that 7 NL 3? 
+        a. margin -0.09628060263653437
+      no, min 24.65,3141 vs max 34.27,4560
+   (1) can we show that 7 NL 6? 
+        a. margin -0.10441514961289022
+      no, min 24.65,3141 vs max 35.09,4664
+Alternate outcome cannot be ruled out: 4,2
+Alternate outcome cannot be ruled out: 4,6
+Alternate outcome cannot be ruled out: 4,7
+Alternate outcome cannot be ruled out: 4,3
+Alternate outcome cannot be ruled out: 2,6
+Alternate outcome cannot be ruled out: 2,7
+Alternate outcome cannot be ruled out: 2,3
+Alternate outcome cannot be ruled out: 6,7
+Alternate outcome cannot be ruled out: 6,3
+Best sample size: inf
+------------------------------------------------
+Final set of assertions generated:
+(6, 'AG', 1, 44)
+(6, 'AG', 8, 94)
+(7, 'AG', 1, 35)
+(6, 'AG', 5, 65)
+(6, 'AG', 9, 600)
+(7, 'AG', 5, 36)
+(7, 'AG', 9, 279)
+(7, 'AG', 8, 37)
+[] are verified winners with these assertions.
+[2, 3, 4, 6, 7] remain as potential winners in this audit.
+------------------------------------------------

@@ -1,0 +1,225 @@
+VALID BALLOTS 47233
+42 ballot checks required to assert that first winner has a quota's worth of votes
+AUD TV 0.18985249931712644, ss 96
+AG*(2,9) = 14
+AG*(2,1) = 15
+AG*(2,3) = 14
+AG*(2,4) = 15
+AG*(2,5) = 14
+AG*(2,6) = 15
+AG*(2,7) = 19
+AG*(2,8) = 18
+NL(2,9) = 14, AG*'s used 14
+NL(2,1) = 15, AG*'s used 15
+NL(2,3) = 14, AG*'s used 14
+NL(2,4) = 15, AG*'s used 15
+NL(2,5) = 14, AG*'s used 14
+NL(2,6) = 14, AG*'s used 14
+NL(2,7) = 18, AG*'s used 18
+NL(2,8) = 18, AG*'s used 15
+Max in loop 96, 0.18985249931712644
+AUD TV 0.23985249931712643, ss 45
+AG*(2,9) = 14
+AG*(2,1) = 15
+AG*(2,3) = 14
+AG*(2,4) = 15
+AG*(2,5) = 14
+AG*(2,6) = 15
+AG*(2,7) = 19
+AG*(2,8) = 18
+NL(2,9) = 14, AG*'s used 14
+NL(2,1) = 15, AG*'s used 15
+NL(2,3) = 14, AG*'s used 14
+NL(2,4) = 15, AG*'s used 15
+NL(2,5) = 14, AG*'s used 14
+NL(2,6) = 14, AG*'s used 15
+NL(2,7) = 18, AG*'s used 18
+NL(2,8) = 18, AG*'s used 15
+Max in loop 45, 0.23985249931712643
+AUD TV 0.2898524993171264, ss 27
+AG*(2,9) = 14
+AG*(2,1) = 15
+AG*(2,3) = 14
+AG*(2,4) = 15
+AG*(2,5) = 14
+AG*(2,6) = 15
+AG*(2,7) = 19
+AG*(2,8) = 19
+NL(2,9) = 14, AG*'s used 14
+NL(2,1) = 15, AG*'s used 15
+NL(2,3) = 14, AG*'s used 14
+NL(2,4) = 15, AG*'s used 15
+NL(2,5) = 14, AG*'s used 14
+NL(2,6) = 14, AG*'s used 15
+NL(2,7) = 18, AG*'s used 19
+NL(2,8) = 18, AG*'s used 15
+Max in loop 42, 0.2898524993171264
+AUD TV 0.3398524993171264, ss 19
+AG*(2,9) = 14
+AG*(2,1) = 15
+AG*(2,3) = 14
+AG*(2,4) = 15
+AG*(2,5) = 14
+AG*(2,6) = 15
+AG*(2,7) = 19
+AG*(2,8) = 19
+NL(2,9) = 14, AG*'s used 14
+NL(2,1) = 15, AG*'s used 15
+NL(2,3) = 14, AG*'s used 14
+NL(2,4) = 15, AG*'s used 15
+NL(2,5) = 14, AG*'s used 14
+NL(2,6) = 14, AG*'s used 15
+NL(2,7) = 18, AG*'s used 19
+NL(2,8) = 18, AG*'s used 15
+Max in loop 42, 0.3398524993171264
+AUD TV 0.3898524993171264, ss 14
+AG*(2,9) = 14
+AG*(2,1) = 15
+AG*(2,3) = 14
+AG*(2,4) = 15
+AG*(2,5) = 14
+AG*(2,6) = 15
+AG*(2,7) = 20
+AG*(2,8) = 19
+NL(2,9) = 14, AG*'s used 14
+NL(2,1) = 15, AG*'s used 15
+NL(2,3) = 14, AG*'s used 14
+NL(2,4) = 15, AG*'s used 15
+NL(2,5) = 14, AG*'s used 14
+NL(2,6) = 15, AG*'s used 15
+NL(2,7) = 18, AG*'s used 19
+NL(2,8) = 18, AG*'s used 15
+Max in loop 42, 0.3898524993171264
+AUD TV 0.4398524993171264, ss 10
+AG*(2,9) = 14
+AG*(2,1) = 15
+AG*(2,3) = 15
+AG*(2,4) = 15
+AG*(2,5) = 14
+AG*(2,6) = 15
+AG*(2,7) = 20
+AG*(2,8) = 19
+NL(2,9) = 14, AG*'s used 14
+NL(2,1) = 15, AG*'s used 15
+NL(2,3) = 14, AG*'s used 14
+NL(2,4) = 15, AG*'s used 15
+NL(2,5) = 14, AG*'s used 14
+NL(2,6) = 15, AG*'s used 15
+NL(2,7) = 18, AG*'s used 19
+NL(2,8) = 18, AG*'s used 15
+Max in loop 42, 0.4398524993171264
+AUD TV 0.4898524993171264, ss 8
+AG*(2,9) = 14
+AG*(2,1) = 15
+AG*(2,3) = 15
+AG*(2,4) = 15
+AG*(2,5) = 14
+AG*(2,6) = 15
+AG*(2,7) = 20
+AG*(2,8) = 19
+NL(2,9) = 14, AG*'s used 14
+NL(2,1) = 15, AG*'s used 15
+NL(2,3) = 14, AG*'s used 15
+NL(2,4) = 15, AG*'s used 15
+NL(2,5) = 14, AG*'s used 14
+NL(2,6) = 15, AG*'s used 15
+NL(2,7) = 19, AG*'s used 19
+NL(2,8) = 19, AG*'s used 15
+Max in loop 42, 0.4898524993171264
+AUD TV 0.5398524993171264, ss 6
+AG*(2,9) = 14
+AG*(2,1) = 16
+AG*(2,3) = 15
+AG*(2,4) = 15
+AG*(2,5) = 14
+AG*(2,6) = 15
+AG*(2,7) = 20
+AG*(2,8) = 20
+NL(2,9) = 14, AG*'s used 14
+NL(2,1) = 15, AG*'s used 15
+NL(2,3) = 14, AG*'s used 15
+NL(2,4) = 15, AG*'s used 15
+NL(2,5) = 14, AG*'s used 14
+NL(2,6) = 15, AG*'s used 15
+NL(2,7) = 19, AG*'s used 16
+NL(2,8) = 19, AG*'s used 16
+Max in loop 42, 0.5398524993171264
+AUD TV 0.5898524993171265, ss 5
+AG*(2,9) = 14
+AG*(2,1) = 16
+AG*(2,3) = 15
+AG*(2,4) = 15
+AG*(2,5) = 14
+AG*(2,6) = 15
+AG*(2,7) = 20
+AG*(2,8) = 20
+NL(2,9) = 14, AG*'s used 14
+NL(2,1) = 15, AG*'s used 15
+NL(2,3) = 14, AG*'s used 15
+NL(2,4) = 15, AG*'s used 15
+NL(2,5) = 14, AG*'s used 14
+NL(2,6) = 15, AG*'s used 15
+NL(2,7) = 19, AG*'s used 16
+NL(2,8) = 19, AG*'s used 16
+Max in loop 42, 0.5898524993171265
+AUD TV 0.6398524993171265, ss 3
+AG*(2,9) = 14
+AG*(2,1) = 16
+AG*(2,3) = 15
+AG*(2,4) = 15
+AG*(2,5) = 14
+AG*(2,6) = 15
+AG*(2,7) = 20
+AG*(2,8) = 20
+NL(2,9) = 14, AG*'s used 14
+NL(2,1) = 15, AG*'s used 15
+NL(2,3) = 15, AG*'s used 15
+NL(2,4) = 15, AG*'s used 15
+NL(2,5) = 14, AG*'s used 14
+NL(2,6) = 15, AG*'s used 15
+NL(2,7) = 19, AG*'s used 20
+NL(2,8) = 19, AG*'s used 16
+Max in loop 42, 0.6398524993171265
+Sample size to show min tv of 0.06992624965856323 is 79
+Sample size required for audit is 42 ballots
+------------------------------------------------
+Assertion set BEFORE filtering:
+(2, 'NL', 9, 14)
+(2, 'AG*', 1, 16)
+(0, 'QT', None, 42)
+(2, 'AG*', 6, 15)
+(2, 'NL', 3, 15)
+(2, 'NL', 6, 15)
+(2, 'AG*', 3, 15)
+(2, 'AG*', 5, 14)
+(2, 'NL', 5, 14)
+(0, 'MT', 0.6398524993171265, 3)
+(2, 'NL', 7, 19)
+(2, 'AG*', 8, 20)
+(2, 'NL', 8, 19)
+(2, 'AG*', 4, 15)
+(2, 'NL', 1, 15)
+(2, 'NL', 4, 15)
+(2, 'AG*', 9, 14)
+------------------------------------------------
+Final set of assertions AFTER filtering:
+(2, 'AG*', 1, 16)
+(0, 'QT', None, 42)
+(2, 'AG*', 6, 15)
+(2, 'AG*', 3, 15)
+(2, 'AG*', 5, 14)
+(0, 'MT', 0.6398524993171265, 3)
+(2, 'NL', 7, 19)
+(2, 'AG*', 8, 20)
+(2, 'AG*', 4, 15)
+(2, 'AG*', 9, 14)
+------------------------------------------------
+Explanations for AG* inclusion:
+   Explanation for (2, 'AG*', 1, 16): []
+   Explanation for (2, 'AG*', 6, 15): []
+   Explanation for (2, 'AG*', 3, 15): []
+   Explanation for (2, 'AG*', 5, 14): []
+   Explanation for (2, 'AG*', 8, 20): []
+   Explanation for (2, 'AG*', 4, 15): []
+   Explanation for (2, 'AG*', 9, 14): []
+------------------------------------------------

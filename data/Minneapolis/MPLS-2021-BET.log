@@ -1,0 +1,59 @@
+VALID BALLOTS 95625
+GELIM AG(0,4) = 20
+GELIM AG(0,3) = 27
+GELIM AG(2,4) = 44
+GELIM AG(2,3) = 186
+GELIM AG(1,4) = 35
+GELIM AG(1,3) = 69
+Group elimination sample size 69
+34 ballot checks required to assert that first winner has a quota's worth of votes
+AUD TV 0.3311005863779883, ss 131
+AG*(1,2) = 402
+NL(1,2) = 402, AG*'s used 0
+Max in loop 402, 0.3311005863779883
+AUD TV 0.38110058637798827, ss 60
+AG*(1,2) = 628
+NL(1,2) = 628, AG*'s used 0
+Max in loop 628, 0.38110058637798827
+Sample size to show min tv of 0.14055029318899415 is 59
+AUD TV 0.3311005863779883, ss 131
+AG*(1,2) = 247
+NL(1,2) = 247, AG*'s used 0
+Max in loop 247, 0.3311005863779883
+AUD TV 0.38110058637798827, ss 60
+AG*(1,2) = 285
+NL(1,2) = 285, AG*'s used 0
+Max in loop 285, 0.38110058637798827
+Sample size to show min tv of 0.19055029318899414 is 87
+AUD TV 0.3311005863779883, ss 131
+AG*(1,2) = 217
+NL(1,2) = 217, AG*'s used 0
+Max in loop 217, 0.3311005863779883
+AUD TV 0.38110058637798827, ss 60
+AG*(1,2) = 246
+NL(1,2) = 246, AG*'s used 0
+Max in loop 246, 0.38110058637798827
+Sample size required for audit is 217 ballots
+------------------------------------------------
+Assertion set BEFORE filtering:
+(1, 'NL', 2, 217)
+(1, 'AG', 3, 69)
+(0, 'AG', 3, 27)
+(1, 'AG', 4, 35)
+(0, 'AG', 4, 20)
+(0, 'MT', 0.3311005863779883, 131)
+(0, 'QT', None, 34)
+(0, 'LT', 0.19055029318899414, 87)
+------------------------------------------------
+Final set of assertions AFTER filtering:
+(1, 'NL', 2, 217)
+(1, 'AG', 3, 69)
+(0, 'AG', 3, 27)
+(1, 'AG', 4, 35)
+(0, 'AG', 4, 20)
+(0, 'MT', 0.3311005863779883, 131)
+(0, 'QT', None, 34)
+(0, 'LT', 0.19055029318899414, 87)
+------------------------------------------------
+Explanations for AG* inclusion:
+------------------------------------------------

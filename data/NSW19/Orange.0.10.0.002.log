@@ -1,0 +1,140 @@
+VALID BALLOTS 50295
+14 ballot checks required to assert that first winner has a quota's worth of votes
+AUD TV 0.3717088761226636, ss 58
+AG*(4,8) = 21
+AG*(4,5) = 22
+AG*(4,0) = 25
+AG*(4,1) = 22
+AG*(4,2) = 23
+AG*(4,6) = 29
+AG*(4,7) = 43
+NL(4,8) = 21, AG*'s used 0
+NL(4,5) = 22, AG*'s used 22
+NL(4,0) = 23, AG*'s used 23
+NL(4,1) = 22, AG*'s used 22
+NL(4,2) = 23, AG*'s used 22
+NL(4,6) = 26, AG*'s used 25
+NL(4,7) = 36, AG*'s used 29
+Max in loop 58, 0.3717088761226636
+AUD TV 0.4217088761226636, ss 26
+AG*(4,8) = 21
+AG*(4,5) = 22
+AG*(4,0) = 25
+AG*(4,1) = 22
+AG*(4,2) = 24
+AG*(4,6) = 29
+AG*(4,7) = 44
+NL(4,8) = 21, AG*'s used 0
+NL(4,5) = 22, AG*'s used 22
+NL(4,0) = 23, AG*'s used 24
+NL(4,1) = 22, AG*'s used 22
+NL(4,2) = 23, AG*'s used 22
+NL(4,6) = 26, AG*'s used 25
+NL(4,7) = 36, AG*'s used 29
+Max in loop 36, 0.4217088761226636
+AUD TV 0.4717088761226636, ss 16
+AG*(4,8) = 22
+AG*(4,5) = 22
+AG*(4,0) = 25
+AG*(4,1) = 23
+AG*(4,2) = 24
+AG*(4,6) = 30
+AG*(4,7) = 45
+NL(4,8) = 21, AG*'s used 22
+NL(4,5) = 22, AG*'s used 22
+NL(4,0) = 23, AG*'s used 24
+NL(4,1) = 22, AG*'s used 22
+NL(4,2) = 23, AG*'s used 23
+NL(4,6) = 27, AG*'s used 25
+NL(4,7) = 37, AG*'s used 30
+Max in loop 37, 0.4717088761226636
+Sample size to show min tv of 0.16085443806133182 is 24
+AUD TV 0.3717088761226636, ss 58
+AG*(4,8) = 20
+AG*(4,5) = 21
+AG*(4,0) = 24
+AG*(4,1) = 22
+AG*(4,2) = 22
+AG*(4,6) = 28
+AG*(4,7) = 40
+NL(4,8) = 20, AG*'s used 0
+NL(4,5) = 21, AG*'s used 20
+NL(4,0) = 22, AG*'s used 22
+NL(4,1) = 21, AG*'s used 21
+NL(4,2) = 22, AG*'s used 22
+NL(4,6) = 25, AG*'s used 24
+NL(4,7) = 33, AG*'s used 28
+Max in loop 58, 0.3717088761226636
+AUD TV 0.4217088761226636, ss 26
+AG*(4,8) = 21
+AG*(4,5) = 21
+AG*(4,0) = 24
+AG*(4,1) = 22
+AG*(4,2) = 23
+AG*(4,6) = 28
+AG*(4,7) = 41
+NL(4,8) = 20, AG*'s used 21
+NL(4,5) = 21, AG*'s used 21
+NL(4,0) = 22, AG*'s used 23
+NL(4,1) = 21, AG*'s used 21
+NL(4,2) = 22, AG*'s used 22
+NL(4,6) = 25, AG*'s used 24
+NL(4,7) = 33, AG*'s used 28
+Max in loop 33, 0.4217088761226636
+AUD TV 0.4717088761226636, ss 16
+AG*(4,8) = 21
+AG*(4,5) = 22
+AG*(4,0) = 24
+AG*(4,1) = 22
+AG*(4,2) = 23
+AG*(4,6) = 29
+AG*(4,7) = 42
+NL(4,8) = 21, AG*'s used 0
+NL(4,5) = 21, AG*'s used 22
+NL(4,0) = 22, AG*'s used 23
+NL(4,1) = 21, AG*'s used 22
+NL(4,2) = 22, AG*'s used 22
+NL(4,6) = 25, AG*'s used 24
+NL(4,7) = 34, AG*'s used 29
+Max in loop 34, 0.4717088761226636
+Sample size to show min tv of 0.2108544380613318 is 33
+Sample size required for audit is 33 ballots
+------------------------------------------------
+Assertion set BEFORE filtering:
+(3, 'LT', 0.16085443806133182, 24)
+(4, 'AG*', 8, 21)
+(4, 'AG*', 6, 28)
+(4, 'NL', 1, 21)
+(4, 'NL', 8, 20)
+(4, 'AG*', 2, 23)
+(3, 'MT', 0.4217088761226636, 26)
+(4, 'AG*', 0, 24)
+(4, 'NL', 0, 22)
+(4, 'NL', 2, 22)
+(4, 'NL', 5, 21)
+(4, 'NL', 6, 25)
+(4, 'NL', 7, 33)
+(3, 'QT', None, 14)
+(4, 'AG*', 1, 22)
+(4, 'AG*', 5, 21)
+------------------------------------------------
+Final set of assertions AFTER filtering:
+(3, 'LT', 0.16085443806133182, 24)
+(4, 'AG*', 8, 21)
+(4, 'AG*', 6, 28)
+(4, 'AG*', 2, 23)
+(3, 'MT', 0.4217088761226636, 26)
+(4, 'AG*', 0, 24)
+(4, 'NL', 7, 33)
+(3, 'QT', None, 14)
+(4, 'AG*', 1, 22)
+(4, 'AG*', 5, 21)
+------------------------------------------------
+Explanations for AG* inclusion:
+   Explanation for (4, 'AG*', 8, 21): []
+   Explanation for (4, 'AG*', 6, 28): []
+   Explanation for (4, 'AG*', 2, 23): []
+   Explanation for (4, 'AG*', 0, 24): []
+   Explanation for (4, 'AG*', 1, 22): []
+   Explanation for (4, 'AG*', 5, 21): []
+------------------------------------------------

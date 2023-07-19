@@ -21,6 +21,6 @@ for instance in data/Scotland/*.txt; do
     rl=0.10
     er=0.002
     
-    python3 audit_general.py -d ${instance} -outcome ${bn}.otc_D2 -quota ${quota} -voters ${voters} -e $er -r $rl -log "${bn}.${rl}.${er}.log"
+    python3 audit_general.py -d ${instance} -outcome ${bn}.otc_D2 -quota ${quota} -voters ${voters} -e1 $er -e2 0 -r $rl -log "${bn}.${rl}.${er}.log"
 done
 

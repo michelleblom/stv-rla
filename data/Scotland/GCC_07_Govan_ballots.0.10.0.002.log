@@ -1,0 +1,122 @@
+VALID BALLOTS 9560
+Winner 6
+Winner 3
+Computing AG relationships
+6 AG 11 = 19
+6 AG 5 = 20
+6 AG 10 = 23
+6 AG 2 = 29
+6 AG 8 = 26
+6 AG 7 = 27
+6 AG 9 = 24
+1 AG 11 = 72
+1 AG 5 = 59
+1 AG 10 = 118
+1 AG 9 = 154
+4 AG 11 = 47
+4 AG 5 = 40
+4 AG 10 = 63
+4 AG 2 = 250
+4 AG 8 = 194
+4 AG 7 = 1757
+4 AG 9 = 71
+3 AG 11 = 51
+3 AG 5 = 43
+3 AG 10 = 70
+3 AG 2 = 428
+3 AG 8 = 428
+3 AG 9 = 80
+Ruling out candidates: [(11, 47), (5, 40), (10, 63), (2, 250), (8, 194), (7, 1757), (9, 71)]
+Sample size for ruling out cands: 1757
+ALTERNATE OUTCOME PAIR: 6,1
+   (1) can we show that 4 NL 1? 
+        a. margin -0.026708507670851978
+      no, min 19.32,1847 vs max 21.99,2201
+   (1) can we show that 4 NL 6? 
+        a. margin -0.17479079497908012
+      no, min 19.32,1847 vs max 36.80,3568
+   (1) can we show that 3 NL 1? 
+        a. margin -0.033960948396095314
+      no, min 18.31,1750 vs max 21.70,2165
+   (1) can we show that 3 NL 6? 
+        a. margin -0.18640167364016802
+      no, min 18.31,1750 vs max 36.95,3578
+ALTERNATE OUTCOME PAIR: 6,4
+   (1) can we show that 1 NL 4? 
+        a. margin -0.17447698744770013
+      no, min 14.99,1433 vs max 32.44,3226
+   (1) can we show that 1 NL 6? 
+        a. margin -0.22468619246861965
+      no, min 14.99,1433 vs max 37.46,3641
+   (1) can we show that 3 NL 4? 
+        a. margin -0.056311018131102064
+      no, min 18.31,1750 vs max 23.94,2390
+   (1) can we show that 3 NL 6? 
+        a. margin -0.18594839609484015
+      no, min 18.31,1750 vs max 36.90,3578
+ALTERNATE OUTCOME PAIR: 1,4
+   (1) can we show that 6 NL 4? 
+        a. margin -0.020292887029287887
+      no, min 33.87,3238 vs max 35.90,3654
+   (1) can we show that 6 NL 1? 
+        a. margin 0.03256624825662535
+      yes, 141, ags used 29 = 141
+   (1) can we show that 3 NL 4? 
+        a. margin -0.06136680613668111
+      no, min 18.31,1750 vs max 24.44,2390
+   (1) can we show that 3 NL 1? 
+        a. margin -0.03465829846582957
+      no, min 18.31,1750 vs max 21.77,2165
+Best assertion(s) require sample: 141
+ALTERNATE OUTCOME PAIR: 1,3
+   (1) can we show that 6 NL 3? 
+        a. margin -0.007914923291491682
+      no, min 33.87,3238 vs max 34.66,3557
+   (1) can we show that 6 NL 1? 
+        a. margin 0.03483263598326447
+      yes, 131, ags used 29 = 131
+   (1) can we show that 4 NL 3? 
+        a. margin -0.09637377963737837
+      no, min 19.32,1847 vs max 28.96,2992
+   (1) can we show that 4 NL 1? 
+        a. margin -0.027789400278939724
+      no, min 19.32,1847 vs max 22.10,2201
+Best assertion(s) require sample: 131
+ALTERNATE OUTCOME PAIR: 4,3
+   (1) can we show that 6 NL 3? 
+        a. margin -0.0022663877266385635
+      no, min 33.87,3238 vs max 34.10,3557
+   (1) can we show that 6 NL 4? 
+        a. margin -0.008926080892607158
+      no, min 33.87,3238 vs max 34.76,3654
+   (1) can we show that 1 NL 3? 
+        a. margin -0.14679218967922036
+      no, min 14.99,1433 vs max 29.67,3089
+   (1) can we show that 1 NL 4? 
+        a. margin -0.15794979079498006
+      no, min 14.99,1433 vs max 30.78,3226
+Alternate outcome cannot be ruled out: 6,1
+Alternate outcome cannot be ruled out: 6,4
+Alternate outcome cannot be ruled out: 4,3
+Best sample size: inf
+------------------------------------------------
+Final set of assertions generated:
+6 NL 1 = 131 [rules out (1, 3)]
+(4, 'AG', 8, 194)
+(6, 'AG', 7, 27)
+(6, 'AG', 9, 24)
+(6, 'AG', 5, 20)
+(4, 'AG', 10, 63)
+(6, 'AG', 11, 19)
+6 NL 1 = 141 [rules out (1, 4)]
+(4, 'AG', 9, 71)
+(4, 'AG', 7, 1757)
+(6, 'AG', 8, 26)
+(6, 'AG', 10, 23)
+(4, 'AG', 2, 250)
+(4, 'AG', 11, 47)
+(6, 'AG', 2, 29)
+(4, 'AG', 5, 40)
+[] are verified winners with these assertions.
+[1, 3, 4, 6] remain as potential winners in this audit.
+------------------------------------------------

@@ -1,0 +1,400 @@
+VALID BALLOTS 8984
+Winner 10
+Winner 9
+Computing AG relationships
+5 AG 2 = 264
+1 AG 2 = 94
+8 AG 2 = 62
+3 AG 2 = 45
+3 AG 4 = 264
+7 AG 2 = 52
+7 AG 4 = 1149
+10 AG 2 = 28
+10 AG 4 = 40
+10 AG 6 = 68
+10 AG 1 = 2190
+9 AG 2 = 26
+9 AG 4 = 41
+9 AG 6 = 53
+9 AG 1 = 155
+Ruling out candidates: [(2, 28), (4, 41), (6, 68), (1, 2190)]
+Sample size for ruling out cands: 2190
+ALTERNATE OUTCOME PAIR: 5,8
+   (1) can we show that 3 NL 8? 
+        a. margin -0.1405090531314933
+      no, min 13.37,1201 vs max 27.42,2486
+   (1) can we show that 3 NL 5? 
+        a. margin -0.06389136242208449
+      no, min 13.37,1201 vs max 19.76,1831
+   (1) can we show that 7 NL 8? 
+        a. margin -0.08752597209854607
+      no, min 13.35,1199 vs max 22.10,2007
+   (1) can we show that 7 NL 5? 
+        a. margin -0.1738646482635804
+      no, min 13.35,1199 vs max 30.73,2785
+   (1) can we show that 10 NL 8? 
+        a. margin -0.05435589195607027
+      no, min 21.74,1953 vs max 27.17,2476
+   (1) can we show that 10 NL 5? 
+        a. margin -0.014099139210449141
+      no, min 21.74,1953 vs max 23.15,2156
+   (1) can we show that 9 NL 8? 
+        a. margin -0.0668596022558624
+      no, min 23.75,2134 vs max 30.44,2777
+   (1) can we show that 9 NL 5? 
+        a. margin -0.04841941228851376
+      no, min 23.75,2134 vs max 28.60,2655
+ALTERNATE OUTCOME PAIR: 5,3
+   (1) can we show that 8 NL 3? 
+        a. margin -0.24116948649450953
+      no, min 12.04,1082 vs max 36.16,3340
+   (1) can we show that 8 NL 5? 
+        a. margin -0.16321608785990094
+      no, min 12.04,1082 vs max 28.37,2808
+   (1) can we show that 7 NL 3? 
+        a. margin -0.2338230929059073
+      no, min 13.35,1199 vs max 36.73,3387
+   (1) can we show that 7 NL 5? 
+        a. margin -0.14766993173048582
+      no, min 13.35,1199 vs max 28.11,2785
+   (1) can we show that 10 NL 3? 
+        a. margin -0.07947462154942164
+      no, min 21.74,1953 vs max 29.69,2745
+   (1) can we show that 10 NL 5? 
+        a. margin 0.003339269812999479
+      yes, 3883, ags used 2190 = 3883
+   (1) can we show that 9 NL 3? 
+        a. margin -0.10440783615316163
+      no, min 23.75,2134 vs max 34.19,3164
+   (1) can we show that 9 NL 5? 
+        a. margin -0.029162956366875603
+      no, min 23.75,2134 vs max 26.67,2655
+Best assertion(s) require sample: 3883
+ALTERNATE OUTCOME PAIR: 5,7
+   (1) can we show that 8 NL 7? 
+        a. margin -0.13357079252003623
+      no, min 12.04,1082 vs max 25.40,2332
+   (1) can we show that 8 NL 5? 
+        a. margin -0.18837192045117324
+      no, min 12.04,1082 vs max 30.88,2808
+   (1) can we show that 3 NL 7? 
+        a. margin -0.15757643217572004
+      no, min 13.37,1201 vs max 29.13,2651
+   (1) can we show that 3 NL 5? 
+        a. margin -0.06248144850103998
+      no, min 13.37,1201 vs max 19.62,1831
+   (1) can we show that 10 NL 7? 
+        a. margin -0.069716533095874
+      no, min 21.74,1953 vs max 28.71,2624
+   (1) can we show that 10 NL 5? 
+        a. margin -0.014433066191749444
+      no, min 21.74,1953 vs max 23.18,2156
+   (1) can we show that 9 NL 7? 
+        a. margin -0.08136687444345547
+      no, min 23.75,2134 vs max 31.89,2920
+   (1) can we show that 9 NL 5? 
+        a. margin -0.048642030276047965
+      no, min 23.75,2134 vs max 28.62,2655
+ALTERNATE OUTCOME PAIR: 5,10
+   (1) can we show that 8 NL 10? 
+        a. margin -0.3160062333036512
+      no, min 12.04,1082 vs max 43.64,3997
+   (1) can we show that 8 NL 5? 
+        a. margin -0.16718610863757943
+      no, min 12.04,1082 vs max 28.76,2808
+   (1) can we show that 3 NL 10? 
+        a. margin -0.25582517067379096
+      no, min 13.37,1201 vs max 38.95,3546
+   (1) can we show that 3 NL 5? 
+        a. margin -0.05276046304541504
+      no, min 13.37,1201 vs max 18.64,1831
+   (1) can we show that 7 NL 10? 
+        a. margin -0.3045043039477595
+      no, min 13.35,1199 vs max 43.80,4008
+   (1) can we show that 7 NL 5? 
+        a. margin -0.1514915405164753
+      no, min 13.35,1199 vs max 28.50,2785
+   (1) can we show that 9 NL 10? 
+        a. margin -0.14496141288216124
+      no, min 23.75,2134 vs max 38.25,3516
+   (1) can we show that 9 NL 5? 
+        a. margin -0.03513653903235514
+      no, min 23.75,2134 vs max 27.27,2655
+ALTERNATE OUTCOME PAIR: 5,9
+   (1) can we show that 8 NL 9? 
+        a. margin -0.24057583852775355
+      no, min 12.04,1082 vs max 36.10,3277
+   (1) can we show that 8 NL 5? 
+        a. margin -0.17516325319085957
+      no, min 12.04,1082 vs max 29.56,2808
+   (1) can we show that 3 NL 9? 
+        a. margin -0.20265657465123232
+      no, min 13.37,1201 vs max 33.63,3043
+   (1) can we show that 3 NL 5? 
+        a. margin -0.057324131789850075
+      no, min 13.37,1201 vs max 19.10,1831
+   (1) can we show that 7 NL 9? 
+        a. margin -0.2290368061739394
+      no, min 13.35,1199 vs max 36.25,3289
+   (1) can we show that 7 NL 5? 
+        a. margin -0.15932027307806673
+      no, min 13.35,1199 vs max 29.28,2785
+   (1) can we show that 10 NL 9? 
+        a. margin -0.09817453250222685
+      no, min 21.74,1953 vs max 31.56,2863
+   (1) can we show that 10 NL 5? 
+        a. margin -0.01216978331849361
+      no, min 21.74,1953 vs max 22.96,2156
+ALTERNATE OUTCOME PAIR: 8,3
+   (1) can we show that 5 NL 3? 
+        a. margin -0.28576728999703305
+      no, min 5.24,471 vs max 33.82,3134
+   (1) can we show that 5 NL 8? 
+        a. margin -0.23248738498070676
+      no, min 5.24,471 vs max 28.49,2602
+   (1) can we show that 7 NL 3? 
+        a. margin -0.23875779162956434
+      no, min 13.35,1199 vs max 37.22,3387
+   (1) can we show that 7 NL 8? 
+        a. margin -0.08214603739982296
+      no, min 13.35,1199 vs max 21.56,2007
+   (1) can we show that 10 NL 3? 
+        a. margin -0.07713713268032196
+      no, min 21.74,1953 vs max 29.45,2745
+   (1) can we show that 10 NL 8? 
+        a. margin -0.049346987236569606
+      no, min 21.74,1953 vs max 26.67,2476
+   (1) can we show that 9 NL 3? 
+        a. margin -0.10181062629860671
+      no, min 23.75,2134 vs max 33.93,3164
+   (1) can we show that 9 NL 8? 
+        a. margin -0.05943900267141644
+      no, min 23.75,2134 vs max 29.70,2777
+ALTERNATE OUTCOME PAIR: 8,7
+   (1) can we show that 5 NL 7? 
+        a. margin -0.21953843870584866
+      no, min 5.24,471 vs max 27.20,2675
+   (1) can we show that 5 NL 8? 
+        a. margin -0.2128227960819249
+      no, min 5.24,471 vs max 26.52,2602
+   (1) can we show that 3 NL 7? 
+        a. margin -0.1360566933808267
+      no, min 13.37,1201 vs max 26.97,2651
+   (1) can we show that 3 NL 8? 
+        a. margin -0.1185811813594555
+      no, min 13.37,1201 vs max 25.23,2486
+   (1) can we show that 10 NL 7? 
+        a. margin -0.049235678242803727
+      no, min 21.74,1953 vs max 26.66,2624
+   (1) can we show that 10 NL 8? 
+        a. margin -0.03372662511131086
+      no, min 21.74,1953 vs max 25.11,2476
+   (1) can we show that 9 NL 7? 
+        a. margin -0.06140546156129534
+      no, min 23.75,2134 vs max 29.89,2920
+   (1) can we show that 9 NL 8? 
+        a. margin -0.04671267438409177
+      no, min 23.75,2134 vs max 28.42,2777
+ALTERNATE OUTCOME PAIR: 8,10
+   (1) can we show that 5 NL 10? 
+        a. margin -0.36030721282279654
+      no, min 5.24,471 vs max 41.27,3797
+   (1) can we show that 5 NL 8? 
+        a. margin -0.22640249332146123
+      no, min 5.24,471 vs max 27.88,2602
+   (1) can we show that 3 NL 10? 
+        a. margin -0.25185514989611246
+      no, min 13.37,1201 vs max 38.55,3546
+   (1) can we show that 3 NL 8? 
+        a. margin -0.13308845354704713
+      no, min 13.37,1201 vs max 26.68,2486
+   (1) can we show that 7 NL 10? 
+        a. margin -0.3077693677649159
+      no, min 13.35,1199 vs max 44.12,4008
+   (1) can we show that 7 NL 8? 
+        a. margin -0.08003116651825615
+      no, min 13.35,1199 vs max 21.35,2007
+   (1) can we show that 9 NL 10? 
+        a. margin -0.14225289403383934
+      no, min 23.75,2134 vs max 37.98,3516
+   (1) can we show that 9 NL 8? 
+        a. margin -0.0589195607005053
+      no, min 23.75,2134 vs max 29.65,2777
+ALTERNATE OUTCOME PAIR: 8,9
+   (1) can we show that 5 NL 9? 
+        a. margin -0.2972692193529243
+      no, min 5.24,471 vs max 34.97,3195
+   (1) can we show that 5 NL 8? 
+        a. margin -0.22851736420302882
+      no, min 5.24,471 vs max 28.09,2602
+   (1) can we show that 3 NL 9? 
+        a. margin -0.19961412882160945
+      no, min 13.37,1201 vs max 33.33,3043
+   (1) can we show that 3 NL 8? 
+        a. margin -0.13486939744731474
+      no, min 13.37,1201 vs max 26.86,2486
+   (1) can we show that 7 NL 9? 
+        a. margin -0.22937073315523937
+      no, min 13.35,1199 vs max 36.28,3289
+   (1) can we show that 7 NL 8? 
+        a. margin -0.08177500742060118
+      no, min 13.35,1199 vs max 21.52,2007
+   (1) can we show that 10 NL 9? 
+        a. margin -0.09535470466013762
+      no, min 21.74,1953 vs max 31.27,2863
+   (1) can we show that 10 NL 8? 
+        a. margin -0.05131344612644806
+      no, min 21.74,1953 vs max 26.87,2476
+ALTERNATE OUTCOME PAIR: 3,7
+   (1) can we show that 5 NL 7? 
+        a. margin -0.24128079548827586
+      no, min 5.24,471 vs max 29.37,2675
+   (1) can we show that 5 NL 3? 
+        a. margin -0.28925497180172244
+      no, min 5.24,471 vs max 34.17,3134
+   (1) can we show that 8 NL 7? 
+        a. margin -0.12974918373404665
+      no, min 12.04,1082 vs max 25.02,2332
+   (1) can we show that 8 NL 3? 
+        a. margin -0.24799643811220007
+      no, min 12.04,1082 vs max 36.84,3340
+   (1) can we show that 10 NL 7? 
+        a. margin -0.06685960225586285
+      no, min 21.74,1953 vs max 28.42,2624
+   (1) can we show that 10 NL 3? 
+        a. margin -0.08010537251410033
+      no, min 21.74,1953 vs max 29.75,2745
+   (1) can we show that 9 NL 7? 
+        a. margin -0.0767289997031767
+      no, min 23.75,2134 vs max 31.43,2920
+   (1) can we show that 9 NL 3? 
+        a. margin -0.10552092609082986
+      no, min 23.75,2134 vs max 34.31,3164
+ALTERNATE OUTCOME PAIR: 3,10
+   (1) can we show that 5 NL 10? 
+        a. margin -0.35982487384980744
+      no, min 5.24,471 vs max 41.23,3797
+   (1) can we show that 5 NL 3? 
+        a. margin -0.27626892252894186
+      no, min 5.24,471 vs max 32.87,3134
+   (1) can we show that 8 NL 10? 
+        a. margin -0.3034283170080151
+      no, min 12.04,1082 vs max 42.39,3997
+   (1) can we show that 8 NL 3? 
+        a. margin -0.22421341644405046
+      no, min 12.04,1082 vs max 34.46,3340
+   (1) can we show that 7 NL 10? 
+        a. margin -0.2915553576729013
+      no, min 13.35,1199 vs max 42.50,4008
+   (1) can we show that 7 NL 3? 
+        a. margin -0.21612496289700378
+      no, min 13.35,1199 vs max 34.96,3387
+   (1) can we show that 9 NL 10? 
+        a. margin -0.13312555654497027
+      no, min 23.75,2134 vs max 37.07,3516
+   (1) can we show that 9 NL 3? 
+        a. margin -0.0896779459780368
+      no, min 23.75,2134 vs max 32.72,3164
+ALTERNATE OUTCOME PAIR: 3,9
+   (1) can we show that 5 NL 9? 
+        a. margin -0.2974918373404575
+      no, min 5.24,471 vs max 34.99,3195
+   (1) can we show that 5 NL 3? 
+        a. margin -0.27901454437518725
+      no, min 5.24,471 vs max 33.14,3134
+   (1) can we show that 8 NL 9? 
+        a. margin -0.2344167408726634
+      no, min 12.04,1082 vs max 35.49,3277
+   (1) can we show that 8 NL 3? 
+        a. margin -0.23011279311368593
+      no, min 12.04,1082 vs max 35.05,3340
+   (1) can we show that 7 NL 9? 
+        a. margin -0.22224695755417156
+      no, min 13.35,1199 vs max 35.57,3289
+   (1) can we show that 7 NL 3? 
+        a. margin -0.22165330958741714
+      no, min 13.35,1199 vs max 35.51,3387
+   (1) can we show that 10 NL 9? 
+        a. margin -0.09331403977441499
+      no, min 21.74,1953 vs max 31.07,2863
+   (1) can we show that 10 NL 3? 
+        a. margin -0.073760759869399
+      no, min 21.74,1953 vs max 29.11,2745
+ALTERNATE OUTCOME PAIR: 7,10
+   (1) can we show that 5 NL 10? 
+        a. margin -0.3605669338082522
+      no, min 5.24,471 vs max 41.30,3797
+   (1) can we show that 5 NL 7? 
+        a. margin -0.2356040368061747
+      no, min 5.24,471 vs max 28.80,2675
+   (1) can we show that 8 NL 10? 
+        a. margin -0.32019887206886344
+      no, min 12.04,1082 vs max 44.06,3997
+   (1) can we show that 8 NL 7? 
+        a. margin -0.1287474027901464
+      no, min 12.04,1082 vs max 24.92,2332
+   (1) can we show that 3 NL 10? 
+        a. margin -0.25170673790442344
+      no, min 13.37,1201 vs max 38.54,3546
+   (1) can we show that 3 NL 7? 
+        a. margin -0.1517512615019303
+      no, min 13.37,1201 vs max 28.54,2651
+   (1) can we show that 9 NL 10? 
+        a. margin -0.14306915998812852
+      no, min 23.75,2134 vs max 38.06,3516
+   (1) can we show that 9 NL 7? 
+        a. margin -0.07509646779459878
+      no, min 23.75,2134 vs max 31.26,2920
+ALTERNATE OUTCOME PAIR: 7,9
+   (1) can we show that 5 NL 9? 
+        a. margin -0.2975660433363019
+      no, min 5.24,471 vs max 35.00,3195
+   (1) can we show that 5 NL 7? 
+        a. margin -0.23727367171267544
+      no, min 5.24,471 vs max 28.97,2675
+   (1) can we show that 8 NL 9? 
+        a. margin -0.24120658949243123
+      no, min 12.04,1082 vs max 36.16,3277
+   (1) can we show that 8 NL 7? 
+        a. margin -0.130639655684181
+      no, min 12.04,1082 vs max 25.11,2332
+   (1) can we show that 3 NL 9? 
+        a. margin -0.19928020184030892
+      no, min 13.37,1201 vs max 33.30,3043
+   (1) can we show that 3 NL 7? 
+        a. margin -0.15349510240427533
+      no, min 13.37,1201 vs max 28.72,2651
+   (1) can we show that 10 NL 9? 
+        a. margin -0.09524339566637074
+      no, min 21.74,1953 vs max 31.26,2863
+   (1) can we show that 10 NL 7? 
+        a. margin -0.06756455921638593
+      no, min 21.74,1953 vs max 28.50,2624
+Alternate outcome cannot be ruled out: 5,8
+Alternate outcome cannot be ruled out: 5,7
+Alternate outcome cannot be ruled out: 5,10
+Alternate outcome cannot be ruled out: 5,9
+Alternate outcome cannot be ruled out: 8,3
+Alternate outcome cannot be ruled out: 8,7
+Alternate outcome cannot be ruled out: 8,10
+Alternate outcome cannot be ruled out: 8,9
+Alternate outcome cannot be ruled out: 3,7
+Alternate outcome cannot be ruled out: 3,10
+Alternate outcome cannot be ruled out: 3,9
+Alternate outcome cannot be ruled out: 7,10
+Alternate outcome cannot be ruled out: 7,9
+Best sample size: inf
+------------------------------------------------
+Final set of assertions generated:
+(9, 'AG', 1, 155)
+(10, 'AG', 4, 40)
+(10, 'AG', 2, 28)
+(9, 'AG', 4, 41)
+10 NL 5 = 3883 [rules out (5, 3)]
+(10, 'AG', 6, 68)
+(9, 'AG', 2, 26)
+(9, 'AG', 6, 53)
+(10, 'AG', 1, 2190)
+[] are verified winners with these assertions.
+[3, 5, 7, 8, 9, 10] remain as potential winners in this audit.
+------------------------------------------------

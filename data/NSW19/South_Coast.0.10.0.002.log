@@ -1,0 +1,73 @@
+VALID BALLOTS 48880
+10 ballot checks required to assert that first winner has a quota's worth of votes
+AUD TV 0.4496978963268614, ss 45
+AG*(0,2) = 28
+NL(0,2) = 28, AG*'s used 0
+Max in loop 45, 0.4496978963268614
+AUD TV 0.4996978963268614, ss 20
+AG*(0,2) = 29
+NL(0,2) = 29, AG*'s used 0
+Max in loop 29, 0.4996978963268614
+AUD TV 0.5496978963268614, ss 12
+AG*(0,2) = 29
+NL(0,2) = 29, AG*'s used 0
+Max in loop 29, 0.5496978963268614
+AUD TV 0.5996978963268614, ss 8
+AG*(0,2) = 29
+NL(0,2) = 29, AG*'s used 0
+Max in loop 29, 0.5996978963268614
+AUD TV 0.6496978963268615, ss 5
+AG*(0,2) = 30
+NL(0,2) = 30, AG*'s used 0
+Max in loop 30, 0.6496978963268615
+Sample size to show min tv of 0.1998489481634307 is 16
+AUD TV 0.4496978963268614, ss 45
+AG*(0,2) = 26
+NL(0,2) = 26, AG*'s used 0
+Max in loop 45, 0.4496978963268614
+AUD TV 0.4996978963268614, ss 20
+AG*(0,2) = 26
+NL(0,2) = 26, AG*'s used 0
+Max in loop 26, 0.4996978963268614
+AUD TV 0.5496978963268614, ss 12
+AG*(0,2) = 27
+NL(0,2) = 27, AG*'s used 0
+Max in loop 27, 0.5496978963268614
+Sample size to show min tv of 0.24984894816343073 is 20
+AUD TV 0.4496978963268614, ss 45
+AG*(0,2) = 25
+NL(0,2) = 25, AG*'s used 0
+Max in loop 45, 0.4496978963268614
+AUD TV 0.4996978963268614, ss 20
+AG*(0,2) = 26
+NL(0,2) = 26, AG*'s used 0
+Max in loop 26, 0.4996978963268614
+AUD TV 0.5496978963268614, ss 12
+AG*(0,2) = 26
+NL(0,2) = 26, AG*'s used 0
+Max in loop 26, 0.5496978963268614
+AUD TV 0.5996978963268614, ss 8
+AG*(0,2) = 26
+NL(0,2) = 26, AG*'s used 0
+Max in loop 26, 0.5996978963268614
+AUD TV 0.6496978963268615, ss 5
+AG*(0,2) = 27
+NL(0,2) = 27, AG*'s used 0
+Max in loop 27, 0.6496978963268615
+Sample size to show min tv of 0.2998489481634307 is 28
+Sample size required for audit is 26 ballots
+------------------------------------------------
+Assertion set BEFORE filtering:
+(1, 'MT', 0.5996978963268614, 8)
+(1, 'LT', 0.24984894816343073, 20)
+(0, 'NL', 2, 26)
+(1, 'QT', None, 10)
+------------------------------------------------
+Final set of assertions AFTER filtering:
+(1, 'MT', 0.5996978963268614, 8)
+(1, 'LT', 0.24984894816343073, 20)
+(0, 'NL', 2, 26)
+(1, 'QT', None, 10)
+------------------------------------------------
+Explanations for AG* inclusion:
+------------------------------------------------

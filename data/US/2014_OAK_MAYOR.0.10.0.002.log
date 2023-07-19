@@ -1,0 +1,235 @@
+VALID BALLOTS 101431
+Winner 13
+Winner 2
+Computing AG relationships
+6 AG 15 = 11742
+8 AG 15 = 11363
+7 AG 15 = 4570
+7 AG 16 = 11237
+5 AG 15 = 3554
+5 AG 16 = 6708
+9 AG 15 = 2393
+9 AG 16 = 4470
+11 AG 15 = 1741
+11 AG 16 = 3095
+0 AG 15 = 591
+0 AG 16 = 650
+3 AG 15 = 394
+3 AG 16 = 420
+4 AG 15 = 151
+4 AG 16 = 155
+4 AG 6 = 2274
+4 AG 8 = 352
+4 AG 7 = 509
+4 AG 5 = 867
+4 AG 9 = 1244
+4 AG 11 = 569
+12 AG 15 = 59
+12 AG 16 = 59
+12 AG 6 = 87
+12 AG 8 = 73
+12 AG 7 = 76
+12 AG 5 = 82
+12 AG 9 = 85
+12 AG 11 = 76
+12 AG 0 = 96
+12 AG 3 = 118
+10 AG 15 = 38
+10 AG 16 = 38
+10 AG 6 = 48
+10 AG 8 = 43
+10 AG 7 = 44
+10 AG 5 = 46
+10 AG 9 = 46
+10 AG 11 = 45
+10 AG 0 = 52
+10 AG 3 = 56
+10 AG 4 = 484
+13 AG 15 = 15
+13 AG 16 = 15
+13 AG 6 = 16
+13 AG 8 = 16
+13 AG 7 = 16
+13 AG 5 = 16
+13 AG 9 = 16
+13 AG 11 = 16
+13 AG 0 = 17
+13 AG 3 = 17
+13 AG 4 = 21
+13 AG 12 = 32
+13 AG 10 = 50
+13 AG 1 = 85
+13 AG 14 = 84
+13 AG 2 = 370
+1 AG 15 = 35
+1 AG 16 = 35
+1 AG 6 = 41
+1 AG 8 = 40
+1 AG 7 = 41
+1 AG 5 = 41
+1 AG 9 = 43
+1 AG 11 = 41
+1 AG 0 = 46
+1 AG 3 = 46
+14 AG 15 = 29
+14 AG 16 = 29
+14 AG 6 = 35
+14 AG 8 = 32
+14 AG 7 = 33
+14 AG 5 = 34
+14 AG 9 = 33
+14 AG 11 = 33
+14 AG 0 = 36
+14 AG 3 = 39
+14 AG 4 = 302
+2 AG 15 = 31
+2 AG 16 = 32
+2 AG 6 = 37
+2 AG 8 = 34
+2 AG 7 = 35
+2 AG 5 = 36
+2 AG 9 = 37
+2 AG 11 = 36
+2 AG 0 = 39
+2 AG 3 = 41
+2 AG 4 = 405
+Candidate 13 is a known winner, cost 370
+Ruling out candidates: [(15, 29), (16, 29), (6, 35), (8, 32), (7, 33), (5, 34), (9, 33), (11, 33), (0, 36), (3, 39), (4, 302)]
+Sample size for ruling out cands: 302
+ALTERNATE OUTCOME PAIR: 12,13
+   (1) can we show that 10 NL 13? 
+        a. margin -0.34346830193267663
+      no, min 13.10,13286 vs max 47.45,48901
+   (1) can we show that 10 NL 12? 
+        a. margin -0.030533071743352735
+      no, min 13.10,13286 vs max 16.15,17701
+   (1) can we show that 1 NL 13? 
+        a. margin -0.3512141258589583
+      no, min 14.31,14510 vs max 49.43,51023
+   (1) can we show that 1 NL 12? 
+        a. margin -0.048134528234300644
+      no, min 14.31,14510 vs max 19.12,21336
+   (1) can we show that 14 NL 13? 
+        a. margin -0.3345459803544607
+      no, min 16.08,16312 vs max 49.54,51147
+   (1) can we show that 14 NL 12? 
+        a. margin -0.028022333737549143
+      no, min 16.08,16312 vs max 18.88,21080
+   (1) can we show that 2 NL 13? 
+        a. margin -0.3181768887223826
+      no, min 15.39,15609 vs max 47.21,48714
+   (1) can we show that 2 NL 12? 
+        a. margin -0.030759826877384766
+      no, min 15.39,15609 vs max 18.46,20569
+ALTERNATE OUTCOME PAIR: 10,13
+   (1) can we show that 12 NL 13? 
+        a. margin -0.4241865570354887
+      no, min 8.12,8235 vs max 50.54,53313
+   (1) can we show that 12 NL 10? 
+        a. margin -0.195157299050586
+      no, min 8.12,8235 vs max 27.63,31884
+   (1) can we show that 1 NL 13? 
+        a. margin -0.3386242864607464
+      no, min 14.31,14510 vs max 48.17,51023
+   (1) can we show that 1 NL 10? 
+        a. margin -0.13649015915581342
+      no, min 14.31,14510 vs max 27.95,32376
+   (1) can we show that 14 NL 13? 
+        a. margin -0.3215453526699593
+      no, min 16.08,16312 vs max 48.24,51147
+   (1) can we show that 14 NL 10? 
+        a. margin -0.12172807129970109
+      no, min 16.08,16312 vs max 28.25,32704
+   (1) can we show that 2 NL 13? 
+        a. margin -0.3055311821172355
+      no, min 15.39,15609 vs max 45.94,48714
+   (1) can we show that 2 NL 10? 
+        a. margin -0.117574180148738
+      no, min 15.39,15609 vs max 27.15,31333
+ALTERNATE OUTCOME PAIR: 13,1
+   (1) can we show that 12 NL 1? 
+        a. margin -0.2026960856805775
+      no, min 8.12,8235 vs max 28.39,30987
+   (1) can we show that 12 NL 13? 
+        a. margin -0.4291685973716123
+      no, min 8.12,8235 vs max 51.04,53313
+   (1) can we show that 10 NL 1? 
+        a. margin -0.14313835678112874
+      no, min 13.10,13286 vs max 27.41,29768
+   (1) can we show that 10 NL 13? 
+        a. margin -0.3364421790839749
+      no, min 13.10,13286 vs max 46.74,48901
+   (1) can we show that 14 NL 1? 
+        a. margin -0.09853003519634052
+      no, min 16.08,16312 vs max 25.93,28273
+   (1) can we show that 14 NL 13? 
+        a. margin -0.3294456329918858
+      no, min 16.08,16312 vs max 49.03,51147
+   (1) can we show that 2 NL 1? 
+        a. margin -0.0912344352318325
+      no, min 15.39,15609 vs max 24.51,26718
+   (1) can we show that 2 NL 13? 
+        a. margin -0.31371737108641995
+      no, min 15.39,15609 vs max 46.76,48714
+ALTERNATE OUTCOME PAIR: 13,14
+   (1) can we show that 12 NL 14? 
+        a. margin -0.2091569638473444
+      no, min 8.12,8235 vs max 29.03,31699
+   (1) can we show that 12 NL 13? 
+        a. margin -0.4285113361135485
+      no, min 8.12,8235 vs max 50.97,53313
+   (1) can we show that 10 NL 14? 
+        a. margin -0.15340806393837503
+      no, min 13.10,13286 vs max 28.44,30875
+   (1) can we show that 10 NL 13? 
+        a. margin -0.33546943242204075
+      no, min 13.10,13286 vs max 46.65,48901
+   (1) can we show that 1 NL 14? 
+        a. margin -0.11872438735034962
+      no, min 14.31,14510 vs max 26.18,28670
+   (1) can we show that 1 NL 13? 
+        a. margin -0.3447368161607398
+      no, min 14.31,14510 vs max 48.78,51023
+   (1) can we show that 2 NL 14? 
+        a. margin -0.09847416798940478
+      no, min 15.39,15609 vs max 25.24,27502
+   (1) can we show that 2 NL 13? 
+        a. margin -0.3127643422622275
+      no, min 15.39,15609 vs max 46.67,48714
+Alternate outcome cannot be ruled out: 12,13
+Alternate outcome cannot be ruled out: 10,13
+Alternate outcome cannot be ruled out: 13,1
+Alternate outcome cannot be ruled out: 13,14
+Best sample size: inf
+------------------------------------------------
+Final set of assertions generated:
+(13, 'AG', 5, 16)
+(14, 'AG', 16, 29)
+(14, 'AG', 4, 302)
+(14, 'AG', 5, 34)
+(13, 'AG', 6, 16)
+(13, 'AG', 12, 32)
+(13, 'AG', 8, 16)
+(14, 'AG', 11, 33)
+(14, 'AG', 0, 36)
+(13, 'AG', 10, 50)
+(14, 'AG', 15, 29)
+(13, 'AG', 3, 17)
+(13, 'AG', 1, 85)
+(13, 'AG', 7, 16)
+(14, 'AG', 3, 39)
+(13, 'AG', 14, 84)
+(13, 'AG', 9, 16)
+(14, 'AG', 6, 35)
+(14, 'AG', 8, 32)
+(13, 'AG', 11, 16)
+(13, 'AG', 15, 15)
+(13, 'AG', 4, 21)
+(13, 'AG', 16, 15)
+(14, 'AG', 7, 33)
+(14, 'AG', 9, 33)
+(13, 'AG', 2, 370)
+(13, 'AG', 0, 17)
+[13] are verified winners with these assertions.
+[12, 10, 1, 14, 2] remain as potential winners in this audit.
+------------------------------------------------
