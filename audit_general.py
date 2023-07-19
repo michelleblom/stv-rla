@@ -749,7 +749,7 @@ if __name__ == "__main__":
                             # These ballots could not go to 'sw' but may go
                             # to 'c'.
 
-                            # Could we exclude these ballots by using an AG?
+                            # Could we exclude these ballots by using an AG*?
                             is_ag, ag_asn, descs = rule_out_for_max(b.prefs,c, \
                                 ag_matrix, winners, candidates)
                             
