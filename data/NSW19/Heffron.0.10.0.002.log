@@ -1,57 +1,97 @@
 VALID BALLOTS 50010
 30 ballot checks required to assert that first winner has a quota's worth of votes
 AUD TV 0.23315449066588267, ss 86
+AG*(0,1) = 6862
 AG*(0,2) = 48
 AG*(0,4) = 95
 AG*(0,1) = 6862
-NL(0,2) = 48, AG*'s used 0
+AG*(0,2) = 48
+AG*(0,4) = 95
+AG*(1,2) = 40
+AG*(1,4) = 103
+AG*(3,0) = 46
+AG*(3,1) = 31
+AG*(3,2) = 16
+AG*(3,4) = 21
+NL(0,2) = 19, AG*'s used 40
 NL(0,4) = 92, AG*'s used 48
 NL(0,1) = 276, AG*'s used 95
 Max in loop 276, 0.23315449066588267
 AUD TV 0.28315449066588266, ss 40
 AG*(0,2) = 50
 AG*(0,4) = 106
-NL(0,2) = 50, AG*'s used 0
+AG*(0,2) = 50
+AG*(0,4) = 106
+AG*(1,2) = 40
+AG*(1,4) = 108
+AG*(3,0) = 46
+AG*(3,1) = 31
+AG*(3,2) = 16
+AG*(3,4) = 21
+NL(0,2) = 19, AG*'s used 40
 NL(0,4) = 102, AG*'s used 50
 NL(0,1) = 558, AG*'s used 106
 Max in loop 558, 0.28315449066588266
 Sample size to show min tv of 0.09157724533294134 is 55
 AUD TV 0.23315449066588267, ss 86
+AG*(0,1) = 1670
 AG*(0,2) = 47
 AG*(0,4) = 91
 AG*(0,1) = 1670
-NL(0,2) = 47, AG*'s used 0
-NL(0,4) = 88, AG*'s used 47
+AG*(0,2) = 47
+AG*(0,4) = 91
+AG*(1,2) = 37
+AG*(1,4) = 87
+AG*(3,0) = 46
+AG*(3,1) = 31
+AG*(3,2) = 16
+AG*(3,4) = 21
+NL(0,2) = 19, AG*'s used 37
+NL(0,4) = 25, AG*'s used 87
 NL(0,1) = 230, AG*'s used 91
 Max in loop 230, 0.23315449066588267
 AUD TV 0.28315449066588266, ss 40
 AG*(0,2) = 49
 AG*(0,4) = 101
-NL(0,2) = 49, AG*'s used 0
-NL(0,4) = 97, AG*'s used 49
+AG*(0,2) = 49
+AG*(0,4) = 101
+AG*(1,2) = 37
+AG*(1,4) = 90
+AG*(3,0) = 46
+AG*(3,1) = 31
+AG*(3,2) = 16
+AG*(3,4) = 21
+NL(0,2) = 19, AG*'s used 37
+NL(0,4) = 26, AG*'s used 90
 NL(0,1) = 329, AG*'s used 101
 Max in loop 329, 0.28315449066588266
 Sample size required for audit is 230 ballots
 ------------------------------------------------
 Assertion set BEFORE filtering:
-(0, 'NL', 2, 47)
-(0, 'NL', 4, 88)
-(0, 'AG*', 2, 47)
+(1, 'AG', 4, 87)
+(0, 'NL', 4, 25)
+(0, 'NL', 2, 19)
 (0, 'AG*', 4, 91)
-(0, 'NL', 1, 230)
 (3, 'LT', 0.09157724533294134, 55)
 (3, 'QT', None, 30)
+(0, 'NL', 1, 230)
 (3, 'MT', 0.23315449066588267, 86)
+(1, 'AG', 2, 37)
+(0, 'AG*', 2, 47)
 ------------------------------------------------
 Final set of assertions AFTER filtering:
-(0, 'AG*', 2, 47)
+(1, 'AG', 4, 87)
 (0, 'AG*', 4, 91)
-(0, 'NL', 1, 230)
 (3, 'LT', 0.09157724533294134, 55)
 (3, 'QT', None, 30)
+(0, 'NL', 1, 230)
 (3, 'MT', 0.23315449066588267, 86)
+(1, 'AG', 2, 37)
+(0, 'AG*', 2, 47)
 ------------------------------------------------
 Explanations for AG* inclusion:
-   Explanation for (0, 'AG*', 2, 47): []
+   Explanation for (1, 'AG', 4, 87): []
    Explanation for (0, 'AG*', 4, 91): []
+   Explanation for (1, 'AG', 2, 37): []
+   Explanation for (0, 'AG*', 2, 47): []
 ------------------------------------------------

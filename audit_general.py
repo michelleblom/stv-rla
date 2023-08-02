@@ -228,6 +228,74 @@ def merge_helpful_ags(helpful_ags, exp_merged_total):
     return merged_helpful_ags
 
 
+def compute_ag_stars(winners, losers, candidates, ballots, ag_matrix, \
+    first_winner, min_tv, aud_tv, INVALID, args, log=None):
+
+    for w in winners:
+        cand_w = candidates[w]
+
+        for c in losers:
+            if c == w:
+                continue
+
+            cand_c = candidates[c]
+
+            min_w = 0
+            max_c = 0
+
+            # assertion: fpc(w) > maxc
+            assorter = INVALID*0.5 # h(b) = ((b_w - b_c) + 1)/2
+            for b in ballots:
+                if b.prefs != []:
+                    if b.prefs[0] == cand_w.num:
+                        # assorter value is 1 per vote
+                        assorter += b.votes
+                        min_w += b.votes
+                        continue
+
+                    if b.prefs[0] == c: 
+                        # assorter value is 0 per vote
+                        max_c += b.votes
+                        continue
+
+                # Default contribution of each instance of ballot type
+                # to assorter.
+                contrib = 0.5 * b.votes 
+
+                if min_tv > 0 and len(b.prefs) > 1 and b.prefs[:2] == \
+                    [first_winner.num, cand_w.num]:
+                    min_w += min_tv * b.votes
+                    contrib = b.votes * ((1 + min_tv)/2.0)
+                else:
+                    weight = 1
+
+                    if b.prefs != [] and b.prefs[0] == first_winner.num:
+                        weight = aud_tv
+
+                    for p in b.prefs:
+                        if p == cand_w.num:
+                            break
+
+                        if p == c:
+                            contrib = b.votes * ((1 - weight)/2.0)
+                            max_c += weight*b.votes
+                            break
+
+                assorter += contrib
+
+            # Compute assorter margin
+            amean = assorter/args.voters
+
+            if amean > 0.5:
+                ss = sample_size(amean, args)
+
+                ag_matrix[cand_w.num][c] = ss
+
+                if log != None:
+                    print("AG*({},{}) = {}".format(cand_w.id, cand_c.id, \
+                        ss), file=log)
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
@@ -544,15 +612,15 @@ if __name__ == "__main__":
 
 
         # Check that first winner's FP is greater than a quota
-        first_winner = candidates[winners[0]]
-        second_winner = candidates[winners[1]]
+        fw = candidates[winners[0]]
+        sw = candidates[winners[1]]
         thresh = 1.0/(args.seats + 1);
     
-        ss = ssm_sample_size(thresh, first_winner.fp_votes, INVALID, args)
+        ss = ssm_sample_size(thresh, fw.fp_votes, INVALID, args)
         print("{} ballot checks required to assert that first winner"\
             " has a quota's worth of votes".format(ss), file=log)
 
-        assertions_used.add((first_winner.id, "QT", None, ss))
+        assertions_used.add((fw.id, "QT", None, ss))
 
         max_sample_size = max(max_sample_size, ss)
 
@@ -560,7 +628,7 @@ if __name__ == "__main__":
         # bounds on first winner transfer value.
         deltat = args.deltat 
 
-        act_tv = (first_winner.fp_votes - args.quota)/first_winner.fp_votes
+        act_tv = (fw.fp_votes - args.quota)/fw.fp_votes
 
         min_tv = 0
 
@@ -568,6 +636,8 @@ if __name__ == "__main__":
 
         best_outer_assertions = set()
         best_outer_exp = set()
+
+        losers = [c.num for c in candidates if c != fw.num and c != sw.num]
 
         while min_tv < act_tv - deltat:
             mintv_ss = 0
@@ -580,15 +650,14 @@ if __name__ == "__main__":
                 mintally = args.quota / (1 - min_tv)
                 thresh = mintally/valid_ballots
 
-                mintv_ss = ssm_sample_size(thresh,first_winner.fp_votes,\
-                    INVALID, args)
+                mintv_ss = ssm_sample_size(thresh,fw.fp_votes, INVALID, args)
                 print("Sample size to show min tv of {} is {}".format(min_tv,\
                     mintv_ss), file=log)
 
                 if mintv_ss >= max_in_outer_loop:
                     break
 
-                lts.add((first_winner.id, "LT", min_tv, mintv_ss))
+                lts.add((fw.id, "LT", min_tv, mintv_ss))
 
             aud_tv = act_tv + deltat
 
@@ -608,12 +677,11 @@ if __name__ == "__main__":
                 thresholdProp = thresholdT / valid_ballots
                 threshold = 1 - thresholdProp
         
-                tally_others = valid_ballots - first_winner.fp_votes
+                tally_others = valid_ballots - fw.fp_votes
 
                 ss = ssm_sample_size(threshold, tally_others, INVALID, args)
 
-                inner_loop_assertions.add((first_winner.id, "MT", \
-                    aud_tv, ss))
+                inner_loop_assertions.add((fw.id, "MT", aud_tv, ss))
 
                 max_this_loop = max(ss, max(mintv_ss, max_sample_size))
 
@@ -626,83 +694,24 @@ if __name__ == "__main__":
                 # (2) Forming NL assertions, potentially making use of our
                 #  set of AG* relationships. We will use the 
                 # cheaper of the two options.
-                sw = candidates[winners[1]]
-
-                ags = {}
 
                 max_with_nls = ss
 
                 print("AUD TV {}, ss {}".format(aud_tv, ss), file=log)
-                # Compute AG*'s between original losers and second winner
-                # Note: we do this for each different upper/lower bound on the 
-                # transfer value as we can form more AG*'s this way -- utilising
-                # the fact that ballots leaving the first winner will be reduced
-                # in value to aud_tv, and will have a minimum value of min_tv
-                for c in cands:
-                    if c in winners:
-                        continue
 
-                    cand_c = candidates[c]
+                compute_ag_stars([sw.num], losers, candidates, ballots, \
+                    ag_matrix, fw, min_tv, aud_tv, INVALID, args, log=log)
 
-                    min_sw = 0
-                    max_c = 0
+                compute_ag_stars(losers, losers,  candidates, ballots, \
+                    ag_matrix, fw, min_tv, aud_tv, INVALID, args, log=log)
 
-                    # assertion: fpc(sw) > maxc
-                    assorter = INVALID*0.5 # h(b) = ((b_sw - b_c) + 1)/2
-                    for b in ballots:
-                        if b.prefs != []:
-                            if b.prefs[0] == sw.num:
-                                # assorter value is 1 per vote
-                                assorter += b.votes
-                                min_sw += b.votes
-                                continue
 
-                            if b.prefs[0] == c: 
-                                # assorter value is 0 per vote
-                                max_c += b.votes
-                                continue
-
-                        # Default contribution of each instance of ballot type
-                        # to assorter.
-                        contrib = 0.5 * b.votes 
-
-                        if min_tv > 0 and len(b.prefs) > 1 and b.prefs[:2] == \
-                            [first_winner.num, sw.num]:
-                            min_sw += min_tv * b.votes
-                            contrib = b.votes * ((1 + min_tv)/2.0)
-                        else:
-                            weight = 1
-
-                            if b.prefs != [] and b.prefs[0] == first_winner.num:
-                                weight = aud_tv
-
-                            for p in b.prefs:
-                                if p == sw.num:
-                                    break
-
-                                if p == c:
-                                    contrib = b.votes * ((1 - weight)/2.0)
-                                    max_c += weight*b.votes
-                                    break
-
-                        assorter += contrib
-
-                    # Compute assorter margin
-                    amean = assorter/args.voters
-
-                    if amean > 0.5:
-                        ss = sample_size(amean, args)
-
-                        ags[c] = ss
-                        ag_matrix[sw.num][c] = ss
-
-                        print("AG*({},{}) = {}".format(sw.id, cand_c.id, ss),\
-                            file=log)
-
+                ags = {c : ag_matrix[sw.num][c] for c in losers \
+                    if ag_matrix[sw.num][c] != None}
                 
                 # Determine NL's between original losers and second winner
                 # explanations: map between AG* and the NL's that they
-                # are supporting. 
+                # are supporting.  NOTE: Explanations currently not working.
                 explanations = {}
                 for c in cands:
                     if c in winners:
@@ -739,7 +748,7 @@ if __name__ == "__main__":
                         s_in = sw.num in b.prefs
 
                         weight = 1
-                        if b.prefs != [] and b.prefs[0] == first_winner.num:
+                        if b.prefs != [] and b.prefs[0] == fw.num:
                             weight = aud_tv
 
                         c_idx = b.prefs.index(c) if c_in else np.inf
@@ -766,7 +775,7 @@ if __name__ == "__main__":
 
                         elif s_in:
                             if min_tv > 0 and len(b.prefs) > 1 and \
-                                b.prefs[:2] == [first_winner.num, sw.num]:
+                                b.prefs[:2] == [fw.num, sw.num]:
                                 min_sw += min_tv * b.votes
                                 assorter += b.votes * ((1 + min_tv)/2.0)
                             else:
@@ -785,7 +794,7 @@ if __name__ == "__main__":
                                         if idx_d < s_idx:
                                             prefs.remove(d)
                                             s_idx -= 1
-                                            rag = (second_winner.id, "AG*", \
+                                            rag = (sw.id, "AG*", \
                                                 candidates[d].id, dval)
                                             descs.add(rag)
                                             if rag in explanations:
@@ -808,7 +817,7 @@ if __name__ == "__main__":
                                     pot_margin_inc += b.votes*0.5
 
                                 elif min_tv > 0 and  len(prefs) > 1 and \
-                                    prefs[:2] ==  [first_winner.num, sw.num]:
+                                    prefs[:2] == [fw.num, sw.num]:
                                     base_contrib = 0.5*b.votes
                                     alt_contrib = b.votes * ((1 + min_tv)/2.0)
                                     dconfig = alt_contrib - base_contrib
