@@ -1,0 +1,212 @@
+VALID BALLOTS 262447
+Winner 120
+Winner 124
+Computing AG relationships
+123 AG 40 = 74
+125 AG 40 = 47
+122 AG 40 = 24
+122 AG 123 = 143
+121 AG 40 = 24
+121 AG 123 = 109
+120 AG 40 = 18
+120 AG 123 = 47
+124 AG 40 = 24
+124 AG 123 = 435
+Ruling out candidates: [(40, 24), (123, 109)]
+Sample size for ruling out cands: 109
+ALTERNATE OUTCOME PAIR: 125,122
+   (1) can we show that 121 NL 122? 
+        a. margin -0.1380227880930881
+      no, min 20.46,53696 vs max 34.26,92487
+   (1) can we show that 121 NL 125? 
+        a. margin -0.03183499906647813
+      no, min 20.46,53696 vs max 23.64,65513
+   (1) can we show that 120 NL 122? 
+        a. margin -0.08136245921398733
+      no, min 26.04,68337 vs max 34.17,92322
+   (1) can we show that 120 NL 125? 
+        a. margin 0.023037032238890198
+      yes, 230, ags used 47 = 230
+   (1) can we show that 124 NL 122? 
+        a. margin -0.16478374681364238
+      no, min 19.86,52131 vs max 36.34,97349
+   (1) can we show that 124 NL 125? 
+        a. margin 0.0013069305421666844
+      yes, 262447, ags used 435 = 262447
+Best assertion(s) require sample: 230
+ALTERNATE OUTCOME PAIR: 125,121
+   (1) can we show that 122 NL 121? 
+        a. margin -0.14451298738411944
+      no, min 20.42,53580 vs max 34.87,93745
+   (1) can we show that 122 NL 125? 
+        a. margin -0.022102240325348466
+      no, min 20.42,53580 vs max 22.63,62050
+   (1) can we show that 120 NL 121? 
+        a. margin -0.05690545773686362
+      no, min 26.04,68337 vs max 31.73,85547
+   (1) can we show that 120 NL 125? 
+        a. margin 0.020255518257019434
+      yes, 263, ags used 47 = 263
+   (1) can we show that 124 NL 121? 
+        a. margin -0.15925501148803367
+      no, min 19.86,52131 vs max 35.79,95933
+   (1) can we show that 124 NL 125? 
+        a. margin 0.00170701132038098
+      yes, 262447, ags used 435 = 262447
+Best assertion(s) require sample: 263
+ALTERNATE OUTCOME PAIR: 125,120
+   (1) can we show that 122 NL 120? 
+        a. margin -0.14971403750090495
+      no, min 20.42,53580 vs max 35.39,94543
+   (1) can we show that 122 NL 125? 
+        a. margin -0.02146211108020535
+      no, min 20.42,53580 vs max 22.56,62050
+   (1) can we show that 121 NL 120? 
+        a. margin -0.14586437134608765
+      no, min 20.46,53696 vs max 35.05,93635
+   (1) can we show that 121 NL 125? 
+        a. margin -0.033514068237269434
+      no, min 20.46,53696 vs max 23.81,65513
+   (1) can we show that 124 NL 120? 
+        a. margin -0.16986794794123505
+      no, min 19.86,52131 vs max 36.85,98366
+   (1) can we show that 124 NL 125? 
+        a. margin 0.0031841349555021825
+      yes, 5335, ags used 435 = 5335
+Best assertion(s) require sample: 5335
+ALTERNATE OUTCOME PAIR: 125,124
+   (1) can we show that 122 NL 124? 
+        a. margin -0.10794052386450093
+      no, min 20.42,53580 vs max 31.21,84866
+   (1) can we show that 122 NL 125? 
+        a. margin -0.014061251732095825
+      no, min 20.42,53580 vs max 21.82,62050
+   (1) can we show that 121 NL 124? 
+        a. margin -0.11788030853213538
+      no, min 20.46,53696 vs max 32.25,87684
+   (1) can we show that 121 NL 125? 
+        a. margin -0.02602684224497387
+      no, min 20.46,53696 vs max 23.06,65513
+   (1) can we show that 120 NL 124? 
+        a. margin -0.0745064717828744
+      no, min 26.04,68337 vs max 33.49,91067
+   (1) can we show that 120 NL 125? 
+        a. margin 0.02995398436001695
+      yes, 154, ags used 47 = 154
+Best assertion(s) require sample: 154
+ALTERNATE OUTCOME PAIR: 122,121
+   (1) can we show that 125 NL 121? 
+        a. margin -0.2671777539846141
+      no, min 10.43,27364 vs max 37.14,101710
+   (1) can we show that 125 NL 122? 
+        a. margin -0.2809722851979002
+      no, min 10.43,27364 vs max 38.52,106450
+   (1) can we show that 120 NL 121? 
+        a. margin -0.05108459993827319
+      no, min 26.04,68337 vs max 31.15,85547
+   (1) can we show that 120 NL 122? 
+        a. margin -0.07308015205609764
+      no, min 26.04,68337 vs max 33.35,92322
+   (1) can we show that 124 NL 121? 
+        a. margin -0.1518211295995
+      no, min 19.86,52131 vs max 35.05,95933
+   (1) can we show that 124 NL 122? 
+        a. margin -0.1546585278805498
+      no, min 19.86,52131 vs max 35.33,97349
+ALTERNATE OUTCOME PAIR: 122,120
+   (1) can we show that 125 NL 120? 
+        a. margin -0.27301258285799923
+      no, min 10.43,27364 vs max 37.73,102977
+   (1) can we show that 125 NL 122? 
+        a. margin -0.2723203796068031
+      no, min 10.43,27364 vs max 37.66,106450
+   (1) can we show that 121 NL 120? 
+        a. margin -0.13891947707537144
+      no, min 20.46,53696 vs max 34.35,93635
+   (1) can we show that 121 NL 122? 
+        a. margin -0.12851610674409175
+      no, min 20.46,53696 vs max 33.31,92487
+   (1) can we show that 124 NL 120? 
+        a. margin -0.16194380833717537
+      no, min 19.86,52131 vs max 36.06,98366
+   (1) can we show that 124 NL 122? 
+        a. margin -0.1441370384623688
+      no, min 19.86,52131 vs max 34.28,97349
+ALTERNATE OUTCOME PAIR: 122,124
+   (1) can we show that 125 NL 124? 
+        a. margin -0.24228637909114337
+      no, min 10.43,27364 vs max 34.66,95869
+   (1) can we show that 125 NL 122? 
+        a. margin -0.2858837530371211
+      no, min 10.43,27364 vs max 39.01,106450
+   (1) can we show that 121 NL 124? 
+        a. margin -0.11218519040669783
+      no, min 20.46,53696 vs max 31.68,87684
+   (1) can we show that 121 NL 122? 
+        a. margin -0.12925530361050663
+      no, min 20.46,53696 vs max 33.39,92487
+   (1) can we show that 120 NL 124? 
+        a. margin -0.06871228603616464
+      no, min 26.04,68337 vs max 32.91,91067
+   (1) can we show that 120 NL 122? 
+        a. margin -0.07261910658786963
+      no, min 26.04,68337 vs max 33.30,92322
+ALTERNATE OUTCOME PAIR: 121,120
+   (1) can we show that 125 NL 120? 
+        a. margin -0.272068900260497
+      no, min 10.43,27364 vs max 37.63,102977
+   (1) can we show that 125 NL 121? 
+        a. margin -0.2547219057562097
+      no, min 10.43,27364 vs max 35.90,101710
+   (1) can we show that 122 NL 120? 
+        a. margin -0.14149650532615465
+      no, min 20.42,53580 vs max 34.57,94543
+   (1) can we show that 122 NL 121? 
+        a. margin -0.1269030826541485
+      no, min 20.42,53580 vs max 33.11,93745
+   (1) can we show that 124 NL 120? 
+        a. margin -0.16085152430776484
+      no, min 19.86,52131 vs max 35.95,98366
+   (1) can we show that 124 NL 121? 
+        a. margin -0.13892709766162314
+      no, min 19.86,52131 vs max 33.76,95933
+ALTERNATE OUTCOME PAIR: 121,124
+   (1) can we show that 125 NL 124? 
+        a. margin -0.24251245648327713
+      no, min 10.43,27364 vs max 34.68,95869
+   (1) can we show that 125 NL 121? 
+        a. margin -0.2698868723970934
+      no, min 10.43,27364 vs max 37.42,101710
+   (1) can we show that 122 NL 124? 
+        a. margin -0.10330593732575843
+      no, min 20.42,53580 vs max 30.75,84866
+   (1) can we show that 122 NL 121? 
+        a. margin -0.13902870547831225
+      no, min 20.42,53580 vs max 34.32,93745
+   (1) can we show that 120 NL 124? 
+        a. margin -0.0692088942402338
+      no, min 26.04,68337 vs max 32.96,91067
+   (1) can we show that 120 NL 121? 
+        a. margin -0.050661657401303795
+      no, min 26.04,68337 vs max 31.10,85547
+Alternate outcome cannot be ruled out: 122,121
+Alternate outcome cannot be ruled out: 122,120
+Alternate outcome cannot be ruled out: 122,124
+Alternate outcome cannot be ruled out: 121,120
+Alternate outcome cannot be ruled out: 121,124
+Best sample size: inf
+------------------------------------------------
+Final set of assertions generated:
+124 NL 125 = 5335 [rules out (125, 120)]
+120 NL 125 = 154 [rules out (125, 124)]
+120 NL 125 = 230 [rules out (125, 122)]
+(120, 'AG', 40, 18)
+(120, 'AG', 123, 47)
+(121, 'AG', 40, 24)
+(124, 'AG', 40, 24)
+120 NL 125 = 263 [rules out (125, 121)]
+(124, 'AG', 123, 435)
+(121, 'AG', 123, 109)
+[] are verified winners with these assertions.
+[120, 121, 122, 124] remain as potential winners in this audit.
+------------------------------------------------

@@ -156,6 +156,8 @@ NL(2,3) = 38, AG*'s used 29
 NL(2,1) = 50, AG*'s used 39
 NL(2,5) = 321, AG*'s used 57
 Max in loop 321, 0.38168205309421793
+Breaking out of inner loop 321 > 292
+New mintv = 0.190841026547109
 Sample size to show min tv of 0.190841026547109 is 44
 AUD TV 0.33168205309421794, ss 66
 AG*(2,1) = 49
@@ -193,31 +195,72 @@ NL(2,3) = 36, AG*'s used 28
 NL(2,1) = 47, AG*'s used 36
 NL(2,5) = 168, AG*'s used 53
 Max in loop 168, 0.38168205309421793
-Sample size required for audit is 160 ballots
+Breaking out of inner loop 168 > 160
+New mintv = 0.24084102654710898
+Sample size to show min tv of 0.24084102654710898 is 92
+AUD TV 0.33168205309421794, ss 66
+AG*(2,1) = 46
+AG*(2,3) = 33
+AG*(2,4) = 27
+AG*(0,1) = 13
+AG*(0,2) = 22
+AG*(0,3) = 12
+AG*(0,4) = 11
+AG*(0,5) = 21
+AG*(2,1) = 46
+AG*(2,3) = 33
+AG*(2,4) = 27
+AG*(5,4) = 524
+NL(2,4) = 27, AG*'s used 0
+NL(2,3) = 32, AG*'s used 27
+NL(2,1) = 41, AG*'s used 33
+NL(2,5) = 110, AG*'s used 46
+Max in loop 110, 0.33168205309421794
+AUD TV 0.38168205309421793, ss 30
+AG*(2,1) = 49
+AG*(2,3) = 35
+AG*(2,4) = 27
+AG*(0,1) = 13
+AG*(0,2) = 22
+AG*(0,3) = 12
+AG*(0,4) = 11
+AG*(0,5) = 21
+AG*(2,1) = 49
+AG*(2,3) = 35
+AG*(2,4) = 27
+AG*(5,4) = 48785
+NL(2,4) = 27, AG*'s used 0
+NL(2,3) = 34, AG*'s used 27
+NL(2,1) = 43, AG*'s used 35
+NL(2,5) = 114, AG*'s used 49
+Max in loop 114, 0.38168205309421793
+Breaking out of inner loop 114 > 110
+New mintv = 0.29084102654710897
+Sample size required for audit is 110 ballots
 ------------------------------------------------
 Assertion set BEFORE filtering:
-(2, 'NL', 5, 160)
-(2, 'NL', 4, 28)
-(2, 'AG*', 4, 28)
-(0, 'MT', 0.33168205309421794, 66)
-(0, 'LT', 0.190841026547109, 44)
-(2, 'NL', 1, 44)
-(2, 'NL', 3, 34)
+(2, 'AG*', 4, 27)
+(2, 'AG*', 1, 46)
+(2, 'NL', 3, 32)
 (0, 'QT', None, 17)
-(2, 'AG*', 1, 49)
-(2, 'AG*', 3, 35)
+(2, 'AG*', 3, 33)
+(0, 'MT', 0.33168205309421794, 66)
+(2, 'NL', 1, 41)
+(0, 'LT', 0.24084102654710898, 92)
+(2, 'NL', 4, 27)
+(2, 'NL', 5, 110)
 ------------------------------------------------
 Final set of assertions AFTER filtering:
-(2, 'NL', 5, 160)
-(2, 'AG*', 4, 28)
-(0, 'MT', 0.33168205309421794, 66)
-(0, 'LT', 0.190841026547109, 44)
+(2, 'AG*', 4, 27)
+(2, 'AG*', 1, 46)
 (0, 'QT', None, 17)
-(2, 'AG*', 1, 49)
-(2, 'AG*', 3, 35)
+(2, 'AG*', 3, 33)
+(0, 'MT', 0.33168205309421794, 66)
+(0, 'LT', 0.24084102654710898, 92)
+(2, 'NL', 5, 110)
 ------------------------------------------------
 Explanations for AG* inclusion:
-   Explanation for (2, 'AG*', 4, 28): []
-   Explanation for (2, 'AG*', 1, 49): []
-   Explanation for (2, 'AG*', 3, 35): []
+   Explanation for (2, 'AG*', 4, 27): []
+   Explanation for (2, 'AG*', 1, 46): []
+   Explanation for (2, 'AG*', 3, 33): []
 ------------------------------------------------

@@ -1053,19 +1053,19 @@ Best sample size: inf
 ------------------------------------------------
 Final set of assertions generated:
 (9, 'AG', 8, 64)
-(10, 'AG', 8, 40)
-(9, 'AG', 5, 198)
-10 NL 1 = 115 [rules out (1, 4)]
 (10, 'AG', 11, 33)
+(9, 'AG', 5, 198)
+10 NL 1 = 91 [rules out (1, 7)]
 (9, 'AG', 3, 153)
-(10, 'AG', 3, 74)
-(10, 'AG', 5, 65)
 10 NL 1 = 109 [rules out (1, 9)]
 10 NL 1 = 119 [rules out (1, 6)]
-10 NL 1 = 91 [rules out (1, 7)]
-10 NL 1 = 118 [rules out (1, 12)]
+(10, 'AG', 8, 40)
+10 NL 1 = 115 [rules out (1, 4)]
+(10, 'AG', 5, 65)
+(10, 'AG', 3, 74)
 10 NL 1 = 121 [rules out (1, 2)]
 (9, 'AG', 11, 46)
+10 NL 1 = 118 [rules out (1, 12)]
 [] are verified winners with these assertions.
 [1, 2, 4, 6, 7, 9, 10, 12] remain as potential winners in this audit.
 ------------------------------------------------

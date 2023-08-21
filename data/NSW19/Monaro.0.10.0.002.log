@@ -76,6 +76,7 @@ NL(3,5) = 23, AG*'s used 22
 NL(3,4) = 28, AG*'s used 23
 NL(3,1) = 22, AG*'s used 29
 Max in loop 29, 0.5628034637389826
+Breaking out of inner loop 29 > 28
 Sample size to show min tv of 0.18140173186949127 is 19
 AUD TV 0.4128034637389825, ss 51
 AG*(3,1) = 27
@@ -134,6 +135,8 @@ NL(3,5) = 22, AG*'s used 21
 NL(3,4) = 26, AG*'s used 22
 NL(3,1) = 20, AG*'s used 27
 Max in loop 27, 0.5128034637389826
+Breaking out of inner loop 27 > 26
+New mintv = 0.23140173186949126
 Sample size to show min tv of 0.23140173186949126 is 25
 AUD TV 0.4128034637389825, ss 51
 AG*(3,1) = 27
@@ -211,30 +214,32 @@ NL(3,5) = 22, AG*'s used 21
 NL(3,4) = 26, AG*'s used 22
 NL(3,1) = 20, AG*'s used 27
 Max in loop 27, 0.5628034637389826
+Breaking out of inner loop 27 > 26
+New mintv = 0.28140173186949125
 Sample size to show min tv of 0.28140173186949125 is 38
 Sample size required for audit is 26 ballots
 ------------------------------------------------
 Assertion set BEFORE filtering:
-(0, 'MT', 0.5128034637389826, 14)
-(0, 'LT', 0.23140173186949126, 25)
-(3, 'NL', 2, 21)
-(3, 'NL', 1, 26)
-(3, 'AG*', 5, 22)
-(0, 'QT', None, 11)
-(3, 'NL', 5, 21)
 (3, 'AG*', 2, 21)
+(3, 'NL', 1, 26)
 (3, 'NL', 4, 25)
+(0, 'LT', 0.23140173186949126, 25)
+(0, 'QT', None, 11)
+(3, 'AG*', 5, 22)
+(3, 'NL', 2, 21)
+(0, 'MT', 0.5128034637389826, 14)
+(3, 'NL', 5, 21)
 ------------------------------------------------
 Final set of assertions AFTER filtering:
-(0, 'MT', 0.5128034637389826, 14)
-(0, 'LT', 0.23140173186949126, 25)
-(3, 'NL', 1, 26)
-(3, 'AG*', 5, 22)
-(0, 'QT', None, 11)
 (3, 'AG*', 2, 21)
+(3, 'NL', 1, 26)
 (3, 'NL', 4, 25)
+(0, 'LT', 0.23140173186949126, 25)
+(0, 'QT', None, 11)
+(3, 'AG*', 5, 22)
+(0, 'MT', 0.5128034637389826, 14)
 ------------------------------------------------
 Explanations for AG* inclusion:
-   Explanation for (3, 'AG*', 5, 22): []
    Explanation for (3, 'AG*', 2, 21): []
+   Explanation for (3, 'AG*', 5, 22): []
 ------------------------------------------------

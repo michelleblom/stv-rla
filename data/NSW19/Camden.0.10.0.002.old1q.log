@@ -1,0 +1,79 @@
+VALID BALLOTS 62772
+23 ballot checks required to assert that first winner has a quota's worth of votes
+AG(2,0) = 20
+AG(2,1) = 42
+AG(2,3) = 20
+AG(2,5) = 27
+AG(2,6) = 20
+AG(4,0) = 14
+AG(4,1) = 18
+AG(4,2) = 55
+AG(4,3) = 14
+AG(4,5) = 17
+AG(4,6) = 15
+AUD TV 0.2749712952331568, ss 77
+NL(2,3) = 18, AG's used 0
+NL(2,0) = 18, AG's used 0
+NL(2,6) = 19, AG's used 0
+NL(2,5) = 21, AG's used 20
+NL(2,1) = 26, AG's used 27
+Max in loop 77, 0.2749712952331568
+AUD TV 0.32497129523315677, ss 36
+NL(2,3) = 18, AG's used 0
+NL(2,0) = 18, AG's used 0
+NL(2,6) = 19, AG's used 0
+NL(2,5) = 21, AG's used 20
+NL(2,1) = 26, AG's used 27
+Max in loop 36, 0.32497129523315677
+AUD TV 0.37497129523315675, ss 22
+NL(2,3) = 18, AG's used 0
+NL(2,0) = 18, AG's used 0
+NL(2,6) = 19, AG's used 0
+NL(2,5) = 21, AG's used 20
+NL(2,1) = 27, AG's used 27
+Max in loop 27, 0.37497129523315675
+AUD TV 0.42497129523315674, ss 15
+NL(2,3) = 18, AG's used 0
+NL(2,0) = 19, AG's used 0
+NL(2,6) = 19, AG's used 0
+NL(2,5) = 22, AG's used 20
+NL(2,1) = 27, AG's used 27
+Max in loop 27, 0.42497129523315674
+AUD TV 0.47497129523315673, ss 11
+NL(2,3) = 18, AG's used 0
+NL(2,0) = 19, AG's used 0
+NL(2,6) = 19, AG's used 0
+NL(2,5) = 22, AG's used 20
+NL(2,1) = 27, AG's used 27
+Max in loop 27, 0.47497129523315673
+AUD TV 0.5249712952331568, ss 8
+NL(2,3) = 19, AG's used 0
+NL(2,0) = 19, AG's used 0
+NL(2,6) = 19, AG's used 0
+NL(2,5) = 22, AG's used 20
+NL(2,1) = 28, AG's used 27
+Max in loop 28, 0.5249712952331568
+Sample size required for audit is 27 ballots
+------------------------------------------------
+Assertion set BEFORE filtering:
+(4, 'MT', 0.47497129523315673, 11)
+(2, 'NL', 5, 22)
+(2, 'NL', 0, 19)
+(2, 'NL', 3, 18)
+(2, 'AG', 0, 20)
+(2, 'NL', 6, 19)
+(2, 'AG', 5, 27)
+(4, 'QT', None, 23)
+(2, 'AG', 3, 20)
+(2, 'NL', 1, 27)
+(2, 'AG', 6, 20)
+------------------------------------------------
+Final set of assertions AFTER filtering:
+(4, 'MT', 0.47497129523315673, 11)
+(2, 'AG', 0, 20)
+(2, 'AG', 5, 27)
+(4, 'QT', None, 23)
+(2, 'AG', 3, 20)
+(2, 'NL', 1, 27)
+(2, 'AG', 6, 20)
+------------------------------------------------

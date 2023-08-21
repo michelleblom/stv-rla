@@ -199,22 +199,22 @@ Alternate outcome cannot be ruled out: 3,1
 Best sample size: inf
 ------------------------------------------------
 Final set of assertions generated:
-(8, 'AG', 2, 78)
-(1, 'AG', 4, 53)
-(3, 'AG', 4, 307)
-(3, 'AG', 7, 419)
-1 NL 6 = 55 [rules out (6, 5)]
-(1, 'AG', 7, 29)
-(1, 'AG', 2, 28)
-1 NL 6 = 55 [rules out (6, 8)]
-1 NL 3 = 2220 [rules out (5, 3)]
-1 NL 6 = 48 [rules out (6, 3)]
-3 NL 6 = 514 [rules out (6, 1)]
-1 NL 3 = 663 [rules out (3, 8)]
+1 NL 5 = 2272 [rules out (5, 8)]
 (3, 'AG', 2, 196)
 (8, 'AG', 7, 102)
-1 NL 5 = 2272 [rules out (5, 8)]
+1 NL 6 = 55 [rules out (6, 5)]
+1 NL 3 = 663 [rules out (3, 8)]
+(1, 'AG', 2, 28)
+(8, 'AG', 2, 78)
+(3, 'AG', 4, 307)
+(3, 'AG', 7, 419)
+3 NL 6 = 514 [rules out (6, 1)]
+1 NL 3 = 2220 [rules out (5, 3)]
+(1, 'AG', 7, 29)
+1 NL 6 = 48 [rules out (6, 3)]
+1 NL 6 = 55 [rules out (6, 8)]
 (1, 'AG', 6, 101)
+(1, 'AG', 4, 53)
 [1] are verified winners with these assertions.
 [3, 5, 8] remain as potential winners in this audit.
 ------------------------------------------------

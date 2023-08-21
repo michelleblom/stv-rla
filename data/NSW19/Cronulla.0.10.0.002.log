@@ -31,6 +31,7 @@ NL(2,3) = 27, AG*'s used 0
 NL(2,0) = 29, AG*'s used 27
 NL(2,1) = 35, AG*'s used 29
 Max in loop 35, 0.5751877847555721
+Breaking out of inner loop 35 > 34
 Sample size to show min tv of 0.237593892377786 is 11
 AUD TV 0.525187784755572, ss 34
 AG*(2,0) = 28
@@ -79,6 +80,7 @@ NL(2,3) = 27, AG*'s used 0
 NL(2,0) = 28, AG*'s used 27
 NL(2,1) = 32, AG*'s used 28
 Max in loop 32, 0.6251877847555721
+New mintv = 0.287593892377786
 Sample size to show min tv of 0.287593892377786 is 13
 AUD TV 0.525187784755572, ss 34
 AG*(2,0) = 27
@@ -128,6 +130,8 @@ NL(2,3) = 27, AG*'s used 0
 NL(2,0) = 28, AG*'s used 27
 NL(2,1) = 32, AG*'s used 28
 Max in loop 32, 0.6251877847555721
+Breaking out of inner loop 32 > 31
+New mintv = 0.337593892377786
 Sample size to show min tv of 0.337593892377786 is 17
 AUD TV 0.525187784755572, ss 34
 AG*(2,0) = 27
@@ -177,6 +181,7 @@ NL(2,3) = 26, AG*'s used 0
 NL(2,0) = 27, AG*'s used 26
 NL(2,1) = 31, AG*'s used 28
 Max in loop 31, 0.6251877847555721
+New mintv = 0.38759389237778596
 Sample size to show min tv of 0.38759389237778596 is 25
 AUD TV 0.525187784755572, ss 34
 AG*(2,0) = 27
@@ -226,25 +231,27 @@ NL(2,3) = 26, AG*'s used 0
 NL(2,0) = 27, AG*'s used 26
 NL(2,1) = 31, AG*'s used 28
 Max in loop 31, 0.6251877847555721
+New mintv = 0.43759389237778595
+Sample size to show min tv of 0.43759389237778595 is 54
 Sample size required for audit is 31 ballots
 ------------------------------------------------
 Assertion set BEFORE filtering:
-(4, 'LT', 0.38759389237778596, 25)
-(4, 'QT', None, 7)
 (2, 'NL', 1, 31)
-(2, 'NL', 0, 27)
-(4, 'MT', 0.6251877847555721, 8)
 (2, 'AG*', 3, 26)
-(2, 'NL', 3, 26)
 (2, 'AG*', 0, 28)
+(4, 'QT', None, 7)
+(2, 'NL', 0, 27)
+(4, 'LT', 0.38759389237778596, 25)
+(4, 'MT', 0.6251877847555721, 8)
+(2, 'NL', 3, 26)
 ------------------------------------------------
 Final set of assertions AFTER filtering:
-(4, 'LT', 0.38759389237778596, 25)
-(4, 'QT', None, 7)
 (2, 'NL', 1, 31)
-(4, 'MT', 0.6251877847555721, 8)
 (2, 'AG*', 3, 26)
 (2, 'AG*', 0, 28)
+(4, 'QT', None, 7)
+(4, 'LT', 0.38759389237778596, 25)
+(4, 'MT', 0.6251877847555721, 8)
 ------------------------------------------------
 Explanations for AG* inclusion:
    Explanation for (2, 'AG*', 3, 26): []

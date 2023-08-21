@@ -8,6 +8,6 @@ Group elimination sample size 23
 Final set of assertions generated:
 (1, 'AG', 2, 23)
 (0, 'AG', 2, 8)
-(1, 'AG', 3, 22)
 (0, 'AG', 3, 8)
+(1, 'AG', 3, 22)
 ------------------------------------------------

@@ -1,0 +1,238 @@
+VALID BALLOTS 102027
+60 ballot checks required to assert that first winner has a quota's worth of votes
+AG(0,1) = 88
+AG(0,14) = 227
+AG(0,15) = 167
+AG(0,16) = 214
+AG(0,17) = 142
+AG(0,18) = 191
+AG(2,3) = 156
+AG(2,14) = 686
+AG(2,15) = 348
+AG(2,16) = 603
+AG(2,17) = 229
+AG(2,18) = 482
+AG(6,7) = 53
+AG(6,14) = 61
+AG(6,15) = 57
+AG(6,16) = 60
+AG(6,17) = 56
+AG(6,18) = 59
+AG(8,0) = 55
+AG(8,1) = 51
+AG(8,4) = 72
+AG(8,5) = 65
+AG(8,9) = 13
+AG(8,12) = 47
+AG(8,13) = 46
+AG(8,14) = 13
+AG(8,15) = 13
+AG(8,16) = 13
+AG(8,17) = 13
+AG(8,18) = 13
+AG(10,0) = 37
+AG(10,1) = 35
+AG(10,2) = 34
+AG(10,3) = 33
+AG(10,4) = 36
+AG(10,5) = 34
+AG(10,6) = 67
+AG(10,7) = 62
+AG(10,11) = 12
+AG(10,12) = 36
+AG(10,13) = 36
+AG(10,14) = 13
+AG(10,15) = 12
+AG(10,16) = 13
+AG(10,17) = 12
+AG(10,18) = 13
+AG(12,13) = 4799
+AUD TV 0.1519039319760226, ss 105
+NL(8,0) = 22, AG's used 13
+NL(8,1) = 22, AG's used 13
+NL(8,2) = 27, AG's used 13
+NL(8,3) = 27, AG's used 13
+NL(8,4) = 22, AG's used 13
+NL(8,5) = 22, AG's used 13
+NL(8,6) = 33, AG's used 13
+NL(8,7) = 32, AG's used 13
+NL(8,9) = 12, AG's used 13
+NL(8,11) = 26, AG's used 13
+NL(8,12) = 17, AG's used 13
+NL(8,13) = 17, AG's used 13
+NL(8,14) = 13, AG's used 13
+NL(8,15) = 13, AG's used 13
+NL(8,16) = 13, AG's used 13
+NL(8,17) = 13, AG's used 13
+NL(8,18) = 13, AG's used 13
+Max in loop 105, 0.1519039319760226
+AUD TV 0.20190393197602258, ss 49
+NL(8,0) = 23, AG's used 13
+NL(8,1) = 23, AG's used 13
+NL(8,2) = 29, AG's used 13
+NL(8,3) = 29, AG's used 13
+NL(8,4) = 23, AG's used 13
+NL(8,5) = 23, AG's used 13
+NL(8,6) = 37, AG's used 13
+NL(8,7) = 36, AG's used 13
+NL(8,9) = 12, AG's used 13
+NL(8,11) = 29, AG's used 13
+NL(8,12) = 18, AG's used 13
+NL(8,13) = 18, AG's used 13
+NL(8,14) = 13, AG's used 13
+NL(8,15) = 13, AG's used 13
+NL(8,16) = 13, AG's used 13
+NL(8,17) = 13, AG's used 13
+NL(8,18) = 13, AG's used 13
+Max in loop 60, 0.20190393197602258
+AUD TV 0.25190393197602257, ss 30
+NL(8,0) = 24, AG's used 13
+NL(8,1) = 23, AG's used 13
+NL(8,2) = 32, AG's used 13
+NL(8,3) = 31, AG's used 13
+NL(8,4) = 24, AG's used 13
+NL(8,5) = 24, AG's used 13
+NL(8,6) = 42, AG's used 13
+NL(8,7) = 40, AG's used 13
+NL(8,9) = 12, AG's used 13
+NL(8,11) = 33, AG's used 13
+NL(8,12) = 19, AG's used 13
+NL(8,13) = 19, AG's used 13
+NL(8,14) = 13, AG's used 13
+NL(8,15) = 13, AG's used 13
+NL(8,16) = 13, AG's used 13
+NL(8,17) = 13, AG's used 13
+NL(8,18) = 13, AG's used 13
+Max in loop 60, 0.25190393197602257
+AUD TV 0.30190393197602255, ss 21
+NL(8,0) = 25, AG's used 13
+NL(8,1) = 24, AG's used 13
+NL(8,2) = 34, AG's used 13
+NL(8,3) = 33, AG's used 13
+NL(8,4) = 25, AG's used 13
+NL(8,5) = 25, AG's used 13
+NL(8,6) = 45, AG's used 47
+NL(8,7) = 45, AG's used 13
+NL(8,9) = 12, AG's used 13
+NL(8,11) = 38, AG's used 13
+NL(8,12) = 19, AG's used 13
+NL(8,13) = 19, AG's used 13
+NL(8,14) = 13, AG's used 13
+NL(8,15) = 13, AG's used 13
+NL(8,16) = 13, AG's used 13
+NL(8,17) = 13, AG's used 13
+NL(8,18) = 13, AG's used 13
+Max in loop 60, 0.30190393197602255
+AUD TV 0.35190393197602254, ss 15
+NL(8,0) = 26, AG's used 13
+NL(8,1) = 25, AG's used 13
+NL(8,2) = 37, AG's used 13
+NL(8,3) = 36, AG's used 13
+NL(8,4) = 27, AG's used 13
+NL(8,5) = 26, AG's used 13
+NL(8,6) = 51, AG's used 51
+NL(8,7) = 49, AG's used 47
+NL(8,9) = 12, AG's used 13
+NL(8,11) = 45, AG's used 13
+NL(8,12) = 20, AG's used 13
+NL(8,13) = 20, AG's used 13
+NL(8,14) = 13, AG's used 13
+NL(8,15) = 13, AG's used 13
+NL(8,16) = 13, AG's used 13
+NL(8,17) = 13, AG's used 13
+NL(8,18) = 13, AG's used 13
+Max in loop 60, 0.35190393197602254
+AUD TV 0.40190393197602253, ss 12
+NL(8,0) = 27, AG's used 13
+NL(8,1) = 26, AG's used 13
+NL(8,2) = 41, AG's used 13
+NL(8,3) = 39, AG's used 13
+NL(8,4) = 28, AG's used 13
+NL(8,5) = 27, AG's used 13
+NL(8,6) = 52, AG's used 55
+NL(8,7) = 12, AG's used 53
+NL(8,9) = 13, AG's used 13
+NL(8,11) = 51, AG's used 51
+NL(8,12) = 21, AG's used 13
+NL(8,13) = 21, AG's used 13
+NL(8,14) = 13, AG's used 13
+NL(8,15) = 13, AG's used 13
+NL(8,16) = 13, AG's used 13
+NL(8,17) = 13, AG's used 13
+NL(8,18) = 13, AG's used 13
+Max in loop 60, 0.40190393197602253
+AUD TV 0.4519039319760225, ss 9
+NL(8,0) = 28, AG's used 13
+NL(8,1) = 27, AG's used 13
+NL(8,2) = 45, AG's used 13
+NL(8,3) = 43, AG's used 13
+NL(8,4) = 29, AG's used 13
+NL(8,5) = 28, AG's used 13
+NL(8,6) = 61, AG's used 55
+NL(8,7) = 12, AG's used 53
+NL(8,9) = 13, AG's used 13
+NL(8,11) = 55, AG's used 55
+NL(8,12) = 22, AG's used 13
+NL(8,13) = 22, AG's used 13
+NL(8,14) = 13, AG's used 13
+NL(8,15) = 13, AG's used 13
+NL(8,16) = 13, AG's used 13
+NL(8,17) = 13, AG's used 13
+NL(8,18) = 13, AG's used 13
+Max in loop 61, 0.4519039319760225
+Sample size required for audit is 60 ballots
+------------------------------------------------
+Assertion set BEFORE filtering:
+(8, 'NL', 5, 27)
+(8, 'NL', 3, 39)
+(8, 'NL', 11, 51)
+(8, 'NL', 14, 13)
+(10, 'QT', None, 60)
+(8, 'NL', 15, 13)
+(8, 'AG', 1, 51)
+(6, 'AG', 7, 53)
+(8, 'AG', 15, 13)
+(8, 'AG', 16, 13)
+(8, 'NL', 1, 26)
+(8, 'NL', 7, 12)
+(8, 'NL', 18, 13)
+(8, 'NL', 16, 13)
+(8, 'AG', 13, 46)
+(8, 'NL', 17, 13)
+(8, 'AG', 14, 13)
+(8, 'AG', 17, 13)
+(8, 'AG', 0, 55)
+(8, 'AG', 18, 13)
+(8, 'NL', 4, 28)
+(8, 'NL', 9, 13)
+(8, 'AG', 9, 13)
+(8, 'NL', 6, 52)
+(8, 'NL', 2, 41)
+(10, 'MT', 0.40190393197602253, 12)
+(8, 'NL', 12, 21)
+(8, 'AG', 12, 47)
+(8, 'NL', 13, 21)
+(8, 'NL', 0, 27)
+------------------------------------------------
+Final set of assertions AFTER filtering:
+(8, 'NL', 5, 27)
+(8, 'NL', 3, 39)
+(8, 'NL', 11, 51)
+(10, 'QT', None, 60)
+(8, 'AG', 1, 51)
+(6, 'AG', 7, 53)
+(8, 'AG', 15, 13)
+(8, 'AG', 16, 13)
+(8, 'NL', 7, 12)
+(8, 'AG', 13, 46)
+(8, 'AG', 14, 13)
+(8, 'AG', 17, 13)
+(8, 'AG', 0, 55)
+(8, 'AG', 18, 13)
+(8, 'NL', 4, 28)
+(8, 'AG', 9, 13)
+(8, 'NL', 6, 52)
+(8, 'NL', 2, 41)
+(10, 'MT', 0.40190393197602253, 12)
+(8, 'AG', 12, 47)
+------------------------------------------------

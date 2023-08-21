@@ -45,6 +45,7 @@ NL(0,4) = 36, AG*'s used 0
 NL(0,3) = 47, AG*'s used 47
 NL(0,2) = 44, AG*'s used 36
 Max in loop 47, 0.5381719637194897
+Breaking out of inner loop 47 > 45
 Sample size to show min tv of 0.19408598185974485 is 17
 AUD TV 0.4381719637194897, ss 47
 AG*(0,2) = 41
@@ -91,6 +92,8 @@ NL(0,4) = 34, AG*'s used 0
 NL(0,3) = 42, AG*'s used 44
 NL(0,2) = 40, AG*'s used 34
 Max in loop 44, 0.5381719637194897
+Breaking out of inner loop 44 > 42
+New mintv = 0.24408598185974484
 Sample size to show min tv of 0.24408598185974484 is 22
 AUD TV 0.4381719637194897, ss 47
 AG*(0,2) = 40
@@ -137,6 +140,8 @@ NL(0,4) = 34, AG*'s used 0
 NL(0,3) = 41, AG*'s used 43
 NL(0,2) = 39, AG*'s used 34
 Max in loop 43, 0.5381719637194897
+Breaking out of inner loop 43 > 41
+New mintv = 0.2940859818597448
 Sample size to show min tv of 0.2940859818597448 is 31
 AUD TV 0.4381719637194897, ss 47
 AG*(0,2) = 39
@@ -183,25 +188,28 @@ NL(0,4) = 33, AG*'s used 0
 NL(0,3) = 39, AG*'s used 42
 NL(0,2) = 39, AG*'s used 33
 Max in loop 42, 0.5381719637194897
+Breaking out of inner loop 42 > 41
+New mintv = 0.3440859818597448
+Sample size to show min tv of 0.3440859818597448 is 62
 Sample size required for audit is 41 ballots
 ------------------------------------------------
 Assertion set BEFORE filtering:
-(0, 'AG*', 2, 41)
-(1, 'LT', 0.2940859818597448, 31)
-(0, 'NL', 2, 38)
-(0, 'AG*', 4, 33)
 (0, 'NL', 3, 38)
-(1, 'QT', None, 10)
-(0, 'NL', 4, 33)
 (1, 'MT', 0.4881719637194897, 21)
+(0, 'AG*', 2, 41)
+(0, 'AG*', 4, 33)
+(1, 'QT', None, 10)
+(1, 'LT', 0.2940859818597448, 31)
+(0, 'NL', 4, 33)
+(0, 'NL', 2, 38)
 ------------------------------------------------
 Final set of assertions AFTER filtering:
-(0, 'AG*', 2, 41)
-(1, 'LT', 0.2940859818597448, 31)
-(0, 'AG*', 4, 33)
 (0, 'NL', 3, 38)
-(1, 'QT', None, 10)
 (1, 'MT', 0.4881719637194897, 21)
+(0, 'AG*', 2, 41)
+(0, 'AG*', 4, 33)
+(1, 'QT', None, 10)
+(1, 'LT', 0.2940859818597448, 31)
 ------------------------------------------------
 Explanations for AG* inclusion:
    Explanation for (0, 'AG*', 2, 41): []

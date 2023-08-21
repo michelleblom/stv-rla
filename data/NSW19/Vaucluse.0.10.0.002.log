@@ -48,6 +48,7 @@ NL(5,2) = 127, AG*'s used 64
 NL(5,4) = 277, AG*'s used 154
 NL(5,3) = 385, AG*'s used 2023
 Max in loop 2023, 0.5187975906352995
+Breaking out of inner loop 2023 > 911
 Sample size to show min tv of 0.20939879531764974 is 14
 AUD TV 0.46879759063529947, ss 42
 AG*(5,0) = 52
@@ -97,6 +98,8 @@ NL(5,2) = 114, AG*'s used 61
 NL(5,4) = 205, AG*'s used 137
 NL(5,3) = 197, AG*'s used 788
 Max in loop 788, 0.5187975906352995
+Breaking out of inner loop 788 > 552
+New mintv = 0.25939879531764976
 Sample size to show min tv of 0.25939879531764976 is 18
 AUD TV 0.46879759063529947, ss 42
 AG*(5,0) = 52
@@ -146,6 +149,8 @@ NL(5,2) = 111, AG*'s used 61
 NL(5,4) = 193, AG*'s used 134
 NL(5,3) = 177, AG*'s used 644
 Max in loop 644, 0.5187975906352995
+Breaking out of inner loop 644 > 454
+New mintv = 0.30939879531764974
 Sample size to show min tv of 0.30939879531764974 is 25
 AUD TV 0.46879759063529947, ss 42
 AG*(5,0) = 51
@@ -195,6 +200,8 @@ NL(5,2) = 109, AG*'s used 60
 NL(5,4) = 182, AG*'s used 131
 NL(5,3) = 160, AG*'s used 591
 Max in loop 591, 0.5187975906352995
+Breaking out of inner loop 591 > 369
+New mintv = 0.35939879531764973
 Sample size to show min tv of 0.35939879531764973 is 43
 AUD TV 0.46879759063529947, ss 42
 AG*(5,0) = 51
@@ -244,35 +251,88 @@ NL(5,2) = 106, AG*'s used 59
 NL(5,4) = 172, AG*'s used 128
 NL(5,3) = 146, AG*'s used 545
 Max in loop 545, 0.5187975906352995
-Sample size required for audit is 346 ballots
+Breaking out of inner loop 545 > 346
+New mintv = 0.4093987953176497
+Sample size to show min tv of 0.4093987953176497 is 254
+AUD TV 0.46879759063529947, ss 42
+AG*(5,0) = 50
+AG*(5,1) = 57
+AG*(5,2) = 116
+AG*(5,4) = 325
+AG*(3,0) = 169
+AG*(3,1) = 101
+AG*(3,2) = 634
+AG*(5,0) = 50
+AG*(5,1) = 57
+AG*(5,2) = 116
+AG*(5,4) = 325
+AG*(6,0) = 11
+AG*(6,1) = 11
+AG*(6,2) = 12
+AG*(6,3) = 14
+AG*(6,4) = 13
+AG*(6,5) = 15
+NL(5,1) = 55, AG*'s used 50
+NL(5,0) = 50, AG*'s used 0
+NL(5,2) = 97, AG*'s used 57
+NL(5,4) = 151, AG*'s used 116
+NL(5,3) = 129, AG*'s used 325
+Max in loop 325, 0.46879759063529947
+AUD TV 0.5187975906352995, ss 19
+AG*(5,0) = 51
+AG*(5,1) = 59
+AG*(5,2) = 125
+AG*(5,4) = 449
+AG*(3,0) = 183
+AG*(3,1) = 106
+AG*(3,2) = 1154
+AG*(5,0) = 51
+AG*(5,1) = 59
+AG*(5,2) = 125
+AG*(5,4) = 449
+AG*(6,0) = 11
+AG*(6,1) = 11
+AG*(6,2) = 12
+AG*(6,3) = 14
+AG*(6,4) = 13
+AG*(6,5) = 15
+NL(5,1) = 56, AG*'s used 51
+NL(5,0) = 51, AG*'s used 0
+NL(5,2) = 104, AG*'s used 59
+NL(5,4) = 164, AG*'s used 125
+NL(5,3) = 135, AG*'s used 449
+Max in loop 449, 0.5187975906352995
+Breaking out of inner loop 449 > 325
+New mintv = 0.4593987953176497
+Sample size required for audit is 325 ballots
 ------------------------------------------------
 Assertion set BEFORE filtering:
-(6, 'LT', 0.35939879531764973, 43)
-(5, 'AG*', 1, 58)
-(5, 'NL', 4, 158)
-(6, 'MT', 0.46879759063529947, 42)
+(5, 'NL', 2, 97)
 (5, 'NL', 1, 55)
-(5, 'NL', 2, 100)
-(5, 'AG*', 2, 118)
-(5, 'NL', 3, 139)
-(5, 'AG*', 0, 51)
-(5, 'NL', 0, 51)
+(5, 'AG*', 1, 57)
+(5, 'AG*', 0, 50)
 (6, 'QT', None, 9)
-(5, 'AG*', 4, 346)
+(5, 'AG*', 2, 116)
+(5, 'NL', 4, 151)
+(5, 'NL', 3, 129)
+(5, 'AG*', 4, 325)
+(6, 'MT', 0.46879759063529947, 42)
+(5, 'NL', 0, 50)
+(6, 'LT', 0.4093987953176497, 254)
 ------------------------------------------------
 Final set of assertions AFTER filtering:
-(6, 'LT', 0.35939879531764973, 43)
-(5, 'AG*', 1, 58)
-(6, 'MT', 0.46879759063529947, 42)
-(5, 'AG*', 2, 118)
-(5, 'NL', 3, 139)
-(5, 'AG*', 0, 51)
+(5, 'AG*', 1, 57)
+(5, 'AG*', 0, 50)
 (6, 'QT', None, 9)
-(5, 'AG*', 4, 346)
+(5, 'AG*', 2, 116)
+(5, 'NL', 3, 129)
+(5, 'AG*', 4, 325)
+(6, 'MT', 0.46879759063529947, 42)
+(6, 'LT', 0.4093987953176497, 254)
 ------------------------------------------------
 Explanations for AG* inclusion:
-   Explanation for (5, 'AG*', 1, 58): []
-   Explanation for (5, 'AG*', 2, 118): []
-   Explanation for (5, 'AG*', 0, 51): []
-   Explanation for (5, 'AG*', 4, 346): []
+   Explanation for (5, 'AG*', 1, 57): []
+   Explanation for (5, 'AG*', 0, 50): []
+   Explanation for (5, 'AG*', 2, 116): []
+   Explanation for (5, 'AG*', 4, 325): []
 ------------------------------------------------

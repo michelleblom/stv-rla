@@ -207,19 +207,19 @@ Alternate outcome cannot be ruled out: 10,5
 Best sample size: inf
 ------------------------------------------------
 Final set of assertions generated:
-4 NL 1 = 50 [rules out (1, 10)]
 (4, 'AG', 8, 26)
-(4, 'AG', 2, 37)
-(4, 'AG', 7, 33)
-(4, 'AG', 9, 30)
-4 NL 1 = 53 [rules out (6, 1)]
-(10, 'AG', 9, 66)
-(10, 'AG', 8, 62)
 (10, 'AG', 2, 192)
-4 NL 1 = 52 [rules out (1, 5)]
-(10, 'AG', 3, 39)
+(10, 'AG', 8, 62)
+(4, 'AG', 7, 33)
 (4, 'AG', 3, 25)
+(10, 'AG', 3, 39)
+4 NL 1 = 52 [rules out (1, 5)]
+(4, 'AG', 2, 37)
+(10, 'AG', 9, 66)
 (10, 'AG', 7, 154)
+(4, 'AG', 9, 30)
+4 NL 1 = 50 [rules out (1, 10)]
+4 NL 1 = 53 [rules out (6, 1)]
 [] are verified winners with these assertions.
 [1, 4, 5, 6, 10] remain as potential winners in this audit.
 ------------------------------------------------

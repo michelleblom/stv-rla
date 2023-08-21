@@ -2846,65 +2846,65 @@ Alternate outcome cannot be ruled out: 4,2
 Best sample size: inf
 ------------------------------------------------
 Final set of assertions generated:
-(0, 'AG', 11, 153)
-4 NL 6 = 83 [rules out (8, 6)]
-2 NL 3 = 65 [rules out (3, 8)]
-2 NL 5 = 56 [rules out (15, 5)]
-(6, 'AG', 7, 108)
-4 NL 8 = 48 [rules out (9, 8)]
-2 NL 1 = 54 [rules out (1, 4)]
-2 NL 1 = 54 [rules out (1, 15)]
-2 NL 5 = 56 [rules out (9, 5)]
-2 NL 5 = 56 [rules out (5, 8)]
-(4, 'AG', 7, 90)
-(0, 'AG', 12, 87)
-4 NL 1 = 13 [rules out (1, 2)]
-0 NL 9 = 389 [rules out (9, 4)]
-2 NL 1 = 54 [rules out (1, 6)]
-(4, 'AG', 11, 99)
-4 NL 1 = 9042 [rules out (1, 0)]
-2 NL 3 = 65 [rules out (3, 15)]
-4 NL 9 = 36 [rules out (9, 0)]
-2 NL 3 = 63 [rules out (3, 0)]
-4 NL 5 = 14 [rules out (5, 2)]
-(4, 'AG', 12, 61)
-2 NL 1 = 54 [rules out (9, 1)]
-2 NL 1 = 55 [rules out (3, 1)]
-(0, 'AG', 10, 174)
-(4, 'AG', 10, 106)
-4 NL 6 = 83 [rules out (15, 6)]
-(4, 'AG', 15, 154)
-(2, 'AG', 3, 66)
-4 NL 6 = 87 [rules out (9, 6)]
-4 NL 6 = 68 [rules out (6, 2)]
-(4, 'AG', 9, 58)
-4 NL 8 = 48 [rules out (15, 8)]
-(4, 'AG', 6, 99)
-2 NL 5 = 56 [rules out (5, 6)]
-(4, 'AG', 5, 15)
-(4, 'AG', 16, 15)
-2 NL 5 = 56 [rules out (3, 5)]
-4 NL 8 = 36 [rules out (8, 0)]
-4 NL 15 = 98 [rules out (9, 15)]
-(0, 'AG', 13, 81)
-4 NL 6 = 52 [rules out (6, 0)]
-4 NL 2 = 486 [rules out (0, 2)]
-(0, 'AG', 16, 16)
-2 NL 3 = 64 [rules out (3, 4)]
-0 NL 8 = 511 [rules out (8, 4)]
-4 NL 9 = 42 [rules out (9, 2)]
+2 NL 5 = 56 [rules out (1, 5)]
 (0, 'AG', 1, 15)
 (4, 'AG', 13, 58)
-2 NL 5 = 56 [rules out (1, 5)]
+4 NL 6 = 68 [rules out (6, 2)]
+2 NL 5 = 56 [rules out (3, 5)]
+4 NL 5 = 14 [rules out (5, 2)]
+4 NL 8 = 48 [rules out (9, 8)]
+2 NL 1 = 54 [rules out (1, 6)]
+2 NL 1 = 54 [rules out (1, 4)]
+2 NL 5 = 56 [rules out (5, 0)]
+4 NL 2 = 486 [rules out (0, 2)]
+4 NL 1 = 9042 [rules out (1, 0)]
+(2, 'AG', 3, 66)
+0 NL 9 = 389 [rules out (9, 4)]
+(0, 'AG', 12, 87)
+(0, 'AG', 11, 153)
+2 NL 1 = 54 [rules out (1, 15)]
+4 NL 6 = 83 [rules out (15, 6)]
+0 NL 8 = 511 [rules out (8, 4)]
 (2, 'AG', 16, 75)
 4 NL 15 = 71 [rules out (15, 2)]
-(4, 'AG', 8, 59)
-2 NL 5 = 56 [rules out (5, 0)]
-2 NL 1 = 54 [rules out (1, 8)]
-2 NL 3 = 65 [rules out (9, 3)]
-4 NL 8 = 43 [rules out (8, 2)]
+(6, 'AG', 7, 108)
+2 NL 3 = 64 [rules out (3, 4)]
+4 NL 6 = 83 [rules out (8, 6)]
+(4, 'AG', 7, 90)
 2 NL 3 = 65 [rules out (3, 6)]
+2 NL 5 = 56 [rules out (5, 6)]
+4 NL 8 = 36 [rules out (8, 0)]
+4 NL 8 = 43 [rules out (8, 2)]
+(4, 'AG', 12, 61)
+(4, 'AG', 11, 99)
+2 NL 1 = 54 [rules out (1, 8)]
+2 NL 5 = 56 [rules out (5, 8)]
+4 NL 6 = 52 [rules out (6, 0)]
+4 NL 9 = 42 [rules out (9, 2)]
+2 NL 3 = 65 [rules out (3, 8)]
+(4, 'AG', 16, 15)
+(0, 'AG', 10, 174)
+2 NL 5 = 56 [rules out (9, 5)]
+4 NL 6 = 87 [rules out (9, 6)]
+(4, 'AG', 15, 154)
+2 NL 5 = 56 [rules out (15, 5)]
+2 NL 3 = 63 [rules out (3, 0)]
 4 NL 15 = 57 [rules out (15, 0)]
+(0, 'AG', 16, 16)
+(4, 'AG', 10, 106)
+4 NL 1 = 13 [rules out (1, 2)]
+4 NL 8 = 48 [rules out (15, 8)]
+2 NL 3 = 65 [rules out (9, 3)]
+2 NL 1 = 54 [rules out (9, 1)]
+(4, 'AG', 5, 15)
+2 NL 3 = 65 [rules out (3, 15)]
+(4, 'AG', 6, 99)
+(4, 'AG', 9, 58)
+2 NL 1 = 55 [rules out (3, 1)]
+(0, 'AG', 13, 81)
+(4, 'AG', 8, 59)
+4 NL 9 = 36 [rules out (9, 0)]
+4 NL 15 = 98 [rules out (9, 15)]
 [] are verified winners with these assertions.
 [0, 2, 3, 4, 5, 6, 15] remain as potential winners in this audit.
 ------------------------------------------------

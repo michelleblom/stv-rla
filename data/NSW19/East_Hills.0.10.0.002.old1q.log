@@ -1,0 +1,97 @@
+VALID BALLOTS 47623
+26 ballot checks required to assert that first winner has a quota's worth of votes
+AG(3,0) = 13
+AG(3,1) = 14
+AG(3,2) = 13
+AG(3,4) = 14
+AG(3,6) = 15
+AG(5,0) = 13
+AG(5,1) = 13
+AG(5,2) = 14
+AG(5,4) = 14
+AG(5,6) = 14
+AUD TV 0.25477884085558283, ss 81
+NL(5,0) = 12, AG's used 0
+NL(5,1) = 12, AG's used 13
+NL(5,2) = 13, AG's used 13
+NL(5,4) = 13, AG's used 13
+NL(5,6) = 13, AG's used 13
+Max in loop 81, 0.25477884085558283
+AUD TV 0.3047788408555828, ss 38
+NL(5,0) = 12, AG's used 0
+NL(5,1) = 13, AG's used 13
+NL(5,2) = 13, AG's used 13
+NL(5,4) = 13, AG's used 13
+NL(5,6) = 13, AG's used 13
+Max in loop 38, 0.3047788408555828
+AUD TV 0.3547788408555828, ss 23
+NL(5,0) = 12, AG's used 0
+NL(5,1) = 13, AG's used 13
+NL(5,2) = 13, AG's used 13
+NL(5,4) = 13, AG's used 13
+NL(5,6) = 13, AG's used 13
+Max in loop 26, 0.3547788408555828
+AUD TV 0.4047788408555828, ss 16
+NL(5,0) = 12, AG's used 13
+NL(5,1) = 13, AG's used 13
+NL(5,2) = 13, AG's used 13
+NL(5,4) = 13, AG's used 13
+NL(5,6) = 13, AG's used 13
+Max in loop 26, 0.4047788408555828
+AUD TV 0.4547788408555828, ss 11
+NL(5,0) = 12, AG's used 13
+NL(5,1) = 13, AG's used 13
+NL(5,2) = 13, AG's used 13
+NL(5,4) = 13, AG's used 13
+NL(5,6) = 13, AG's used 13
+Max in loop 26, 0.4547788408555828
+AUD TV 0.5047788408555828, ss 8
+NL(5,0) = 12, AG's used 13
+NL(5,1) = 13, AG's used 13
+NL(5,2) = 13, AG's used 13
+NL(5,4) = 13, AG's used 13
+NL(5,6) = 13, AG's used 13
+Max in loop 26, 0.5047788408555828
+AUD TV 0.5547788408555828, ss 6
+NL(5,0) = 13, AG's used 13
+NL(5,1) = 13, AG's used 13
+NL(5,2) = 13, AG's used 13
+NL(5,4) = 13, AG's used 13
+NL(5,6) = 13, AG's used 13
+Max in loop 26, 0.5547788408555828
+AUD TV 0.6047788408555829, ss 5
+NL(5,0) = 13, AG's used 13
+NL(5,1) = 13, AG's used 13
+NL(5,2) = 13, AG's used 13
+NL(5,4) = 13, AG's used 13
+NL(5,6) = 13, AG's used 13
+Max in loop 26, 0.6047788408555829
+AUD TV 0.6547788408555829, ss 3
+NL(5,0) = 13, AG's used 13
+NL(5,1) = 13, AG's used 13
+NL(5,2) = 13, AG's used 13
+NL(5,4) = 13, AG's used 13
+NL(5,6) = 13, AG's used 13
+Max in loop 26, 0.6547788408555829
+Sample size required for audit is 26 ballots
+------------------------------------------------
+Assertion set BEFORE filtering:
+(5, 'NL', 2, 13)
+(5, 'AG', 1, 13)
+(5, 'AG', 0, 13)
+(5, 'NL', 0, 13)
+(5, 'NL', 1, 13)
+(3, 'MT', 0.6547788408555829, 3)
+(5, 'NL', 6, 13)
+(5, 'NL', 4, 13)
+(3, 'QT', None, 26)
+------------------------------------------------
+Final set of assertions AFTER filtering:
+(5, 'NL', 2, 13)
+(5, 'AG', 1, 13)
+(5, 'AG', 0, 13)
+(3, 'MT', 0.6547788408555829, 3)
+(5, 'NL', 6, 13)
+(5, 'NL', 4, 13)
+(3, 'QT', None, 26)
+------------------------------------------------

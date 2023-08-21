@@ -96,6 +96,7 @@ NL(7,0) = 47, AG*'s used 42
 NL(7,8) = 49, AG*'s used 42
 NL(7,4) = 47, AG*'s used 53
 Max in loop 53, 0.5007382496915669
+Breaking out of inner loop 53 > 52
 Sample size to show min tv of 0.17536912484578343 is 20
 AUD TV 0.40073824969156685, ss 53
 AG*(7,0) = 48
@@ -226,6 +227,8 @@ NL(7,0) = 47, AG*'s used 42
 NL(7,8) = 49, AG*'s used 42
 NL(7,4) = 45, AG*'s used 53
 Max in loop 53, 0.5507382496915669
+Breaking out of inner loop 53 > 52
+New mintv = 0.22536912484578342
 Sample size to show min tv of 0.22536912484578342 is 27
 AUD TV 0.40073824969156685, ss 53
 AG*(7,0) = 48
@@ -325,6 +328,8 @@ NL(7,0) = 46, AG*'s used 41
 NL(7,8) = 48, AG*'s used 41
 NL(7,4) = 44, AG*'s used 52
 Max in loop 52, 0.5007382496915669
+Breaking out of inner loop 52 > 51
+New mintv = 0.2753691248457834
 Sample size to show min tv of 0.2753691248457834 is 43
 AUD TV 0.40073824969156685, ss 53
 AG*(7,0) = 48
@@ -426,43 +431,46 @@ NL(7,0) = 46, AG*'s used 41
 NL(7,8) = 48, AG*'s used 41
 NL(7,4) = 44, AG*'s used 52
 Max in loop 52, 0.5007382496915669
+Breaking out of inner loop 52 > 51
+New mintv = 0.3253691248457834
+Sample size to show min tv of 0.3253691248457834 is 119
 Sample size required for audit is 51 ballots
 ------------------------------------------------
 Assertion set BEFORE filtering:
-(7, 'NL', 8, 47)
-(7, 'AG*', 2, 39)
-(7, 'AG*', 3, 33)
-(7, 'NL', 2, 38)
-(7, 'NL', 5, 39)
-(7, 'NL', 4, 43)
-(7, 'AG*', 1, 38)
 (6, 'LT', 0.2753691248457834, 43)
-(7, 'NL', 0, 45)
+(7, 'AG*', 5, 41)
+(6, 'MT', 0.45073824969156684, 24)
+(7, 'NL', 4, 43)
+(7, 'AG*', 3, 33)
+(6, 'QT', None, 12)
 (7, 'AG*', 0, 49)
+(7, 'NL', 2, 38)
+(7, 'AG*', 1, 38)
 (7, 'NL', 1, 37)
 (7, 'NL', 3, 33)
+(7, 'NL', 0, 45)
+(7, 'NL', 5, 39)
 (7, 'AG*', 8, 51)
-(6, 'QT', None, 12)
-(6, 'MT', 0.45073824969156684, 24)
-(7, 'AG*', 5, 41)
+(7, 'AG*', 2, 39)
+(7, 'NL', 8, 47)
 ------------------------------------------------
 Final set of assertions AFTER filtering:
-(7, 'AG*', 2, 39)
-(7, 'AG*', 3, 33)
-(7, 'NL', 4, 43)
-(7, 'AG*', 1, 38)
 (6, 'LT', 0.2753691248457834, 43)
-(7, 'AG*', 0, 49)
-(7, 'AG*', 8, 51)
-(6, 'QT', None, 12)
-(6, 'MT', 0.45073824969156684, 24)
 (7, 'AG*', 5, 41)
+(6, 'MT', 0.45073824969156684, 24)
+(7, 'NL', 4, 43)
+(7, 'AG*', 3, 33)
+(6, 'QT', None, 12)
+(7, 'AG*', 0, 49)
+(7, 'AG*', 1, 38)
+(7, 'AG*', 8, 51)
+(7, 'AG*', 2, 39)
 ------------------------------------------------
 Explanations for AG* inclusion:
-   Explanation for (7, 'AG*', 2, 39): []
-   Explanation for (7, 'AG*', 3, 33): []
-   Explanation for (7, 'AG*', 1, 38): []
-   Explanation for (7, 'AG*', 0, 49): []
-   Explanation for (7, 'AG*', 8, 51): []
    Explanation for (7, 'AG*', 5, 41): []
+   Explanation for (7, 'AG*', 3, 33): []
+   Explanation for (7, 'AG*', 0, 49): []
+   Explanation for (7, 'AG*', 1, 38): []
+   Explanation for (7, 'AG*', 8, 51): []
+   Explanation for (7, 'AG*', 2, 39): []
 ------------------------------------------------

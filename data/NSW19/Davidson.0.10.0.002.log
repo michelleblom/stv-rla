@@ -91,6 +91,7 @@ NL(0,3) = 82, AG*'s used 0
 NL(0,1) = 73, AG*'s used 82
 NL(0,4) NOT POSSIBLE
 Max in loop inf, 0.6381803703588047
+New mintv = 0.29409018517940233
 Sample size to show min tv of 0.29409018517940233 is 12
 AUD TV 0.5381803703588046, ss 32
 AG*(0,1) = 77
@@ -137,6 +138,7 @@ NL(0,3) = 79, AG*'s used 0
 NL(0,1) = 71, AG*'s used 79
 NL(0,4) NOT POSSIBLE
 Max in loop inf, 0.6381803703588047
+New mintv = 0.3440901851794023
 Sample size to show min tv of 0.3440901851794023 is 15
 AUD TV 0.5381803703588046, ss 32
 AG*(0,1) = 75
@@ -183,6 +185,7 @@ NL(0,3) = 78, AG*'s used 0
 NL(0,1) = 69, AG*'s used 78
 NL(0,4) NOT POSSIBLE
 Max in loop inf, 0.6381803703588047
+New mintv = 0.3940901851794023
 Sample size to show min tv of 0.3940901851794023 is 22
 AUD TV 0.5381803703588046, ss 32
 AG*(0,1) = 73
@@ -229,25 +232,61 @@ NL(0,3) = 76, AG*'s used 0
 NL(0,1) = 68, AG*'s used 76
 NL(0,4) NOT POSSIBLE
 Max in loop inf, 0.6381803703588047
+New mintv = 0.4440901851794023
+Sample size to show min tv of 0.4440901851794023 is 44
+AUD TV 0.5381803703588046, ss 32
+AG*(0,1) = 71
+AG*(0,3) = 69
+AG*(0,1) = 71
+AG*(0,3) = 69
+AG*(2,0) = 10
+AG*(2,1) = 9
+AG*(2,3) = 8
+AG*(2,4) = 10
+AG*(4,1) = 96
+AG*(4,3) = 84
+NL(0,3) = 69, AG*'s used 0
+NL(0,1) = 62, AG*'s used 69
+NL(0,4) = 49169, AG*'s used 71
+Max in loop 49169, 0.5381803703588046
+AUD TV 0.5881803703588047, ss 14
+AG*(0,1) = 74
+AG*(0,3) = 72
+AG*(0,1) = 74
+AG*(0,3) = 72
+AG*(2,0) = 10
+AG*(2,1) = 9
+AG*(2,3) = 8
+AG*(2,4) = 10
+AG*(4,1) = 101
+AG*(4,3) = 88
+NL(0,3) = 72, AG*'s used 0
+NL(0,1) = 64, AG*'s used 72
+NL(0,4) NOT POSSIBLE
+Max in loop inf, 0.5881803703588047
+Breaking out of inner loop inf > 49169
+New mintv = 0.4940901851794023
 Sample size required for audit is inf ballots
 ------------------------------------------------
 Assertion set BEFORE filtering:
-(0, 'NL', 1, 68)
-(2, 'LT', 0.3940901851794023, 22)
-(0, 'AG*', 3, 76)
-(0, 'AG*', 1, 79)
-(0, 'NL', 3, 76)
-(2, 'MT', 0.6381803703588047, 8)
+(0, 'NL', 3, 69)
+(0, 'NL', 4, 49169)
+(2, 'MT', 0.5381803703588046, 32)
+(0, 'NL', 1, 62)
+(0, 'AG*', 1, 71)
 (2, 'QT', None, 7)
+(2, 'LT', 0.4440901851794023, 44)
+(0, 'AG*', 3, 69)
 ------------------------------------------------
 Final set of assertions AFTER filtering:
-(2, 'LT', 0.3940901851794023, 22)
-(0, 'AG*', 3, 76)
-(0, 'AG*', 1, 79)
-(2, 'MT', 0.6381803703588047, 8)
+(0, 'NL', 4, 49169)
+(2, 'MT', 0.5381803703588046, 32)
+(0, 'AG*', 1, 71)
 (2, 'QT', None, 7)
+(2, 'LT', 0.4440901851794023, 44)
+(0, 'AG*', 3, 69)
 ------------------------------------------------
 Explanations for AG* inclusion:
-   Explanation for (0, 'AG*', 3, 76): []
-   Explanation for (0, 'AG*', 1, 79): []
+   Explanation for (0, 'AG*', 1, 71): []
+   Explanation for (0, 'AG*', 3, 69): []
 ------------------------------------------------

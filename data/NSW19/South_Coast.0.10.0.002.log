@@ -35,6 +35,7 @@ AG*(1,0) = 24
 AG*(1,2) = 15
 NL(0,2) = 30, AG*'s used 0
 Max in loop 30, 0.6496978963268615
+Breaking out of inner loop 30 > 29
 Sample size to show min tv of 0.1998489481634307 is 16
 AUD TV 0.4496978963268614, ss 45
 AG*(0,2) = 26
@@ -57,6 +58,8 @@ AG*(1,0) = 24
 AG*(1,2) = 15
 NL(0,2) = 27, AG*'s used 0
 Max in loop 27, 0.5496978963268614
+Breaking out of inner loop 27 > 26
+New mintv = 0.24984894816343073
 Sample size to show min tv of 0.24984894816343073 is 20
 AUD TV 0.4496978963268614, ss 45
 AG*(0,2) = 25
@@ -93,20 +96,22 @@ AG*(1,0) = 24
 AG*(1,2) = 15
 NL(0,2) = 27, AG*'s used 0
 Max in loop 27, 0.6496978963268615
+Breaking out of inner loop 27 > 26
+New mintv = 0.2998489481634307
 Sample size to show min tv of 0.2998489481634307 is 28
 Sample size required for audit is 26 ballots
 ------------------------------------------------
 Assertion set BEFORE filtering:
-(1, 'MT', 0.5996978963268614, 8)
-(0, 'NL', 2, 26)
 (1, 'QT', None, 10)
+(1, 'MT', 0.5996978963268614, 8)
 (1, 'LT', 0.24984894816343073, 20)
+(0, 'NL', 2, 26)
 ------------------------------------------------
 Final set of assertions AFTER filtering:
-(1, 'MT', 0.5996978963268614, 8)
-(0, 'NL', 2, 26)
 (1, 'QT', None, 10)
+(1, 'MT', 0.5996978963268614, 8)
 (1, 'LT', 0.24984894816343073, 20)
+(0, 'NL', 2, 26)
 ------------------------------------------------
 Explanations for AG* inclusion:
 ------------------------------------------------

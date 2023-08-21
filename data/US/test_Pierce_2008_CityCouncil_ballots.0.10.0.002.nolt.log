@@ -1,0 +1,44 @@
+VALID BALLOTS 40000
+13 ballot checks required to assert that first winner has a quota's worth of votes
+AUD TV 0.3821981269094005, ss 56
+AG*(129,130) = 57
+AG*(129,39) = 14
+AG*(129,130) = 57
+AG*(129,39) = 14
+AG*(130,39) = 24
+AG*(131,129) = 63
+AG*(131,130) = 34
+AG*(131,39) = 9
+NL(129,130) = 57, AG*'s used 14
+NL(129,39) = 14, AG*'s used 0
+Max in loop 57, 0.3821981269094005
+AUD TV 0.4321981269094005, ss 26
+AG*(129,130) = 61
+AG*(129,39) = 14
+AG*(129,130) = 61
+AG*(129,39) = 14
+AG*(130,39) = 24
+AG*(131,129) = 63
+AG*(131,130) = 34
+AG*(131,39) = 9
+NL(129,130) = 61, AG*'s used 14
+NL(129,39) = 14, AG*'s used 0
+Max in loop 61, 0.4321981269094005
+Sample size required for audit is 57 ballots
+------------------------------------------------
+Assertion set BEFORE filtering:
+(131, 'QT', None, 13)
+(129, 'NL', 39, 14)
+(129, 'NL', 130, 57)
+(129, 'AG*', 39, 14)
+(131, 'MT', 0.3821981269094005, 56)
+------------------------------------------------
+Final set of assertions AFTER filtering:
+(131, 'QT', None, 13)
+(129, 'NL', 130, 57)
+(129, 'AG*', 39, 14)
+(131, 'MT', 0.3821981269094005, 56)
+------------------------------------------------
+Explanations for AG* inclusion:
+   Explanation for (129, 'AG*', 39, 14): []
+------------------------------------------------

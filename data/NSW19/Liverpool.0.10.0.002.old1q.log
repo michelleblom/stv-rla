@@ -1,0 +1,49 @@
+VALID BALLOTS 47035
+10 ballot checks required to assert that first winner has a quota's worth of votes
+AG(2,0) = 10
+AG(2,1) = 9
+AG(2,3) = 9
+AG(2,4) = 9
+AG(2,5) = 17
+AG(5,0) = 39
+AG(5,1) = 27
+AG(5,3) = 26
+AG(5,4) = 38
+AUD TV 0.45021422286829116, ss 45
+NL(5,3) = 22, AG's used 0
+NL(5,1) = 23, AG's used 0
+NL(5,4) = 27, AG's used 27
+NL(5,0) = 29, AG's used 27
+Max in loop 45, 0.45021422286829116
+AUD TV 0.5002142228682912, ss 20
+NL(5,3) = 22, AG's used 0
+NL(5,1) = 23, AG's used 0
+NL(5,4) = 27, AG's used 27
+NL(5,0) = 29, AG's used 27
+Max in loop 29, 0.5002142228682912
+AUD TV 0.5502142228682912, ss 12
+NL(5,3) = 23, AG's used 0
+NL(5,1) = 23, AG's used 0
+NL(5,4) = 28, AG's used 27
+NL(5,0) = 30, AG's used 27
+Max in loop 30, 0.5502142228682912
+Sample size required for audit is 29 ballots
+------------------------------------------------
+Assertion set BEFORE filtering:
+(5, 'AG', 3, 26)
+(5, 'NL', 3, 22)
+(5, 'AG', 1, 27)
+(2, 'QT', None, 10)
+(5, 'NL', 4, 27)
+(5, 'NL', 1, 23)
+(2, 'MT', 0.5002142228682912, 20)
+(5, 'NL', 0, 29)
+------------------------------------------------
+Final set of assertions AFTER filtering:
+(5, 'AG', 3, 26)
+(5, 'AG', 1, 27)
+(2, 'QT', None, 10)
+(5, 'NL', 4, 27)
+(2, 'MT', 0.5002142228682912, 20)
+(5, 'NL', 0, 29)
+------------------------------------------------

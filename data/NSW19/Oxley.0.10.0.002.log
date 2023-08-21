@@ -32,6 +32,7 @@ NL(1,4) = 42, AG*'s used 0
 NL(1,3) = 90, AG*'s used 42
 NL(1,0) = 76, AG*'s used 97
 Max in loop 97, 0.4557236711128807
+Breaking out of inner loop 97 > 91
 Sample size to show min tv of 0.17786183555644036 is 20
 AUD TV 0.4057236711128807, ss 52
 AG*(1,0) = 96
@@ -65,6 +66,8 @@ NL(1,4) = 41, AG*'s used 0
 NL(1,3) = 80, AG*'s used 41
 NL(1,0) = 61, AG*'s used 88
 Max in loop 88, 0.4557236711128807
+Breaking out of inner loop 88 > 83
+New mintv = 0.22786183555644035
 Sample size to show min tv of 0.22786183555644035 is 26
 AUD TV 0.4057236711128807, ss 52
 AG*(1,0) = 93
@@ -98,6 +101,8 @@ NL(1,4) = 40, AG*'s used 0
 NL(1,3) = 78, AG*'s used 40
 NL(1,0) = 58, AG*'s used 86
 Max in loop 86, 0.4557236711128807
+Breaking out of inner loop 86 > 81
+New mintv = 0.27786183555644034
 Sample size to show min tv of 0.27786183555644034 is 41
 AUD TV 0.4057236711128807, ss 52
 AG*(1,0) = 91
@@ -131,25 +136,28 @@ NL(1,4) = 40, AG*'s used 0
 NL(1,3) = 76, AG*'s used 40
 NL(1,0) = 83, AG*'s used 40
 Max in loop 83, 0.4557236711128807
+Breaking out of inner loop 83 > 80
+New mintv = 0.32786183555644033
+Sample size to show min tv of 0.32786183555644033 is 107
 Sample size required for audit is 80 ballots
 ------------------------------------------------
 Assertion set BEFORE filtering:
-(1, 'AG*', 3, 80)
-(2, 'QT', None, 12)
-(2, 'MT', 0.4057236711128807, 52)
-(1, 'NL', 4, 39)
 (1, 'NL', 0, 54)
-(2, 'LT', 0.27786183555644034, 41)
-(1, 'AG*', 4, 39)
+(1, 'AG*', 3, 80)
 (1, 'NL', 3, 72)
+(2, 'QT', None, 12)
+(1, 'AG*', 4, 39)
+(1, 'NL', 4, 39)
+(2, 'MT', 0.4057236711128807, 52)
+(2, 'LT', 0.27786183555644034, 41)
 ------------------------------------------------
 Final set of assertions AFTER filtering:
+(1, 'NL', 0, 54)
 (1, 'AG*', 3, 80)
 (2, 'QT', None, 12)
-(2, 'MT', 0.4057236711128807, 52)
-(1, 'NL', 0, 54)
-(2, 'LT', 0.27786183555644034, 41)
 (1, 'AG*', 4, 39)
+(2, 'MT', 0.4057236711128807, 52)
+(2, 'LT', 0.27786183555644034, 41)
 ------------------------------------------------
 Explanations for AG* inclusion:
    Explanation for (1, 'AG*', 3, 80): []

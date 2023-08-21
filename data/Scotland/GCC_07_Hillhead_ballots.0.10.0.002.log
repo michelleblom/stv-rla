@@ -386,15 +386,15 @@ Alternate outcome cannot be ruled out: 7,9
 Best sample size: inf
 ------------------------------------------------
 Final set of assertions generated:
-(9, 'AG', 1, 155)
-(10, 'AG', 4, 40)
 (10, 'AG', 2, 28)
+(9, 'AG', 2, 26)
+(9, 'AG', 1, 155)
+(9, 'AG', 6, 53)
 (9, 'AG', 4, 41)
+(10, 'AG', 1, 2190)
 10 NL 5 = 3883 [rules out (5, 3)]
 (10, 'AG', 6, 68)
-(9, 'AG', 2, 26)
-(9, 'AG', 6, 53)
-(10, 'AG', 1, 2190)
+(10, 'AG', 4, 40)
 [] are verified winners with these assertions.
 [3, 5, 7, 8, 9, 10] remain as potential winners in this audit.
 ------------------------------------------------

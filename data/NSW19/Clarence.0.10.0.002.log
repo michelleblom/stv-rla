@@ -38,6 +38,7 @@ NL(2,4) = 49, AG*'s used 54
 NL(2,1) = 53, AG*'s used 31
 NL(2,0) = 107, AG*'s used 65
 Max in loop 107, 0.3836054866100588
+Breaking out of inner loop 107 > 99
 Sample size to show min tv of 0.1418027433050294 is 29
 AUD TV 0.3336054866100588, ss 65
 AG*(2,1) = 51
@@ -77,6 +78,8 @@ NL(2,4) = 47, AG*'s used 52
 NL(2,1) = 51, AG*'s used 31
 NL(2,0) = 94, AG*'s used 63
 Max in loop 94, 0.3836054866100588
+Breaking out of inner loop 94 > 87
+New mintv = 0.1918027433050294
 Sample size to show min tv of 0.1918027433050294 is 43
 AUD TV 0.3336054866100588, ss 65
 AG*(2,1) = 51
@@ -116,31 +119,34 @@ NL(2,4) = 47, AG*'s used 52
 NL(2,1) = 51, AG*'s used 31
 NL(2,0) = 90, AG*'s used 62
 Max in loop 90, 0.3836054866100588
+Breaking out of inner loop 90 > 84
+New mintv = 0.24180274330502938
+Sample size to show min tv of 0.24180274330502938 is 89
 Sample size required for audit is 84 ballots
 ------------------------------------------------
 Assertion set BEFORE filtering:
-(2, 'NL', 4, 45)
-(2, 'NL', 0, 84)
-(2, 'AG*', 5, 30)
-(2, 'NL', 1, 50)
-(2, 'AG*', 4, 59)
 (2, 'AG*', 1, 51)
-(3, 'LT', 0.1918027433050294, 43)
-(3, 'MT', 0.3336054866100588, 65)
 (3, 'QT', None, 17)
 (2, 'NL', 5, 30)
+(2, 'NL', 4, 45)
+(3, 'MT', 0.3336054866100588, 65)
+(3, 'LT', 0.1918027433050294, 43)
+(2, 'AG*', 4, 59)
+(2, 'NL', 0, 84)
+(2, 'NL', 1, 50)
+(2, 'AG*', 5, 30)
 ------------------------------------------------
 Final set of assertions AFTER filtering:
+(2, 'AG*', 1, 51)
+(3, 'QT', None, 17)
+(3, 'MT', 0.3336054866100588, 65)
+(3, 'LT', 0.1918027433050294, 43)
+(2, 'AG*', 4, 59)
 (2, 'NL', 0, 84)
 (2, 'AG*', 5, 30)
-(2, 'AG*', 4, 59)
-(2, 'AG*', 1, 51)
-(3, 'LT', 0.1918027433050294, 43)
-(3, 'MT', 0.3336054866100588, 65)
-(3, 'QT', None, 17)
 ------------------------------------------------
 Explanations for AG* inclusion:
-   Explanation for (2, 'AG*', 5, 30): []
-   Explanation for (2, 'AG*', 4, 59): []
    Explanation for (2, 'AG*', 1, 51): []
+   Explanation for (2, 'AG*', 4, 59): []
+   Explanation for (2, 'AG*', 5, 30): []
 ------------------------------------------------

@@ -80,6 +80,7 @@ NL(5,4) = 29, AG*'s used 29
 NL(5,2) = 28, AG*'s used 0
 NL(5,3) = 36, AG*'s used 30
 Max in loop 36, 0.6417110519307591
+Breaking out of inner loop 36 > 35
 Sample size to show min tv of 0.2208555259653795 is 13
 AUD TV 0.491711051930759, ss 39
 AG*(5,0) = 27
@@ -145,6 +146,8 @@ NL(5,4) = 27, AG*'s used 27
 NL(5,2) = 27, AG*'s used 0
 NL(5,3) = 32, AG*'s used 28
 Max in loop 32, 0.591711051930759
+Breaking out of inner loop 32 > 31
+New mintv = 0.2708555259653795
 Sample size to show min tv of 0.2708555259653795 is 16
 AUD TV 0.491711051930759, ss 39
 AG*(5,0) = 27
@@ -230,6 +233,7 @@ NL(5,4) = 27, AG*'s used 27
 NL(5,2) = 27, AG*'s used 0
 NL(5,3) = 31, AG*'s used 28
 Max in loop 31, 0.6417110519307591
+New mintv = 0.3208555259653795
 Sample size to show min tv of 0.3208555259653795 is 21
 AUD TV 0.491711051930759, ss 39
 AG*(5,0) = 26
@@ -317,29 +321,31 @@ NL(5,4) = 26, AG*'s used 27
 NL(5,2) = 26, AG*'s used 27
 NL(5,3) = 31, AG*'s used 28
 Max in loop 31, 0.6417110519307591
+Breaking out of inner loop 31 > 30
+New mintv = 0.37085552596537946
 Sample size to show min tv of 0.37085552596537946 is 34
 Sample size required for audit is 30 ballots
 ------------------------------------------------
 Assertion set BEFORE filtering:
 (5, 'AG*', 0, 27)
-(5, 'AG*', 2, 26)
-(5, 'NL', 2, 26)
-(5, 'NL', 3, 30)
-(1, 'MT', 0.591711051930759, 10)
-(5, 'AG*', 4, 27)
-(5, 'NL', 4, 26)
 (1, 'QT', None, 8)
-(1, 'LT', 0.3208555259653795, 21)
+(5, 'AG*', 2, 26)
+(5, 'NL', 3, 30)
 (5, 'NL', 0, 26)
+(1, 'LT', 0.3208555259653795, 21)
+(5, 'NL', 2, 26)
+(1, 'MT', 0.591711051930759, 10)
+(5, 'NL', 4, 26)
+(5, 'AG*', 4, 27)
 ------------------------------------------------
 Final set of assertions AFTER filtering:
 (5, 'AG*', 0, 27)
+(1, 'QT', None, 8)
 (5, 'AG*', 2, 26)
 (5, 'NL', 3, 30)
+(1, 'LT', 0.3208555259653795, 21)
 (1, 'MT', 0.591711051930759, 10)
 (5, 'AG*', 4, 27)
-(1, 'QT', None, 8)
-(1, 'LT', 0.3208555259653795, 21)
 ------------------------------------------------
 Explanations for AG* inclusion:
    Explanation for (5, 'AG*', 0, 27): []

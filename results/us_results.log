@@ -16,8 +16,8 @@ CASEC,data/US/test_Aspen09CC_ballots.us,11,2487,830,inf
 1Q,data/US/test_Berkeley_2010_D7CityCouncil_ballots.us,4,4184,1395,31
 1Q,data/US/test_Berkeley_2010_D8CityCouncil_ballots.us,4,4601,1534,inf
 1Q,data/US/test_Oakland10D4CC_ballots.us,8,20994,6999,64
-1Q,data/US/test_Oakland10Mayor_ballots.us,11,119607,39870,inf
-1Q,data/US/test_Oakland_2010_D6CityCouncil_ballots.us,4,12911,4304,1591
+1Q,data/US/test_Oakland10Mayor_ballots.us,11,119607,39870,3925
+1Q,data/US/test_Oakland_2010_D6CityCouncil_ballots.us,4,12911,4304,350
 CASEC,data/US/test_Pierce08CAS_ballots.us,7,262447,87483,inf
 1Q,data/US/test_Pierce_2008_CityCouncil_ballots.us,4,40000,13334,45
 1Q,data/US/test_Pierce_2008_CountyAuditor_ballots.us,4,153528,51177,16

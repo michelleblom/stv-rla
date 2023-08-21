@@ -1,0 +1,12 @@
+VALID BALLOTS 48525
+460 ballot checks required to assert that first winner has a quota's worth of votes
+Sample size required for audit is inf ballots
+------------------------------------------------
+Assertion set BEFORE filtering:
+(3, 'QT', None, 460)
+------------------------------------------------
+Final set of assertions AFTER filtering:
+(3, 'QT', None, 460)
+------------------------------------------------
+Explanations for AG* inclusion:
+------------------------------------------------

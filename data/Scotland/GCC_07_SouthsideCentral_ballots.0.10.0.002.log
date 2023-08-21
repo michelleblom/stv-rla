@@ -199,26 +199,26 @@ Best assertion(s) require sample: 111
 Best sample size: 3819
 ------------------------------------------------
 Final set of assertions generated:
-(2, 'AG', 3, 32)
-7 NL 1 = 31 [rules out (2, 1)]
-7 NL 9 = 65 [rules out (2, 9)]
-(7, 'AG', 4, 41)
-2 NL 1 = 38 [rules out (1, 7)]
-2 NL 8 = 40 [rules out (8, 7)]
-(7, 'AG', 8, 72)
-2 NL 8 = 17 [rules out (8, 9)]
-(9, 'AG', 4, 96)
-(7, 'AG', 9, 740)
-9 NL 8 = 78 [rules out (8, 2)]
-(7, 'AG', 5, 3819)
-2 NL 1 = 40 [rules out (1, 9)]
-(7, 'AG', 6, 108)
-(2, 'AG', 5, 50)
-(2, 'AG', 4, 25)
-2 NL 1 = 41 [rules out (8, 1)]
 (2, 'AG', 6, 33)
-(7, 'AG', 3, 197)
+9 NL 8 = 78 [rules out (8, 2)]
+7 NL 1 = 31 [rules out (2, 1)]
 2 NL 9 = 111 [rules out (9, 7)]
 (2, 'AG', 1, 67)
+2 NL 1 = 38 [rules out (1, 7)]
+(7, 'AG', 3, 197)
+(2, 'AG', 4, 25)
+2 NL 1 = 41 [rules out (8, 1)]
+(2, 'AG', 3, 32)
+(9, 'AG', 4, 96)
+2 NL 8 = 40 [rules out (8, 7)]
+(7, 'AG', 4, 41)
+(7, 'AG', 6, 108)
+2 NL 8 = 17 [rules out (8, 9)]
+(7, 'AG', 8, 72)
+(7, 'AG', 9, 740)
+7 NL 9 = 65 [rules out (2, 9)]
+2 NL 1 = 40 [rules out (1, 9)]
+(2, 'AG', 5, 50)
+(7, 'AG', 5, 3819)
 All winners are verified in audit.
 ------------------------------------------------

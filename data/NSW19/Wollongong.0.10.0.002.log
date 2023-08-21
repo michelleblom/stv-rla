@@ -54,6 +54,7 @@ NL(3,0) = 66, AG*'s used 57
 NL(3,5) = 77, AG*'s used 69
 NL(3,1) = 198, AG*'s used 85
 Max in loop 198, 0.43480757293606453
+Breaking out of inner loop 198 > 162
 Sample size to show min tv of 0.16740378646803228 is 22
 AUD TV 0.38480757293606455, ss 56
 AG*(3,0) = 63
@@ -109,6 +110,8 @@ NL(3,0) = 63, AG*'s used 55
 NL(3,5) = 72, AG*'s used 66
 NL(3,1) = 160, AG*'s used 81
 Max in loop 160, 0.43480757293606453
+Breaking out of inner loop 160 > 135
+New mintv = 0.21740378646803227
 Sample size to show min tv of 0.21740378646803227 is 30
 AUD TV 0.38480757293606455, ss 56
 AG*(3,0) = 62
@@ -164,6 +167,8 @@ NL(3,0) = 62, AG*'s used 55
 NL(3,5) = 71, AG*'s used 65
 NL(3,1) = 151, AG*'s used 79
 Max in loop 151, 0.43480757293606453
+Breaking out of inner loop 151 > 129
+New mintv = 0.26740378646803226
 Sample size to show min tv of 0.26740378646803226 is 49
 AUD TV 0.38480757293606455, ss 56
 AG*(3,0) = 61
@@ -219,35 +224,38 @@ NL(3,0) = 62, AG*'s used 54
 NL(3,5) = 70, AG*'s used 65
 NL(3,1) = 143, AG*'s used 78
 Max in loop 143, 0.43480757293606453
+Breaking out of inner loop 143 > 123
+New mintv = 0.31740378646803225
+Sample size to show min tv of 0.31740378646803225 is 181
 Sample size required for audit is 123 ballots
 ------------------------------------------------
 Assertion set BEFORE filtering:
-(3, 'AG*', 4, 39)
-(3, 'AG*', 5, 73)
 (3, 'NL', 2, 51)
+(3, 'AG*', 4, 39)
 (3, 'AG*', 0, 61)
+(3, 'NL', 5, 66)
 (6, 'LT', 0.26740378646803226, 49)
 (6, 'MT', 0.38480757293606455, 56)
-(3, 'NL', 4, 39)
 (3, 'NL', 0, 59)
-(3, 'NL', 5, 66)
-(6, 'QT', None, 13)
+(3, 'AG*', 5, 73)
 (3, 'NL', 1, 123)
 (3, 'AG*', 2, 52)
+(6, 'QT', None, 13)
+(3, 'NL', 4, 39)
 ------------------------------------------------
 Final set of assertions AFTER filtering:
 (3, 'AG*', 4, 39)
-(3, 'AG*', 5, 73)
 (3, 'AG*', 0, 61)
 (6, 'LT', 0.26740378646803226, 49)
 (6, 'MT', 0.38480757293606455, 56)
-(6, 'QT', None, 13)
+(3, 'AG*', 5, 73)
 (3, 'NL', 1, 123)
 (3, 'AG*', 2, 52)
+(6, 'QT', None, 13)
 ------------------------------------------------
 Explanations for AG* inclusion:
    Explanation for (3, 'AG*', 4, 39): []
-   Explanation for (3, 'AG*', 5, 73): []
    Explanation for (3, 'AG*', 0, 61): []
+   Explanation for (3, 'AG*', 5, 73): []
    Explanation for (3, 'AG*', 2, 52): []
 ------------------------------------------------

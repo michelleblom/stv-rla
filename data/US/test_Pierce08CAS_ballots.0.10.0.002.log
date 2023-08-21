@@ -197,16 +197,16 @@ Alternate outcome cannot be ruled out: 121,124
 Best sample size: inf
 ------------------------------------------------
 Final set of assertions generated:
-120 NL 125 = 230 [rules out (125, 122)]
-120 NL 125 = 154 [rules out (125, 124)]
-(124, 'AG', 40, 24)
-124 NL 125 = 5335 [rules out (125, 120)]
-(124, 'AG', 123, 435)
-(121, 'AG', 123, 109)
 120 NL 125 = 263 [rules out (125, 121)]
-(120, 'AG', 123, 47)
-(120, 'AG', 40, 18)
 (121, 'AG', 40, 24)
+120 NL 125 = 154 [rules out (125, 124)]
+124 NL 125 = 5335 [rules out (125, 120)]
+120 NL 125 = 230 [rules out (125, 122)]
+(120, 'AG', 40, 18)
+(124, 'AG', 40, 24)
+(120, 'AG', 123, 47)
+(121, 'AG', 123, 109)
+(124, 'AG', 123, 435)
 [] are verified winners with these assertions.
 [120, 121, 122, 124] remain as potential winners in this audit.
 ------------------------------------------------

@@ -196,22 +196,22 @@ Best assertion(s) require sample: 292
 Best sample size: 904
 ------------------------------------------------
 Final set of assertions generated:
-2 NL 6 = 85 [rules out (6, 1)]
 (4, 'AG', 5, 64)
 (2, 'AG', 7, 52)
 4 NL 1 = 292 [rules out (2, 1)]
-4 NL 5 = 48 [rules out (5, 1)]
 (2, 'AG', 6, 904)
 (4, 'AG', 8, 38)
-4 NL 6 = 102 [rules out (6, 2)]
-2 NL 5 = 26 [rules out (5, 6)]
-(4, 'AG', 3, 69)
-(2, 'AG', 3, 31)
 2 NL 6 = 87 [rules out (6, 4)]
+2 NL 5 = 26 [rules out (5, 6)]
+(2, 'AG', 3, 31)
+4 NL 5 = 47 [rules out (5, 2)]
+(4, 'AG', 3, 69)
 (2, 'AG', 8, 25)
 2 NL 1 = 121 [rules out (4, 1)]
-4 NL 5 = 47 [rules out (5, 2)]
+4 NL 6 = 102 [rules out (6, 2)]
 (4, 'AG', 7, 92)
+2 NL 6 = 85 [rules out (6, 1)]
 2 NL 5 = 99 [rules out (5, 4)]
+4 NL 5 = 48 [rules out (5, 1)]
 All winners are verified in audit.
 ------------------------------------------------

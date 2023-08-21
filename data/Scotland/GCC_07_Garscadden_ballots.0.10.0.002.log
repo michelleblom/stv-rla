@@ -59,20 +59,20 @@ Alternate outcome cannot be ruled out: 2,9
 Best sample size: inf
 ------------------------------------------------
 Final set of assertions generated:
-(5, 'AG', 1, 31)
-(5, 'AG', 4, 28)
-(5, 'AG', 3, 46)
-(2, 'AG', 6, 24)
-(2, 'AG', 10, 27)
-(2, 'AG', 9, 4396)
-(5, 'AG', 6, 27)
-(5, 'AG', 8, 50)
-(2, 'AG', 1, 27)
-(2, 'AG', 3, 39)
-(5, 'AG', 10, 36)
-(2, 'AG', 8, 38)
-(2, 'AG', 7, 104)
 (2, 'AG', 4, 21)
+(5, 'AG', 10, 36)
+(2, 'AG', 10, 27)
+(2, 'AG', 3, 39)
+(2, 'AG', 1, 27)
+(2, 'AG', 6, 24)
+(2, 'AG', 9, 4396)
+(5, 'AG', 4, 28)
+(2, 'AG', 7, 104)
+(5, 'AG', 8, 50)
+(5, 'AG', 6, 27)
+(2, 'AG', 8, 38)
+(5, 'AG', 1, 31)
+(5, 'AG', 3, 46)
 [2] are verified winners with these assertions.
 [9, 5, 7] remain as potential winners in this audit.
 ------------------------------------------------
