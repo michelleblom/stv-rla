@@ -289,11 +289,70 @@ def compute_ag_stars(winners, losers, candidates, ballots, ag_matrix, \
             if amean > 0.5:
                 ss = sample_size(amean, args)
 
-                ag_matrix[cand_w.num][c] = ss
+                ag_matrix[w][c] = ss
 
                 if log != None:
                     print("AG*({},{}) = {}".format(cand_w.id, cand_c.id, \
                         ss), file=log)
+
+
+def compute_ag_matrix(candidates, ballots, ag_matrix, \
+    INVALID, args, log=None):
+
+    for cand_w in candidates:
+        w = cand_w.num
+
+        for cand_c in candidates:
+            c = cand_c.num
+
+            if c == w:
+                continue
+
+            min_w = 0
+            max_c = 0
+
+            # assertion: fpc(w) > maxc
+            assorter = INVALID*0.5 # h(b) = ((b_w - b_c) + 1)/2
+            for b in ballots:
+                if b.prefs != []:
+                    if b.prefs[0] == w:
+                        # assorter value is 1 per vote
+                        assorter += b.votes
+                        min_w += b.votes
+                        continue
+
+                    if b.prefs[0] == c: 
+                        # assorter value is 0 per vote
+                        max_c += b.votes
+                        continue
+
+                # Default contribution of each instance of ballot type
+                # to assorter.
+                contrib = 0.5 * b.votes 
+
+                for p in b.prefs:
+                    if p == w:
+                        break
+
+                    if p == c:
+                        contrib = 0
+                        max_c += b.votes
+                        break
+
+                assorter += contrib
+
+            # Compute assorter margin
+            amean = assorter/args.voters
+
+            if amean > 0.5:
+                ss = sample_size(amean, args)
+
+                ag_matrix[cand_w.num][c] = ss
+
+                if log != None:
+                    print("AG({},{}) = {}".format(cand_w.id, cand_c.id, \
+                        ss), file=log)
+
 
 
 if __name__ == "__main__":
@@ -359,6 +418,15 @@ if __name__ == "__main__":
     # as part of a group elimination as it is mathematically impossible for 
     # them to win.
     parser.add_argument('-gelim', dest='gelim', type=int, default=0)
+
+
+    # Turn off use of LT assertions
+    parser.add_argument('-nolt', dest='nolt', default=False,action='store_true')
+    
+    # Use old 1-quota method (for comparison with new version)
+    parser.add_argument('-old1q', dest='old1q', default=False, \
+        action='store_true')
+
     
     args = parser.parse_args()
 
@@ -598,6 +666,255 @@ if __name__ == "__main__":
         print("2Q,{},{},{},{},{}".format(args.data, ncand, valid_ballots, \
             args.quota, max_sample_size))
 
+    elif (not args.gen) and args.old1q and outcome.action[0] == 1:
+        # Check that first winner's FP is greater than a quota
+        fw = candidates[winners[0]]
+        sw = candidates[winners[1]]
+        thresh = 1.0/(args.seats + 1);
+    
+        ss = ssm_sample_size(thresh, fw.fp_votes, INVALID, args)
+        print("{} ballot checks required to assert that first winner"\
+            " has a quota's worth of votes".format(ss), file=log)
+
+        assertions_used.add((fw.id, "QT", None, ss))
+
+        max_sample_size = max(max_sample_size, ss)
+
+        # Increment to use when stepping through candidate upper/lower
+        # bounds on first winner transfer value.
+        deltat = args.deltat 
+
+        act_tv = (fw.fp_votes - args.quota)/fw.fp_votes
+
+        compute_ag_matrix(candidates,ballots,ag_matrix,INVALID,args,log=log)
+
+        # MAIN LOOP OF ONE QUOTA METHOD
+        max_in_loop = np.infty
+        best_assertions = None
+
+        aud_tv = act_tv + deltat
+        while aud_tv < args.maxtv:
+
+            inner_loop_assertions = set()
+
+            # Check that TV of first winner is at most aud_TV
+            a = 1 / (1 - aud_tv)
+            thresholdT = a * valid_ballots / (args.seats + 1)
+            thresholdProp = thresholdT / valid_ballots
+            threshold = 1 - thresholdProp
+        
+            tally_others = valid_ballots - fw.fp_votes
+
+            ss = ssm_sample_size(threshold, tally_others, INVALID, args)
+
+            inner_loop_assertions.add((fw.id, "MT", aud_tv, ss))
+
+            max_this_loop = max(ss, max_sample_size)
+
+            max_with_nls = ss
+
+            print("AUD TV {}, ss {}".format(aud_tv, ss), file=log)
+
+            ags = {c : ag_matrix[sw.num][c] for c in losers \
+                if ag_matrix[sw.num][c] != None}
+                
+            # Determine NL's between original losers and second winner
+            for c in cands:
+                if c in winners:
+                    continue
+
+                cand_c = candidates[c]
+
+                curr_nl = (sw.id, "NL", cand_c.id)
+
+                min_sw = 0 # Min tally for second winner.
+                max_c = 0 # Max tally for candidate c.
+
+                # Keep running tally of total votes we can increase the
+                # margin of assertion 'sw' NL 'c' with 'AG*' relationships
+                pot_margin_inc = 0
+
+                helpful_ags = []
+
+                # Assertion: min_sw > maxc
+                assorter = INVALID*0.5
+                for b in ballots:
+                    if b.prefs != []:
+                        if b.prefs[0] == sw.num:
+                            assorter += b.votes
+                            min_sw += b.votes
+                            continue
+
+                        if b.prefs[0] == c:
+                            max_c += b.votes
+                            continue
+
+                    # is this a ballot for 'c' over 'sw'?
+                    c_in = c in b.prefs
+                    s_in = sw.num in b.prefs
+
+                    weight = 1
+                    if b.prefs != [] and b.prefs[0] == fw.num:
+                        weight = aud_tv
+
+                    c_idx = b.prefs.index(c) if c_in else np.inf
+                    s_idx = b.prefs.index(sw.num) if s_in else np.inf
+
+                    if c_in and c_idx < s_idx:
+                        # These ballots could not go to 'sw' but may go
+                        # to 'c'.
+
+                        # Could we exclude these ballots by using an AG?
+                        is_ag, ag_asn, descs = rule_out_for_max(b.prefs,c, \
+                            ag_matrix, winners, candidates)
+                            
+                        contrib = b.votes*((1-weight)/2.0)
+
+                        if is_ag:
+                            alt_contrib = b.votes*0.5
+                            helpful_ags.append((ag_asn,alt_contrib-contrib,\
+                                descs))
+                            pot_margin_inc += alt_contrib-contrib
+
+                        assorter += contrib
+                        max_c += b.votes
+
+                    elif s_in:
+                        # If we remove all cand 'd' for which sw AG d
+                        # that appear before sw in the ballot, will 'sw'
+                        # be the first ranked cand? If so, we could add
+                        # these ballots to the min tally of 'sw'.
+                        prefs = b.prefs[:]
+
+                        descs = set()
+                        max_ags_here = 0
+                                            
+                        for d,dval in ags.items():
+                            if d in prefs:
+                                idx_d = prefs.index(d)
+                                if idx_d < s_idx:
+                                    prefs.remove(d)
+                                    s_idx -= 1
+                                    rag = (sw.id, "AG", candidates[d].id, dval)
+                                    descs.add(rag)
+                                    max_ags_here=max(max_ags_here,dval)
+
+                        assorter += 0.5*b.votes
+
+                        if prefs != [] and prefs[0] == sw.num:
+                            # These ballots would have originally had a 
+                            # contribution of 0.5 to the assorter. By
+                            # utilising these AG's we can increase the 
+                            # contribution of these ballots to 1 each.
+                            helpful_ags.append((max_ags_here,  \
+                                0.5*b.votes, descs))
+
+                            pot_margin_inc += b.votes*0.5
+
+                    else:
+                        assorter += 0.5*b.votes
+
+                # Max ASN of any AG's used to increase assorter margins 
+                # when forming NLs.
+                max_ags_used = 0  
+                merged_helpful_ags = merge_helpful_ags(helpful_ags, \
+                    pot_margin_inc)
+
+                # Incorporate use of AG's that either make the assertion
+                # possible, or whose ASN is already within/equal to current
+                # lower bound on audit difficulty.
+                while assorter/args.voters <= 0.5 and merged_helpful_ags != []:
+                    ag_asn, extra_contrib, descs = merged_helpful_ags.pop(0)
+
+                    assorter += extra_contrib
+                    max_ags_used = max(max_ags_used, ag_asn)
+
+                    inner_loop_assertions.update(descs)
+
+                # Can we reduce the sample size required for the assertion
+                # by including more AG's?
+                amean = assorter/args.voters
+                if amean > 0.5:
+                    # Current sample size for assertion
+                    ss = sample_size(amean, args) 
+
+                    # Go through remaining AG*'s 
+                    for ag_asn, extra_contrib, descs in merged_helpful_ags:
+                        if ss < ag_asn:
+                            break
+
+                        # would reducing margin by votes reduce sample size
+                        # by more than increase caused by including AG*?
+                        assorter += extra_contrib
+                        amean = assorter/args.voters
+
+                        ss  = sample_size(amean, args)
+                        max_ags_used = max(max_ags_used, ag_asn)
+                        
+                        inner_loop_assertions.update(descs)
+
+                    max_with_nls = max(max_with_nls, max(max_ags_used,ss))
+                    print("NL({},{}) = {}, AG's used {}".format(sw.id, \
+                        cand_c.id, ss, max_ags_used), file=log)
+    
+                    inner_loop_assertions.add((sw.id, "NL", cand_c.id, ss))
+                else:
+                    max_with_nls = np.inf
+                    print("NL({},{}) NOT POSSIBLE".format(\
+                        sw.id, cand_c.id),file=log)
+
+            max_this_loop=max(max_this_loop,max_with_nls)
+
+            print("Max in loop {}, {}".format(max_this_loop, aud_tv), file=log)
+
+            if max_this_loop <= max_in_loop:
+                best_assertions = inner_loop_assertions
+                max_in_loop = max_this_loop
+                aud_tv += deltat
+            else:
+                break
+
+        assertions_used.update(best_assertions)
+        assertions_text = [(w,n,l) for w,n,l,_ in assertions_used]
+
+        # Filter out redundant assertions (eg. an A NL B when we have 
+        # A AG B already in the audit).
+        
+        final_assertions = []
+        for assrt in assertions_used:
+            if assrt[1] != "NL":
+                final_assertions.append(assrt)
+                continue
+                   
+            if (assrt[0], "AG", assrt[2]) in assertions_text:
+                continue
+
+            final_assertions.append(assrt)
+
+        max_sample_size = max(max_sample_size, max_in_loop)
+
+        if max_sample_size >= args.voters:
+            max_sample_size = np.inf 
+
+        print("Sample size required for audit is {} ballots".format(\
+            max_sample_size), file=log)
+
+        print("------------------------------------------------",file=log)
+        print("Assertion set BEFORE filtering:", file=log)
+        for asstn in assertions_used:
+            print(asstn, file=log)
+            
+
+        print("------------------------------------------------",file=log)
+        print("Final set of assertions AFTER filtering:", file=log)
+        for asstn in final_assertions:
+            print(asstn, file=log)
+
+        print("------------------------------------------------",file=log)
+        print("1Q,{},{},{},{},{}".format(args.data, ncand, valid_ballots, \
+            args.quota, max_sample_size))
+
+    
 
     elif (not args.gen) and outcome.action[0] == 1:
         # 1 QUOTA METHOD
@@ -610,6 +927,8 @@ if __name__ == "__main__":
         # NOTE: some of below appears in the general case as well -
         # at some point refactor to move common code into functions.
 
+        # Reset ag_matrix (for storing computing AG*'s)
+        ag_matrix = [[None for c in candidates] for o in candidates]
 
         # Check that first winner's FP is greater than a quota
         fw = candidates[winners[0]]
@@ -639,7 +958,7 @@ if __name__ == "__main__":
 
         losers = [c.num for c in candidates if c != fw.num and c != sw.num]
 
-        while min_tv < act_tv - deltat:
+        while min_tv < act_tv:
             mintv_ss = 0
            
             lts = set()
@@ -906,6 +1225,8 @@ if __name__ == "__main__":
                     max_in_loop = max_this_loop
                     aud_tv += deltat
                 else:
+                    print("Breaking out of inner loop {} > {}".format(\
+                        max_this_loop, max_in_loop), file=log)
                     break
 
             
@@ -915,12 +1236,17 @@ if __name__ == "__main__":
                 best_outer_assertions.update(best_inner_assertions)
                 best_outer_exp = best_inner_explanations
             else:
+                print("Breaking out of outer loop", file=log)
                 break    
 
-            if min_tv == 0:
-                min_tv = act_tv/2.0
+            if args.nolt:
+                break
             else:
-                min_tv += deltat
+                if min_tv == 0:
+                    min_tv = act_tv/2.0
+                else:
+                    min_tv += deltat
+                    print("New mintv = {}".format(min_tv), file=log)
 
         assertions_used.update(best_outer_assertions)
         assertions_text = [(w,n,l) for w,n,l,_ in assertions_used]
