@@ -50,707 +50,701 @@ Ruling out candidates: [(19, 65), (13, 40), (3, 86), (17, 55), (21, 52), (5, 44)
 Sample size for ruling out cands: 775
 ALTERNATE OUTCOME PAIR: 9,1
    (1) can we show that 0 NL 1? 
-        a. margin 0.4780026730231317
-      yes, 9, ags used 1141 = 1141
+        a. margin 0.3106562685148164
+      yes, 14, ags used 14 = 14
    (1) can we show that 0 NL 9? 
-        a. margin 0.4895088434811752
-      yes, 9, ags used 1141 = 1141
+        a. margin 0.32272046699826995
+      yes, 14, ags used 22 = 22
    (1) can we show that 10 NL 1? 
-        a. margin 0.035925063495780396
-      yes, 128, ags used 208 = 208
+        a. margin 0.035460040141274574
+      yes, 130, ags used 14 = 130
    (1) can we show that 10 NL 9? 
-        a. margin 0.03961424877486186
-      yes, 116, ags used 208 = 208
+        a. margin 0.03914922542035315
+      yes, 118, ags used 22 = 118
    (1) can we show that 14 NL 1? 
-        a. margin 0.09133862426572126
-      yes, 50, ags used 59 = 59
+        a. margin 0.08997800037661174
+      yes, 51, ags used 14 = 51
    (1) can we show that 14 NL 9? 
-        a. margin 0.09605430554215721
-      yes, 47, ags used 59 = 59
+        a. margin 0.09469368165305236
+      yes, 48, ags used 22 = 48
    (1) can we show that 8 NL 1? 
-        a. margin 0.21592928889317475
-      yes, 21, ags used 95 = 95
+        a. margin 0.20183391432547548
+      yes, 22, ags used 14 = 22
    (1) can we show that 8 NL 9? 
-        a. margin 0.21356513312297642
-      yes, 21, ags used 95 = 95
+        a. margin 0.19946975855527604
+      yes, 22, ags used 0 = 22
    (1) can we show that 6 NL 1? 
-        a. margin 0.24017709926468678
-      yes, 19, ags used 76 = 76
+        a. margin 0.23026693488754724
+      yes, 19, ags used 14 = 19
    (1) can we show that 6 NL 9? 
-        a. margin 0.2447951830469659
-      yes, 18, ags used 76 = 76
-Best assertion(s) require sample: 59
+        a. margin 0.23488501866983857
+      yes, 19, ags used 22 = 22
+Best assertion(s) require sample: 14
 ALTERNATE OUTCOME PAIR: 9,0
    (1) can we show that 1 NL 0? 
         a. margin -0.8331243598752586
-      no, min 0.19,554 vs max 83.50,242432
+      no
    (1) can we show that 1 NL 9? 
-        a. margin -0.0021138469028323392
-      no, min 0.19,554 vs max 0.40,1205
+        a. margin -0.00211384690278138
+      no
    (1) can we show that 10 NL 0? 
         a. margin -0.5924741998153691
-      no, min 4.34,12598 vs max 63.59,184611
+      no
    (1) can we show that 10 NL 9? 
-        a. margin 0.039834704291063616
-      yes, 116, ags used 208 = 208
+        a. margin 0.03936968093651805
+      yes, 117, ags used 22 = 117
    (1) can we show that 14 NL 0? 
         a. margin -0.5199466313937842
-      no, min 10.08,29265 vs max 62.08,180223
+      no
    (1) can we show that 14 NL 9? 
-        a. margin 0.09625294514789773
-      yes, 47, ags used 59 = 59
+        a. margin 0.09489232125896185
+      yes, 48, ags used 22 = 48
    (1) can we show that 8 NL 0? 
         a. margin -0.27583118618846136
-      no, min 22.19,64405 vs max 49.77,144486
+      no
    (1) can we show that 8 NL 9? 
-        a. margin 0.21406804726930262
-      yes, 21, ags used 95 = 95
+        a. margin 0.19997267270160202
+      yes, 22, ags used 0 = 22
    (1) can we show that 6 NL 0? 
         a. margin -0.38097124433360186
-      no, min 24.95,72439 vs max 63.05,183062
+      no
    (1) can we show that 6 NL 9? 
-        a. margin 0.2451672017305495
-      yes, 18, ags used 76 = 76
-Best assertion(s) require sample: 59
+        a. margin 0.2352570373538585
+      yes, 19, ags used 22 = 22
+Best assertion(s) require sample: 22
 ALTERNATE OUTCOME PAIR: 9,10
    (1) can we show that 1 NL 10? 
-        a. margin -0.29074752791288194
-      no, min 0.19,554 vs max 29.27,84974
+        a. margin -0.2907475279128817
+      no
    (1) can we show that 1 NL 9? 
-        a. margin -0.002110402285390278
-      no, min 0.19,554 vs max 0.40,1205
+        a. margin -0.002110402285314894
+      no
    (1) can we show that 0 NL 10? 
-        a. margin 0.17197482214291626
-      yes, 26, ags used 1141 = 1141
+        a. margin 0.03217157869113496
+      yes, 52, ags used 95 = 95
    (1) can we show that 0 NL 9? 
-        a. margin 0.46206327991879204
-      yes, 9, ags used 1141 = 1141
+        a. margin 0.3239720113351401
+      yes, 14, ags used 22 = 22
    (1) can we show that 14 NL 10? 
-        a. margin -0.12651390936522466
-      no, min 10.08,29265 vs max 22.73,66005
+        a. margin -0.12651390936522433
+      no
    (1) can we show that 14 NL 9? 
-        a. margin 0.09613582815491761
-      yes, 47, ags used 59 = 59
+        a. margin 0.09477520426583075
+      yes, 48, ags used 22 = 48
    (1) can we show that 8 NL 10? 
-        a. margin 0.0903534636776564
+        a. margin 0.09035346367765729
       yes, 50, ags used 144 = 144
    (1) can we show that 8 NL 9? 
-        a. margin 0.2136937321740917
-      yes, 21, ags used 95 = 95
+        a. margin 0.1995983576063911
+      yes, 22, ags used 0 = 22
    (1) can we show that 6 NL 10? 
-        a. margin 0.06994640175261835
+        a. margin 0.06994640175262345
       yes, 65, ags used 144 = 144
    (1) can we show that 6 NL 9? 
-        a. margin 0.24489737336437
-      yes, 18, ags used 76 = 76
-Best assertion(s) require sample: 59
+        a. margin 0.2349872089873588
+      yes, 19, ags used 22 = 22
+Best assertion(s) require sample: 22
 ALTERNATE OUTCOME PAIR: 9,14
    (1) can we show that 1 NL 14? 
-        a. margin -0.27414102723084766
-      no, min 0.19,554 vs max 27.60,80154
+        a. margin -0.27414102723084754
+      no
    (1) can we show that 1 NL 9? 
-        a. margin -0.0021023648446963916
-      no, min 0.19,554 vs max 0.40,1205
+        a. margin -0.0021023648446256704
+      no
    (1) can we show that 0 NL 14? 
-        a. margin 0.15206722974679465
-      yes, 30, ags used 1141 = 1141
+        a. margin 0.04850480638953325
+      yes, 78, ags used 79 = 79
    (1) can we show that 0 NL 9? 
-        a. margin 0.4258396829114752
-      yes, 10, ags used 1141 = 1141
+        a. margin 0.3239892344223534
+      yes, 14, ags used 22 = 22
    (1) can we show that 10 NL 14? 
-        a. margin -0.14973177912194324
-      no, min 4.34,12598 vs max 19.31,56074
+        a. margin -0.14973177912194313
+      no
    (1) can we show that 10 NL 9? 
-        a. margin 0.03967854830042139
-      yes, 116, ags used 208 = 208
+        a. margin 0.03921352494588204
+      yes, 117, ags used 22 = 117
    (1) can we show that 8 NL 14? 
-        a. margin 0.07545434504043946
+        a. margin 0.07545434504044013
       yes, 61, ags used 95 = 95
    (1) can we show that 8 NL 9? 
-        a. margin 0.21379821890312334
-      yes, 21, ags used 95 = 95
+        a. margin 0.19970284433542296
+      yes, 22, ags used 0 = 22
    (1) can we show that 6 NL 14? 
-        a. margin 0.042012850719463035
+        a. margin 0.04201285071946814
       yes, 109, ags used 95 = 109
    (1) can we show that 6 NL 9? 
-        a. margin 0.2450156385631641
-      yes, 18, ags used 76 = 76
-Best assertion(s) require sample: 76
+        a. margin 0.23510547418619887
+      yes, 19, ags used 22 = 22
+Best assertion(s) require sample: 22
 ALTERNATE OUTCOME PAIR: 9,8
    (1) can we show that 1 NL 8? 
         a. margin -0.4748542926822523
-      no, min 0.19,554 vs max 47.68,138432
+      no
    (1) can we show that 1 NL 9? 
         a. margin -0.3574341733603773
-      no, min 0.19,554 vs max 35.93,122837
+      no
    (1) can we show that 0 NL 8? 
-        a. margin 0.05569142657682624
+        a. margin 0.05569142657683357
       yes, 82, ags used 1141 = 1141
    (1) can we show that 0 NL 9? 
-        a. margin 0.15378494564352185
-      yes, 29, ags used 1141 = 1141
+        a. margin 0.03809057966028262
+      yes, 121, ags used 95 = 121
    (1) can we show that 10 NL 8? 
         a. margin -0.6405507254364342
-      no, min 4.34,12598 vs max 68.39,198579
+      no
    (1) can we show that 10 NL 9? 
-        a. margin -0.5289244526503942
-      no, min 4.34,12598 vs max 57.23,184129
+        a. margin -0.5289244526503953
+      no
    (1) can we show that 14 NL 8? 
         a. margin -0.5312553104518878
-      no, min 10.08,29265 vs max 63.21,183518
+      no
    (1) can we show that 14 NL 9? 
         a. margin -0.4211676334557408
-      no, min 10.08,29265 vs max 52.20,169853
+      no
    (1) can we show that 6 NL 8? 
         a. margin -0.3548817118370806
-      no, min 24.95,72439 vs max 60.44,175492
+      no
    (1) can we show that 6 NL 9? 
-        a. margin -0.27166434729046784
-      no, min 24.95,72439 vs max 52.12,170820
-Best assertion(s) require sample: 1141
+        a. margin -0.27166434729047007
+      no
+Best assertion(s) require sample: 121
 ALTERNATE OUTCOME PAIR: 9,6
    (1) can we show that 1 NL 6? 
-        a. margin -0.31709311030583587
-      no, min 0.19,554 vs max 31.90,92611
+        a. margin -0.31709311030583576
+      no
    (1) can we show that 1 NL 9? 
-        a. margin -0.0018784647110502428
-      no, min 0.19,554 vs max 0.38,1205
+        a. margin -0.0018784647109546526
+      no
    (1) can we show that 0 NL 6? 
-        a. margin 0.07904593282536654
-      yes, 58, ags used 775 = 775
+        a. margin 0.005968373819070116
+      yes, 74, ags used 95 = 95
    (1) can we show that 0 NL 9? 
-        a. margin 0.39557527407670845
-      yes, 11, ags used 775 = 775
+        a. margin 0.32420968993858534
+      yes, 14, ags used 22 = 22
    (1) can we show that 10 NL 6? 
-        a. margin -0.2523446362713623
-      no, min 4.34,12598 vs max 29.57,85857
+        a. margin -0.25234463627136183
+      no
    (1) can we show that 10 NL 9? 
-        a. margin 0.039824370438741985
-      yes, 116, ags used 208 = 208
+        a. margin 0.039359347084201524
+      yes, 117, ags used 22 = 117
    (1) can we show that 14 NL 6? 
-        a. margin -0.2018029127685076
-      no, min 10.08,29265 vs max 30.26,87853
+        a. margin -0.20180291276850737
+      no
    (1) can we show that 14 NL 9? 
-        a. margin 0.09649636478036783
-      yes, 47, ags used 59 = 59
+        a. margin 0.09513574089131804
+      yes, 48, ags used 22 = 48
    (1) can we show that 8 NL 6? 
         a. margin -0.044571053272156824
-      no, min 22.19,64405 vs max 26.64,77345
+      no
    (1) can we show that 8 NL 9? 
-        a. margin 0.2141070862669645
-      yes, 21, ags used 95 = 95
-Best assertion(s) require sample: 59
+        a. margin 0.2000117116992639
+      yes, 22, ags used 0 = 22
+Best assertion(s) require sample: 22
 ALTERNATE OUTCOME PAIR: 1,0
    (1) can we show that 9 NL 0? 
         a. margin -0.5333794912070398
-      no, min 0.03,93 vs max 53.37,155085
+      no
    (1) can we show that 9 NL 1? 
         a. margin -0.40342096440059083
-      no, min 0.03,93 vs max 40.37,148020
+      no
    (1) can we show that 10 NL 0? 
         a. margin -0.5920114728724967
-      no, min 4.34,12598 vs max 63.54,184611
+      no
    (1) can we show that 10 NL 1? 
-        a. margin -0.46026518961459983
-      no, min 4.34,12598 vs max 50.37,175854
+        a. margin -0.46026518961460017
+      no
    (1) can we show that 14 NL 0? 
-        a. margin -0.5195068685671749
-      no, min 10.08,29265 vs max 62.03,180223
+        a. margin -0.5195068685671753
+      no
    (1) can we show that 14 NL 1? 
         a. margin -0.3865274122652581
-      no, min 10.08,29265 vs max 48.73,171258
+      no
    (1) can we show that 8 NL 0? 
         a. margin -0.2750320349421862
-      no, min 22.22,64509 vs max 49.72,144486
+      no
    (1) can we show that 8 NL 1? 
-        a. margin -0.14147158649859448
-      no, min 22.22,64509 vs max 36.37,134138
+        a. margin -0.14147158649859826
+      no
    (1) can we show that 6 NL 0? 
         a. margin -0.38053607433023673
-      no, min 24.95,72439 vs max 63.01,183062
+      no
    (1) can we show that 6 NL 1? 
-        a. margin -0.26470966467744106
-      no, min 24.95,72439 vs max 51.42,180247
+        a. margin -0.2647096646774427
+      no
 ALTERNATE OUTCOME PAIR: 1,10
    (1) can we show that 9 NL 10? 
-        a. margin -0.14687733946934323
-      no, min 0.03,93 vs max 14.72,42753
+        a. margin -0.1468773394693389
+      no
    (1) can we show that 9 NL 1? 
-        a. margin -0.006837565619965402
-      no, min 0.03,93 vs max 0.72,2121
+        a. margin -0.006837565619950414
+      no
    (1) can we show that 0 NL 10? 
-        a. margin 0.16897685676361607
-      yes, 27, ags used 1141 = 1141
+        a. margin 0.032208321277169105
+      yes, 53, ags used 95 = 95
    (1) can we show that 0 NL 1? 
-        a. margin 0.4477991190964761
-      yes, 10, ags used 1141 = 1141
+        a. margin 0.3110305836100271
+      yes, 14, ags used 14 = 14
    (1) can we show that 14 NL 10? 
-        a. margin -0.12648061139662958
-      no, min 10.08,29265 vs max 22.73,66005
+        a. margin -0.12648061139662492
+      no
    (1) can we show that 14 NL 1? 
-        a. margin 0.09150281769705604
-      yes, 50, ags used 59 = 59
+        a. margin 0.09014219380796695
+      yes, 51, ags used 14 = 51
    (1) can we show that 8 NL 10? 
-        a. margin 0.09073122339032857
+        a. margin 0.09073122339032746
       yes, 50, ags used 144 = 144
    (1) can we show that 8 NL 1? 
-        a. margin 0.21636560710233654
-      yes, 21, ags used 95 = 95
+        a. margin 0.20191199232082702
+      yes, 22, ags used 22 = 22
    (1) can we show that 6 NL 10? 
-        a. margin 0.0699624766340079
+        a. margin 0.06996247663402233
       yes, 65, ags used 144 = 144
    (1) can we show that 6 NL 1? 
-        a. margin 0.24048481842271285
-      yes, 18, ags used 76 = 76
-Best assertion(s) require sample: 59
+        a. margin 0.23057465404570876
+      yes, 19, ags used 14 = 19
+Best assertion(s) require sample: 14
 ALTERNATE OUTCOME PAIR: 1,14
    (1) can we show that 9 NL 14? 
-        a. margin -0.15714229944288804
-      no, min 0.03,93 vs max 15.75,45739
+        a. margin -0.15714229944288172
+      no
    (1) can we show that 9 NL 1? 
-        a. margin -0.006754894801388023
-      no, min 0.03,93 vs max 0.71,2121
+        a. margin -0.006754894801365263
+      no
    (1) can we show that 0 NL 14? 
-        a. margin 0.14907270898493397
-      yes, 30, ags used 1141 = 1141
+        a. margin 0.04856566129765105
+      yes, 80, ags used 79 = 80
    (1) can we show that 0 NL 1? 
-        a. margin 0.4115181117984812
-      yes, 10, ags used 1141 = 1141
+        a. margin 0.3110110641111974
+      yes, 14, ags used 14 = 14
    (1) can we show that 10 NL 14? 
-        a. margin -0.14968125806614374
-      no, min 4.34,12598 vs max 19.31,56074
+        a. margin -0.14968125806613808
+      no
    (1) can we show that 10 NL 1? 
-        a. margin 0.03609729436781506
-      yes, 128, ags used 208 = 208
+        a. margin 0.03563227101326838
+      yes, 129, ags used 14 = 129
    (1) can we show that 8 NL 14? 
-        a. margin 0.07585621707519552
+        a. margin 0.07585621707520196
       yes, 60, ags used 95 = 95
    (1) can we show that 8 NL 1? 
-        a. margin 0.21645516715579216
-      yes, 21, ags used 95 = 95
+        a. margin 0.20200155237433925
+      yes, 22, ags used 22 = 22
    (1) can we show that 6 NL 14? 
-        a. margin 0.04205418612875045
+        a. margin 0.04205418612876777
       yes, 109, ags used 95 = 109
    (1) can we show that 6 NL 1? 
-        a. margin 0.24051467177386487
-      yes, 18, ags used 76 = 76
-Best assertion(s) require sample: 76
+        a. margin 0.23060450739691718
+      yes, 19, ags used 14 = 19
+Best assertion(s) require sample: 14
 ALTERNATE OUTCOME PAIR: 1,8
    (1) can we show that 9 NL 8? 
         a. margin -0.8471898810918026
-      no, min 0.03,93 vs max 84.75,246179
+      no
    (1) can we show that 9 NL 1? 
-        a. margin -0.0067135593920992775
-      no, min 0.03,93 vs max 0.70,2121
+        a. margin -0.006713559392053758
+      no
    (1) can we show that 0 NL 8? 
-        a. margin 0.05180704630942867
+        a. margin 0.05180704630944155
       yes, 89, ags used 1141 = 1141
    (1) can we show that 0 NL 1? 
-        a. margin 0.4793655933237917
-      yes, 9, ags used 1141 = 1141
+        a. margin 0.3120191888154764
+      yes, 14, ags used 14 = 14
    (1) can we show that 10 NL 8? 
         a. margin -0.6401832995760888
-      no, min 4.34,12598 vs max 68.36,198579
+      no
    (1) can we show that 10 NL 1? 
-        a. margin 0.036499166402558236
-      yes, 126, ags used 208 = 208
+        a. margin 0.03603414304801933
+      yes, 128, ags used 14 = 128
    (1) can we show that 14 NL 8? 
-        a. margin -0.5309717036159307
-      no, min 10.08,29265 vs max 63.18,183518
+        a. margin -0.5309717036159309
+      no
    (1) can we show that 14 NL 1? 
-        a. margin 0.0920734759863806
-      yes, 49, ags used 59 = 59
+        a. margin 0.09071285209744384
+      yes, 50, ags used 14 = 50
    (1) can we show that 6 NL 8? 
         a. margin -0.3545108413592787
-      no, min 24.95,72439 vs max 60.40,175492
+      no
    (1) can we show that 6 NL 1? 
-        a. margin 0.24128167325730265
-      yes, 18, ags used 76 = 76
-Best assertion(s) require sample: 59
+        a. margin 0.23137150888062075
+      yes, 19, ags used 14 = 19
+Best assertion(s) require sample: 14
 ALTERNATE OUTCOME PAIR: 1,6
    (1) can we show that 9 NL 6? 
-        a. margin -0.26918651914518177
-      no, min 0.03,93 vs max 26.95,78262
+        a. margin -0.2691865191451789
+      no
    (1) can we show that 9 NL 1? 
-        a. margin -0.006428804350332995
-      no, min 0.03,93 vs max 0.67,2121
+        a. margin -0.006428804350303463
+      no
    (1) can we show that 0 NL 6? 
-        a. margin 0.07680233866559716
-      yes, 59, ags used 775 = 775
+        a. margin 0.006039562579511548
+      yes, 77, ags used 95 = 95
    (1) can we show that 0 NL 1? 
-        a. margin 0.3824363549516965
-      yes, 11, ags used 775 = 775
+        a. margin 0.3116735788656084
+      yes, 14, ags used 14 = 14
    (1) can we show that 10 NL 6? 
-        a. margin -0.2522780403341719
-      no, min 4.34,12598 vs max 29.57,85857
+        a. margin -0.25227804033416856
+      no
    (1) can we show that 10 NL 1? 
-        a. margin 0.036405013525846686
-      yes, 127, ags used 208 = 208
+        a. margin 0.03593999017132732
+      yes, 128, ags used 14 = 128
    (1) can we show that 14 NL 6? 
-        a. margin -0.20175124350689433
-      no, min 10.08,29265 vs max 30.26,87853
+        a. margin -0.2017512435068919
+      no
    (1) can we show that 14 NL 1? 
-        a. margin 0.09212858986543404
-      yes, 49, ags used 59 = 59
+        a. margin 0.09076796597639891
+      yes, 50, ags used 14 = 50
    (1) can we show that 8 NL 6? 
-        a. margin -0.04416344020833107
-      no, min 22.22,64509 vs max 26.64,77345
+        a. margin -0.04416344020832663
+      no
    (1) can we show that 8 NL 1? 
-        a. margin 0.2168019253114808
-      yes, 21, ags used 95 = 95
-Best assertion(s) require sample: 59
+        a. margin 0.2023483105300441
+      yes, 22, ags used 22 = 22
+Best assertion(s) require sample: 14
 ALTERNATE OUTCOME PAIR: 0,10
    (1) can we show that 9 NL 10? 
         a. margin -0.24845336676877994
-      no, min 0.03,93 vs max 24.88,79926
+      no
    (1) can we show that 9 NL 0? 
         a. margin -0.5282998286876976
-      no, min 0.03,93 vs max 52.86,155085
+      no
    (1) can we show that 1 NL 10? 
         a. margin -0.31485755358660694
-      no, min 0.19,554 vs max 31.68,93813
+      no
    (1) can we show that 1 NL 0? 
         a. margin -0.8204378338408087
-      no, min 0.19,554 vs max 82.23,242432
+      no
    (1) can we show that 14 NL 10? 
         a. margin -0.2719846967126496
-      no, min 10.08,29265 vs max 37.28,117843
+      no
    (1) can we show that 14 NL 0? 
-        a. margin -0.5130229503377985
-      no, min 10.08,29265 vs max 61.38,180223
+        a. margin -0.5130229503377994
+      no
    (1) can we show that 8 NL 10? 
-        a. margin 0.01435257266990031
+        a. margin 8.841184762697907e-05
       yes, 420, ags used 95 = 420
    (1) can we show that 8 NL 0? 
-        a. margin -0.27140255636537935
-      no, min 22.22,64509 vs max 49.36,144486
+        a. margin -0.27140255636537947
+      no
    (1) can we show that 6 NL 10? 
-        a. margin -0.16140903224577674
-      no, min 24.95,72439 vs max 41.09,138658
+        a. margin -0.16140903224577752
+      no
    (1) can we show that 6 NL 0? 
-        a. margin -0.3696120442195777
-      no, min 24.95,72439 vs max 61.91,183062
+        a. margin -0.3696120442195784
+      no
 Best assertion(s) require sample: 420
 ALTERNATE OUTCOME PAIR: 0,14
    (1) can we show that 9 NL 14? 
         a. margin -0.29030202405687056
-      no, min 0.03,93 vs max 29.06,97067
+      no
    (1) can we show that 9 NL 0? 
         a. margin -0.5166880232947957
-      no, min 0.03,93 vs max 51.70,155085
+      no
    (1) can we show that 1 NL 14? 
         a. margin -0.2994072961588756
-      no, min 0.19,554 vs max 30.13,89168
+      no
    (1) can we show that 1 NL 0? 
         a. margin -0.8025315641777698
-      no, min 0.19,554 vs max 80.44,242432
+      no
    (1) can we show that 10 NL 14? 
         a. margin -0.38192540336445524
-      no, min 4.34,12598 vs max 42.53,144145
+      no
    (1) can we show that 10 NL 0? 
         a. margin -0.572894994281997
-      no, min 4.34,12598 vs max 61.63,184611
+      no
    (1) can we show that 8 NL 14? 
-        a. margin -0.03007495487545475
-      no, min 22.22,64509 vs max 25.23,84086
+        a. margin -0.03007495487543077
+      no
    (1) can we show that 8 NL 0? 
-        a. margin -0.2592246855063344
-      no, min 22.22,64509 vs max 48.14,144486
+        a. margin -0.25922468550633626
+      no
    (1) can we show that 6 NL 14? 
-        a. margin -0.21455259012220862
-      no, min 24.95,72439 vs max 46.41,158458
+        a. margin -0.21455259012221106
+      no
    (1) can we show that 6 NL 0? 
-        a. margin -0.3516552535007107
-      no, min 24.95,72439 vs max 60.12,183062
+        a. margin -0.35165525350071225
+      no
 ALTERNATE OUTCOME PAIR: 0,6
    (1) can we show that 9 NL 6? 
         a. margin -0.33266737396133794
-      no, min 0.03,93 vs max 33.30,103135
+      no
    (1) can we show that 9 NL 0? 
         a. margin -0.5043849980021082
-      no, min 0.03,93 vs max 50.47,155085
+      no
    (1) can we show that 1 NL 6? 
         a. margin -0.32437043875236016
-      no, min 0.19,554 vs max 32.63,95202
+      no
    (1) can we show that 1 NL 0? 
         a. margin -0.7806421685473824
-      no, min 0.19,554 vs max 78.26,242432
+      no
    (1) can we show that 10 NL 6? 
         a. margin -0.3615413055558421
-      no, min 4.34,12598 vs max 40.49,126768
+      no
    (1) can we show that 10 NL 0? 
         a. margin -0.5556891301652616
-      no, min 4.34,12598 vs max 59.91,184611
+      no
    (1) can we show that 14 NL 6? 
         a. margin -0.27607345761503876
-      no, min 10.08,29265 vs max 37.69,115851
+      no
    (1) can we show that 14 NL 0? 
-        a. margin -0.4779659304370697
-      no, min 10.08,29265 vs max 57.88,180223
+        a. margin -0.4779659304370699
+      no
    (1) can we show that 8 NL 6? 
-        a. margin -0.10080787761035026
-      no, min 22.22,64509 vs max 32.30,99851
+        a. margin -0.10080787761035082
+      no
    (1) can we show that 8 NL 0? 
-        a. margin -0.24654619691262203
-      no, min 22.22,64509 vs max 46.88,144486
+        a. margin -0.24654619691262347
+      no
 ALTERNATE OUTCOME PAIR: 10,14
    (1) can we show that 9 NL 14? 
-        a. margin -0.15400884577754004
-      no, min 0.03,93 vs max 15.43,45739
+        a. margin -0.1540088457775104
+      no
    (1) can we show that 9 NL 10? 
-        a. margin -0.1378742576848726
-      no, min 0.03,93 vs max 13.82,42753
+        a. margin -0.1378742576848322
+      no
    (1) can we show that 1 NL 14? 
-        a. margin -0.26740105910497236
-      no, min 0.19,554 vs max 26.93,80154
+        a. margin -0.2674010591049487
+      no
    (1) can we show that 1 NL 10? 
-        a. margin -0.27817352604811796
-      no, min 0.19,554 vs max 28.01,84974
+        a. margin -0.27817352604810386
+      no
    (1) can we show that 0 NL 14? 
-        a. margin 0.13919584257626805
-      yes, 32, ags used 1141 = 1141
+        a. margin 0.05527118324897917
+      yes, 70, ags used 26 = 70
    (1) can we show that 0 NL 10? 
-        a. margin 0.12867712911791074
-      yes, 35, ags used 1141 = 1141
+        a. margin 0.044752469790639404
+      yes, 84, ags used 79 = 84
    (1) can we show that 8 NL 14? 
-        a. margin 0.07837193601276016
+        a. margin 0.07837193601281944
       yes, 58, ags used 95 = 95
    (1) can we show that 8 NL 10? 
-        a. margin 0.09935080443293409
+        a. margin 0.0005247300568131941
       yes, 46, ags used 144 = 144
    (1) can we show that 6 NL 14? 
-        a. margin 0.04833946475228279
+        a. margin 0.048339464752500616
       yes, 95, ags used 95 = 95
    (1) can we show that 6 NL 10? 
-        a. margin 0.08224483422192286
+        a. margin 0.08224483422220752
       yes, 55, ags used 144 = 144
-Best assertion(s) require sample: 95
+Best assertion(s) require sample: 70
 ALTERNATE OUTCOME PAIR: 10,8
    (1) can we show that 9 NL 8? 
         a. margin -0.8344631678538799
-      no, min 0.03,93 vs max 83.48,246179
+      no
    (1) can we show that 9 NL 10? 
-        a. margin -0.14280580165422507
-      no, min 0.03,93 vs max 14.31,42753
+        a. margin -0.14280580165414447
+      no
    (1) can we show that 1 NL 8? 
         a. margin -0.46439298951447494
-      no, min 0.19,554 vs max 46.63,138432
+      no
    (1) can we show that 1 NL 10? 
-        a. margin -0.2607805043836271
-      no, min 0.19,554 vs max 26.27,84974
+        a. margin -0.2607805043835587
+      no
    (1) can we show that 0 NL 8? 
-        a. margin 0.034027079285797734
+        a. margin 0.03402707928602222
       yes, 135, ags used 1141 = 1141
    (1) can we show that 0 NL 10? 
-        a. margin 0.20203025751919923
-      yes, 22, ags used 1141 = 1141
+        a. margin 0.062227014067530284
+      yes, 63, ags used 26 = 63
    (1) can we show that 14 NL 8? 
-        a. margin -0.520981164831838
-      no, min 10.08,29265 vs max 62.18,183518
+        a. margin -0.5209811648318391
+      no
    (1) can we show that 14 NL 10? 
-        a. margin -0.10082050787418728
-      no, min 10.08,29265 vs max 20.16,66005
+        a. margin -0.10082050787410213
+      no
    (1) can we show that 6 NL 8? 
-        a. margin -0.34268776609656604
-      no, min 24.95,72439 vs max 59.22,175492
+        a. margin -0.3426877660965665
+      no
    (1) can we show that 6 NL 10? 
-        a. margin 0.09695105428222495
+        a. margin 0.09695105428298723
       yes, 47, ags used 144 = 144
-Best assertion(s) require sample: 144
+Best assertion(s) require sample: 63
 ALTERNATE OUTCOME PAIR: 10,6
    (1) can we show that 9 NL 6? 
-        a. margin -0.26824039755477047
-      no, min 0.03,93 vs max 26.86,78262
+        a. margin -0.2682403975547627
+      no
    (1) can we show that 9 NL 10? 
-        a. margin -0.1303649916639359
-      no, min 0.03,93 vs max 13.07,42753
+        a. margin -0.13036499166391124
+      no
    (1) can we show that 1 NL 6? 
-        a. margin -0.3149976346960107
-      no, min 0.19,554 vs max 31.69,92611
+        a. margin -0.3149976346960053
+      no
    (1) can we show that 1 NL 10? 
-        a. margin -0.25834975267635996
-      no, min 0.19,554 vs max 26.03,84974
+        a. margin -0.2583497526763491
+      no
    (1) can we show that 0 NL 6? 
-        a. margin 0.06425704194625115
-      yes, 71, ags used 775 = 775
+        a. margin 0.008095999191667591
+      yes, 72, ags used 95 = 95
    (1) can we show that 0 NL 10? 
-        a. margin 0.12079469620757344
-      yes, 38, ags used 775 = 775
+        a. margin 0.06463365345306138
+      yes, 61, ags used 26 = 61
    (1) can we show that 14 NL 6? 
-        a. margin -0.20006452916670903
-      no, min 10.08,29265 vs max 30.09,87853
+        a. margin -0.20006452916670225
+      no
    (1) can we show that 14 NL 10? 
-        a. margin -0.09750908230786703
-      no, min 10.08,29265 vs max 19.83,66005
+        a. margin -0.09750908230784905
+      no
    (1) can we show that 8 NL 6? 
-        a. margin -0.043258654027211185
-      no, min 22.22,64509 vs max 26.55,77345
+        a. margin -0.04325865402720175
+      no
    (1) can we show that 8 NL 10? 
-        a. margin 0.10690714689222602
+        a. margin 0.002049547377287464
       yes, 42, ags used 144 = 144
-Best assertion(s) require sample: 144
+Best assertion(s) require sample: 61
 ALTERNATE OUTCOME PAIR: 14,8
    (1) can we show that 9 NL 8? 
         a. margin -0.8189669821935832
-      no, min 0.03,93 vs max 81.93,246179
+      no
    (1) can we show that 9 NL 14? 
-        a. margin -0.15460476459477246
-      no, min 0.03,93 vs max 15.49,45739
+        a. margin -0.1546047645946832
+      no
    (1) can we show that 1 NL 8? 
         a. margin -0.4581593801524779
-      no, min 0.19,554 vs max 46.01,138432
+      no
    (1) can we show that 1 NL 14? 
-        a. margin -0.2480159003539203
-      no, min 0.19,554 vs max 24.99,80154
+        a. margin -0.2480159003538419
+      no
    (1) can we show that 0 NL 8? 
-        a. margin 0.004074982432419549
+        a. margin 0.004074982432562324
       yes, 3341, ags used 1141 = 3341
    (1) can we show that 0 NL 14? 
-        a. margin 0.17834047517316942
-      yes, 25, ags used 1141 = 1141
+        a. margin 0.07477805181599728
+      yes, 54, ags used 26 = 54
    (1) can we show that 10 NL 8? 
         a. margin -0.6227856850885332
-      no, min 4.34,12598 vs max 66.62,198579
+      no
    (1) can we show that 10 NL 14? 
-        a. margin -0.13543776494838555
-      no, min 4.34,12598 vs max 17.88,56074
+        a. margin -0.13543776494834203
+      no
    (1) can we show that 6 NL 8? 
-        a. margin -0.32828122775334945
-      no, min 24.95,72439 vs max 57.78,175492
+        a. margin -0.32828122775335056
+      no
    (1) can we show that 6 NL 14? 
-        a. margin 0.06534094823402614
+        a. margin 0.06534094823468406
       yes, 70, ags used 95 = 95
-Best assertion(s) require sample: 95
+Best assertion(s) require sample: 54
 ALTERNATE OUTCOME PAIR: 14,6
    (1) can we show that 9 NL 6? 
-        a. margin -0.26793727121998323
-      no, min 0.03,93 vs max 26.83,78262
+        a. margin -0.2679372712199707
+      no
    (1) can we show that 9 NL 14? 
-        a. margin -0.14870183850710028
-      no, min 0.03,93 vs max 14.90,45739
+        a. margin -0.14870183850707686
+      no
    (1) can we show that 1 NL 6? 
-        a. margin -0.31495974390416526
-      no, min 0.19,554 vs max 31.69,92611
+        a. margin -0.3149597439041625
+      no
    (1) can we show that 1 NL 14? 
-        a. margin -0.25544019914474914
-      no, min 0.19,554 vs max 25.73,80154
+        a. margin -0.25544019914473826
+      no
    (1) can we show that 0 NL 6? 
-        a. margin 0.027111435670633455
-      yes, 170, ags used 775 = 775
+        a. margin 0.008107481249811643
+      yes, 174, ags used 144 = 174
    (1) can we show that 0 NL 14? 
-        a. margin 0.08628881509751829
-      yes, 53, ags used 775 = 775
+        a. margin 0.06728486067670492
+      yes, 59, ags used 26 = 59
    (1) can we show that 10 NL 6? 
-        a. margin -0.25066595937187564
-      no, min 4.34,12598 vs max 29.41,85857
+        a. margin -0.25066595937187164
+      no
    (1) can we show that 10 NL 14? 
-        a. margin -0.1383048348649939
-      no, min 4.34,12598 vs max 18.17,56074
+        a. margin -0.1383048348650252
+      no
    (1) can we show that 8 NL 6? 
-        a. margin -0.042907303048246304
-      no, min 22.22,64509 vs max 26.51,77345
+        a. margin -0.042907303048232426
+      no
    (1) can we show that 8 NL 14? 
-        a. margin 0.08411526149240078
+        a. margin 0.08411526149245163
       yes, 54, ags used 95 = 95
-Best assertion(s) require sample: 95
+Best assertion(s) require sample: 59
 ALTERNATE OUTCOME PAIR: 8,6
    (1) can we show that 9 NL 6? 
-        a. margin -0.26846314948259553
-      no, min 0.03,93 vs max 26.88,78262
+        a. margin -0.268463149482571
+      no
    (1) can we show that 9 NL 8? 
         a. margin -0.7876978932719241
-      no, min 0.03,93 vs max 78.80,246179
+      no
    (1) can we show that 1 NL 6? 
-        a. margin -0.30358676532045425
-      no, min 0.19,554 vs max 30.55,92611
+        a. margin -0.30358676532043316
+      no
    (1) can we show that 1 NL 8? 
         a. margin -0.43372785685078563
-      no, min 0.19,554 vs max 43.56,138432
+      no
    (1) can we show that 0 NL 6? 
-        a. margin 0.09265561633387076
-      yes, 49, ags used 775 = 775
+        a. margin 0.019578057327617637
+      yes, 61, ags used 95 = 95
    (1) can we show that 0 NL 8? 
-        a. margin -0.0017441246308401714
-      no, min 39.90,115845 vs max 40.08,128220
+        a. margin -0.0017441246307406955
+      no
    (1) can we show that 10 NL 6? 
-        a. margin -0.24274333925802982
-      no, min 4.34,12598 vs max 28.61,85857
+        a. margin -0.24274333925800817
+      no
    (1) can we show that 10 NL 8? 
         a. margin -0.5934857691372115
-      no, min 4.34,12598 vs max 63.69,198579
+      no
    (1) can we show that 14 NL 6? 
-        a. margin -0.1903541526010878
-      no, min 10.08,29265 vs max 29.12,87853
+        a. margin -0.19035415260105903
+      no
    (1) can we show that 14 NL 8? 
         a. margin -0.48045524064092504
-      no, min 10.08,29265 vs max 58.13,183518
-Best assertion(s) require sample: 775
+      no
+Best assertion(s) require sample: 95
 Alternate outcome cannot be ruled out: 1,0
 Alternate outcome cannot be ruled out: 0,14
 Alternate outcome cannot be ruled out: 0,6
 Best sample size: inf
 ------------------------------------------------
 Final set of assertions generated:
-(10, 'AG', 11, 149)
-(8, 'AG', 2, 91)
+(8, 'AG', 12, 41)
 (0, 'AG', 13, 23)
-(8, 'AG', 3, 86)
-14 NL 9 = 47 [rules out (9, 6)]
-8 NL 14 = 54 [rules out (14, 6)]
+(8, 'AG', 2, 91)
+(0, 'AG', 11, 90)
+(0, 'AG', 18, 25)
+(0, 'AG', 14, 95)
+0 NL 9 = 14 [rules out (9, 6), AGs used {(8, 'AG', 9, 22), (0, 'AG', 22, 14), (0, 'AG', 1, 14)}]
+0 NL 14 = 70 [rules out (10, 14), AGs used {(0, 'AG', 2, 25), (0, 'AG', 12, 23), (0, 'AG', 13, 23), (0, 'AG', 18, 25), (0, 'AG', 4, 26), (0, 'AG', 5, 26), (0, 'AG', 19, 25), (0, 'AG', 20, 23), (0, 'AG', 1, 14), (0, 'AG', 16, 24), (0, 'AG', 3, 25), (0, 'AG', 17, 24), (0, 'AG', 22, 14), (0, 'AG', 21, 23)}]
+0 NL 1 = 14 [rules out (9, 1), AGs used {(0, 'AG', 22, 14)}]
+(8, 'AG', 17, 55)
 (8, 'AG', 16, 56)
 (0, 'AG', 4, 26)
-6 NL 10 = 47 [rules out (10, 8)]
-(0, 'AG', 7, 775)
-(8, 'AG', 20, 53)
+(10, 'AG', 11, 149)
 (6, 'AG', 7, 24)
 (8, 'AG', 21, 52)
-(6, 'AG', 20, 76)
-(8, 'AG', 22, 23)
-(14, 'AG', 22, 59)
-6 NL 9 = 18 [rules out (9, 14)]
-14 NL 1 = 50 [rules out (9, 1)]
-(0, 'AG', 2, 25)
+(8, 'AG', 3, 86)
+0 NL 9 = 14 [rules out (9, 10), AGs used {(8, 'AG', 9, 22), (0, 'AG', 22, 14), (0, 'AG', 1, 14)}]
 (0, 'AG', 16, 24)
-8 NL 14 = 58 [rules out (10, 14)]
-(8, 'AG', 5, 92)
-(0, 'AG', 1, 14)
+(8, 'AG', 20, 53)
+(8, 'AG', 22, 23)
+(0, 'AG', 7, 775)
 (0, 'AG', 21, 23)
-(6, 'AG', 22, 24)
+(0, 'AG', 1, 14)
+8 NL 9 = 22 [rules out (9, 0), AGs used set()]
+(0, 'AG', 2, 25)
 (0, 'AG', 12, 23)
-(6, 'AG', 21, 71)
 (8, 'AG', 9, 22)
-(0, 'AG', 5, 26)
-8 NL 10 = 42 [rules out (10, 6)]
-(0, 'AG', 19, 25)
-6 NL 14 = 70 [rules out (14, 8)]
-(0, 'AG', 10, 144)
-(6, 'AG', 5, 44)
-(14, 'AG', 15, 58)
-(0, 'AG', 22, 14)
-(8, 'AG', 13, 40)
+0 NL 1 = 14 [rules out (1, 10), AGs used {(0, 'AG', 22, 14)}]
+(8, 'AG', 5, 92)
+8 NL 10 = 420 [rules out (0, 10), AGs used {(8, 'AG', 12, 41), (8, 'AG', 2, 91), (8, 'AG', 9, 22), (8, 'AG', 5, 92), (8, 'AG', 18, 67), (8, 'AG', 17, 55), (8, 'AG', 16, 56), (8, 'AG', 21, 52), (8, 'AG', 3, 86), (8, 'AG', 4, 95), (8, 'AG', 20, 53), (8, 'AG', 13, 40), (8, 'AG', 22, 23), (8, 'AG', 19, 65)}]
 (8, 'AG', 18, 67)
-14 NL 1 = 49 [rules out (1, 6)]
-(0, 'AG', 6, 1141)
 (6, 'AG', 4, 45)
-14 NL 9 = 47 [rules out (9, 0)]
+(6, 'AG', 5, 44)
+0 NL 6 = 61 [rules out (8, 6), AGs used {(0, 'AG', 2, 25), (0, 'AG', 12, 23), (0, 'AG', 13, 23), (0, 'AG', 11, 90), (0, 'AG', 18, 25), (0, 'AG', 14, 95), (0, 'AG', 4, 26), (0, 'AG', 5, 26), (0, 'AG', 19, 25), (0, 'AG', 20, 23), (0, 'AG', 15, 79), (0, 'AG', 1, 14), (0, 'AG', 16, 24), (0, 'AG', 3, 25), (0, 'AG', 17, 24), (0, 'AG', 22, 14), (0, 'AG', 21, 23)}]
+(0, 'AG', 5, 26)
+(0, 'AG', 19, 25)
+0 NL 10 = 61 [rules out (10, 6), AGs used {(0, 'AG', 2, 25), (0, 'AG', 12, 23), (0, 'AG', 13, 23), (0, 'AG', 18, 25), (0, 'AG', 4, 26), (0, 'AG', 5, 26), (0, 'AG', 19, 25), (0, 'AG', 20, 23), (0, 'AG', 1, 14), (0, 'AG', 16, 24), (0, 'AG', 3, 25), (0, 'AG', 17, 24), (0, 'AG', 22, 14), (0, 'AG', 21, 23)}]
+0 NL 14 = 54 [rules out (14, 8), AGs used {(0, 'AG', 2, 25), (0, 'AG', 12, 23), (0, 'AG', 13, 23), (0, 'AG', 18, 25), (0, 'AG', 4, 26), (0, 'AG', 5, 26), (0, 'AG', 19, 25), (0, 'AG', 20, 23), (0, 'AG', 1, 14), (0, 'AG', 16, 24), (0, 'AG', 3, 25), (0, 'AG', 17, 24), (0, 'AG', 22, 14), (0, 'AG', 21, 23)}]
+(0, 'AG', 20, 23)
 (0, 'AG', 15, 79)
+0 NL 1 = 14 [rules out (1, 8), AGs used {(0, 'AG', 22, 14)}]
+0 NL 10 = 63 [rules out (10, 8), AGs used {(0, 'AG', 2, 25), (0, 'AG', 12, 23), (0, 'AG', 13, 23), (0, 'AG', 18, 25), (0, 'AG', 4, 26), (0, 'AG', 5, 26), (0, 'AG', 19, 25), (0, 'AG', 20, 23), (0, 'AG', 1, 14), (0, 'AG', 16, 24), (0, 'AG', 3, 25), (0, 'AG', 17, 24), (0, 'AG', 22, 14), (0, 'AG', 21, 23)}]
+0 NL 1 = 14 [rules out (1, 14), AGs used {(0, 'AG', 22, 14)}]
 (0, 'AG', 3, 25)
 (0, 'AG', 17, 24)
-(8, 'AG', 12, 41)
-0 NL 6 = 49 [rules out (8, 6)]
-(0, 'AG', 14, 95)
+(14, 'AG', 15, 58)
+(8, 'AG', 13, 40)
+0 NL 9 = 14 [rules out (9, 14), AGs used {(8, 'AG', 9, 22), (0, 'AG', 22, 14), (0, 'AG', 1, 14)}]
 (8, 'AG', 4, 95)
-14 NL 9 = 47 [rules out (9, 10)]
-0 NL 8 = 82 [rules out (9, 8)]
-(0, 'AG', 20, 23)
-14 NL 1 = 49 [rules out (1, 8)]
+0 NL 1 = 14 [rules out (1, 6), AGs used {(0, 'AG', 22, 14)}]
+0 NL 14 = 59 [rules out (14, 6), AGs used {(0, 'AG', 2, 25), (0, 'AG', 12, 23), (0, 'AG', 13, 23), (0, 'AG', 18, 25), (0, 'AG', 4, 26), (0, 'AG', 5, 26), (0, 'AG', 19, 25), (0, 'AG', 20, 23), (0, 'AG', 1, 14), (0, 'AG', 16, 24), (0, 'AG', 3, 25), (0, 'AG', 17, 24), (0, 'AG', 22, 14), (0, 'AG', 21, 23)}]
 (8, 'AG', 19, 65)
-8 NL 10 = 420 [rules out (0, 10)]
-6 NL 1 = 18 [rules out (1, 14)]
-(8, 'AG', 17, 55)
-(0, 'AG', 11, 90)
-14 NL 1 = 50 [rules out (1, 10)]
-(0, 'AG', 18, 25)
+(0, 'AG', 22, 14)
+0 NL 9 = 121 [rules out (9, 8), AGs used {(0, 'AG', 2, 25), (0, 'AG', 12, 23), (0, 'AG', 13, 23), (0, 'AG', 11, 90), (0, 'AG', 18, 25), (0, 'AG', 14, 95), (0, 'AG', 4, 26), (0, 'AG', 5, 26), (0, 'AG', 19, 25), (0, 'AG', 20, 23), (0, 'AG', 15, 79), (0, 'AG', 1, 14), (0, 'AG', 16, 24), (0, 'AG', 3, 25), (0, 'AG', 17, 24), (0, 'AG', 22, 14), (0, 'AG', 21, 23)}]
 [0] are verified winners with these assertions.
 [8, 1, 6, 14] remain as potential winners in this audit.
 ------------------------------------------------
