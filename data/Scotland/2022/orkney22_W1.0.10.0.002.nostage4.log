@@ -1,0 +1,95 @@
+VALID BALLOTS 1694
+Winner 2
+Winner 4
+Computing AG relationships
+5 AG 3 = 144
+2 AG 3 = 62
+4 AG 3 = 72
+Ruling out candidates: [(3, 72)]
+STAGE 1 ASN (Ruling out candidates): 72
+ALTERNATE OUTCOME PAIR: 1,5
+   (1) can we show that 2 NL 5?
+        a. margin -0.14325068870523416
+      no
+   (1) can we show that 2 NL 1?
+        a. margin -0.060409287682015145
+      no
+   (1) can we show that 4 NL 5?
+        a. margin -0.166469893742621
+      no
+   (1) can we show that 4 NL 1?
+        a. margin -0.09582841401023245
+      no
+
+ALTERNATE OUTCOME PAIR: 1,2
+   (1) can we show that 5 NL 2?
+        a. margin -0.1973632428177884
+      no
+   (1) can we show that 5 NL 1?
+        a. margin -0.09208972845336505
+      no
+   (1) can we show that 4 NL 2?
+        a. margin -0.1788665879574971
+      no
+   (1) can we show that 4 NL 1?
+        a. margin -0.09602518693427775
+      no
+
+ALTERNATE OUTCOME PAIR: 1,4
+   (1) can we show that 5 NL 4?
+        a. margin -0.1863439590712318
+      no
+   (1) can we show that 5 NL 1?
+        a. margin -0.0907123179850452
+      no
+   (1) can we show that 2 NL 4?
+        a. margin -0.13518299881936258
+      no
+   (1) can we show that 2 NL 1?
+        a. margin -0.0653286107831561
+      no
+
+ALTERNATE OUTCOME PAIR: 5,2
+   (1) can we show that 1 NL 2?
+        a. margin -0.3246753246753247
+      no
+   (1) can we show that 1 NL 5?
+        a. margin -0.30421094057457676
+      no
+   (1) can we show that 4 NL 2?
+        a. margin -0.16784730421094052
+      no
+   (1) can we show that 4 NL 5?
+        a. margin -0.15564738292011016
+      no
+
+ALTERNATE OUTCOME PAIR: 5,4
+   (1) can we show that 1 NL 4?
+        a. margin -0.290633608815427
+      no
+   (1) can we show that 1 NL 5?
+        a. margin -0.3112947658402204
+      no
+   (1) can we show that 2 NL 4?
+        a. margin -0.12121212121212133
+      no
+   (1) can we show that 2 NL 5?
+        a. margin -0.1371507280598191
+      no
+
+RULE OUT PAIR STAGE ASN 0
+------------------------------------------------
+Alternate outcome cannot be ruled out: 1,5
+Alternate outcome cannot be ruled out: 1,2
+Alternate outcome cannot be ruled out: 1,4
+Alternate outcome cannot be ruled out: 5,2
+Alternate outcome cannot be ruled out: 5,4
+Full audit not possible
+PARTIAL audit sample size: 72
+------------------------------------------------
+Final set of assertions generated:
+(3, 'AG', 2, 72)
+(1, 'AG', 2, 62)
+[] are verified winners with these assertions.
+[1, 2, 4, 5] remain as potential winners in this audit.
+------------------------------------------------

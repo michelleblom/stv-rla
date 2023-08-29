@@ -1,0 +1,129 @@
+VALID BALLOTS 8363
+Winner 1
+Winner 10
+Computing AG relationships
+6 AG 9 = 87
+6 AG 7 = 213
+6 AG 2 = 805
+1 AG 9 = 22
+1 AG 7 = 26
+1 AG 4 = 30
+1 AG 5 = 29
+1 AG 8 = 33
+1 AG 2 = 28
+1 AG 6 = 377
+3 AG 9 = 43
+3 AG 7 = 61
+3 AG 4 = 89
+3 AG 5 = 77
+3 AG 8 = 121
+3 AG 2 = 70
+10 AG 9 = 24
+10 AG 7 = 25
+10 AG 4 = 29
+10 AG 5 = 30
+10 AG 8 = 32
+10 AG 2 = 31
+Ruling out candidates: [(9, 24), (7, 26), (4, 30), (5, 30), (8, 33), (2, 31)]
+STAGE 1 ASN (Ruling out candidates): 33
+ALTERNATE OUTCOME PAIR: 6,1
+   (1) can we show that 3 NL 1?
+        a. margin -0.17700984495197147
+      no
+   (1) can we show that 3 NL 6?
+        a. margin -0.017936147315557704
+      no
+   (1) can we show that 10 NL 1?
+        a. margin -0.19088046554266913
+      no
+   (1) can we show that 10 NL 6?
+        a. margin -0.09960540475906121
+      no
+
+ALTERNATE OUTCOME PAIR: 6,3
+   (1) can we show that 1 NL 3?
+        a. margin 0.0043046753557323125
+      yes, 267, ags used 33 = 267
+   (1) can we show that 1 NL 6?
+        a. margin 0.040017537566262584
+      yes, 76, ags used 33 = 76
+   (1) can we show that 10 NL 3?
+        a. margin -0.1522978197616499
+      no
+   (1) can we show that 10 NL 6?
+        a. margin 0.10745745147275398
+      yes, 42, ags used 377 = 377
+      Best assertion(s) require sample: 76
+
+ALTERNATE OUTCOME PAIR: 6,10
+   (1) can we show that 1 NL 10?
+        a. margin -0.023356849615369768
+      no
+   (1) can we show that 1 NL 6?
+        a. margin 0.02746223444537188
+      yes, 97, ags used 33 = 97
+   (1) can we show that 3 NL 10?
+        a. margin -0.12639005141695558
+      no
+   (1) can we show that 3 NL 6?
+        a. margin 0.031328470644502504
+      yes, 146, ags used 377 = 377
+      Best assertion(s) require sample: 97
+
+ALTERNATE OUTCOME PAIR: 1,3
+   (1) can we show that 6 NL 3?
+        a. margin -0.23109729363466103
+      no
+   (1) can we show that 6 NL 1?
+        a. margin -0.26433895332615975
+      no
+   (1) can we show that 10 NL 3?
+        a. margin -0.11710311291801556
+      no
+   (1) can we show that 10 NL 1?
+        a. margin -0.1769699868468273
+      no
+
+ALTERNATE OUTCOME PAIR: 3,10
+   (1) can we show that 6 NL 10?
+        a. margin -0.1940292558491774
+      no
+   (1) can we show that 6 NL 3?
+        a. margin -0.2729881621427731
+      no
+   (1) can we show that 1 NL 10?
+        a. margin 0.024672167085176167
+      yes, 185, ags used 377 = 377
+   (1) can we show that 1 NL 3?
+        a. margin 0.0015943242058240603
+      yes, 73, ags used 377 = 377
+      Best assertion(s) require sample: 377
+
+RULE OUT PAIR STAGE ASN 377
+------------------------------------------------
+Alternate outcome cannot be ruled out: 6,1
+Alternate outcome cannot be ruled out: 1,3
+Full audit not possible
+PARTIAL audit sample size: 377
+------------------------------------------------
+Final set of assertions generated:
+(0, 'AG', 3, 30)
+(9, 'AG', 3, 29)
+(0, 'AG', 6, 26)
+(9, 'AG', 4, 30)
+1 NL 6 = 97 [rules out (6, 10), G = {1, 3, 4, 6, 7, 8}, O = set()]
+1 NL 10 = 377 [rules out (3, 10), G = {1, 3, 4, 5, 6, 7, 8}, O = set()]
+
+(0, 'AG', 1, 28)
+(9, 'AG', 1, 31)
+(0, 'AG', 7, 33)
+(9, 'AG', 7, 32)
+(0, 'AG', 5, 377)
+1 NL 6 = 76 [rules out (6, 3), G = {1, 3, 4, 6, 7, 8}, O = set()]
+(0, 'AG', 4, 29)
+(0, 'AG', 8, 22)
+(9, 'AG', 8, 24)
+(9, 'AG', 6, 25)
+[1] are verified winners with these assertions.
+[10, 3, 6] remain as potential winners in this audit.
+------------------------------------------------

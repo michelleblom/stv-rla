@@ -1,0 +1,59 @@
+VALID BALLOTS 1150
+Winner 5
+Winner 1
+Computing AG relationships
+5 AG 6 = 41
+5 AG 3 = 1144
+5 AG 2 = 62
+1 AG 6 = 117
+1 AG 2 = 291
+Ruling out candidates: [(6, 117), (2, 291)]
+STAGE 1 ASN (Ruling out candidates): 291
+ALTERNATE OUTCOME PAIR: 3,5
+   (1) can we show that 1 NL 5?
+        a. margin -0.14840579710144908
+      no
+   (1) can we show that 1 NL 3?
+        a. margin 0.014202898550724985
+      yes, 286, ags used 291 = 291
+   (1) can we show that 1 NL 5?
+        a. margin -0.14840579710144908
+      no
+   (1) can we show that 1 NL 3?
+        a. margin 0.014202898550724985
+      yes, 286, ags used 291 = 291
+      Best assertion(s) require sample: 291
+
+ALTERNATE OUTCOME PAIR: 3,1
+   (1) can we show that 5 NL 1?
+        a. margin -0.0368115942028987
+      no
+   (1) can we show that 5 NL 3?
+        a. margin 0.03826086956521735
+      yes, 52, ags used 62 = 62
+      Best assertion(s) require sample: 62
+
+ALTERNATE OUTCOME PAIR: 3,1
+   (1) can we show that 5 NL 1?
+        a. margin -0.0368115942028987
+      no
+   (1) can we show that 5 NL 3?
+        a. margin 0.03826086956521735
+      yes, 52, ags used 62 = 62
+      Best assertion(s) require sample: 62
+
+RULE OUT PAIR STAGE ASN 291
+------------------------------------------------
+EXAMINING WAYS TO REDUCE COST OF AUDIT
+------------------------------------------------
+FULL audit sample size: 291
+------------------------------------------------
+Final set of assertions generated:
+(0, 'AG', 5, 117)
+(4, 'AG', 1, 62)
+5 NL 3 = 62 [rules out (3, 1), G = {1, 5}, O = set()]
+1 NL 3 = 291 [rules out (3, 5), G = {1, 5}, O = set()]
+(0, 'AG', 1, 291)
+(4, 'AG', 5, 41)
+All winners are verified in audit.
+------------------------------------------------

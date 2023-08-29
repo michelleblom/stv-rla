@@ -1,0 +1,196 @@
+VALID BALLOTS 5628
+Winner 3
+Winner 4
+Computing AG relationships
+3 AG 5 = 179
+6 AG 5 = 226
+6 AG 1 = 131
+6 AG 7 = 2973
+4 AG 5 = 89
+4 AG 1 = 47
+4 AG 7 = 80
+Ruling out candidates: [(5, 179), (1, 131), (7, 2973)]
+STAGE 1 ASN (Ruling out candidates): 2973
+ALTERNATE OUTCOME PAIR: 2,3
+   (1) can we show that 6 NL 3?
+        a. margin -0.047322909263207924
+      no
+   (1) can we show that 6 NL 2?
+        a. margin -0.010779436152570487
+      no
+   (1) can we show that 4 NL 3?
+        a. margin -0.029732290926320903
+      no
+   (1) can we show that 4 NL 2?
+        a. margin 0.009002606017531445
+      yes, 337, ags used 89 = 337
+      Best assertion(s) require sample: 337
+
+ALTERNATE OUTCOME PAIR: 2,6
+   (1) can we show that 3 NL 6?
+        a. margin -0.23466003316749573
+      no
+   (1) can we show that 3 NL 2?
+        a. margin -0.019189765458424435
+      no
+   (1) can we show that 4 NL 6?
+        a. margin -0.051409618573797444
+      no
+   (1) can we show that 4 NL 2?
+        a. margin -0.02730395640843597
+      no
+
+ALTERNATE OUTCOME PAIR: 2,4
+   (1) can we show that 3 NL 4?
+        a. margin -0.23673300165837474
+      no
+   (1) can we show that 3 NL 2?
+        a. margin -0.02185501066098028
+      no
+   (1) can we show that 6 NL 4?
+        a. margin -0.07823975361288793
+      no
+   (1) can we show that 6 NL 2?
+        a. margin -0.05768775171760265
+      no
+
+ALTERNATE OUTCOME PAIR: 3,6
+   (1) can we show that 2 NL 6?
+        a. margin -0.28375977256574225
+      no
+   (1) can we show that 2 NL 3?
+        a. margin -0.1207059938403231
+      no
+   (1) can we show that 4 NL 6?
+        a. margin -0.04821132433072772
+      no
+   (1) can we show that 4 NL 3?
+        a. margin -0.06023454157782682
+      no
+
+ALTERNATE OUTCOME PAIR: 6,4
+   (1) can we show that 2 NL 4?
+        a. margin -0.2543828476664284
+      no
+   (1) can we show that 2 NL 6?
+        a. margin -0.24425491589670556
+      no
+   (1) can we show that 3 NL 4?
+        a. margin -0.2102582326462923
+      no
+   (1) can we show that 3 NL 6?
+        a. margin -0.1919568822553892
+      no
+
+RULE OUT PAIR STAGE ASN 337
+------------------------------------------------
+EXAMINING WAYS TO REDUCE COST OF AUDIT
+ALTERNATE OUTCOME PAIR: 7,2
+   (1) can we show that 3 NL 2?
+        a. margin -0.025112532575220392
+      no
+   (1) can we show that 3 NL 7?
+        a. margin 0.036128879412461457
+      yes, 126, ags used 80 = 126
+   (1) can we show that 6 NL 2?
+        a. margin -0.08001658374792897
+      no
+   (1) can we show that 6 NL 7?
+        a. margin 0.013740819710968966
+      yes, 46, ags used 80 = 80
+   (1) can we show that 4 NL 2?
+        a. margin -0.05277185501066295
+      no
+   (1) can we show that 4 NL 7?
+        a. margin 0.07142857142857162
+      yes, 60, ags used 47 = 60
+      Best assertion(s) require sample: 60
+
+ALTERNATE OUTCOME PAIR: 7,3
+   (1) can we show that 2 NL 3?
+        a. margin -0.13107083629471838
+      no
+   (1) can we show that 2 NL 7?
+        a. margin 0.06070836294716919
+      yes, 75, ags used 2973 = 2973
+   (1) can we show that 6 NL 3?
+        a. margin -0.11016346837242541
+      no
+   (1) can we show that 6 NL 7?
+        a. margin 0.01457000710732026
+      yes, 45, ags used 80 = 80
+   (1) can we show that 4 NL 3?
+        a. margin -0.08848614072494865
+      no
+   (1) can we show that 4 NL 7?
+        a. margin 0.0714877990997389
+      yes, 60, ags used 47 = 60
+      Best assertion(s) require sample: 60
+
+ALTERNATE OUTCOME PAIR: 7,6
+   (1) can we show that 2 NL 6?
+        a. margin -0.28192371475953504
+      no
+   (1) can we show that 2 NL 7?
+        a. margin 0.014629234778485545
+      yes, 310, ags used 80 = 310
+   (1) can we show that 3 NL 6?
+        a. margin -0.22927031509121154
+      no
+   (1) can we show that 3 NL 7?
+        a. margin 0.055140961857376825
+      yes, 83, ags used 80 = 83
+   (1) can we show that 4 NL 6?
+        a. margin -0.08025349443260055
+      no
+   (1) can we show that 4 NL 7?
+        a. margin 0.07806207059938197
+      yes, 55, ags used 47 = 55
+      Best assertion(s) require sample: 55
+
+ALTERNATE OUTCOME PAIR: 7,4
+   (1) can we show that 2 NL 4?
+        a. margin -0.27546789860222654
+      no
+   (1) can we show that 2 NL 7?
+        a. margin 0.0038497986259191652
+      yes, 2193, ags used 2973 = 2973
+   (1) can we show that 3 NL 4?
+        a. margin -0.23092868988391457
+      no
+   (1) can we show that 3 NL 7?
+        a. margin 0.046197583511016216
+      yes, 99, ags used 2973 = 2973
+   (1) can we show that 6 NL 4?
+        a. margin -0.09920634920634985
+      no
+   (1) can we show that 6 NL 7?
+        a. margin 0.02961383558398567
+      yes, 135, ags used 131 = 135
+      Best assertion(s) require sample: 135
+
+6 ruled out by pairs, sample size 135
+STAGE 1 ASN NOW 179
+NEW RULE OUT PAIR STAGE ASN 337
+------------------------------------------------
+Alternate outcome cannot be ruled out: 2,6
+Alternate outcome cannot be ruled out: 2,4
+Alternate outcome cannot be ruled out: 3,6
+Alternate outcome cannot be ruled out: 6,4
+Full audit not possible
+PARTIAL audit sample size: 337
+------------------------------------------------
+Final set of assertions generated:
+4 NL 7 = 60 [rules out (7, 3), G = {0}, O = set()]
+(3, 'AG', 4, 89)
+(3, 'AG', 0, 47)
+(5, 'AG', 0, 131)
+4 NL 7 = 55 [rules out (7, 6), G = {0}, O = set()]
+6 NL 7 = 135 [rules out (7, 4), G = {0}, O = set()]
+(2, 'AG', 4, 179)
+4 NL 7 = 60 [rules out (7, 2), G = {0}, O = set()]
+4 NL 2 = 337 [rules out (2, 3), G = {0, 4, 6}, O = set()]
+(3, 'AG', 6, 80)
+[] are verified winners with these assertions.
+[2, 3, 4, 6] remain as potential winners in this audit.
+------------------------------------------------

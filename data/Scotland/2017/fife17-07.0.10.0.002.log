@@ -1,0 +1,157 @@
+VALID BALLOTS 6573
+Winner 1
+Winner 3
+Computing AG relationships
+1 AG 6 = 97
+1 AG 4 = 50
+1 AG 2 = 205
+3 AG 6 = 22
+3 AG 4 = 34
+3 AG 7 = 35
+Ruling out candidates: [(6, 97), (4, 50)]
+STAGE 1 ASN (Ruling out candidates): 97
+ALTERNATE OUTCOME PAIR: 2,1
+   (1) can we show that 7 NL 1?
+        a. margin -0.21426035803032617
+      no
+   (1) can we show that 7 NL 2?
+        a. margin -0.18058725087479077
+      no
+   (1) can we show that 3 NL 1?
+        a. margin 0.0015213753232923288
+      yes, 96, ags used 35 = 96
+   (1) can we show that 3 NL 2?
+        a. margin 0.03889649576550536
+      yes, 52, ags used 35 = 52
+   (1) can we show that 3 NL 1?
+        a. margin 0.0015213753232923288
+      yes, 96, ags used 35 = 96
+   (1) can we show that 3 NL 2?
+        a. margin 0.03889649576550536
+      yes, 52, ags used 35 = 52
+      Best assertion(s) require sample: 52
+
+ALTERNATE OUTCOME PAIR: 2,7
+   (1) can we show that 1 NL 7?
+        a. margin 0.04477914701556873
+      yes, 93, ags used 50 = 93
+   (1) can we show that 1 NL 2?
+        a. margin 0.02708048075460101
+      yes, 142, ags used 97 = 142
+   (1) can we show that 3 NL 7?
+        a. margin 0.1312439778893455
+      yes, 32, ags used 34 = 34
+   (1) can we show that 3 NL 2?
+        a. margin 0.18880267762056824
+      yes, 24, ags used 205 = 205
+   (1) can we show that 3 NL 7?
+        a. margin 0.1312439778893455
+      yes, 32, ags used 34 = 34
+   (1) can we show that 3 NL 2?
+        a. margin 0.18880267762056824
+      yes, 24, ags used 205 = 205
+      Best assertion(s) require sample: 34
+
+ALTERNATE OUTCOME PAIR: 2,3
+   (1) can we show that 1 NL 3?
+        a. margin -0.30752066534814115
+      no
+   (1) can we show that 1 NL 2?
+        a. margin 0.03286170698311275
+      yes, 120, ags used 97 = 120
+   (1) can we show that 7 NL 3?
+        a. margin -0.4208124144226384
+      no
+   (1) can we show that 7 NL 2?
+        a. margin -0.0030427506465847687
+      no
+      Best assertion(s) require sample: 120
+
+ALTERNATE OUTCOME PAIR: 2,3
+   (1) can we show that 1 NL 3?
+        a. margin -0.30752066534814115
+      no
+   (1) can we show that 1 NL 2?
+        a. margin 0.03286170698311275
+      yes, 120, ags used 97 = 120
+   (1) can we show that 7 NL 3?
+        a. margin -0.4208124144226384
+      no
+   (1) can we show that 7 NL 2?
+        a. margin -0.0030427506465847687
+      no
+      Best assertion(s) require sample: 120
+
+ALTERNATE OUTCOME PAIR: 1,7
+   (1) can we show that 2 NL 7?
+        a. margin -0.04893757289923428
+      no
+   (1) can we show that 2 NL 1?
+        a. margin -0.16141792180130898
+      no
+   (1) can we show that 3 NL 7?
+        a. margin 0.13149754044322726
+      yes, 32, ags used 34 = 34
+   (1) can we show that 3 NL 1?
+        a. margin -0.029768243825752716
+      no
+   (1) can we show that 3 NL 7?
+        a. margin 0.13149754044322726
+      yes, 32, ags used 34 = 34
+   (1) can we show that 3 NL 1?
+        a. margin -0.029768243825752716
+      no
+      Best assertion(s) require sample: 34
+
+ALTERNATE OUTCOME PAIR: 7,3
+   (1) can we show that 2 NL 3?
+        a. margin -0.3899284953598048
+      no
+   (1) can we show that 2 NL 7?
+        a. margin -0.12110147573406405
+      no
+   (1) can we show that 1 NL 3?
+        a. margin -0.166844160454385
+      no
+   (1) can we show that 1 NL 7?
+        a. margin 0.09711445813682196
+      yes, 47, ags used 205 = 205
+      Best assertion(s) require sample: 205
+
+ALTERNATE OUTCOME PAIR: 7,3
+   (1) can we show that 2 NL 3?
+        a. margin -0.3899284953598048
+      no
+   (1) can we show that 2 NL 7?
+        a. margin -0.12110147573406405
+      no
+   (1) can we show that 1 NL 3?
+        a. margin -0.166844160454385
+      no
+   (1) can we show that 1 NL 7?
+        a. margin 0.09711445813682196
+      yes, 47, ags used 205 = 205
+      Best assertion(s) require sample: 205
+
+RULE OUT PAIR STAGE ASN 205
+------------------------------------------------
+EXAMINING WAYS TO REDUCE COST OF AUDIT
+------------------------------------------------
+FULL audit sample size: 205
+------------------------------------------------
+Final set of assertions generated:
+(0, 'AG', 5, 97)
+(2, 'AG', 5, 22)
+3 NL 2 = 52 [rules out (2, 1), G = {3, 5, 6}, O = set()]
+(2, 'AG', 3, 34)
+3 NL 7 = 34 [rules out (1, 7), G = {3, 5}, O = set()]
+
+(0, 'AG', 1, 205)
+1 NL 7 = 205 [rules out (7, 3), G = {1, 3, 5}, O = set()]
+1 NL 2 = 120 [rules out (2, 3), G = {3, 5}, O = set()]
+(0, 'AG', 3, 50)
+3 NL 7 = 34 [rules out (2, 7), G = {3, 5}, O = set()]
+
+(2, 'AG', 6, 35)
+All winners are verified in audit.
+------------------------------------------------

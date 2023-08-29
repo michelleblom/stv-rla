@@ -1,0 +1,113 @@
+VALID BALLOTS 5464
+Winner 7
+Winner 2
+Computing AG relationships
+7 AG 4 = 26
+7 AG 6 = 24
+7 AG 3 = 21
+2 AG 4 = 40
+2 AG 6 = 64
+2 AG 3 = 42
+1 AG 4 = 27
+1 AG 6 = 41
+1 AG 3 = 35
+Ruling out candidates: [(4, 27), (6, 41), (3, 35)]
+STAGE 1 ASN (Ruling out candidates): 41
+ALTERNATE OUTCOME PAIR: 7,5
+   (1) can we show that 2 NL 5?
+        a. margin 0.01000488042947767
+      yes, 327, ags used 64 = 327
+   (1) can we show that 2 NL 7?
+        a. margin -0.16880185456320151
+      no
+   (1) can we show that 1 NL 5?
+        a. margin -0.04904831625183037
+      no
+   (1) can we show that 1 NL 7?
+        a. margin -0.1350048804294779
+      no
+      Best assertion(s) require sample: 327
+
+ALTERNATE OUTCOME PAIR: 7,1
+   (1) can we show that 5 NL 1?
+        a. margin -0.2844070278184474
+      no
+   (1) can we show that 5 NL 7?
+        a. margin -0.30966325036603226
+      no
+   (1) can we show that 2 NL 1?
+        a. margin -0.10858955588091712
+      no
+   (1) can we show that 2 NL 7?
+        a. margin -0.14873108833577364
+      no
+
+ALTERNATE OUTCOME PAIR: 5,2
+   (1) can we show that 7 NL 2?
+        a. margin -0.13415080527086365
+      no
+   (1) can we show that 7 NL 5?
+        a. margin -0.06137140068326041
+      no
+   (1) can we show that 1 NL 2?
+        a. margin -0.08315031722791622
+      no
+   (1) can we show that 1 NL 5?
+        a. margin -0.006771595900439187
+      no
+
+ALTERNATE OUTCOME PAIR: 5,1
+   (1) can we show that 7 NL 1?
+        a. margin -0.11048072230356298
+      no
+   (1) can we show that 7 NL 5?
+        a. margin -0.07912396290873613
+      no
+   (1) can we show that 2 NL 1?
+        a. margin -0.1304294777940459
+      no
+   (1) can we show that 2 NL 5?
+        a. margin 0.0229380185456316
+      yes, 170, ags used 64 = 170
+      Best assertion(s) require sample: 170
+
+ALTERNATE OUTCOME PAIR: 2,1
+   (1) can we show that 7 NL 1?
+        a. margin -0.0869326500732065
+      no
+   (1) can we show that 7 NL 2?
+        a. margin -0.11200585651537354
+      no
+   (1) can we show that 5 NL 1?
+        a. margin -0.294899951195705
+      no
+   (1) can we show that 5 NL 2?
+        a. margin -0.28013665202537796
+      no
+
+RULE OUT PAIR STAGE ASN 327
+------------------------------------------------
+EXAMINING WAYS TO REDUCE COST OF AUDIT
+------------------------------------------------
+Alternate outcome cannot be ruled out: 7,1
+Alternate outcome cannot be ruled out: 5,2
+Alternate outcome cannot be ruled out: 2,1
+Full audit not possible
+PARTIAL audit sample size: 327
+------------------------------------------------
+Final set of assertions generated:
+2 NL 5 = 170 [rules out (5, 1), G = {2, 3, 5}, O = set()]
+(6, 'AG', 5, 24)
+2 NL 5 = 327 [rules out (7, 5), G = {2, 3, 5}, O = set()]
+
+(1, 'AG', 3, 40)
+(6, 'AG', 3, 26)
+(0, 'AG', 3, 27)
+(1, 'AG', 2, 42)
+(1, 'AG', 5, 64)
+(0, 'AG', 2, 35)
+(0, 'AG', 5, 41)
+(6, 'AG', 2, 21)
+[] are verified winners with these assertions.
+[1, 2, 5, 7] remain as potential winners in this audit.
+------------------------------------------------

@@ -1,0 +1,242 @@
+VALID BALLOTS 4845
+Winner 9
+Winner 5
+Computing AG relationships
+7 AG 8 = 4839
+7 AG 2 = 2311
+10 AG 8 = 92
+10 AG 6 = 167
+10 AG 3 = 76
+10 AG 2 = 155
+10 AG 1 = 468
+9 AG 8 = 27
+9 AG 6 = 30
+9 AG 3 = 25
+9 AG 2 = 30
+9 AG 1 = 34
+9 AG 4 = 80
+9 AG 10 = 52
+5 AG 8 = 312
+5 AG 2 = 196
+Ruling out candidates: [(8, 92), (6, 167), (3, 76), (2, 155), (1, 468)]
+STAGE 1 ASN (Ruling out candidates): 468
+ALTERNATE OUTCOME PAIR: 7,4
+   (1) can we show that 10 NL 4?
+        a. margin -0.039628482972134504
+      no
+   (1) can we show that 10 NL 7?
+        a. margin -0.162985896112829
+      no
+   (1) can we show that 9 NL 4?
+        a. margin 0.06522187822497494
+      yes, 18, ags used 52 = 52
+   (1) can we show that 9 NL 7?
+        a. margin 0.13347093223254114
+      yes, 34, ags used 52 = 52
+   (1) can we show that 5 NL 4?
+        a. margin -0.012659098727209717
+      no
+   (1) can we show that 5 NL 7?
+        a. margin -0.08971448228414236
+      no
+      Best assertion(s) require sample: 52
+
+ALTERNATE OUTCOME PAIR: 7,10
+   (1) can we show that 4 NL 10?
+        a. margin -0.038527691778464934
+      no
+   (1) can we show that 4 NL 7?
+        a. margin -0.24699002407980686
+      no
+   (1) can we show that 9 NL 10?
+        a. margin 0.08964568283453778
+      yes, 43, ags used 34 = 43
+   (1) can we show that 9 NL 7?
+        a. margin -0.03329893360853109
+      no
+   (1) can we show that 5 NL 10?
+        a. margin -0.021190230478156047
+      no
+   (1) can we show that 5 NL 7?
+        a. margin -0.08785689714482248
+      no
+      Best assertion(s) require sample: 43
+
+ALTERNATE OUTCOME PAIR: 7,9
+   (1) can we show that 4 NL 9?
+        a. margin -0.3521155830753342
+      no
+   (1) can we show that 4 NL 7?
+        a. margin -0.23371173030615322
+      no
+   (1) can we show that 10 NL 9?
+        a. margin -0.18630890952872226
+      no
+   (1) can we show that 10 NL 7?
+        a. margin -0.17220502235982027
+      no
+   (1) can we show that 5 NL 9?
+        a. margin -0.3186102511179906
+      no
+   (1) can we show that 5 NL 7?
+        a. margin -0.07850017199862824
+      no
+
+ALTERNATE OUTCOME PAIR: 7,5
+   (1) can we show that 4 NL 5?
+        a. margin -0.20756793945648155
+      no
+   (1) can we show that 4 NL 7?
+        a. margin -0.21644306845545003
+      no
+   (1) can we show that 10 NL 5?
+        a. margin -0.13230134158926443
+      no
+   (1) can we show that 10 NL 7?
+        a. margin -0.13340213278293522
+      no
+   (1) can we show that 9 NL 5?
+        a. margin 0.15810113519091717
+      yes, 28, ags used 52 = 52
+   (1) can we show that 9 NL 7?
+        a. margin 0.0029583763329879
+      yes, 28, ags used 52 = 52
+      Best assertion(s) require sample: 52
+
+ALTERNATE OUTCOME PAIR: 4,10
+   (1) can we show that 7 NL 10?
+        a. margin -0.037220502235982056
+      no
+   (1) can we show that 7 NL 4?
+        a. margin -0.031785345717234126
+      no
+   (1) can we show that 9 NL 10?
+        a. margin 0.08792569659442728
+      yes, 43, ags used 34 = 43
+   (1) can we show that 9 NL 4?
+        a. margin 0.05703474372205042
+      yes, 62, ags used 34 = 62
+   (1) can we show that 5 NL 10?
+        a. margin -0.02160302717578244
+      no
+   (1) can we show that 5 NL 4?
+        a. margin -0.014310285517715848
+      no
+      Best assertion(s) require sample: 43
+
+ALTERNATE OUTCOME PAIR: 4,9
+   (1) can we show that 7 NL 9?
+        a. margin -0.3318885448916409
+      no
+   (1) can we show that 7 NL 4?
+        a. margin -0.049329205366357765
+      no
+   (1) can we show that 10 NL 9?
+        a. margin -0.18926728586171193
+      no
+   (1) can we show that 10 NL 4?
+        a. margin -0.05249398004816008
+      no
+   (1) can we show that 5 NL 9?
+        a. margin -0.3202614379084968
+      no
+   (1) can we show that 5 NL 4?
+        a. margin -0.03323013415892839
+      no
+
+ALTERNATE OUTCOME PAIR: 4,5
+   (1) can we show that 7 NL 5?
+        a. margin -0.12755417956656445
+      no
+   (1) can we show that 7 NL 4?
+        a. margin -0.030478156174750803
+      no
+   (1) can we show that 10 NL 5?
+        a. margin -0.15376676986583881
+      no
+   (1) can we show that 10 NL 4?
+        a. margin -0.03921568627450889
+      no
+   (1) can we show that 9 NL 5?
+        a. margin 0.13725490196078316
+      yes, 33, ags used 52 = 52
+   (1) can we show that 9 NL 4?
+        a. margin 0.06563467492259978
+      yes, 18, ags used 52 = 52
+      Best assertion(s) require sample: 52
+
+ALTERNATE OUTCOME PAIR: 10,9
+   (1) can we show that 7 NL 9?
+        a. margin -0.28249054007567986
+      no
+   (1) can we show that 7 NL 10?
+        a. margin -0.21823185414516189
+      no
+   (1) can we show that 4 NL 9?
+        a. margin -0.3076023391812871
+      no
+   (1) can we show that 4 NL 10?
+        a. margin -0.23894048847608695
+      no
+   (1) can we show that 5 NL 9?
+        a. margin -0.2712074303405577
+      no
+   (1) can we show that 5 NL 10?
+        a. margin -0.2055727554179515
+      no
+
+ALTERNATE OUTCOME PAIR: 10,5
+   (1) can we show that 7 NL 5?
+        a. margin -0.1322325421396624
+      no
+   (1) can we show that 7 NL 10?
+        a. margin -0.03749570003439984
+      no
+   (1) can we show that 4 NL 5?
+        a. margin -0.23061575507395893
+      no
+   (1) can we show that 4 NL 10?
+        a. margin -0.03921568627450922
+      no
+   (1) can we show that 9 NL 5?
+        a. margin -0.029790161678706517
+      no
+   (1) can we show that 9 NL 10?
+        a. margin 0.08875128998967985
+      yes, 43, ags used 34 = 43
+      Best assertion(s) require sample: 43
+
+RULE OUT PAIR STAGE ASN 52
+------------------------------------------------
+Alternate outcome cannot be ruled out: 7,9
+Alternate outcome cannot be ruled out: 4,9
+Alternate outcome cannot be ruled out: 10,9
+Full audit not possible
+PARTIAL audit sample size: 468
+------------------------------------------------
+Final set of assertions generated:
+9 NL 10 = 43 [rules out (10, 5), G = {0, 1, 2, 5, 7}, O = set()]
+(8, 'AG', 2, 25)
+(8, 'AG', 0, 34)
+9 NL 5 = 52 [rules out (4, 5), G = {0, 1, 2, 5, 7, 9}, O = set()]
+
+(8, 'AG', 5, 30)
+(8, 'AG', 7, 27)
+(9, 'AG', 5, 167)
+(8, 'AG', 9, 52)
+9 NL 10 = 43 [rules out (4, 10), G = {0, 1, 2, 5, 7}, O = set()]
+
+(9, 'AG', 0, 468)
+(9, 'AG', 7, 92)
+(9, 'AG', 2, 76)
+9 NL 5 = 52 [rules out (7, 5), G = {0, 1, 2, 5, 7, 9}, O = set()]
+
+(9, 'AG', 1, 155)
+9 NL 10 = 43 [rules out (7, 10), G = {0, 1, 2, 5, 7}, O = set()]
+
+9 NL 4 = 52 [rules out (7, 4), G = {0, 1, 2, 5, 7, 9}, O = set()]
+
+(8, 'AG', 1, 30)
+[9] are verified winners with these assertions.
+[10, 4, 5, 7] remain as potential winners in this audit.
+------------------------------------------------

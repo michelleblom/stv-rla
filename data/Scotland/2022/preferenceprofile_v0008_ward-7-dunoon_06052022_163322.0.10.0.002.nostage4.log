@@ -1,0 +1,552 @@
+VALID BALLOTS 2753
+30 ballot checks required to assert that first winner has a quota's worth of votes
+AUD TV 0.23472468916518652, ss 85
+AG*(5,6) = 116
+AG*(5,7) = 42
+AG*(2,1) = 26
+AG*(2,3) = 38
+AG*(2,4) = 39
+AG*(2,5) = 89
+AG*(2,6) = 21
+AG*(2,7) = 15
+AG*(3,7) = 55
+AG*(4,7) = 165
+AG*(5,6) = 116
+AG*(5,7) = 42
+NL(5,7) = 42, AG*'s used 0
+NL(5,6) = 112, AG*'s used 42
+NL(5,1) = 206, AG*'s used 116
+NL(5,4) NOT POSSIBLE
+NL(5,3) NOT POSSIBLE
+Max in loop inf, 0.23472468916518652
+AUD TV 0.2847246891651865, ss 40
+AG*(5,6) = 131
+AG*(5,7) = 43
+AG*(2,1) = 26
+AG*(2,3) = 38
+AG*(2,4) = 39
+AG*(2,5) = 89
+AG*(2,6) = 21
+AG*(2,7) = 15
+AG*(3,7) = 58
+AG*(4,7) = 184
+AG*(5,6) = 131
+AG*(5,7) = 43
+NL(5,7) = 43, AG*'s used 0
+NL(5,6) = 126, AG*'s used 43
+NL(5,1) = 279, AG*'s used 131
+NL(5,4) NOT POSSIBLE
+NL(5,3) NOT POSSIBLE
+Max in loop inf, 0.2847246891651865
+AUD TV 0.3347246891651865, ss 24
+AG*(5,6) = 150
+AG*(5,7) = 45
+AG*(2,1) = 26
+AG*(2,3) = 38
+AG*(2,4) = 39
+AG*(2,5) = 89
+AG*(2,6) = 21
+AG*(2,7) = 15
+AG*(3,7) = 61
+AG*(4,7) = 206
+AG*(5,6) = 150
+AG*(5,7) = 45
+NL(5,7) = 45, AG*'s used 0
+NL(5,6) = 143, AG*'s used 45
+NL(5,1) = 431, AG*'s used 150
+NL(5,4) NOT POSSIBLE
+NL(5,3) NOT POSSIBLE
+Max in loop inf, 0.3347246891651865
+AUD TV 0.3847246891651865, ss 17
+AG*(5,6) = 176
+AG*(5,7) = 46
+AG*(2,1) = 26
+AG*(2,3) = 38
+AG*(2,4) = 39
+AG*(2,5) = 89
+AG*(2,6) = 21
+AG*(2,7) = 15
+AG*(3,7) = 65
+AG*(4,7) = 236
+AG*(5,6) = 176
+AG*(5,7) = 46
+NL(5,7) = 46, AG*'s used 0
+NL(5,6) = 167, AG*'s used 46
+NL(5,1) = 1420, AG*'s used 176
+NL(5,4) NOT POSSIBLE
+NL(5,3) NOT POSSIBLE
+Max in loop inf, 0.3847246891651865
+AUD TV 0.4347246891651865, ss 12
+AG*(5,6) = 213
+AG*(5,7) = 47
+AG*(2,1) = 26
+AG*(2,3) = 38
+AG*(2,4) = 39
+AG*(2,5) = 89
+AG*(2,6) = 21
+AG*(2,7) = 15
+AG*(3,7) = 70
+AG*(4,7) = 274
+AG*(5,6) = 213
+AG*(5,7) = 47
+NL(5,7) = 47, AG*'s used 0
+NL(5,6) = 199, AG*'s used 47
+NL(5,1) NOT POSSIBLE
+NL(5,4) NOT POSSIBLE
+NL(5,3) NOT POSSIBLE
+Max in loop inf, 0.4347246891651865
+AUD TV 0.48472468916518646, ss 9
+AG*(5,6) = 269
+AG*(5,7) = 49
+AG*(2,1) = 26
+AG*(2,3) = 38
+AG*(2,4) = 39
+AG*(2,5) = 89
+AG*(2,6) = 21
+AG*(2,7) = 15
+AG*(3,7) = 75
+AG*(4,7) = 328
+AG*(5,6) = 269
+AG*(5,7) = 49
+NL(5,7) = 49, AG*'s used 0
+NL(5,6) = 248, AG*'s used 49
+NL(5,1) NOT POSSIBLE
+NL(5,4) NOT POSSIBLE
+NL(5,3) NOT POSSIBLE
+Max in loop inf, 0.48472468916518646
+AUD TV 0.5347246891651865, ss 7
+AG*(5,6) = 365
+AG*(5,7) = 50
+AG*(2,1) = 26
+AG*(2,3) = 38
+AG*(2,4) = 39
+AG*(2,5) = 89
+AG*(2,6) = 21
+AG*(2,7) = 15
+AG*(3,7) = 80
+AG*(4,7) = 408
+AG*(5,6) = 365
+AG*(5,7) = 50
+NL(5,7) = 50, AG*'s used 0
+NL(5,6) = 327, AG*'s used 50
+NL(5,1) NOT POSSIBLE
+NL(5,4) NOT POSSIBLE
+NL(5,3) NOT POSSIBLE
+Max in loop inf, 0.5347246891651865
+AUD TV 0.5847246891651865, ss 5
+AG*(5,6) = 716
+AG*(5,7) = 52
+AG*(2,1) = 26
+AG*(2,3) = 38
+AG*(2,4) = 39
+AG*(2,5) = 89
+AG*(2,6) = 21
+AG*(2,7) = 15
+AG*(3,7) = 87
+AG*(4,7) = 609
+AG*(5,6) = 716
+AG*(5,7) = 52
+NL(5,7) = 52, AG*'s used 0
+NL(5,6) = 480, AG*'s used 52
+NL(5,1) NOT POSSIBLE
+NL(5,4) NOT POSSIBLE
+NL(5,3) NOT POSSIBLE
+Max in loop inf, 0.5847246891651865
+AUD TV 0.6347246891651865, ss 4
+AG*(5,6) = 2491
+AG*(5,7) = 53
+AG*(2,1) = 26
+AG*(2,3) = 38
+AG*(2,4) = 39
+AG*(2,5) = 89
+AG*(2,6) = 21
+AG*(2,7) = 15
+AG*(3,7) = 95
+AG*(4,7) = 1021
+AG*(5,6) = 2491
+AG*(5,7) = 53
+NL(5,7) = 53, AG*'s used 0
+NL(5,6) = 1349, AG*'s used 53
+NL(5,1) NOT POSSIBLE
+NL(5,4) NOT POSSIBLE
+NL(5,3) NOT POSSIBLE
+Max in loop inf, 0.6347246891651865
+Sample size to show min tv of 0.09236234458259325 is 54
+AUD TV 0.23472468916518652, ss 85
+AG*(5,1) = 982
+AG*(5,6) = 99
+AG*(5,7) = 40
+AG*(2,1) = 26
+AG*(2,3) = 38
+AG*(2,4) = 39
+AG*(2,5) = 89
+AG*(2,6) = 21
+AG*(2,7) = 15
+AG*(3,7) = 54
+AG*(4,7) = 145
+AG*(5,1) = 982
+AG*(5,6) = 99
+AG*(5,7) = 40
+NL(5,7) = 40, AG*'s used 0
+NL(5,6) = 96, AG*'s used 40
+NL(5,1) = 144, AG*'s used 99
+NL(5,4) NOT POSSIBLE
+NL(5,3) NOT POSSIBLE
+Max in loop inf, 0.23472468916518652
+AUD TV 0.2847246891651865, ss 40
+AG*(5,6) = 110
+AG*(5,7) = 41
+AG*(2,1) = 26
+AG*(2,3) = 38
+AG*(2,4) = 39
+AG*(2,5) = 89
+AG*(2,6) = 21
+AG*(2,7) = 15
+AG*(3,7) = 57
+AG*(4,7) = 159
+AG*(5,6) = 110
+AG*(5,7) = 41
+NL(5,7) = 41, AG*'s used 0
+NL(5,6) = 106, AG*'s used 41
+NL(5,1) = 177, AG*'s used 110
+NL(5,4) NOT POSSIBLE
+NL(5,3) NOT POSSIBLE
+Max in loop inf, 0.2847246891651865
+AUD TV 0.3347246891651865, ss 24
+AG*(5,6) = 124
+AG*(5,7) = 42
+AG*(2,1) = 26
+AG*(2,3) = 38
+AG*(2,4) = 39
+AG*(2,5) = 89
+AG*(2,6) = 21
+AG*(2,7) = 15
+AG*(3,7) = 61
+AG*(4,7) = 175
+AG*(5,6) = 124
+AG*(5,7) = 42
+NL(5,7) = 42, AG*'s used 0
+NL(5,6) = 119, AG*'s used 42
+NL(5,1) = 229, AG*'s used 124
+NL(5,4) NOT POSSIBLE
+NL(5,3) NOT POSSIBLE
+Max in loop inf, 0.3347246891651865
+AUD TV 0.3847246891651865, ss 17
+AG*(5,6) = 141
+AG*(5,7) = 43
+AG*(2,1) = 26
+AG*(2,3) = 38
+AG*(2,4) = 39
+AG*(2,5) = 89
+AG*(2,6) = 21
+AG*(2,7) = 15
+AG*(3,7) = 65
+AG*(4,7) = 196
+AG*(5,6) = 141
+AG*(5,7) = 43
+NL(5,7) = 43, AG*'s used 0
+NL(5,6) = 134, AG*'s used 43
+NL(5,1) = 322, AG*'s used 141
+NL(5,4) NOT POSSIBLE
+NL(5,3) NOT POSSIBLE
+Max in loop inf, 0.3847246891651865
+AUD TV 0.4347246891651865, ss 12
+AG*(5,6) = 163
+AG*(5,7) = 44
+AG*(2,1) = 26
+AG*(2,3) = 38
+AG*(2,4) = 39
+AG*(2,5) = 89
+AG*(2,6) = 21
+AG*(2,7) = 15
+AG*(3,7) = 69
+AG*(4,7) = 222
+AG*(5,6) = 163
+AG*(5,7) = 44
+NL(5,7) = 44, AG*'s used 0
+NL(5,6) = 155, AG*'s used 44
+NL(5,1) = 617, AG*'s used 163
+NL(5,4) NOT POSSIBLE
+NL(5,3) NOT POSSIBLE
+Max in loop inf, 0.4347246891651865
+AUD TV 0.48472468916518646, ss 9
+AG*(5,6) = 194
+AG*(5,7) = 45
+AG*(2,1) = 26
+AG*(2,3) = 38
+AG*(2,4) = 39
+AG*(2,5) = 89
+AG*(2,6) = 21
+AG*(2,7) = 15
+AG*(3,7) = 74
+AG*(4,7) = 256
+AG*(5,6) = 194
+AG*(5,7) = 45
+NL(5,7) = 45, AG*'s used 0
+NL(5,6) = 183, AG*'s used 45
+NL(5,1) = 2753, AG*'s used 194
+NL(5,4) NOT POSSIBLE
+NL(5,3) NOT POSSIBLE
+Max in loop inf, 0.48472468916518646
+AUD TV 0.5347246891651865, ss 7
+AG*(5,6) = 240
+AG*(5,7) = 47
+AG*(2,1) = 26
+AG*(2,3) = 38
+AG*(2,4) = 39
+AG*(2,5) = 89
+AG*(2,6) = 21
+AG*(2,7) = 15
+AG*(3,7) = 79
+AG*(4,7) = 302
+AG*(5,6) = 240
+AG*(5,7) = 47
+NL(5,7) = 47, AG*'s used 0
+NL(5,6) = 223, AG*'s used 47
+NL(5,1) NOT POSSIBLE
+NL(5,4) NOT POSSIBLE
+NL(5,3) NOT POSSIBLE
+Max in loop inf, 0.5347246891651865
+AUD TV 0.5847246891651865, ss 5
+AG*(5,6) = 313
+AG*(5,7) = 48
+AG*(2,1) = 26
+AG*(2,3) = 38
+AG*(2,4) = 39
+AG*(2,5) = 89
+AG*(2,6) = 21
+AG*(2,7) = 15
+AG*(3,7) = 86
+AG*(4,7) = 369
+AG*(5,6) = 313
+AG*(5,7) = 48
+NL(5,7) = 48, AG*'s used 0
+NL(5,6) = 285, AG*'s used 48
+NL(5,1) NOT POSSIBLE
+NL(5,4) NOT POSSIBLE
+NL(5,3) NOT POSSIBLE
+Max in loop inf, 0.5847246891651865
+AUD TV 0.6347246891651865, ss 4
+AG*(5,6) = 451
+AG*(5,7) = 49
+AG*(2,1) = 26
+AG*(2,3) = 38
+AG*(2,4) = 39
+AG*(2,5) = 89
+AG*(2,6) = 21
+AG*(2,7) = 15
+AG*(3,7) = 94
+AG*(4,7) = 473
+AG*(5,6) = 451
+AG*(5,7) = 49
+NL(5,7) = 49, AG*'s used 0
+NL(5,6) = 394, AG*'s used 49
+NL(5,1) NOT POSSIBLE
+NL(5,4) NOT POSSIBLE
+NL(5,3) NOT POSSIBLE
+Max in loop inf, 0.6347246891651865
+New mintv = 0.14236234458259325
+Sample size to show min tv of 0.14236234458259325 is 112
+AUD TV 0.23472468916518652, ss 85
+AG*(5,1) = 483
+AG*(5,6) = 92
+AG*(5,7) = 39
+AG*(2,1) = 26
+AG*(2,3) = 38
+AG*(2,4) = 39
+AG*(2,5) = 89
+AG*(2,6) = 21
+AG*(2,7) = 15
+AG*(3,7) = 54
+AG*(4,7) = 136
+AG*(5,1) = 483
+AG*(5,6) = 92
+AG*(5,7) = 39
+NL(5,7) = 39, AG*'s used 0
+NL(5,6) = 89, AG*'s used 39
+NL(5,1) = 124, AG*'s used 92
+NL(5,4) NOT POSSIBLE
+NL(5,3) NOT POSSIBLE
+Max in loop inf, 0.23472468916518652
+AUD TV 0.2847246891651865, ss 40
+AG*(5,1) = 2463
+AG*(5,6) = 101
+AG*(5,7) = 40
+AG*(2,1) = 26
+AG*(2,3) = 38
+AG*(2,4) = 39
+AG*(2,5) = 89
+AG*(2,6) = 21
+AG*(2,7) = 15
+AG*(3,7) = 57
+AG*(4,7) = 148
+AG*(5,1) = 2463
+AG*(5,6) = 101
+AG*(5,7) = 40
+NL(5,7) = 40, AG*'s used 0
+NL(5,6) = 98, AG*'s used 40
+NL(5,1) = 148, AG*'s used 101
+NL(5,4) NOT POSSIBLE
+NL(5,3) NOT POSSIBLE
+Max in loop inf, 0.2847246891651865
+AUD TV 0.3347246891651865, ss 24
+AG*(5,6) = 113
+AG*(5,7) = 41
+AG*(2,1) = 26
+AG*(2,3) = 38
+AG*(2,4) = 39
+AG*(2,5) = 89
+AG*(2,6) = 21
+AG*(2,7) = 15
+AG*(3,7) = 60
+AG*(4,7) = 162
+AG*(5,6) = 113
+AG*(5,7) = 41
+NL(5,7) = 41, AG*'s used 0
+NL(5,6) = 109, AG*'s used 41
+NL(5,1) = 182, AG*'s used 113
+NL(5,4) NOT POSSIBLE
+NL(5,3) NOT POSSIBLE
+Max in loop inf, 0.3347246891651865
+AUD TV 0.3847246891651865, ss 17
+AG*(5,6) = 127
+AG*(5,7) = 42
+AG*(2,1) = 26
+AG*(2,3) = 38
+AG*(2,4) = 39
+AG*(2,5) = 89
+AG*(2,6) = 21
+AG*(2,7) = 15
+AG*(3,7) = 64
+AG*(4,7) = 180
+AG*(5,6) = 127
+AG*(5,7) = 42
+NL(5,7) = 42, AG*'s used 0
+NL(5,6) = 122, AG*'s used 42
+NL(5,1) = 237, AG*'s used 127
+NL(5,4) NOT POSSIBLE
+NL(5,3) NOT POSSIBLE
+Max in loop inf, 0.3847246891651865
+AUD TV 0.4347246891651865, ss 12
+AG*(5,6) = 145
+AG*(5,7) = 43
+AG*(2,1) = 26
+AG*(2,3) = 38
+AG*(2,4) = 39
+AG*(2,5) = 89
+AG*(2,6) = 21
+AG*(2,7) = 15
+AG*(3,7) = 68
+AG*(4,7) = 201
+AG*(5,6) = 145
+AG*(5,7) = 43
+NL(5,7) = 43, AG*'s used 0
+NL(5,6) = 138, AG*'s used 43
+NL(5,1) = 340, AG*'s used 145
+NL(5,4) NOT POSSIBLE
+NL(5,3) NOT POSSIBLE
+Max in loop inf, 0.4347246891651865
+AUD TV 0.48472468916518646, ss 9
+AG*(5,6) = 169
+AG*(5,7) = 44
+AG*(2,1) = 26
+AG*(2,3) = 38
+AG*(2,4) = 39
+AG*(2,5) = 89
+AG*(2,6) = 21
+AG*(2,7) = 15
+AG*(3,7) = 73
+AG*(4,7) = 229
+AG*(5,6) = 169
+AG*(5,7) = 44
+NL(5,7) = 44, AG*'s used 0
+NL(5,6) = 160, AG*'s used 44
+NL(5,1) = 755, AG*'s used 169
+NL(5,4) NOT POSSIBLE
+NL(5,3) NOT POSSIBLE
+Max in loop inf, 0.48472468916518646
+AUD TV 0.5347246891651865, ss 7
+AG*(5,6) = 202
+AG*(5,7) = 45
+AG*(2,1) = 26
+AG*(2,3) = 38
+AG*(2,4) = 39
+AG*(2,5) = 89
+AG*(2,6) = 21
+AG*(2,7) = 15
+AG*(3,7) = 79
+AG*(4,7) = 265
+AG*(5,6) = 202
+AG*(5,7) = 45
+NL(5,7) = 45, AG*'s used 0
+NL(5,6) = 190, AG*'s used 45
+NL(5,1) = 2753, AG*'s used 202
+NL(5,4) NOT POSSIBLE
+NL(5,3) NOT POSSIBLE
+Max in loop inf, 0.5347246891651865
+AUD TV 0.5847246891651865, ss 5
+AG*(5,6) = 252
+AG*(5,7) = 46
+AG*(2,1) = 26
+AG*(2,3) = 38
+AG*(2,4) = 39
+AG*(2,5) = 89
+AG*(2,6) = 21
+AG*(2,7) = 15
+AG*(3,7) = 85
+AG*(4,7) = 315
+AG*(5,6) = 252
+AG*(5,7) = 46
+NL(5,7) = 46, AG*'s used 0
+NL(5,6) = 233, AG*'s used 46
+NL(5,1) NOT POSSIBLE
+NL(5,4) NOT POSSIBLE
+NL(5,3) NOT POSSIBLE
+Max in loop inf, 0.5847246891651865
+AUD TV 0.6347246891651865, ss 4
+AG*(5,6) = 335
+AG*(5,7) = 48
+AG*(2,1) = 26
+AG*(2,3) = 38
+AG*(2,4) = 39
+AG*(2,5) = 89
+AG*(2,6) = 21
+AG*(2,7) = 15
+AG*(3,7) = 93
+AG*(4,7) = 388
+AG*(5,6) = 335
+AG*(5,7) = 48
+NL(5,7) = 48, AG*'s used 0
+NL(5,6) = 302, AG*'s used 48
+NL(5,1) NOT POSSIBLE
+NL(5,4) NOT POSSIBLE
+NL(5,3) NOT POSSIBLE
+Max in loop inf, 0.6347246891651865
+New mintv = 0.19236234458259327
+Sample size required for audit is inf ballots
+------------------------------------------------
+Assertion set BEFORE filtering:
+(4, 'AG*', 6, 48)
+(1, 'MT', None, (0.6347246891651865, 4))
+(4, 'NL', 6, 48)
+(1, 'LT', None, (0.14236234458259325, 112))
+(1, 'QT', None, 30)
+(4, 'AG*', 5, 335)
+(4, 'AG*', 0, 2463)
+(4, 'NL', 5, 302)
+------------------------------------------------
+Final set of assertions AFTER filtering:
+(4, 'AG*', 6, 48)
+(1, 'MT', None, (0.6347246891651865, 4))
+(4, 'NL', 6, 48)
+(1, 'LT', None, (0.14236234458259325, 112))
+(1, 'QT', None, 30)
+(4, 'AG*', 5, 335)
+(4, 'AG*', 0, 2463)
+(4, 'NL', 5, 302)
+------------------------------------------------
+Explanations for AG* inclusion:
+   Explanation for (4, 'AG*', 6, 48): []
+   Explanation for (4, 'AG*', 5, 335): []
+   Explanation for (4, 'AG*', 0, 2463): []
+------------------------------------------------

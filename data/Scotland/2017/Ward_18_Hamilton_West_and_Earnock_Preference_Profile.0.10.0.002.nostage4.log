@@ -1,0 +1,152 @@
+VALID BALLOTS 5352
+Winner 1
+Winner 2
+Computing AG relationships
+3 AG 7 = 1389
+1 AG 7 = 36
+1 AG 6 = 77
+1 AG 3 = 101
+2 AG 6 = 117
+Ruling out candidates: [(7, 1389), (6, 117)]
+STAGE 1 ASN (Ruling out candidates): 1389
+ALTERNATE OUTCOME PAIR: 5,3
+   (1) can we show that 1 NL 3?
+        a. margin 0.051382660687592674
+      yes, 77, ags used 77 = 77
+   (1) can we show that 1 NL 5?
+        a. margin -0.13172645739910283
+      no
+   (1) can we show that 2 NL 3?
+        a. margin 0.04303687095166864
+      yes, 106, ags used 101 = 106
+   (1) can we show that 2 NL 5?
+        a. margin -0.0372446437468853
+      no
+   (1) can we show that 2 NL 3?
+        a. margin 0.04303687095166864
+      yes, 106, ags used 101 = 106
+   (1) can we show that 2 NL 5?
+        a. margin -0.0372446437468853
+      no
+      Best assertion(s) require sample: 77
+
+ALTERNATE OUTCOME PAIR: 5,1
+   (1) can we show that 3 NL 1?
+        a. margin -0.18703288490283954
+      no
+   (1) can we show that 3 NL 5?
+        a. margin -0.2561659192825114
+      no
+   (1) can we show that 2 NL 1?
+        a. margin -0.2036621823617336
+      no
+   (1) can we show that 2 NL 5?
+        a. margin -0.03431738913801696
+      no
+   (1) can we show that 2 NL 1?
+        a. margin -0.2036621823617336
+      no
+   (1) can we show that 2 NL 5?
+        a. margin -0.03431738913801696
+      no
+
+ALTERNATE OUTCOME PAIR: 5,2
+   (1) can we show that 3 NL 2?
+        a. margin -0.2524289985052307
+      no
+   (1) can we show that 3 NL 5?
+        a. margin -0.20416043846537146
+      no
+   (1) can we show that 1 NL 2?
+        a. margin 0.008158943697058385
+      yes, 548, ags used 101 = 548
+   (1) can we show that 1 NL 5?
+        a. margin 0.047708021923269284
+      yes, 95, ags used 101 = 101
+      Best assertion(s) require sample: 101
+
+ALTERNATE OUTCOME PAIR: 5,2
+   (1) can we show that 3 NL 2?
+        a. margin -0.2524289985052307
+      no
+   (1) can we show that 3 NL 5?
+        a. margin -0.20416043846537146
+      no
+   (1) can we show that 1 NL 2?
+        a. margin 0.008158943697058385
+      yes, 548, ags used 101 = 548
+   (1) can we show that 1 NL 5?
+        a. margin 0.047708021923269284
+      yes, 95, ags used 101 = 101
+      Best assertion(s) require sample: 101
+
+ALTERNATE OUTCOME PAIR: 3,1
+   (1) can we show that 5 NL 1?
+        a. margin -0.2524912805181867
+      no
+   (1) can we show that 5 NL 3?
+        a. margin -0.20696312904833092
+      no
+   (1) can we show that 2 NL 1?
+        a. margin -0.16361484803188764
+      no
+   (1) can we show that 2 NL 3?
+        a. margin -0.11578226208271059
+      no
+   (1) can we show that 2 NL 1?
+        a. margin -0.16361484803188764
+      no
+   (1) can we show that 2 NL 3?
+        a. margin -0.11578226208271059
+      no
+
+ALTERNATE OUTCOME PAIR: 3,2
+   (1) can we show that 5 NL 2?
+        a. margin -0.23418036870951697
+      no
+   (1) can we show that 5 NL 3?
+        a. margin -0.036310413552566145
+      no
+   (1) can we show that 1 NL 2?
+        a. margin -0.1509093173891376
+      no
+   (1) can we show that 1 NL 3?
+        a. margin 0.05287742899850589
+      yes, 75, ags used 77 = 77
+      Best assertion(s) require sample: 77
+
+ALTERNATE OUTCOME PAIR: 3,2
+   (1) can we show that 5 NL 2?
+        a. margin -0.23418036870951697
+      no
+   (1) can we show that 5 NL 3?
+        a. margin -0.036310413552566145
+      no
+   (1) can we show that 1 NL 2?
+        a. margin -0.1509093173891376
+      no
+   (1) can we show that 1 NL 3?
+        a. margin 0.05287742899850589
+      yes, 75, ags used 77 = 77
+      Best assertion(s) require sample: 77
+
+RULE OUT PAIR STAGE ASN 101
+------------------------------------------------
+Alternate outcome cannot be ruled out: 5,1
+Alternate outcome cannot be ruled out: 3,1
+Full audit not possible
+PARTIAL audit sample size: 1389
+------------------------------------------------
+Final set of assertions generated:
+(0, 'AG', 6, 36)
+1 NL 5 = 101 [rules out (5, 2), G = {2, 5, 6}, O = set()]
+(0, 'AG', 2, 101)
+(1, 'AG', 5, 117)
+1 NL 3 = 77 [rules out (3, 2), G = {5, 6}, O = set()]
+1 NL 3 = 77 [rules out (5, 3), G = {5, 6}, O = set()]
+
+(2, 'AG', 6, 1389)
+(0, 'AG', 5, 77)
+[1] are verified winners with these assertions.
+[2, 3, 5] remain as potential winners in this audit.
+------------------------------------------------

@@ -1,0 +1,229 @@
+VALID BALLOTS 12744
+Winner 7
+Winner 3
+Computing AG relationships
+9 AG 1 = 138
+4 AG 5 = 224
+4 AG 1 = 109
+2 AG 5 = 109
+2 AG 1 = 111
+2 AG 8 = 552
+6 AG 5 = 65
+6 AG 1 = 44
+6 AG 8 = 94
+6 AG 9 = 600
+7 AG 5 = 36
+7 AG 1 = 35
+7 AG 8 = 37
+7 AG 9 = 279
+3 AG 5 = 88
+3 AG 1 = 63
+3 AG 8 = 160
+Ruling out candidates: [(5, 65), (1, 44), (8, 94), (9, 600)]
+STAGE 1 ASN (Ruling out candidates): 600
+ALTERNATE OUTCOME PAIR: 4,2
+   (1) can we show that 6 NL 2?
+        a. margin -0.07943607449257117
+      no
+   (1) can we show that 6 NL 4?
+        a. margin -0.10914940364092873
+      no
+   (1) can we show that 7 NL 2?
+        a. margin -0.0648148148148151
+      no
+   (1) can we show that 7 NL 4?
+        a. margin -0.10315965683197292
+      no
+   (1) can we show that 3 NL 2?
+        a. margin -0.1823080142289184
+      no
+   (1) can we show that 3 NL 4?
+        a. margin -0.060760619376438396
+      no
+
+ALTERNATE OUTCOME PAIR: 4,6
+   (1) can we show that 2 NL 6?
+        a. margin -0.20456685499058436
+      no
+   (1) can we show that 2 NL 4?
+        a. margin -0.19392132245239668
+      no
+   (1) can we show that 7 NL 6?
+        a. margin -0.10695229127432548
+      no
+   (1) can we show that 7 NL 4?
+        a. margin -0.09716991002301723
+      no
+   (1) can we show that 3 NL 6?
+        a. margin -0.20085268884703922
+      no
+   (1) can we show that 3 NL 4?
+        a. margin -0.05409081397781901
+      no
+
+ALTERNATE OUTCOME PAIR: 4,7
+   (1) can we show that 2 NL 7?
+        a. margin -0.18869010253191054
+      no
+   (1) can we show that 2 NL 4?
+        a. margin -0.19622305921741034
+      no
+   (1) can we show that 6 NL 7?
+        a. margin -0.11048336472065201
+      no
+   (1) can we show that 6 NL 4?
+        a. margin -0.10679535467671031
+      no
+   (1) can we show that 3 NL 7?
+        a. margin -0.18481899979075112
+      no
+   (1) can we show that 3 NL 4?
+        a. margin -0.05634023854362791
+      no
+
+ALTERNATE OUTCOME PAIR: 4,3
+   (1) can we show that 2 NL 3?
+        a. margin -0.17045930110901908
+      no
+   (1) can we show that 2 NL 4?
+        a. margin -0.16818372044360774
+      no
+   (1) can we show that 6 NL 3?
+        a. margin -0.08550428960033418
+      no
+   (1) can we show that 6 NL 4?
+        a. margin -0.0779451768152325
+      no
+   (1) can we show that 7 NL 3?
+        a. margin -0.08184243565599514
+      no
+   (1) can we show that 7 NL 4?
+        a. margin -0.07342017158401393
+      no
+
+ALTERNATE OUTCOME PAIR: 2,6
+   (1) can we show that 4 NL 6?
+        a. margin -0.22201297342540283
+      no
+   (1) can we show that 4 NL 2?
+        a. margin -0.1971385227034942
+      no
+   (1) can we show that 7 NL 6?
+        a. margin -0.10321196903117769
+      no
+   (1) can we show that 7 NL 2?
+        a. margin -0.05246913580246837
+      no
+   (1) can we show that 3 NL 6?
+        a. margin -0.1895794099183925
+      no
+   (1) can we show that 3 NL 2?
+        a. margin -0.16368487131198994
+      no
+
+ALTERNATE OUTCOME PAIR: 2,7
+   (1) can we show that 4 NL 7?
+        a. margin -0.21081816279556387
+      no
+   (1) can we show that 4 NL 2?
+        a. margin -0.19049487340447813
+      no
+   (1) can we show that 6 NL 7?
+        a. margin -0.1057752667922155
+      no
+   (1) can we show that 6 NL 2?
+        a. margin -0.06306235614145084
+      no
+   (1) can we show that 3 NL 7?
+        a. margin -0.17493199414103322
+      no
+   (1) can we show that 3 NL 2?
+        a. margin -0.15717200251098573
+      no
+
+ALTERNATE OUTCOME PAIR: 2,3
+   (1) can we show that 4 NL 3?
+        a. margin -0.14608181627955652
+      no
+   (1) can we show that 4 NL 2?
+        a. margin -0.2155785729232057
+      no
+   (1) can we show that 6 NL 3?
+        a. margin -0.10506905210295014
+      no
+   (1) can we show that 6 NL 2?
+        a. margin -0.07763130362000381
+      no
+   (1) can we show that 7 NL 3?
+        a. margin -0.10091023226616447
+      no
+   (1) can we show that 7 NL 2?
+        a. margin -0.0616237706633187
+      no
+
+ALTERNATE OUTCOME PAIR: 6,7
+   (1) can we show that 4 NL 7?
+        a. margin -0.2099550115086838
+      no
+   (1) can we show that 4 NL 6?
+        a. margin -0.21610169491525466
+      no
+   (1) can we show that 2 NL 7?
+        a. margin -0.1836419753086419
+      no
+   (1) can we show that 2 NL 6?
+        a. margin -0.19774011299435146
+      no
+   (1) can we show that 3 NL 7?
+        a. margin -0.17367650136011648
+      no
+   (1) can we show that 3 NL 6?
+        a. margin -0.18314500941619616
+      no
+
+ALTERNATE OUTCOME PAIR: 6,3
+   (1) can we show that 4 NL 3?
+        a. margin -0.14579409918392972
+      no
+   (1) can we show that 4 NL 6?
+        a. margin -0.23451558903536296
+      no
+   (1) can we show that 2 NL 3?
+        a. margin -0.1869637999581506
+      no
+   (1) can we show that 2 NL 6?
+        a. margin -0.20114040594266636
+      no
+   (1) can we show that 7 NL 3?
+        a. margin -0.09628060263653437
+      no
+   (1) can we show that 7 NL 6?
+        a. margin -0.10441514961289022
+      no
+
+RULE OUT PAIR STAGE ASN 0
+------------------------------------------------
+Alternate outcome cannot be ruled out: 4,2
+Alternate outcome cannot be ruled out: 4,6
+Alternate outcome cannot be ruled out: 4,7
+Alternate outcome cannot be ruled out: 4,3
+Alternate outcome cannot be ruled out: 2,6
+Alternate outcome cannot be ruled out: 2,7
+Alternate outcome cannot be ruled out: 2,3
+Alternate outcome cannot be ruled out: 6,7
+Alternate outcome cannot be ruled out: 6,3
+Full audit not possible
+PARTIAL audit sample size: 600
+------------------------------------------------
+Final set of assertions generated:
+(5, 'AG', 7, 94)
+(6, 'AG', 0, 35)
+(6, 'AG', 8, 279)
+(5, 'AG', 4, 65)
+(5, 'AG', 0, 44)
+(6, 'AG', 7, 37)
+(5, 'AG', 8, 600)
+(6, 'AG', 4, 36)
+[] are verified winners with these assertions.
+[2, 3, 4, 6, 7] remain as potential winners in this audit.
+------------------------------------------------

@@ -1,0 +1,29 @@
+VALID BALLOTS 1833
+Winner 3
+Winner 1
+Computing AG relationships
+3 AG 4 = 19
+3 AG 7 = 20
+3 AG 2 = 23
+3 AG 6 = 216
+1 AG 4 = 21
+1 AG 7 = 27
+1 AG 2 = 28
+1 AG 6 = 69
+Ruling out candidates: [(4, 21), (7, 27), (2, 28), (6, 216)]
+STAGE 1 ASN (Ruling out candidates): 216
+RULE OUT PAIR STAGE ASN 0
+------------------------------------------------
+FULL audit sample size: 216
+------------------------------------------------
+Final set of assertions generated:
+(2, 'AG', 1, 23)
+(0, 'AG', 1, 28)
+(0, 'AG', 5, 69)
+(2, 'AG', 6, 20)
+(0, 'AG', 3, 21)
+(0, 'AG', 6, 27)
+(2, 'AG', 3, 19)
+(2, 'AG', 5, 216)
+All winners are verified in audit.
+------------------------------------------------

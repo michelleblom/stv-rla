@@ -1,0 +1,149 @@
+VALID BALLOTS 3357
+Winner 5
+Winner 1
+Computing AG relationships
+6 AG 4 = 149
+7 AG 4 = 53
+7 AG 3 = 102
+5 AG 4 = 43
+5 AG 3 = 68
+1 AG 4 = 40
+1 AG 3 = 68
+Ruling out candidates: [(4, 43), (3, 68)]
+STAGE 1 ASN (Ruling out candidates): 68
+ALTERNATE OUTCOME PAIR: 6,7
+   (1) can we show that 5 NL 7?
+        a. margin -0.005659815311289451
+      no
+   (1) can we show that 5 NL 6?
+        a. margin -0.17317048952437653
+      no
+   (1) can we show that 1 NL 7?
+        a. margin -0.1931287856220828
+      no
+   (1) can we show that 1 NL 6?
+        a. margin -0.04795948763777136
+      no
+   (1) can we show that 1 NL 7?
+        a. margin -0.1931287856220828
+      no
+   (1) can we show that 1 NL 6?
+        a. margin -0.04795948763777136
+      no
+
+ALTERNATE OUTCOME PAIR: 6,5
+   (1) can we show that 7 NL 5?
+        a. margin -0.09174858504617267
+      no
+   (1) can we show that 7 NL 6?
+        a. margin -0.2034554661900504
+      no
+   (1) can we show that 1 NL 5?
+        a. margin -0.21954125707476857
+      no
+   (1) can we show that 1 NL 6?
+        a. margin -0.04805878264323182
+      no
+   (1) can we show that 1 NL 5?
+        a. margin -0.21954125707476857
+      no
+   (1) can we show that 1 NL 6?
+        a. margin -0.04805878264323182
+      no
+
+ALTERNATE OUTCOME PAIR: 6,1
+   (1) can we show that 7 NL 1?
+        a. margin -0.18170985999404288
+      no
+   (1) can we show that 7 NL 6?
+        a. margin -0.15331148843213194
+      no
+   (1) can we show that 5 NL 1?
+        a. margin -0.14884321318637583
+      no
+   (1) can we show that 5 NL 6?
+        a. margin -0.1213384966736174
+      no
+
+ALTERNATE OUTCOME PAIR: 6,1
+   (1) can we show that 7 NL 1?
+        a. margin -0.18170985999404288
+      no
+   (1) can we show that 7 NL 6?
+        a. margin -0.15331148843213194
+      no
+   (1) can we show that 5 NL 1?
+        a. margin -0.14884321318637583
+      no
+   (1) can we show that 5 NL 6?
+        a. margin -0.1213384966736174
+      no
+
+ALTERNATE OUTCOME PAIR: 7,5
+   (1) can we show that 6 NL 5?
+        a. margin -0.23880448813424615
+      no
+   (1) can we show that 6 NL 7?
+        a. margin -0.21070400158872105
+      no
+   (1) can we show that 1 NL 5?
+        a. margin -0.15966636878164964
+      no
+   (1) can we show that 1 NL 7?
+        a. margin -0.13434614238903608
+      no
+   (1) can we show that 1 NL 5?
+        a. margin -0.15966636878164964
+      no
+   (1) can we show that 1 NL 7?
+        a. margin -0.13434614238903608
+      no
+
+ALTERNATE OUTCOME PAIR: 7,1
+   (1) can we show that 6 NL 1?
+        a. margin -0.2040512362228173
+      no
+   (1) can we show that 6 NL 7?
+        a. margin -0.26879157978353685
+      no
+   (1) can we show that 5 NL 1?
+        a. margin -0.1815112699831195
+      no
+   (1) can we show that 5 NL 7?
+        a. margin -0.004766160262138719
+      no
+
+ALTERNATE OUTCOME PAIR: 7,1
+   (1) can we show that 6 NL 1?
+        a. margin -0.2040512362228173
+      no
+   (1) can we show that 6 NL 7?
+        a. margin -0.26879157978353685
+      no
+   (1) can we show that 5 NL 1?
+        a. margin -0.1815112699831195
+      no
+   (1) can we show that 5 NL 7?
+        a. margin -0.004766160262138719
+      no
+
+RULE OUT PAIR STAGE ASN 0
+------------------------------------------------
+Alternate outcome cannot be ruled out: 6,7
+Alternate outcome cannot be ruled out: 6,5
+Alternate outcome cannot be ruled out: 6,1
+Alternate outcome cannot be ruled out: 6,1
+Alternate outcome cannot be ruled out: 7,5
+Alternate outcome cannot be ruled out: 7,1
+Alternate outcome cannot be ruled out: 7,1
+Full audit not possible
+PARTIAL audit sample size: 68
+------------------------------------------------
+Final set of assertions generated:
+(0, 'AG', 2, 68)
+(4, 'AG', 3, 43)
+(0, 'AG', 3, 40)
+(4, 'AG', 2, 68)
+[] are verified winners with these assertions.
+[1, 5, 6, 7] remain as potential winners in this audit.
+------------------------------------------------

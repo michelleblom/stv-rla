@@ -1,0 +1,51 @@
+VALID BALLOTS 739
+13 ballot checks required to assert that first winner has a quota's worth of votes
+AUD TV 0.38602150537634405, ss 56
+AG*(1,3) = 58
+AG*(1,3) = 58
+AG*(2,1) = 28
+AG*(2,3) = 15
+Max in loop 56, 0.38602150537634405
+AUD TV 0.43602150537634404, ss 25
+AG*(1,3) = 64
+AG*(1,3) = 64
+AG*(2,1) = 28
+AG*(2,3) = 15
+Max in loop 25, 0.43602150537634404
+AUD TV 0.48602150537634403, ss 15
+AG*(1,3) = 72
+AG*(1,3) = 72
+AG*(2,1) = 28
+AG*(2,3) = 15
+Max in loop 15, 0.48602150537634403
+AUD TV 0.5360215053763441, ss 10
+AG*(1,3) = 82
+AG*(1,3) = 82
+AG*(2,1) = 28
+AG*(2,3) = 15
+Max in loop 13, 0.5360215053763441
+AUD TV 0.5860215053763441, ss 7
+AG*(1,3) = 95
+AG*(1,3) = 95
+AG*(2,1) = 28
+AG*(2,3) = 15
+Max in loop 13, 0.5860215053763441
+AUD TV 0.6360215053763442, ss 5
+AG*(1,3) = 113
+AG*(1,3) = 113
+AG*(2,1) = 28
+AG*(2,3) = 15
+Max in loop 13, 0.6360215053763442
+Sample size to show min tv of 0.16801075268817203 is 22
+Sample size required for audit is 13 ballots
+------------------------------------------------
+Assertion set BEFORE filtering:
+(1, 'QT', None, 13)
+(1, 'MT', None, (0.6360215053763442, 5))
+------------------------------------------------
+Final set of assertions AFTER filtering:
+(1, 'QT', None, 13)
+(1, 'MT', None, (0.6360215053763442, 5))
+------------------------------------------------
+Explanations for AG* inclusion:
+------------------------------------------------

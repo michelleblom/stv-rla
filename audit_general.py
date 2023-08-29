@@ -75,7 +75,7 @@ def vote_for_cand_ags1(c, prefs, c_ag, candidates):
         if p != c:
             if p in c_ag:
                 ags_used = max(ags_used, c_ag[p])
-                descs.add((candidates[c].id,"AG",candidates[p].id,c_ag[p]))
+                descs.add((c,"AG",p,c_ag[p]))
             else:
                 return False, None, set()
 
@@ -132,7 +132,7 @@ def vote_for_cand_ags2(c1, c2, prefs, ag_matrix, winners, candidates):
             ag_present = True
             ag_min_ss = min(ag_min_ss, ag)
 
-            descs.add((candidates[p].id, "AG", candidates[c1].id, ag))
+            descs.add((p, "AG", c1, ag))
 
     return False, False, None, set()
 
@@ -176,7 +176,7 @@ def rule_out_for_max(prefs, loser, ag_matrix, winners, candidates):
         ag = ag_matrix[p][loser]
         if ag != None and ag != np.inf:
             ag_present = True
-            ags_used.add((candidates[p].id,"AG",candidates[loser].id, ag))
+            ags_used.add((p,"AG",loser, ag))
             ag_min_ss = min(ag_min_ss, ag)
 
     return False, np.inf, set()
@@ -520,16 +520,16 @@ def rule_out_pair(candidates, cands, ruled_out, args, INVALID, ag_matrix, \
                         O.add(w)
 
 
+            asn_c1 = max(ss, max_ags_used1)
             c1_assertions.add(\
                 "{} NL {} = {} [rules out {}, G = {}, O = {}]\n".format(\
-                cand_o.id, cand_c2.id, ss, (cand_c1.id, cand_c2.id), G, O))
+                cand_o.id, cand_c2.id, asn_c1, (cand_c1.id, cand_c2.id),\
+                G, O))
 
             if ss != np.inf:
-                asn_c1 = max(ss, max_ags_used1)
-
                 failure = False
                 info += "      yes, {}, ags used {} = {}\n".format(ss, \
-                     max_ags_used1, max(ss, max_ags_used1))
+                     max_ags_used1, asn_c1)
             else:
                 info += "      no\n"
         else:
@@ -612,7 +612,7 @@ def rule_out_pair(candidates, cands, ruled_out, args, INVALID, ag_matrix, \
                 if w == o:
                     G.add(l)
 
-                elif l == c2:
+                elif l == c1:
                     O.add(w)
 
             amean = assorter/args.voters
@@ -647,19 +647,21 @@ def rule_out_pair(candidates, cands, ruled_out, args, INVALID, ag_matrix, \
                     if w == o:
                         G.add(l)
 
-                    elif l == c2:
+                    elif l == c1:
                         O.add(w)
+            
 
 
+            asn_c2 = max(ss, max_ags_used2)
             c2_assertions.add(\
-                "{} NL {} = {} [rules out {}, G = [], O = []]".format(\
-                cand_o.id, cand_c1.id, ss, (cand_c1.id, cand_c2.id), G, O))
+                "{} NL {} = {} [rules out {}, G = {}, O = {}]".format(\
+                cand_o.id, cand_c1.id, asn_c2, (cand_c1.id, cand_c2.id),\
+                G, O))
 
             if ss != np.inf:
-                asn_c2 = max(ss, max_ags_used2)
                 failure = False
                 info += "      yes, {}, ags used {} = {}\n".format(ss, \
-                     max_ags_used2, max(ss, max_ags_used2))
+                     max_ags_used2, asn_c2)
             else:
                 info += "      no\n"
 
@@ -887,8 +889,7 @@ if __name__ == "__main__":
                         print("GELIM AG({},{}) = {}".format(candidates[c].id, \
                             candidates[g].id, ss), file=log)
 
-                        options[g].append((ss,(candidates[c].id, "AG",\
-                            candidates[g].id, ss)))
+                        options[g].append((ss,(c, "AG", g, ss)))
 
         for g in geliminated:
             ags = options[g]
@@ -913,9 +914,12 @@ if __name__ == "__main__":
         outcome.action = outcome.action[args.gelim:]
 
         if len(outcome.cand) == args.seats:
+            assertions = [(candidates[w].id, n, candidates[l].id \
+            if l != None else None) for w,n,l,_ in assertions_used]
+
             print("------------------------------------------------",file=log)
             print("Final set of assertions generated:", file=log)
-            for asstn in set(assertions_used):
+            for asstn in set(assertions):
                 print(asstn, file=log)
             print("------------------------------------------------",file=log)
 
@@ -969,7 +973,7 @@ if __name__ == "__main__":
         print("{} ballot checks required to assert that first winner"\
             " has a quota's worth of votes".format(ss), file=log)
 
-        assertions_used.add((first_winner.id, "QT", ss))
+        assertions = [(first_winner.id, "QT", ss)]
 
         max_sample_size = max(max_sample_size, ss)
 
@@ -1004,7 +1008,7 @@ if __name__ == "__main__":
         print("{} ballot checks required to assert that first winner"\
             " has a quota's worth of votes".format(ss), file=log)
 
-        assertions_used.add((fw.id, "QT", None, ss))
+        assertions_used.add((fw.num, "QT", None, ss))
 
         max_sample_size = max(max_sample_size, ss)
 
@@ -1035,7 +1039,7 @@ if __name__ == "__main__":
 
             ss = ssm_sample_size(threshold, tally_others, INVALID, args)
 
-            inner_loop_assertions.add((fw.id, "MT", aud_tv, ss))
+            inner_loop_assertions.add((fw.num, "MT", None, (aud_tv, ss)))
 
             max_this_loop = max(ss, max_sample_size)
 
@@ -1053,7 +1057,7 @@ if __name__ == "__main__":
 
                 cand_c = candidates[c]
 
-                curr_nl = (sw.id, "NL", cand_c.id)
+                curr_nl = (sw.num, "NL", c)
 
                 min_sw = 0 # Min tally for second winner.
                 max_c = 0 # Max tally for candidate c.
@@ -1123,7 +1127,7 @@ if __name__ == "__main__":
                                 if idx_d < s_idx:
                                     prefs.remove(d)
                                     s_idx -= 1
-                                    rag = (sw.id, "AG", candidates[d].id, dval)
+                                    rag = (sw.num, "AG", d, dval)
                                     descs.add(rag)
                                     max_ags_here=max(max_ags_here,dval)
 
@@ -1185,7 +1189,8 @@ if __name__ == "__main__":
                     print("NL({},{}) = {}, AG's used {}".format(sw.id, \
                         cand_c.id, ss, max_ags_used), file=log)
     
-                    inner_loop_assertions.add((sw.id, "NL", cand_c.id, ss))
+                    inner_loop_assertions.add((sw.num, "NL", c, \
+                        max(ss, max_ags_used)))
                 else:
                     max_with_nls = np.inf
                     print("NL({},{}) NOT POSSIBLE".format(\
@@ -1203,7 +1208,8 @@ if __name__ == "__main__":
                 break
 
         assertions_used.update(best_assertions)
-        assertions_text = [(w,n,l) for w,n,l,_ in assertions_used]
+        assertions_text = [(candidates[w].id, n, candidates[l].id \
+            if l != None else None) for w,n,l,_ in assertions_used]
 
         # Filter out redundant assertions (eg. an A NL B when we have 
         # A AG B already in the audit).
@@ -1267,7 +1273,7 @@ if __name__ == "__main__":
         print("{} ballot checks required to assert that first winner"\
             " has a quota's worth of votes".format(ss), file=log)
 
-        assertions_used.add((fw.id, "QT", None, ss))
+        assertions_used.add((fw.num, "QT", None, ss))
 
         max_sample_size = max(max_sample_size, ss)
 
@@ -1304,7 +1310,7 @@ if __name__ == "__main__":
                 if mintv_ss >= max_in_outer_loop:
                     break
 
-                lts.add((fw.id, "LT", min_tv, mintv_ss))
+                lts.add((fw.num, "LT", None, (min_tv, mintv_ss)))
 
             aud_tv = act_tv + deltat
 
@@ -1328,7 +1334,7 @@ if __name__ == "__main__":
 
                 ss = ssm_sample_size(threshold, tally_others, INVALID, args)
 
-                inner_loop_assertions.add((fw.id, "MT", aud_tv, ss))
+                inner_loop_assertions.add((fw.num, "MT", None, (aud_tv, ss)))
 
                 max_this_loop = max(ss, max(mintv_ss, max_sample_size))
 
@@ -1366,7 +1372,7 @@ if __name__ == "__main__":
 
                     cand_c = candidates[c]
 
-                    curr_nl = (sw.id, "NL", cand_c.id)
+                    curr_nl = (sw.num, "NL", c)
 
                     min_sw = 0 # Min tally for second winner.
                     max_c = 0 # Max tally for candidate c.
@@ -1441,8 +1447,7 @@ if __name__ == "__main__":
                                         if idx_d < s_idx:
                                             prefs.remove(d)
                                             s_idx -= 1
-                                            rag = (sw.id, "AG*", \
-                                                candidates[d].id, dval)
+                                            rag = (sw.num, "AG*", d, dval)
                                             descs.add(rag)
                                             if rag in explanations:
                                                 explanations[rag].add(curr_nl)
@@ -1501,7 +1506,7 @@ if __name__ == "__main__":
                             if ag in explanations:
                                 explanations[ag].add(curr_nl)
                             else:
-                                explanations[rag] = set([curr_nl])
+                                explanations[ag] = set([curr_nl])
 
 
                     # Can we reduce the sample size required for the assertion
@@ -1536,7 +1541,8 @@ if __name__ == "__main__":
                         print("NL({},{}) = {}, AG*'s used {}".format(sw.id, \
                             cand_c.id, ss, max_ags_used), file=log)
     
-                        inner_loop_assertions.add((sw.id, "NL", cand_c.id, ss))
+                        inner_loop_assertions.add((sw.num, "NL", c, \
+                            max(ss,max_ags_used)))
                     else:
                         max_with_nls = np.inf
                         print("NL({},{}) NOT POSSIBLE".format(\
@@ -1577,7 +1583,8 @@ if __name__ == "__main__":
                     print("New mintv = {}".format(min_tv), file=log)
 
         assertions_used.update(best_outer_assertions)
-        assertions_text = [(w,n,l) for w,n,l,_ in assertions_used]
+        assertions_text = [(candidates[w].id, n, candidates[l].id \
+            if l != None else None) for w,n,l,_ in assertions_used]
 
         # Filter out redundant assertions (eg. an A NL B when we have 
         # A AG* B already in the audit).
@@ -1693,57 +1700,10 @@ if __name__ == "__main__":
 
                     if ss != np.inf and ss < args.voters:
                         ag_matrix[c][o] = ss
-                        possibilities[o].append((ss,(cand_c.id,"AG",\
-                            cand_o.id,ss)))
+                        possibilities[o].append((ss,(c,"AG", o, ss)))
 
                         print("{} AG {} = {}".format(candidates[c].id, \
                             candidates[o].id, ss), file=log)
-
-
-        # Can we establish a winner based on the fact that they are AG
-        # at least NCAND - 2 candidates? If there is one candidate that 
-        # we cannot establish an AG relationship with that is OK. Then
-        # we can rule out all alternate outcomes that do not involve that
-        # known winner.
-        #known_winners = []
-
-        #for w in winners:
-        #    # for how many candidates c can we show that w AG c
-        #    cost = 0
-        #    num_ag = 0
-        
-        #    descs = []
-
-        #    w_cand = candidates[w]
-        #    for c in cands:
-        #        if c == w:
-        #            continue
-
-        #        if ag_matrix[w][c] != None:
-        #            num_ag += 1
-        #            cost = max(cost, ag_matrix[w][c])
-        #            descs.append((w_cand.id,"AG",candidates[c].id,\
-        #                ag_matrix[w][c]))
-
-        #    if num_ag >= ncand - 2:
-        #        print("Candidate {} is a known winner, cost {}".format(\
-        #            candidates[w].id, cost), file = log)
-        #        known_winners.append((w,cost))
-
-        #        assertions_used.update(descs)
-
-        #if len(known_winners) == args.seats:
-        #    print("All winners can be established with AG relationships.",\
-        #        file=log)
-        #    print("ASN: {}".format(max([cost for _,cost in known_winners])),\
-        #        file=log)
-
-        #    print("Final set of assertions required:", file=log)
-        #    for asstn in assertions_used:
-        #        print(asstn, file=log)
-            
-        #    log.close()
-        #    exit(0)   
 
         rule_out_assertions = {}
 

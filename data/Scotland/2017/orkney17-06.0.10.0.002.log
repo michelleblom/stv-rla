@@ -1,0 +1,115 @@
+VALID BALLOTS 1075
+Winner 5
+Winner 8
+Computing AG relationships
+5 AG 4 = 75
+5 AG 3 = 42
+5 AG 7 = 42
+5 AG 6 = 66
+5 AG 2 = 223
+8 AG 4 = 89
+8 AG 3 = 43
+8 AG 7 = 74
+8 AG 6 = 325
+1 AG 3 = 437
+Ruling out candidates: [(4, 89), (3, 43), (7, 74), (6, 325)]
+STAGE 1 ASN (Ruling out candidates): 325
+ALTERNATE OUTCOME PAIR: 2,5
+   (1) can we show that 8 NL 5?
+        a. margin -0.11503875968992239
+      no
+   (1) can we show that 8 NL 2?
+        a. margin 0.012713178294573302
+      yes, 97, ags used 89 = 97
+   (1) can we show that 1 NL 5?
+        a. margin -0.2753488372093027
+      no
+   (1) can we show that 1 NL 2?
+        a. margin -0.07007751937984408
+      no
+      Best assertion(s) require sample: 97
+
+ALTERNATE OUTCOME PAIR: 2,8
+   (1) can we show that 5 NL 8?
+        a. margin -0.08806201550387582
+      no
+   (1) can we show that 5 NL 2?
+        a. margin 0.035658914728682545
+      yes, 60, ags used 66 = 66
+   (1) can we show that 1 NL 8?
+        a. margin -0.2719379844961245
+      no
+   (1) can we show that 1 NL 2?
+        a. margin 0.01209302325581496
+      yes, 409, ags used 223 = 409
+      Best assertion(s) require sample: 66
+
+ALTERNATE OUTCOME PAIR: 2,1
+   (1) can we show that 5 NL 1?
+        a. margin 0.010852713178294726
+      yes, 191, ags used 75 = 191
+   (1) can we show that 5 NL 2?
+        a. margin 0.0337984496124033
+      yes, 62, ags used 66 = 66
+   (1) can we show that 8 NL 1?
+        a. margin -0.0114728682170544
+      no
+   (1) can we show that 8 NL 2?
+        a. margin 0.009922480620155216
+      yes, 103, ags used 89 = 103
+      Best assertion(s) require sample: 66
+
+ALTERNATE OUTCOME PAIR: 5,1
+   (1) can we show that 2 NL 1?
+        a. margin -0.2356589147286826
+      no
+   (1) can we show that 2 NL 5?
+        a. margin -0.36372093023255814
+      no
+   (1) can we show that 8 NL 1?
+        a. margin 0.0027906976744187517
+      yes, 1067, ags used 325 = 1067
+   (1) can we show that 8 NL 5?
+        a. margin -0.11131782945736446
+      no
+      Best assertion(s) require sample: 1067
+
+ALTERNATE OUTCOME PAIR: 8,1
+   (1) can we show that 2 NL 1?
+        a. margin -0.24155038759689829
+      no
+   (1) can we show that 2 NL 8?
+        a. margin -0.37550387596899215
+      no
+   (1) can we show that 5 NL 1?
+        a. margin 0.02046511627907055
+      yes, 136, ags used 75 = 136
+   (1) can we show that 5 NL 8?
+        a. margin -0.03875968992248047
+      no
+      Best assertion(s) require sample: 136
+
+RULE OUT PAIR STAGE ASN 1067
+------------------------------------------------
+EXAMINING WAYS TO REDUCE COST OF AUDIT
+------------------------------------------------
+FULL audit sample size: 1067
+------------------------------------------------
+Final set of assertions generated:
+5 NL 2 = 66 [rules out (2, 8), G = {2, 5, 6}, O = set()]
+8 NL 1 = 1067 [rules out (5, 1), G = {2, 3, 5, 6}, O = set()]
+
+8 NL 2 = 97 [rules out (2, 5), G = {2, 3, 6}, O = set()]
+(7, 'AG', 3, 89)
+(4, 'AG', 2, 42)
+(4, 'AG', 5, 66)
+5 NL 2 = 66 [rules out (2, 1), G = {2, 5, 6}, O = set()]
+(4, 'AG', 3, 75)
+(4, 'AG', 6, 42)
+5 NL 1 = 136 [rules out (8, 1), G = {2, 3, 5, 6}, O = set()]
+
+(7, 'AG', 2, 43)
+(7, 'AG', 5, 325)
+(7, 'AG', 6, 74)
+All winners are verified in audit.
+------------------------------------------------

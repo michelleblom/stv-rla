@@ -1,0 +1,145 @@
+VALID BALLOTS 4962
+Winner 2
+Winner 3
+Computing AG relationships
+2 AG 1 = 42
+2 AG 5 = 218
+Ruling out candidates: []
+STAGE 1 ASN (Ruling out candidates): 0
+ALTERNATE OUTCOME PAIR: 1,2
+   (1) can we show that 5 NL 2?
+        a. margin -0.2545344619105201
+      no
+   (1) can we show that 5 NL 1?
+        a. margin -0.1303909713825071
+      no
+   (1) can we show that 3 NL 2?
+        a. margin -0.0681176944780334
+      no
+   (1) can we show that 3 NL 1?
+        a. margin 0.04709122665591803
+      yes, 97, ags used 0 = 97
+   (1) can we show that 3 NL 2?
+        a. margin -0.0681176944780334
+      no
+   (1) can we show that 3 NL 1?
+        a. margin 0.04709122665591803
+      yes, 97, ags used 0 = 97
+      Best assertion(s) require sample: 97
+
+ALTERNATE OUTCOME PAIR: 1,5
+   (1) can we show that 2 NL 5?
+        a. margin 0.028214429665457397
+      yes, 161, ags used 0 = 161
+   (1) can we show that 2 NL 1?
+        a. margin 0.11816471852747523
+      yes, 38, ags used 0 = 38
+   (1) can we show that 3 NL 5?
+        a. margin 0.006784898562407493
+      yes, 26, ags used 218 = 218
+   (1) can we show that 3 NL 1?
+        a. margin 0.2017331721080209
+      yes, 22, ags used 42 = 42
+   (1) can we show that 3 NL 5?
+        a. margin 0.006784898562407493
+      yes, 26, ags used 218 = 218
+   (1) can we show that 3 NL 1?
+        a. margin 0.2017331721080209
+      yes, 22, ags used 42 = 42
+      Best assertion(s) require sample: 38
+
+ALTERNATE OUTCOME PAIR: 1,3
+   (1) can we show that 2 NL 3?
+        a. margin -0.17479510949885801
+      no
+   (1) can we show that 2 NL 1?
+        a. margin 0.1236732500335882
+      yes, 36, ags used 0 = 36
+   (1) can we show that 5 NL 3?
+        a. margin -0.38472390165255954
+      no
+   (1) can we show that 5 NL 1?
+        a. margin -0.005844417573559024
+      no
+      Best assertion(s) require sample: 36
+
+ALTERNATE OUTCOME PAIR: 1,3
+   (1) can we show that 2 NL 3?
+        a. margin -0.17479510949885801
+      no
+   (1) can we show that 2 NL 1?
+        a. margin 0.1236732500335882
+      yes, 36, ags used 0 = 36
+   (1) can we show that 5 NL 3?
+        a. margin -0.38472390165255954
+      no
+   (1) can we show that 5 NL 1?
+        a. margin -0.005844417573559024
+      no
+      Best assertion(s) require sample: 36
+
+ALTERNATE OUTCOME PAIR: 2,5
+   (1) can we show that 1 NL 5?
+        a. margin -0.21362353889560648
+      no
+   (1) can we show that 1 NL 2?
+        a. margin -0.2802633346768777
+      no
+   (1) can we show that 3 NL 5?
+        a. margin 0.041246809082359226
+      yes, 110, ags used 0 = 110
+   (1) can we show that 3 NL 2?
+        a. margin -0.07402928926508145
+      no
+   (1) can we show that 3 NL 5?
+        a. margin 0.041246809082359226
+      yes, 110, ags used 0 = 110
+   (1) can we show that 3 NL 2?
+        a. margin -0.07402928926508145
+      no
+      Best assertion(s) require sample: 110
+
+ALTERNATE OUTCOME PAIR: 5,3
+   (1) can we show that 1 NL 3?
+        a. margin -0.4229477361279055
+      no
+   (1) can we show that 1 NL 5?
+        a. margin -0.13683998387746854
+      no
+   (1) can we show that 2 NL 3?
+        a. margin -0.15202203412602455
+      no
+   (1) can we show that 2 NL 5?
+        a. margin 0.05071879618433406
+      yes, 51, ags used 42 = 51
+      Best assertion(s) require sample: 51
+
+ALTERNATE OUTCOME PAIR: 5,3
+   (1) can we show that 1 NL 3?
+        a. margin -0.4229477361279055
+      no
+   (1) can we show that 1 NL 5?
+        a. margin -0.13683998387746854
+      no
+   (1) can we show that 2 NL 3?
+        a. margin -0.15202203412602455
+      no
+   (1) can we show that 2 NL 5?
+        a. margin 0.05071879618433406
+      yes, 51, ags used 42 = 51
+      Best assertion(s) require sample: 51
+
+RULE OUT PAIR STAGE ASN 110
+------------------------------------------------
+FULL audit sample size: 110
+------------------------------------------------
+Final set of assertions generated:
+3 NL 1 = 97 [rules out (1, 2), G = set(), O = set()]
+(1, 'AG', 0, 42)
+3 NL 5 = 110 [rules out (2, 5), G = set(), O = set()]
+
+2 NL 1 = 36 [rules out (1, 3), G = set(), O = set()]
+2 NL 5 = 51 [rules out (5, 3), G = {0}, O = set()]
+2 NL 1 = 38 [rules out (1, 5), G = set(), O = set()]
+All winners are verified in audit.
+------------------------------------------------

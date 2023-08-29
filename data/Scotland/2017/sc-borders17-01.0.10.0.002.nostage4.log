@@ -1,0 +1,223 @@
+VALID BALLOTS 4610
+Winner 1
+Winner 8
+Computing AG relationships
+3 AG 6 = 104
+3 AG 7 = 135
+1 AG 6 = 43
+1 AG 4 = 120
+1 AG 7 = 51
+1 AG 5 = 61
+2 AG 6 = 102
+8 AG 6 = 83
+8 AG 4 = 301
+8 AG 7 = 2745
+Ruling out candidates: [(6, 83), (4, 301), (7, 135)]
+STAGE 1 ASN (Ruling out candidates): 301
+ALTERNATE OUTCOME PAIR: 5,3
+   (1) can we show that 1 NL 3?
+        a. margin -0.08958785249457624
+      no
+   (1) can we show that 1 NL 5?
+        a. margin 0.09226319595083399
+      yes, 48, ags used 43 = 48
+   (1) can we show that 2 NL 3?
+        a. margin -0.15466377440346923
+      no
+   (1) can we show that 2 NL 5?
+        a. margin 0.10093998553868655
+      yes, 45, ags used 61 = 61
+   (1) can we show that 8 NL 3?
+        a. margin -0.12386117136659502
+      no
+   (1) can we show that 8 NL 5?
+        a. margin 0.1155459146782345
+      yes, 39, ags used 61 = 61
+      Best assertion(s) require sample: 48
+
+ALTERNATE OUTCOME PAIR: 5,1
+   (1) can we show that 3 NL 1?
+        a. margin -0.12436731742588492
+      no
+   (1) can we show that 3 NL 5?
+        a. margin -0.009182935647143675
+      no
+   (1) can we show that 2 NL 1?
+        a. margin -0.1348517715112063
+      no
+   (1) can we show that 2 NL 5?
+        a. margin -0.048951554591467716
+      no
+   (1) can we show that 8 NL 1?
+        a. margin -0.10021691973969693
+      no
+   (1) can we show that 8 NL 5?
+        a. margin -0.02017353579175707
+      no
+
+ALTERNATE OUTCOME PAIR: 5,2
+   (1) can we show that 3 NL 2?
+        a. margin -0.22574114244396226
+      no
+   (1) can we show that 3 NL 5?
+        a. margin 0.08091106290672423
+      yes, 56, ags used 61 = 61
+   (1) can we show that 1 NL 2?
+        a. margin -0.1850325379609542
+      no
+   (1) can we show that 1 NL 5?
+        a. margin 0.08069414316702961
+      yes, 51, ags used 51 = 51
+   (1) can we show that 8 NL 2?
+        a. margin -0.056977584960231864
+      no
+   (1) can we show that 8 NL 5?
+        a. margin 0.10122921185827916
+      yes, 45, ags used 61 = 61
+      Best assertion(s) require sample: 51
+
+ALTERNATE OUTCOME PAIR: 5,8
+   (1) can we show that 3 NL 8?
+        a. margin -0.24837310195227735
+      no
+   (1) can we show that 3 NL 5?
+        a. margin 0.0828633405639907
+      yes, 55, ags used 61 = 61
+   (1) can we show that 1 NL 8?
+        a. margin -0.20274765003615292
+      no
+   (1) can we show that 1 NL 5?
+        a. margin 0.08221258134489884
+      yes, 50, ags used 51 = 51
+   (1) can we show that 2 NL 8?
+        a. margin -0.09342010122921152
+      no
+   (1) can we show that 2 NL 5?
+        a. margin 0.08778018799710718
+      yes, 52, ags used 61 = 61
+      Best assertion(s) require sample: 51
+
+ALTERNATE OUTCOME PAIR: 3,1
+   (1) can we show that 5 NL 1?
+        a. margin -0.26514822848879316
+      no
+   (1) can we show that 5 NL 3?
+        a. margin -0.3240780911062906
+      no
+   (1) can we show that 2 NL 1?
+        a. margin -0.13058568329717835
+      no
+   (1) can we show that 2 NL 3?
+        a. margin -0.1256688358640634
+      no
+   (1) can we show that 8 NL 1?
+        a. margin -0.09530007230658077
+      no
+   (1) can we show that 8 NL 3?
+        a. margin -0.09457700650759182
+      no
+
+ALTERNATE OUTCOME PAIR: 3,2
+   (1) can we show that 5 NL 2?
+        a. margin -0.3935647143890102
+      no
+   (1) can we show that 5 NL 3?
+        a. margin -0.31923355025307354
+      no
+   (1) can we show that 1 NL 2?
+        a. margin -0.14728850325379395
+      no
+   (1) can we show that 1 NL 3?
+        a. margin -0.048734634851769765
+      no
+   (1) can we show that 8 NL 2?
+        a. margin -0.04656543745480923
+      no
+   (1) can we show that 8 NL 3?
+        a. margin -0.12523499638467084
+      no
+
+ALTERNATE OUTCOME PAIR: 3,8
+   (1) can we show that 5 NL 8?
+        a. margin -0.4155459146782364
+      no
+   (1) can we show that 5 NL 3?
+        a. margin -0.31937816341286895
+      no
+   (1) can we show that 1 NL 8?
+        a. margin -0.16666666666666474
+      no
+   (1) can we show that 1 NL 3?
+        a. margin -0.048300795372379524
+      no
+   (1) can we show that 2 NL 8?
+        a. margin -0.08669558929862486
+      no
+   (1) can we show that 2 NL 3?
+        a. margin -0.1556760665220528
+      no
+
+ALTERNATE OUTCOME PAIR: 1,2
+   (1) can we show that 5 NL 2?
+        a. margin -0.4026030368763559
+      no
+   (1) can we show that 5 NL 1?
+        a. margin -0.27418655097613887
+      no
+   (1) can we show that 3 NL 2?
+        a. margin -0.22342733188720176
+      no
+   (1) can we show that 3 NL 1?
+        a. margin -0.12986261749819228
+      no
+   (1) can we show that 8 NL 2?
+        a. margin -0.04938539407086029
+      no
+   (1) can we show that 8 NL 1?
+        a. margin -0.10838756326825749
+      no
+
+ALTERNATE OUTCOME PAIR: 2,8
+   (1) can we show that 5 NL 8?
+        a. margin -0.36688358640636387
+      no
+   (1) can we show that 5 NL 2?
+        a. margin -0.3478669558929842
+      no
+   (1) can we show that 3 NL 8?
+        a. margin -0.19269703543022498
+      no
+   (1) can we show that 3 NL 2?
+        a. margin -0.1698481561822106
+      no
+   (1) can we show that 1 NL 8?
+        a. margin -0.11959508315256495
+      no
+   (1) can we show that 1 NL 2?
+        a. margin -0.10260303687635342
+      no
+
+RULE OUT PAIR STAGE ASN 51
+------------------------------------------------
+Alternate outcome cannot be ruled out: 5,1
+Alternate outcome cannot be ruled out: 3,1
+Alternate outcome cannot be ruled out: 3,2
+Alternate outcome cannot be ruled out: 3,8
+Alternate outcome cannot be ruled out: 1,2
+Alternate outcome cannot be ruled out: 2,8
+Full audit not possible
+PARTIAL audit sample size: 301
+------------------------------------------------
+Final set of assertions generated:
+(0, 'AG', 5, 43)
+(7, 'AG', 5, 83)
+(0, 'AG', 3, 120)
+1 NL 5 = 48 [rules out (5, 3), G = {5}, O = set()]
+(7, 'AG', 3, 301)
+1 NL 5 = 51 [rules out (5, 8), G = {5, 6}, O = set()]
+1 NL 5 = 51 [rules out (5, 2), G = {5, 6}, O = set()]
+(2, 'AG', 6, 135)
+(0, 'AG', 6, 51)
+[] are verified winners with these assertions.
+[1, 2, 3, 5, 8] remain as potential winners in this audit.
+------------------------------------------------

@@ -1,0 +1,52 @@
+VALID BALLOTS 3434
+Winner 4
+Winner 1
+Computing AG relationships
+4 AG 2 = 379
+1 AG 2 = 144
+Ruling out candidates: [(2, 379)]
+STAGE 1 ASN (Ruling out candidates): 379
+ALTERNATE OUTCOME PAIR: 5,4
+   (1) can we show that 1 NL 4?
+        a. margin -0.13579887400504775
+      no
+   (1) can we show that 1 NL 5?
+        a. margin -0.12434478741991872
+      no
+   (1) can we show that 1 NL 4?
+        a. margin -0.13579887400504775
+      no
+   (1) can we show that 1 NL 5?
+        a. margin -0.12434478741991872
+      no
+
+ALTERNATE OUTCOME PAIR: 5,1
+   (1) can we show that 4 NL 1?
+        a. margin -0.13511939429237052
+      no
+   (1) can we show that 4 NL 5?
+        a. margin -0.1105610561056104
+      no
+
+ALTERNATE OUTCOME PAIR: 5,1
+   (1) can we show that 4 NL 1?
+        a. margin -0.13511939429237052
+      no
+   (1) can we show that 4 NL 5?
+        a. margin -0.1105610561056104
+      no
+
+RULE OUT PAIR STAGE ASN 0
+------------------------------------------------
+Alternate outcome cannot be ruled out: 5,4
+Alternate outcome cannot be ruled out: 5,1
+Alternate outcome cannot be ruled out: 5,1
+Full audit not possible
+PARTIAL audit sample size: 379
+------------------------------------------------
+Final set of assertions generated:
+(0, 'AG', 1, 144)
+(3, 'AG', 1, 379)
+[] are verified winners with these assertions.
+[1, 4, 5] remain as potential winners in this audit.
+------------------------------------------------

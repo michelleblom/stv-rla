@@ -1,0 +1,113 @@
+VALID BALLOTS 4182
+30 ballot checks required to assert that first winner has a quota's worth of votes
+AUD TV 0.2313380281690141, ss 87
+AG*(1,4) = 484
+AG*(1,5) = 42
+AG*(1,4) = 484
+AG*(1,5) = 42
+AG*(2,5) = 65
+AG*(3,1) = 483
+AG*(3,4) = 18
+AG*(3,5) = 15
+NL(1,5) = 42, AG*'s used 0
+NL(1,4) = 329, AG*'s used 42
+NL(1,2) = 1360, AG*'s used 484
+Max in loop 1360, 0.2313380281690141
+AUD TV 0.2813380281690141, ss 40
+AG*(1,5) = 43
+AG*(1,5) = 43
+AG*(2,5) = 69
+AG*(3,1) = 483
+AG*(3,4) = 18
+AG*(3,5) = 15
+NL(1,5) = 43, AG*'s used 0
+NL(1,4) NOT POSSIBLE
+NL(1,2) = 4182, AG*'s used 484
+Max in loop inf, 0.2813380281690141
+Breaking out of inner loop inf > 1360
+Sample size to show min tv of 0.09066901408450705 is 56
+AUD TV 0.2313380281690141, ss 87
+AG*(1,4) = 357
+AG*(1,5) = 41
+AG*(1,4) = 357
+AG*(1,5) = 41
+AG*(2,5) = 63
+AG*(3,1) = 483
+AG*(3,4) = 18
+AG*(3,5) = 15
+AG*(4,5) = 521
+NL(1,5) = 41, AG*'s used 0
+NL(1,4) = 285, AG*'s used 41
+NL(1,2) = 346, AG*'s used 357
+Max in loop 357, 0.2313380281690141
+AUD TV 0.2813380281690141, ss 40
+AG*(1,5) = 43
+AG*(1,5) = 43
+AG*(2,5) = 67
+AG*(3,1) = 483
+AG*(3,4) = 18
+AG*(3,5) = 15
+AG*(4,5) = 565
+NL(1,5) = 43, AG*'s used 0
+NL(1,4) NOT POSSIBLE
+NL(1,2) = 506, AG*'s used 357
+Max in loop inf, 0.2813380281690141
+Breaking out of inner loop inf > 357
+New mintv = 0.14066901408450705
+Sample size to show min tv of 0.14066901408450705 is 118
+AUD TV 0.2313380281690141, ss 87
+AG*(1,2) = 4182
+AG*(1,4) = 329
+AG*(1,5) = 41
+AG*(1,2) = 4182
+AG*(1,4) = 329
+AG*(1,5) = 41
+AG*(2,5) = 62
+AG*(3,1) = 483
+AG*(3,4) = 18
+AG*(3,5) = 15
+AG*(4,5) = 175
+NL(1,5) = 41, AG*'s used 0
+NL(1,4) = 265, AG*'s used 41
+NL(1,2) = 259, AG*'s used 329
+Max in loop 329, 0.2313380281690141
+AUD TV 0.2813380281690141, ss 40
+AG*(1,5) = 42
+AG*(1,5) = 42
+AG*(2,5) = 66
+AG*(3,1) = 483
+AG*(3,4) = 18
+AG*(3,5) = 15
+AG*(4,5) = 181
+NL(1,5) = 42, AG*'s used 0
+NL(1,4) = 2265, AG*'s used 42
+NL(1,2) = 310, AG*'s used 329
+Max in loop 2265, 0.2813380281690141
+Breaking out of inner loop 2265 > 329
+New mintv = 0.19066901408450704
+Sample size required for audit is 329 ballots
+------------------------------------------------
+Assertion set BEFORE filtering:
+(0, 'AG*', 4, 41)
+(0, 'NL', 4, 41)
+(2, 'MT', None, (0.2313380281690141, 87))
+(0, 'NL', 1, 329)
+(0, 'NL', 3, 265)
+(0, 'AG*', 3, 329)
+(2, 'LT', None, (0.14066901408450705, 118))
+(2, 'QT', None, 30)
+------------------------------------------------
+Final set of assertions AFTER filtering:
+(0, 'AG*', 4, 41)
+(0, 'NL', 4, 41)
+(2, 'MT', None, (0.2313380281690141, 87))
+(0, 'NL', 1, 329)
+(0, 'NL', 3, 265)
+(0, 'AG*', 3, 329)
+(2, 'LT', None, (0.14066901408450705, 118))
+(2, 'QT', None, 30)
+------------------------------------------------
+Explanations for AG* inclusion:
+   Explanation for (0, 'AG*', 4, 41): []
+   Explanation for (0, 'AG*', 3, 329): []
+------------------------------------------------

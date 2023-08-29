@@ -1,0 +1,116 @@
+VALID BALLOTS 3870
+Winner 6
+Winner 2
+Computing AG relationships
+6 AG 3 = 32
+6 AG 7 = 44
+6 AG 8 = 75
+6 AG 9 = 33
+6 AG 1 = 25
+5 AG 3 = 63
+5 AG 1 = 221
+2 AG 3 = 33
+2 AG 7 = 25
+2 AG 8 = 201
+2 AG 9 = 48
+2 AG 1 = 42
+Ruling out candidates: [(3, 33), (7, 44), (8, 201), (9, 48), (1, 42)]
+STAGE 1 ASN (Ruling out candidates): 201
+ALTERNATE OUTCOME PAIR: 6,4
+   (1) can we show that 5 NL 4?
+        a. margin -0.022136089577949103
+      no
+   (1) can we show that 5 NL 6?
+        a. margin -0.2311800172265287
+      no
+   (1) can we show that 2 NL 4?
+        a. margin 0.013178294573645388
+      yes, 132, ags used 48 = 132
+   (1) can we show that 2 NL 6?
+        a. margin -0.11128337639965435
+      no
+      Best assertion(s) require sample: 132
+
+ALTERNATE OUTCOME PAIR: 6,5
+   (1) can we show that 4 NL 5?
+        a. margin -0.2956933677863903
+      no
+   (1) can we show that 4 NL 6?
+        a. margin -0.3672695951765722
+      no
+   (1) can we show that 2 NL 5?
+        a. margin -0.04065460809646637
+      no
+   (1) can we show that 2 NL 6?
+        a. margin -0.10232558139534786
+      no
+
+ALTERNATE OUTCOME PAIR: 4,5
+   (1) can we show that 6 NL 5?
+        a. margin -0.03152454780361702
+      no
+   (1) can we show that 6 NL 4?
+        a. margin 0.014298018949183033
+      yes, 70, ags used 44 = 70
+   (1) can we show that 2 NL 5?
+        a. margin -0.05719207579672547
+      no
+   (1) can we show that 2 NL 4?
+        a. margin 0.018518518518520155
+      yes, 114, ags used 48 = 114
+      Best assertion(s) require sample: 70
+
+ALTERNATE OUTCOME PAIR: 4,2
+   (1) can we show that 6 NL 2?
+        a. margin -0.048234280792420314
+      no
+   (1) can we show that 6 NL 4?
+        a. margin 0.008871662360036447
+      yes, 64, ags used 75 = 75
+   (1) can we show that 5 NL 2?
+        a. margin -0.170714900947459
+      no
+   (1) can we show that 5 NL 4?
+        a. margin -0.021877691645132202
+      no
+      Best assertion(s) require sample: 75
+
+ALTERNATE OUTCOME PAIR: 5,2
+   (1) can we show that 6 NL 2?
+        a. margin -0.035572782084409615
+      no
+   (1) can we show that 6 NL 5?
+        a. margin -0.012316968130920425
+      no
+   (1) can we show that 4 NL 2?
+        a. margin -0.3035314384151593
+      no
+   (1) can we show that 4 NL 5?
+        a. margin -0.29276485788113593
+      no
+
+RULE OUT PAIR STAGE ASN 132
+------------------------------------------------
+Alternate outcome cannot be ruled out: 6,5
+Alternate outcome cannot be ruled out: 5,2
+Full audit not possible
+PARTIAL audit sample size: 201
+------------------------------------------------
+Final set of assertions generated:
+(1, 'AG', 0, 42)
+(5, 'AG', 7, 75)
+(1, 'AG', 8, 48)
+(1, 'AG', 2, 33)
+(5, 'AG', 8, 33)
+2 NL 4 = 132 [rules out (6, 4), G = {0, 8, 2, 6}, O = set()]
+
+(5, 'AG', 2, 32)
+(5, 'AG', 0, 25)
+(5, 'AG', 6, 44)
+(1, 'AG', 7, 201)
+(1, 'AG', 6, 25)
+6 NL 4 = 70 [rules out (4, 5), G = {0, 8, 2, 6}, O = set()]
+6 NL 4 = 75 [rules out (4, 2), G = {0, 2, 6, 7, 8}, O = set()]
+[] are verified winners with these assertions.
+[2, 5, 6] remain as potential winners in this audit.
+------------------------------------------------

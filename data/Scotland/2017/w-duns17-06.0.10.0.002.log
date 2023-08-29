@@ -1,0 +1,165 @@
+VALID BALLOTS 5018
+Winner 3
+Winner 2
+Computing AG relationships
+3 AG 9 = 23
+3 AG 1 = 27
+3 AG 8 = 31
+3 AG 4 = 38
+3 AG 5 = 36
+2 AG 9 = 32
+2 AG 1 = 40
+2 AG 6 = 37
+2 AG 4 = 75
+2 AG 5 = 36
+Ruling out candidates: [(9, 32), (1, 40), (4, 75), (5, 36)]
+STAGE 1 ASN (Ruling out candidates): 75
+ALTERNATE OUTCOME PAIR: 6,8
+   (1) can we show that 3 NL 8?
+        a. margin 0.14487843762455133
+      yes, 30, ags used 27 = 30
+   (1) can we show that 3 NL 6?
+        a. margin 0.21914441344493119
+      yes, 20, ags used 37 = 37
+   (1) can we show that 2 NL 8?
+        a. margin 0.12787299056729107
+      yes, 35, ags used 31 = 35
+   (1) can we show that 2 NL 6?
+        a. margin 0.12641158496080585
+      yes, 30, ags used 36 = 36
+   (1) can we show that 2 NL 8?
+        a. margin 0.12787299056729107
+      yes, 35, ags used 31 = 35
+   (1) can we show that 2 NL 6?
+        a. margin 0.12641158496080585
+      yes, 30, ags used 36 = 36
+      Best assertion(s) require sample: 30
+
+ALTERNATE OUTCOME PAIR: 6,3
+   (1) can we show that 8 NL 3?
+        a. margin -0.36209645277002767
+      no
+   (1) can we show that 8 NL 6?
+        a. margin -0.017736149860502204
+      no
+   (1) can we show that 2 NL 3?
+        a. margin -0.17822505646339815
+      no
+   (1) can we show that 2 NL 6?
+        a. margin 0.1321907798591746
+      yes, 34, ags used 0 = 34
+   (1) can we show that 2 NL 3?
+        a. margin -0.17822505646339815
+      no
+   (1) can we show that 2 NL 6?
+        a. margin 0.1321907798591746
+      yes, 34, ags used 0 = 34
+      Best assertion(s) require sample: 34
+
+ALTERNATE OUTCOME PAIR: 6,2
+   (1) can we show that 8 NL 2?
+        a. margin -0.3088880031885204
+      no
+   (1) can we show that 8 NL 6?
+        a. margin -0.20027899561578277
+      no
+   (1) can we show that 3 NL 2?
+        a. margin -0.012621230237809589
+      no
+   (1) can we show that 3 NL 6?
+        a. margin 0.04530357380098371
+      yes, 47, ags used 38 = 47
+      Best assertion(s) require sample: 47
+
+ALTERNATE OUTCOME PAIR: 6,2
+   (1) can we show that 8 NL 2?
+        a. margin -0.3088880031885204
+      no
+   (1) can we show that 8 NL 6?
+        a. margin -0.20027899561578277
+      no
+   (1) can we show that 3 NL 2?
+        a. margin -0.012621230237809589
+      no
+   (1) can we show that 3 NL 6?
+        a. margin 0.04530357380098371
+      yes, 47, ags used 38 = 47
+      Best assertion(s) require sample: 47
+
+ALTERNATE OUTCOME PAIR: 8,3
+   (1) can we show that 6 NL 3?
+        a. margin -0.4321110668260907
+      no
+   (1) can we show that 6 NL 8?
+        a. margin -0.31440148797661926
+      no
+   (1) can we show that 2 NL 3?
+        a. margin -0.1028298126743703
+      no
+   (1) can we show that 2 NL 8?
+        a. margin 0.0006642752756775838
+      yes, 5018, ags used 75 = 5018
+   (1) can we show that 2 NL 3?
+        a. margin -0.1028298126743703
+      no
+   (1) can we show that 2 NL 8?
+        a. margin 0.0006642752756775838
+      yes, 5018, ags used 75 = 5018
+      Best assertion(s) require sample: 5018
+
+ALTERNATE OUTCOME PAIR: 8,2
+   (1) can we show that 6 NL 2?
+        a. margin -0.337318984987378
+      no
+   (1) can we show that 6 NL 8?
+        a. margin -0.07924804038793687
+      no
+   (1) can we show that 3 NL 2?
+        a. margin -0.057061246180417635
+      no
+   (1) can we show that 3 NL 8?
+        a. margin 0.148399096585625
+      yes, 29, ags used 27 = 29
+      Best assertion(s) require sample: 29
+
+ALTERNATE OUTCOME PAIR: 8,2
+   (1) can we show that 6 NL 2?
+        a. margin -0.337318984987378
+      no
+   (1) can we show that 6 NL 8?
+        a. margin -0.07924804038793687
+      no
+   (1) can we show that 3 NL 2?
+        a. margin -0.057061246180417635
+      no
+   (1) can we show that 3 NL 8?
+        a. margin 0.148399096585625
+      yes, 29, ags used 27 = 29
+      Best assertion(s) require sample: 29
+
+RULE OUT PAIR STAGE ASN 5018
+------------------------------------------------
+EXAMINING WAYS TO REDUCE COST OF AUDIT
+------------------------------------------------
+Full audit not possible
+PARTIAL audit sample size: 5018
+------------------------------------------------
+Final set of assertions generated:
+(2, 'AG', 4, 36)
+3 NL 6 = 47 [rules out (6, 2), G = {0, 3, 4, 7, 8}, O = set()]
+(1, 'AG', 0, 40)
+3 NL 8 = 29 [rules out (8, 2), G = {8, 0}, O = set()]
+(1, 'AG', 5, 37)
+(2, 'AG', 8, 23)
+(1, 'AG', 4, 36)
+(2, 'AG', 0, 27)
+2 NL 6 = 34 [rules out (6, 3), G = set(), O = set()]
+(1, 'AG', 3, 75)
+(1, 'AG', 8, 32)
+(2, 'AG', 3, 38)
+(2, 'AG', 7, 31)
+3 NL 8 = 30 [rules out (6, 8), G = {8, 0}, O = set()]
+
+2 NL 8 = 5018 [rules out (8, 3), G = {0, 3, 4, 5, 8}, O = set()]
+All winners are verified in audit.
+------------------------------------------------

@@ -358,35 +358,35 @@ NEW RULE OUT PAIR STAGE ASN 100
 FULL audit sample size: 100
 ------------------------------------------------
 Final set of assertions generated:
-8 NL 3 = 30 [rules out (3, 4), G = [], O = []]
-(8, 'AG', 11, 45)
-4 NL 7 = 60 [rules out (7, 8), G = [], O = []]
-(4, 'AG', 5, 34)
-8 NL 3 = 31 [rules out (3, 7), G = [], O = []]
-8 NL 6 = 72 [rules out (6, 4), G = [], O = []]
-8 NL 7 = 48 [rules out (7, 4), G = [], O = []]
-4 NL 7 = 56 [rules out (7, 6), G = [], O = []]
-4 NL 11 = 100 [rules out (8, 11), G = set(), O = {4}]
+4 NL 3 = 75 [rules out (3, 8), G = {0, 1, 4, 6, 8, 9}, O = set()]
+(3, 'AG', 9, 42)
+8 NL 6 = 72 [rules out (6, 4), G = {0, 1, 2, 4, 8, 9, 10}, O = set()]
+4 NL 6 = 95 [rules out (8, 6), G = {0, 1, 4, 6, 8, 9}, O = set()]
 
-(8, 'AG', 1, 19)
-(4, 'AG', 10, 42)
-(8, 'AG', 9, 26)
-(8, 'AG', 2, 19)
-8 NL 3 = 30 [rules out (3, 6), G = [], O = []]
-4 NL 6 = 95 [rules out (8, 6), G = set(), O = {4}]
+8 NL 11 = 35 [rules out (7, 11), G = {0, 1, 4, 8, 9}, O = set()]
 
-(8, 'AG', 5, 22)
-8 NL 3 = 29 [rules out (3, 11), G = [], O = []]
-(4, 'AG', 1, 28)
-4 NL 3 = 62 [rules out (3, 8), G = [], O = []]
-(8, 'AG', 10, 21)
-(8, 'AG', 3, 38)
-(4, 'AG', 2, 30)
-(4, 'AG', 7, 75)
-8 NL 11 = 34 [rules out (11, 6), G = [], O = []]
-(4, 'AG', 9, 75)
-8 NL 11 = 35 [rules out (7, 11), G = set(), O = {8}]
+8 NL 11 = 34 [rules out (11, 4), G = {0, 1, 4, 8, 9}, O = set()]
+(7, 'AG', 9, 21)
+4 NL 7 = 56 [rules out (7, 6), G = {0, 1, 4, 9}, O = set()]
+8 NL 11 = 34 [rules out (11, 6), G = {0, 1, 4, 8, 9}, O = set()]
+8 NL 3 = 30 [rules out (3, 4), G = {0, 1, 4, 8, 9}, O = set()]
+(3, 'AG', 6, 75)
+(3, 'AG', 1, 30)
+(3, 'AG', 8, 75)
+8 NL 3 = 29 [rules out (3, 11), G = {0, 1, 4, 8, 9}, O = set()]
+(7, 'AG', 4, 22)
+8 NL 3 = 31 [rules out (3, 7), G = {0, 1, 4, 8, 9}, O = set()]
+(7, 'AG', 2, 38)
+(7, 'AG', 10, 45)
+8 NL 3 = 30 [rules out (3, 6), G = {0, 1, 4, 8, 9}, O = set()]
+(3, 'AG', 0, 28)
+(7, 'AG', 0, 19)
+4 NL 7 = 60 [rules out (7, 8), G = {0, 1, 4, 9}, O = set()]
+4 NL 11 = 100 [rules out (8, 11), G = {0, 1, 4, 6, 8, 9}, O = set()]
 
-8 NL 11 = 34 [rules out (11, 4), G = [], O = []]
+8 NL 7 = 48 [rules out (7, 4), G = {0, 1, 2, 4, 8, 9, 10}, O = set()]
+(3, 'AG', 4, 34)
+(7, 'AG', 8, 26)
+(7, 'AG', 1, 19)
 All winners are verified in audit.
 ------------------------------------------------

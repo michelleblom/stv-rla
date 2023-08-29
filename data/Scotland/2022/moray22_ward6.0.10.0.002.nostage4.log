@@ -1,0 +1,47 @@
+VALID BALLOTS 3678
+Winner 3
+Winner 6
+Computing AG relationships
+3 AG 1 = 81
+3 AG 4 = 70
+3 AG 5 = 31
+6 AG 1 = 47
+6 AG 4 = 55
+6 AG 5 = 87
+Ruling out candidates: [(1, 81), (4, 70), (5, 87)]
+STAGE 1 ASN (Ruling out candidates): 87
+ALTERNATE OUTCOME PAIR: 3,2
+   (1) can we show that 6 NL 2?
+        a. margin 0.014681892332789603
+      yes, 146, ags used 87 = 146
+   (1) can we show that 6 NL 3?
+        a. margin -0.0377922784121808
+      no
+      Best assertion(s) require sample: 146
+
+ALTERNATE OUTCOME PAIR: 6,2
+   (1) can we show that 3 NL 2?
+        a. margin 0.00516585100598177
+      yes, 1064, ags used 81 = 1064
+   (1) can we show that 3 NL 6?
+        a. margin -0.06452782309226024
+      no
+      Best assertion(s) require sample: 1064
+
+RULE OUT PAIR STAGE ASN 1064
+------------------------------------------------
+FULL audit sample size: 1064
+------------------------------------------------
+Final set of assertions generated:
+(5, 'AG', 3, 55)
+(2, 'AG', 4, 31)
+6 NL 2 = 146 [rules out (3, 2), G = {0, 3, 4}, O = set()]
+
+3 NL 2 = 1064 [rules out (6, 2), G = {0, 3, 4}, O = set()]
+
+(5, 'AG', 4, 87)
+(2, 'AG', 3, 70)
+(5, 'AG', 0, 47)
+(2, 'AG', 0, 81)
+All winners are verified in audit.
+------------------------------------------------

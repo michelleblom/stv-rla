@@ -1,0 +1,57 @@
+VALID BALLOTS 6280
+Winner 3
+Winner 7
+Computing AG relationships
+3 AG 6 = 19
+3 AG 2 = 32
+3 AG 8 = 92
+3 AG 5 = 49
+3 AG 1 = 104
+7 AG 6 = 26
+7 AG 2 = 26
+7 AG 8 = 40
+7 AG 5 = 5746
+7 AG 1 = 28
+4 AG 6 = 39
+4 AG 2 = 41
+4 AG 8 = 110
+4 AG 1 = 45
+Ruling out candidates: [(6, 26), (2, 32), (8, 92), (5, 5746), (1, 45)]
+STAGE 1 ASN (Ruling out candidates): 5746
+ALTERNATE OUTCOME PAIR: 3,4
+   (1) can we show that 7 NL 4?
+        a. margin -0.0012208067940565615
+      no
+   (1) can we show that 7 NL 3?
+        a. margin -0.024681528662421015
+      no
+
+ALTERNATE OUTCOME PAIR: 7,4
+   (1) can we show that 3 NL 4?
+        a. margin -0.12616772823779276
+      no
+   (1) can we show that 3 NL 7?
+        a. margin -0.15992569002123236
+      no
+
+RULE OUT PAIR STAGE ASN 0
+------------------------------------------------
+Alternate outcome cannot be ruled out: 3,4
+Alternate outcome cannot be ruled out: 7,4
+Full audit not possible
+PARTIAL audit sample size: 5746
+------------------------------------------------
+Final set of assertions generated:
+(6, 'AG', 5, 26)
+(2, 'AG', 5, 19)
+(2, 'AG', 7, 92)
+(2, 'AG', 1, 32)
+(6, 'AG', 7, 40)
+(6, 'AG', 4, 5746)
+(2, 'AG', 4, 49)
+(6, 'AG', 0, 28)
+(6, 'AG', 1, 26)
+(3, 'AG', 0, 45)
+[] are verified winners with these assertions.
+[3, 4, 7] remain as potential winners in this audit.
+------------------------------------------------

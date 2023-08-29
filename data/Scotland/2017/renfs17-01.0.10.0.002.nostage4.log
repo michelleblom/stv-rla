@@ -1,0 +1,157 @@
+VALID BALLOTS 5421
+Winner 6
+Winner 1
+Computing AG relationships
+2 AG 5 = 140
+6 AG 7 = 75
+6 AG 3 = 60
+6 AG 5 = 38
+6 AG 2 = 259
+1 AG 7 = 71
+1 AG 3 = 103
+1 AG 5 = 4870
+Ruling out candidates: [(7, 75), (3, 103), (5, 140)]
+STAGE 1 ASN (Ruling out candidates): 140
+ALTERNATE OUTCOME PAIR: 4,2
+   (1) can we show that 6 NL 2?
+        a. margin 0.022074647973927997
+      yes, 143, ags used 75 = 143
+   (1) can we show that 6 NL 4?
+        a. margin -0.13853532558568527
+      no
+   (1) can we show that 1 NL 2?
+        a. margin 0.037262497694152685
+      yes, 122, ags used 259 = 259
+   (1) can we show that 1 NL 4?
+        a. margin -0.018262313226341198
+      no
+   (1) can we show that 1 NL 2?
+        a. margin 0.037262497694152685
+      yes, 122, ags used 259 = 259
+   (1) can we show that 1 NL 4?
+        a. margin -0.018262313226341198
+      no
+      Best assertion(s) require sample: 143
+
+ALTERNATE OUTCOME PAIR: 4,6
+   (1) can we show that 2 NL 6?
+        a. margin -0.14253212814363814
+      no
+   (1) can we show that 2 NL 4?
+        a. margin -0.2322449732521672
+      no
+   (1) can we show that 1 NL 6?
+        a. margin -0.1939986472360572
+      no
+   (1) can we show that 1 NL 4?
+        a. margin -0.01389657504765518
+      no
+   (1) can we show that 1 NL 6?
+        a. margin -0.1939986472360572
+      no
+   (1) can we show that 1 NL 4?
+        a. margin -0.01389657504765518
+      no
+
+ALTERNATE OUTCOME PAIR: 4,1
+   (1) can we show that 2 NL 1?
+        a. margin -0.22203775441185603
+      no
+   (1) can we show that 2 NL 4?
+        a. margin -0.17874930824571145
+      no
+   (1) can we show that 6 NL 1?
+        a. margin 0.007993605115906632
+      yes, 638, ags used 259 = 638
+   (1) can we show that 6 NL 4?
+        a. margin 0.054110557707679696
+      yes, 84, ags used 259 = 259
+      Best assertion(s) require sample: 259
+
+ALTERNATE OUTCOME PAIR: 4,1
+   (1) can we show that 2 NL 1?
+        a. margin -0.22203775441185603
+      no
+   (1) can we show that 2 NL 4?
+        a. margin -0.17874930824571145
+      no
+   (1) can we show that 6 NL 1?
+        a. margin 0.007993605115906632
+      yes, 638, ags used 259 = 638
+   (1) can we show that 6 NL 4?
+        a. margin 0.054110557707679696
+      yes, 84, ags used 259 = 259
+      Best assertion(s) require sample: 259
+
+ALTERNATE OUTCOME PAIR: 2,6
+   (1) can we show that 4 NL 6?
+        a. margin -0.2520445182315696
+      no
+   (1) can we show that 4 NL 2?
+        a. margin -0.21902478017585703
+      no
+   (1) can we show that 1 NL 6?
+        a. margin -0.1507102010699113
+      no
+   (1) can we show that 1 NL 2?
+        a. margin -0.11707557031297822
+      no
+   (1) can we show that 1 NL 6?
+        a. margin -0.1507102010699113
+      no
+   (1) can we show that 1 NL 2?
+        a. margin -0.11707557031297822
+      no
+
+ALTERNATE OUTCOME PAIR: 2,1
+   (1) can we show that 4 NL 1?
+        a. margin -0.22043903338867366
+      no
+   (1) can we show that 4 NL 2?
+        a. margin -0.0593986349382033
+      no
+   (1) can we show that 6 NL 1?
+        a. margin -0.15999508085839032
+      no
+   (1) can we show that 6 NL 2?
+        a. margin 0.02674783250322843
+      yes, 125, ags used 75 = 125
+      Best assertion(s) require sample: 125
+
+ALTERNATE OUTCOME PAIR: 2,1
+   (1) can we show that 4 NL 1?
+        a. margin -0.22043903338867366
+      no
+   (1) can we show that 4 NL 2?
+        a. margin -0.0593986349382033
+      no
+   (1) can we show that 6 NL 1?
+        a. margin -0.15999508085839032
+      no
+   (1) can we show that 6 NL 2?
+        a. margin 0.02674783250322843
+      yes, 125, ags used 75 = 125
+      Best assertion(s) require sample: 125
+
+RULE OUT PAIR STAGE ASN 259
+------------------------------------------------
+Alternate outcome cannot be ruled out: 4,6
+Alternate outcome cannot be ruled out: 2,6
+Full audit not possible
+PARTIAL audit sample size: 259
+------------------------------------------------
+Final set of assertions generated:
+(0, 'AG', 6, 71)
+(1, 'AG', 4, 140)
+6 NL 2 = 143 [rules out (4, 2), G = {2, 4, 6}, O = set()]
+
+(5, 'AG', 2, 60)
+(5, 'AG', 1, 259)
+(5, 'AG', 4, 38)
+(0, 'AG', 2, 103)
+(5, 'AG', 6, 75)
+6 NL 4 = 259 [rules out (4, 1), G = {1, 2, 4, 6}, O = set()]
+6 NL 2 = 125 [rules out (2, 1), G = {2, 4, 6}, O = set()]
+[6] are verified winners with these assertions.
+[1, 2, 4] remain as potential winners in this audit.
+------------------------------------------------

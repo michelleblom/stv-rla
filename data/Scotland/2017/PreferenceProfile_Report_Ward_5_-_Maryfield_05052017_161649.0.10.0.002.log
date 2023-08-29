@@ -1,0 +1,194 @@
+VALID BALLOTS 4095
+Winner 5
+Winner 3
+Computing AG relationships
+7 AG 6 = 163
+7 AG 4 = 256
+5 AG 6 = 30
+5 AG 1 = 40
+5 AG 4 = 34
+5 AG 2 = 80
+5 AG 7 = 73
+3 AG 6 = 81
+3 AG 1 = 167
+3 AG 2 = 1501
+Ruling out candidates: [(6, 81), (1, 167), (4, 256), (2, 1501)]
+STAGE 1 ASN (Ruling out candidates): 1501
+ALTERNATE OUTCOME PAIR: 7,5
+   (1) can we show that 3 NL 5?
+        a. margin -0.16980056980056868
+      no
+   (1) can we show that 3 NL 7?
+        a. margin -0.11794871794871631
+      no
+
+ALTERNATE OUTCOME PAIR: 7,3
+   (1) can we show that 5 NL 3?
+        a. margin 0.00203500203500262
+      yes, 420, ags used 80 = 420
+   (1) can we show that 5 NL 7?
+        a. margin 0.0688644688644684
+      yes, 52, ags used 40 = 52
+      Best assertion(s) require sample: 52
+
+RULE OUT PAIR STAGE ASN 52
+------------------------------------------------
+EXAMINING WAYS TO REDUCE COST OF AUDIT
+ALTERNATE OUTCOME PAIR: 2,7
+   (1) can we show that 5 NL 7?
+        a. margin 0.0647130647130647
+      yes, 54, ags used 40 = 54
+   (1) can we show that 5 NL 2?
+        a. margin 0.05763125763125765
+      yes, 59, ags used 40 = 59
+   (1) can we show that 3 NL 7?
+        a. margin 0.006756206756206806
+      yes, 191, ags used 167 = 191
+   (1) can we show that 3 NL 2?
+        a. margin 0.006593406593406792
+      yes, 119, ags used 167 = 167
+      Best assertion(s) require sample: 54
+
+ALTERNATE OUTCOME PAIR: 2,5
+   (1) can we show that 7 NL 5?
+        a. margin -0.19348799348799317
+      no
+   (1) can we show that 7 NL 2?
+        a. margin 0.0079772079772078
+      yes, 702, ags used 1501 = 1501
+   (1) can we show that 3 NL 5?
+        a. margin -0.2802604802604801
+      no
+   (1) can we show that 3 NL 2?
+        a. margin 0.006756206756207472
+      yes, 191, ags used 167 = 191
+      Best assertion(s) require sample: 191
+
+ALTERNATE OUTCOME PAIR: 2,3
+   (1) can we show that 7 NL 3?
+        a. margin -0.11045991045991033
+      no
+   (1) can we show that 7 NL 2?
+        a. margin -0.02564102564102555
+      no
+   (1) can we show that 5 NL 3?
+        a. margin 0.012779812779812882
+      yes, 22, ags used 73 = 73
+   (1) can we show that 5 NL 2?
+        a. margin 0.07106227106227103
+      yes, 50, ags used 40 = 50
+      Best assertion(s) require sample: 50
+
+1 ruled out by pairs, sample size 191
+STAGE 1 ASN NOW 256
+NEW RULE OUT PAIR STAGE ASN 191
+ALTERNATE OUTCOME PAIR: 4,2
+   (1) can we show that 7 NL 2?
+        a. margin 0.0002442002442004654
+      yes, 4095, ags used 1501 = 4095
+   (1) can we show that 7 NL 4?
+        a. margin 0.027431827431827482
+      yes, 120, ags used 34 = 120
+   (1) can we show that 5 NL 2?
+        a. margin 0.058608058608058844
+      yes, 71, ags used 40 = 71
+   (1) can we show that 5 NL 4?
+        a. margin 0.14253154253154254
+      yes, 31, ags used 30 = 31
+   (1) can we show that 3 NL 2?
+        a. margin 0.0055352055352053675
+      yes, 117, ags used 167 = 167
+   (1) can we show that 3 NL 4?
+        a. margin 0.007081807081807057
+      yes, 33, ags used 34 = 34
+      Best assertion(s) require sample: 31
+
+ALTERNATE OUTCOME PAIR: 4,7
+   (1) can we show that 2 NL 7?
+        a. margin -0.04770044770044635
+      no
+   (1) can we show that 2 NL 4?
+        a. margin 0.0551892551892561
+      yes, 82, ags used 34 = 82
+   (1) can we show that 5 NL 7?
+        a. margin 0.06699226699226646
+      yes, 63, ags used 40 = 63
+   (1) can we show that 5 NL 4?
+        a. margin 0.13479853479853499
+      yes, 33, ags used 30 = 33
+   (1) can we show that 3 NL 7?
+        a. margin 0.00911680911681012
+      yes, 174, ags used 167 = 174
+   (1) can we show that 3 NL 4?
+        a. margin 0.020838420838420246
+      yes, 34, ags used 34 = 34
+      Best assertion(s) require sample: 33
+
+ALTERNATE OUTCOME PAIR: 4,5
+   (1) can we show that 2 NL 5?
+        a. margin -0.385510785510784
+      no
+   (1) can we show that 2 NL 4?
+        a. margin 0.05404965404965534
+      yes, 84, ags used 256 = 256
+   (1) can we show that 7 NL 5?
+        a. margin -0.20244200244200306
+      no
+   (1) can we show that 7 NL 4?
+        a. margin 0.020268620268619753
+      yes, 215, ags used 163 = 215
+   (1) can we show that 3 NL 5?
+        a. margin -0.22026862026861926
+      no
+   (1) can we show that 3 NL 4?
+        a. margin 0.026129426129426925
+      yes, 164, ags used 81 = 164
+      Best assertion(s) require sample: 164
+
+ALTERNATE OUTCOME PAIR: 4,3
+   (1) can we show that 2 NL 3?
+        a. margin -0.26813186813186896
+      no
+   (1) can we show that 2 NL 4?
+        a. margin 0.06951566951567023
+      yes, 65, ags used 34 = 65
+   (1) can we show that 7 NL 3?
+        a. margin -0.1329263329263326
+      no
+   (1) can we show that 7 NL 4?
+        a. margin 0.03833943833943798
+      yes, 94, ags used 34 = 94
+   (1) can we show that 5 NL 3?
+        a. margin 0.16581196581196633
+      yes, 27, ags used 73 = 73
+   (1) can we show that 5 NL 4?
+        a. margin 0.15343915343915304
+      yes, 29, ags used 0 = 29
+      Best assertion(s) require sample: 29
+
+3 ruled out by pairs, sample size 164
+STAGE 1 ASN NOW 167
+NEW RULE OUT PAIR STAGE ASN 191
+------------------------------------------------
+Alternate outcome cannot be ruled out: 7,5
+Full audit not possible
+PARTIAL audit sample size: 191
+------------------------------------------------
+Final set of assertions generated:
+3 NL 4 = 164 [rules out (4, 5), G = {5}, O = set()]
+5 NL 7 = 54 [rules out (2, 7), G = {0, 3, 5}, O = set()]
+
+5 NL 7 = 52 [rules out (7, 3), G = {0, 3, 5}, O = set()]
+(4, 'AG', 5, 30)
+(2, 'AG', 5, 81)
+5 NL 4 = 29 [rules out (4, 3), G = set(), O = set()]
+3 NL 2 = 191 [rules out (2, 5), G = {0, 5}, O = set()]
+5 NL 4 = 33 [rules out (4, 7), G = {5}, O = set()]
+5 NL 4 = 31 [rules out (4, 2), G = {5}, O = set()]
+(2, 'AG', 0, 167)
+5 NL 2 = 50 [rules out (2, 3), G = {0, 3, 5}, O = set()]
+(4, 'AG', 0, 40)
+(4, 'AG', 3, 34)
+[5] are verified winners with these assertions.
+[3, 7] remain as potential winners in this audit.
+------------------------------------------------

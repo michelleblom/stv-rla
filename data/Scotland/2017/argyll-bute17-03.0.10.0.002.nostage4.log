@@ -1,0 +1,112 @@
+VALID BALLOTS 3307
+Winner 6
+Winner 7
+Computing AG relationships
+6 AG 1 = 29
+6 AG 5 = 77
+6 AG 3 = 43
+6 AG 2 = 235
+6 AG 4 = 51
+7 AG 1 = 37
+7 AG 5 = 38
+7 AG 3 = 175
+Ruling out candidates: [(1, 37), (5, 77), (3, 175)]
+STAGE 1 ASN (Ruling out candidates): 175
+ALTERNATE OUTCOME PAIR: 6,2
+   (1) can we show that 7 NL 2?
+        a. margin -0.01199475859288357
+      no
+   (1) can we show that 7 NL 6?
+        a. margin -0.1660114907771394
+      no
+   (1) can we show that 4 NL 2?
+        a. margin -0.23918959782280147
+      no
+   (1) can we show that 4 NL 6?
+        a. margin -0.40943453280919273
+      no
+
+ALTERNATE OUTCOME PAIR: 6,4
+   (1) can we show that 2 NL 4?
+        a. margin -0.09595806874307067
+      no
+   (1) can we show that 2 NL 6?
+        a. margin -0.38393307126297793
+      no
+   (1) can we show that 7 NL 4?
+        a. margin 0.020260054429996233
+      yes, 103, ags used 38 = 103
+   (1) can we show that 7 NL 6?
+        a. margin -0.16853139804455175
+      no
+      Best assertion(s) require sample: 103
+
+ALTERNATE OUTCOME PAIR: 2,7
+   (1) can we show that 6 NL 7?
+        a. margin 0.034270738836810644
+      yes, 78, ags used 77 = 78
+   (1) can we show that 6 NL 2?
+        a. margin 0.0381009978832787
+      yes, 39, ags used 51 = 51
+   (1) can we show that 4 NL 7?
+        a. margin -0.29694587239189596
+      no
+   (1) can we show that 4 NL 2?
+        a. margin -0.036286664650740263
+      no
+      Best assertion(s) require sample: 51
+
+ALTERNATE OUTCOME PAIR: 2,4
+   (1) can we show that 6 NL 4?
+        a. margin 0.09474851325471212
+      yes, 36, ags used 43 = 43
+   (1) can we show that 6 NL 2?
+        a. margin 0.03537949803447238
+      yes, 69, ags used 43 = 69
+   (1) can we show that 7 NL 4?
+        a. margin 0.006954944058058743
+      yes, 40, ags used 51 = 51
+   (1) can we show that 7 NL 2?
+        a. margin 0.12095554883580295
+      yes, 37, ags used 235 = 235
+      Best assertion(s) require sample: 43
+
+ALTERNATE OUTCOME PAIR: 7,4
+   (1) can we show that 6 NL 4?
+        a. margin 0.0910190504989421
+      yes, 37, ags used 43 = 43
+   (1) can we show that 6 NL 7?
+        a. margin 0.002116722104626545
+      yes, 55, ags used 235 = 235
+   (1) can we show that 2 NL 4?
+        a. margin -0.04777744179014143
+      no
+   (1) can we show that 2 NL 7?
+        a. margin -0.28102005846184874
+      no
+      Best assertion(s) require sample: 43
+
+RULE OUT PAIR STAGE ASN 103
+------------------------------------------------
+Alternate outcome cannot be ruled out: 6,2
+Full audit not possible
+PARTIAL audit sample size: 175
+------------------------------------------------
+Final set of assertions generated:
+6 NL 4 = 43 [rules out (7, 4), G = {0, 2}, O = set()]
+
+(6, 'AG', 2, 175)
+(6, 'AG', 0, 37)
+7 NL 4 = 103 [rules out (6, 4), G = {0, 4}, O = set()]
+
+6 NL 2 = 51 [rules out (2, 7), G = {0, 2, 3}, O = set()]
+6 NL 4 = 43 [rules out (2, 4), G = {0, 2}, O = set()]
+
+(5, 'AG', 4, 77)
+(6, 'AG', 4, 38)
+(5, 'AG', 0, 29)
+(5, 'AG', 3, 51)
+(5, 'AG', 2, 43)
+[6] are verified winners with these assertions.
+[2, 7] remain as potential winners in this audit.
+------------------------------------------------

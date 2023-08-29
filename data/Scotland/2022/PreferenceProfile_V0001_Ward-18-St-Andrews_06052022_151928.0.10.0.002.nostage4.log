@@ -1,0 +1,103 @@
+VALID BALLOTS 5048
+Winner 5
+Winner 1
+Computing AG relationships
+5 AG 2 = 172
+5 AG 3 = 125
+5 AG 4 = 71
+1 AG 3 = 367
+1 AG 4 = 93
+Ruling out candidates: [(3, 367), (4, 93)]
+STAGE 1 ASN (Ruling out candidates): 367
+ALTERNATE OUTCOME PAIR: 2,5
+   (1) can we show that 6 NL 5?
+        a. margin -0.37275488642366605
+      no
+   (1) can we show that 6 NL 2?
+        a. margin 0.008518225039619187
+      yes, 598, ags used 0 = 598
+   (1) can we show that 1 NL 5?
+        a. margin -0.14698890649762286
+      no
+   (1) can we show that 1 NL 2?
+        a. margin 0.0027733755942946914
+      yes, 102, ags used 93 = 102
+      Best assertion(s) require sample: 102
+
+ALTERNATE OUTCOME PAIR: 2,6
+   (1) can we show that 5 NL 6?
+        a. margin 0.025554675118858894
+      yes, 83, ags used 125 = 125
+   (1) can we show that 5 NL 2?
+        a. margin 0.06471209720021132
+      yes, 70, ags used 0 = 70
+   (1) can we show that 1 NL 6?
+        a. margin 0.0017828843106177938
+      yes, 5048, ags used 367 = 5048
+   (1) can we show that 1 NL 2?
+        a. margin 0.03750660327522448
+      yes, 57, ags used 93 = 93
+      Best assertion(s) require sample: 70
+
+ALTERNATE OUTCOME PAIR: 2,1
+   (1) can we show that 5 NL 1?
+        a. margin -0.02007395668251466
+      no
+   (1) can we show that 5 NL 2?
+        a. margin 0.030705229793977606
+      yes, 55, ags used 71 = 71
+   (1) can we show that 6 NL 1?
+        a. margin -0.35697305863708406
+      no
+   (1) can we show that 6 NL 2?
+        a. margin 0.004622292657157967
+      yes, 36, ags used 172 = 172
+      Best assertion(s) require sample: 71
+
+ALTERNATE OUTCOME PAIR: 5,6
+   (1) can we show that 2 NL 6?
+        a. margin -0.22952984680401445
+      no
+   (1) can we show that 2 NL 5?
+        a. margin -0.5399498151082935
+      no
+   (1) can we show that 1 NL 6?
+        a. margin -0.0037638668779717
+      no
+   (1) can we show that 1 NL 5?
+        a. margin -0.13048071843634435
+      no
+
+ALTERNATE OUTCOME PAIR: 6,1
+   (1) can we show that 2 NL 1?
+        a. margin -0.5266772319070258
+      no
+   (1) can we show that 2 NL 6?
+        a. margin -0.2369915478077127
+      no
+   (1) can we show that 5 NL 1?
+        a. margin 0.00884838880084482
+      yes, 576, ags used 172 = 576
+   (1) can we show that 5 NL 6?
+        a. margin 0.016310089804543182
+      yes, 99, ags used 125 = 125
+      Best assertion(s) require sample: 125
+
+RULE OUT PAIR STAGE ASN 125
+------------------------------------------------
+Alternate outcome cannot be ruled out: 5,6
+Full audit not possible
+PARTIAL audit sample size: 367
+------------------------------------------------
+Final set of assertions generated:
+1 NL 2 = 102 [rules out (2, 5), G = {3}, O = set()]
+(4, 'AG', 2, 125)
+(0, 'AG', 3, 93)
+5 NL 2 = 71 [rules out (2, 1), G = {3}, O = set()]
+5 NL 6 = 125 [rules out (6, 1), G = {2, 3}, O = set()]
+5 NL 2 = 70 [rules out (2, 6), G = set(), O = set()]
+(4, 'AG', 3, 71)
+(0, 'AG', 2, 367)
+[5] are verified winners with these assertions.
+[1, 6] remain as potential winners in this audit.
+------------------------------------------------

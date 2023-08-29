@@ -1,0 +1,84 @@
+VALID BALLOTS 4347
+73 ballot checks required to assert that first winner has a quota's worth of votes
+AUD TV 0.1345959595959596, ss 109
+AG*(4,3) = 47
+AG*(4,5) = 49
+AG*(1,3) = 54
+AG*(1,5) = 53
+AG*(2,3) = 127
+AG*(2,5) = 84
+AG*(4,3) = 47
+AG*(4,5) = 49
+NL(4,5) = 43, AG*'s used 47
+NL(4,3) = 47, AG*'s used 0
+NL(4,2) = 816, AG*'s used 49
+Max in loop 816, 0.1345959595959596
+AUD TV 0.1845959595959596, ss 51
+AG*(4,3) = 50
+AG*(4,5) = 53
+AG*(1,3) = 54
+AG*(1,5) = 53
+AG*(2,3) = 138
+AG*(2,5) = 89
+AG*(4,3) = 50
+AG*(4,5) = 53
+NL(4,5) = 46, AG*'s used 50
+NL(4,3) = 50, AG*'s used 0
+NL(4,2) NOT POSSIBLE
+Max in loop inf, 0.1845959595959596
+Breaking out of inner loop inf > 816
+Sample size to show min tv of 0.0422979797979798 is 141
+AUD TV 0.1345959595959596, ss 109
+AG*(4,3) = 47
+AG*(4,5) = 49
+AG*(1,3) = 54
+AG*(1,5) = 53
+AG*(2,3) = 110
+AG*(2,5) = 76
+AG*(4,3) = 47
+AG*(4,5) = 49
+NL(4,5) = 42, AG*'s used 47
+NL(4,3) = 47, AG*'s used 0
+NL(4,2) = 735, AG*'s used 49
+Max in loop 735, 0.1345959595959596
+AUD TV 0.1845959595959596, ss 51
+AG*(4,3) = 49
+AG*(4,5) = 53
+AG*(1,3) = 54
+AG*(1,5) = 53
+AG*(2,3) = 118
+AG*(2,5) = 80
+AG*(4,3) = 49
+AG*(4,5) = 53
+NL(4,5) = 46, AG*'s used 49
+NL(4,3) = 49, AG*'s used 0
+NL(4,2) NOT POSSIBLE
+Max in loop inf, 0.1845959595959596
+Breaking out of inner loop inf > 735
+New mintv = 0.0922979797979798
+Sample size required for audit is 735 ballots
+------------------------------------------------
+Assertion set BEFORE filtering:
+(3, 'NL', 1, 735)
+(3, 'NL', 4, 47)
+(0, 'QT', None, 73)
+(0, 'MT', None, (0.1345959595959596, 109))
+(0, 'LT', None, (0.0422979797979798, 141))
+(3, 'NL', 2, 47)
+(3, 'AG*', 4, 49)
+(3, 'AG*', 2, 47)
+------------------------------------------------
+Final set of assertions AFTER filtering:
+(3, 'NL', 1, 735)
+(3, 'NL', 4, 47)
+(0, 'QT', None, 73)
+(0, 'MT', None, (0.1345959595959596, 109))
+(0, 'LT', None, (0.0422979797979798, 141))
+(3, 'NL', 2, 47)
+(3, 'AG*', 4, 49)
+(3, 'AG*', 2, 47)
+------------------------------------------------
+Explanations for AG* inclusion:
+   Explanation for (3, 'AG*', 4, 49): []
+   Explanation for (3, 'AG*', 2, 47): []
+------------------------------------------------

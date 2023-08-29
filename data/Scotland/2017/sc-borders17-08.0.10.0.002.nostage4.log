@@ -1,0 +1,58 @@
+VALID BALLOTS 4326
+Winner 8
+Winner 6
+Computing AG relationships
+2 AG 5 = 108
+2 AG 7 = 208
+4 AG 3 = 59
+4 AG 5 = 42
+4 AG 7 = 80
+4 AG 1 = 468
+4 AG 2 = 235
+8 AG 3 = 36
+8 AG 5 = 32
+8 AG 7 = 51
+8 AG 1 = 82
+8 AG 2 = 86
+6 AG 5 = 91
+Ruling out candidates: [(3, 59), (5, 42), (7, 80), (1, 468), (2, 235)]
+STAGE 1 ASN (Ruling out candidates): 468
+ALTERNATE OUTCOME PAIR: 4,8
+   (1) can we show that 6 NL 8?
+        a. margin -0.3122977346278325
+      no
+   (1) can we show that 6 NL 4?
+        a. margin -0.26421636615811195
+      no
+
+ALTERNATE OUTCOME PAIR: 4,6
+   (1) can we show that 8 NL 6?
+        a. margin 0.008938203112960785
+      yes, 565, ags used 86 = 565
+   (1) can we show that 8 NL 4?
+        a. margin -0.013022037293882516
+      no
+      Best assertion(s) require sample: 565
+
+RULE OUT PAIR STAGE ASN 565
+------------------------------------------------
+Alternate outcome cannot be ruled out: 4,8
+Full audit not possible
+PARTIAL audit sample size: 565
+------------------------------------------------
+Final set of assertions generated:
+(7, 'AG', 2, 36)
+(7, 'AG', 0, 82)
+(3, 'AG', 1, 235)
+(7, 'AG', 6, 51)
+(3, 'AG', 6, 80)
+(7, 'AG', 1, 86)
+(7, 'AG', 4, 32)
+(3, 'AG', 2, 59)
+(3, 'AG', 0, 468)
+8 NL 6 = 565 [rules out (4, 6), G = {0, 1, 2, 4, 6}, O = set()]
+
+(3, 'AG', 4, 42)
+[8] are verified winners with these assertions.
+[4, 6] remain as potential winners in this audit.
+------------------------------------------------

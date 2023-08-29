@@ -1,0 +1,130 @@
+VALID BALLOTS 8680
+Winner 1
+Winner 6
+Computing AG relationships
+4 AG 3 = 506
+4 AG 5 = 84
+4 AG 9 = 608
+4 AG 8 = 294
+10 AG 3 = 41
+10 AG 5 = 31
+10 AG 9 = 46
+10 AG 2 = 67
+10 AG 7 = 72
+10 AG 8 = 44
+1 AG 3 = 27
+1 AG 5 = 23
+1 AG 9 = 28
+1 AG 2 = 37
+1 AG 7 = 39
+1 AG 8 = 29
+1 AG 4 = 149
+6 AG 3 = 35
+6 AG 5 = 31
+6 AG 9 = 34
+6 AG 2 = 47
+6 AG 7 = 53
+6 AG 8 = 41
+Ruling out candidates: [(3, 35), (5, 31), (9, 34), (2, 47), (7, 53), (8, 41)]
+STAGE 1 ASN (Ruling out candidates): 53
+ALTERNATE OUTCOME PAIR: 4,10
+   (1) can we show that 1 NL 10?
+        a. margin -0.012365591397849984
+      no
+   (1) can we show that 1 NL 4?
+        a. margin 0.050960061443932725
+      yes, 65, ags used 39 = 65
+   (1) can we show that 6 NL 10?
+        a. margin -0.17288786482335017
+      no
+   (1) can we show that 6 NL 4?
+        a. margin 0.07461597542242604
+      yes, 61, ags used 149 = 149
+      Best assertion(s) require sample: 65
+
+ALTERNATE OUTCOME PAIR: 4,1
+   (1) can we show that 10 NL 1?
+        a. margin -0.12972350230414842
+      no
+   (1) can we show that 10 NL 4?
+        a. margin -0.014208909370201028
+      no
+   (1) can we show that 6 NL 1?
+        a. margin -0.2056835637480816
+      no
+   (1) can we show that 6 NL 4?
+        a. margin -0.1009600614439351
+      no
+
+ALTERNATE OUTCOME PAIR: 4,6
+   (1) can we show that 10 NL 6?
+        a. margin -0.06897081413210482
+      no
+   (1) can we show that 10 NL 4?
+        a. margin 0.07849462365591253
+      yes, 58, ags used 149 = 149
+   (1) can we show that 1 NL 6?
+        a. margin -0.01125192012288756
+      no
+   (1) can we show that 1 NL 4?
+        a. margin 0.03759600614439318
+      yes, 81, ags used 39 = 81
+      Best assertion(s) require sample: 81
+
+ALTERNATE OUTCOME PAIR: 10,1
+   (1) can we show that 4 NL 1?
+        a. margin -0.2554915514592946
+      no
+   (1) can we show that 4 NL 10?
+        a. margin -0.19447004608295082
+      no
+   (1) can we show that 6 NL 1?
+        a. margin -0.18694316436252023
+      no
+   (1) can we show that 6 NL 10?
+        a. margin -0.1493471582181285
+      no
+
+ALTERNATE OUTCOME PAIR: 10,6
+   (1) can we show that 4 NL 6?
+        a. margin -0.17496159754224339
+      no
+   (1) can we show that 4 NL 10?
+        a. margin -0.20568356374808106
+      no
+   (1) can we show that 1 NL 6?
+        a. margin 0.043010752688172005
+      yes, 106, ags used 149 = 149
+   (1) can we show that 1 NL 10?
+        a. margin 0.037634408602149616
+      yes, 121, ags used 149 = 149
+      Best assertion(s) require sample: 149
+
+RULE OUT PAIR STAGE ASN 149
+------------------------------------------------
+Alternate outcome cannot be ruled out: 4,1
+Alternate outcome cannot be ruled out: 10,1
+Full audit not possible
+PARTIAL audit sample size: 149
+------------------------------------------------
+Final set of assertions generated:
+(5, 'AG', 4, 31)
+(5, 'AG', 1, 47)
+(5, 'AG', 8, 34)
+(0, 'AG', 8, 28)
+(5, 'AG', 2, 35)
+1 NL 6 = 149 [rules out (10, 6), G = {1, 2, 3, 4, 6, 7, 8}, O = set()]
+
+(0, 'AG', 2, 27)
+(0, 'AG', 4, 23)
+1 NL 4 = 65 [rules out (4, 10), G = {1, 2, 4, 6, 7, 8}, O = set()]
+1 NL 4 = 81 [rules out (4, 6), G = {1, 2, 4, 6, 7, 8}, O = set()]
+(0, 'AG', 3, 149)
+(0, 'AG', 7, 29)
+(0, 'AG', 6, 39)
+(5, 'AG', 7, 41)
+(5, 'AG', 6, 53)
+(0, 'AG', 1, 37)
+[1] are verified winners with these assertions.
+[10, 4, 6] remain as potential winners in this audit.
+------------------------------------------------

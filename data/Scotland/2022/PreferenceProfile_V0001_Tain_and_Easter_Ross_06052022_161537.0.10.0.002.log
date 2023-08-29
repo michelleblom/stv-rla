@@ -1,0 +1,130 @@
+VALID BALLOTS 3434
+Winner 4
+Winner 1
+Computing AG relationships
+4 AG 2 = 379
+1 AG 2 = 144
+Ruling out candidates: [(2, 379)]
+STAGE 1 ASN (Ruling out candidates): 379
+ALTERNATE OUTCOME PAIR: 5,4
+   (1) can we show that 1 NL 4?
+        a. margin -0.13579887400504775
+      no
+   (1) can we show that 1 NL 5?
+        a. margin -0.12434478741991872
+      no
+   (1) can we show that 1 NL 4?
+        a. margin -0.13579887400504775
+      no
+   (1) can we show that 1 NL 5?
+        a. margin -0.12434478741991872
+      no
+
+ALTERNATE OUTCOME PAIR: 5,1
+   (1) can we show that 4 NL 1?
+        a. margin -0.13511939429237052
+      no
+   (1) can we show that 4 NL 5?
+        a. margin -0.1105610561056104
+      no
+
+ALTERNATE OUTCOME PAIR: 5,1
+   (1) can we show that 4 NL 1?
+        a. margin -0.13511939429237052
+      no
+   (1) can we show that 4 NL 5?
+        a. margin -0.1105610561056104
+      no
+
+RULE OUT PAIR STAGE ASN 0
+------------------------------------------------
+EXAMINING WAYS TO REDUCE COST OF AUDIT
+ALTERNATE OUTCOME PAIR: 2,5
+   (1) can we show that 4 NL 5?
+        a. margin -0.1660842554843719
+      no
+   (1) can we show that 4 NL 2?
+        a. margin 0.01892836342457782
+      yes, 106, ags used 144 = 144
+   (1) can we show that 1 NL 5?
+        a. margin -0.15395068918656551
+      no
+   (1) can we show that 1 NL 2?
+        a. margin 0.04649582605319358
+      yes, 97, ags used 0 = 97
+   (1) can we show that 1 NL 5?
+        a. margin -0.15395068918656551
+      no
+   (1) can we show that 1 NL 2?
+        a. margin 0.04649582605319358
+      yes, 97, ags used 0 = 97
+      Best assertion(s) require sample: 97
+
+ALTERNATE OUTCOME PAIR: 2,4
+   (1) can we show that 5 NL 4?
+        a. margin -0.26062900407687817
+      no
+   (1) can we show that 5 NL 2?
+        a. margin -0.007474276839448901
+      no
+   (1) can we show that 1 NL 4?
+        a. margin -0.15249466123082878
+      no
+   (1) can we show that 1 NL 2?
+        a. margin 0.04969908755581409
+      yes, 91, ags used 0 = 91
+   (1) can we show that 1 NL 4?
+        a. margin -0.15249466123082878
+      no
+   (1) can we show that 1 NL 2?
+        a. margin 0.04969908755581409
+      yes, 91, ags used 0 = 91
+      Best assertion(s) require sample: 91
+
+ALTERNATE OUTCOME PAIR: 2,1
+   (1) can we show that 5 NL 1?
+        a. margin -0.22277227722772286
+      no
+   (1) can we show that 5 NL 2?
+        a. margin 0.0006794797126770113
+      yes, 3434, ags used 379 = 3434
+   (1) can we show that 4 NL 1?
+        a. margin -0.1722966414288487
+      no
+   (1) can we show that 4 NL 2?
+        a. margin 0.017278198408075873
+      yes, 259, ags used 0 = 259
+      Best assertion(s) require sample: 259
+
+ALTERNATE OUTCOME PAIR: 2,1
+   (1) can we show that 5 NL 1?
+        a. margin -0.22277227722772286
+      no
+   (1) can we show that 5 NL 2?
+        a. margin 0.0006794797126770113
+      yes, 3434, ags used 379 = 3434
+   (1) can we show that 4 NL 1?
+        a. margin -0.1722966414288487
+      no
+   (1) can we show that 4 NL 2?
+        a. margin 0.017278198408075873
+      yes, 259, ags used 0 = 259
+      Best assertion(s) require sample: 259
+
+1 ruled out by pairs, sample size 259
+STAGE 1 ASN NOW 0
+NEW RULE OUT PAIR STAGE ASN 259
+------------------------------------------------
+Alternate outcome cannot be ruled out: 5,4
+Alternate outcome cannot be ruled out: 5,1
+Alternate outcome cannot be ruled out: 5,1
+Full audit not possible
+PARTIAL audit sample size: 259
+------------------------------------------------
+Final set of assertions generated:
+1 NL 2 = 91 [rules out (2, 4), G = set(), O = set()]
+1 NL 2 = 97 [rules out (2, 5), G = set(), O = set()]
+4 NL 2 = 259 [rules out (2, 1), G = set(), O = set()]
+[] are verified winners with these assertions.
+[1, 4, 5] remain as potential winners in this audit.
+------------------------------------------------

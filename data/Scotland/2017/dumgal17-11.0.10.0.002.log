@@ -1,0 +1,97 @@
+VALID BALLOTS 5470
+Winner 2
+Winner 4
+Computing AG relationships
+3 AG 1 = 191
+2 AG 1 = 97
+Ruling out candidates: [(1, 191)]
+STAGE 1 ASN (Ruling out candidates): 191
+ALTERNATE OUTCOME PAIR: 5,3
+   (1) can we show that 2 NL 3?
+        a. margin -0.037294332723948775
+      no
+   (1) can we show that 2 NL 5?
+        a. margin -0.023644119439366174
+      no
+   (1) can we show that 4 NL 3?
+        a. margin -0.31895185862279096
+      no
+   (1) can we show that 4 NL 5?
+        a. margin -0.06879951249238281
+      no
+
+ALTERNATE OUTCOME PAIR: 5,2
+   (1) can we show that 3 NL 2?
+        a. margin -0.09634369287020106
+      no
+   (1) can we show that 3 NL 5?
+        a. margin -0.052833638025594154
+      no
+   (1) can we show that 4 NL 2?
+        a. margin -0.3109689213893966
+      no
+   (1) can we show that 4 NL 5?
+        a. margin -0.07026203534430242
+      no
+
+ALTERNATE OUTCOME PAIR: 5,4
+   (1) can we show that 3 NL 4?
+        a. margin -0.027666057282145107
+      no
+   (1) can we show that 3 NL 5?
+        a. margin -0.017367458866545116
+      no
+   (1) can we show that 2 NL 4?
+        a. margin -0.0015843997562462464
+      no
+   (1) can we show that 2 NL 5?
+        a. margin 0.00042656916514305365
+      yes, 507, ags used 97 = 507
+      Best assertion(s) require sample: 507
+
+ALTERNATE OUTCOME PAIR: 3,2
+   (1) can we show that 5 NL 2?
+        a. margin -0.29817184643510053
+      no
+   (1) can we show that 5 NL 3?
+        a. margin -0.290127970749543
+      no
+   (1) can we show that 4 NL 2?
+        a. margin -0.25240706886045094
+      no
+   (1) can we show that 4 NL 3?
+        a. margin -0.2522851919561243
+      no
+
+ALTERNATE OUTCOME PAIR: 3,4
+   (1) can we show that 5 NL 4?
+        a. margin -0.10816575258988415
+      no
+   (1) can we show that 5 NL 3?
+        a. margin -0.3641072516758075
+      no
+   (1) can we show that 2 NL 4?
+        a. margin -0.01523461304082907
+      no
+   (1) can we show that 2 NL 3?
+        a. margin -0.038391224862888595
+      no
+
+RULE OUT PAIR STAGE ASN 507
+------------------------------------------------
+EXAMINING WAYS TO REDUCE COST OF AUDIT
+------------------------------------------------
+Alternate outcome cannot be ruled out: 5,3
+Alternate outcome cannot be ruled out: 5,2
+Alternate outcome cannot be ruled out: 3,2
+Alternate outcome cannot be ruled out: 3,4
+Full audit not possible
+PARTIAL audit sample size: 507
+------------------------------------------------
+Final set of assertions generated:
+2 NL 5 = 507 [rules out (5, 4), G = {0}, O = set()]
+(1, 'AG', 0, 97)
+(2, 'AG', 0, 191)
+[] are verified winners with these assertions.
+[2, 3, 4, 5] remain as potential winners in this audit.
+------------------------------------------------

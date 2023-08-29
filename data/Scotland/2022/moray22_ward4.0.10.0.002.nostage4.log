@@ -1,0 +1,91 @@
+VALID BALLOTS 3996
+35 ballot checks required to assert that first winner has a quota's worth of votes
+AUD TV 0.21163522012578617, ss 91
+AG*(4,1) = 361
+AG*(4,2) = 77
+AG*(4,5) = 97
+AG*(1,2) = 287
+AG*(1,5) = 3994
+AG*(3,2) = 38
+AG*(3,5) = 49
+AG*(4,1) = 361
+AG*(4,2) = 77
+AG*(4,5) = 97
+NL(4,2) = 77, AG*'s used 0
+NL(4,5) = 82, AG*'s used 77
+NL(4,1) = 96, AG*'s used 97
+Max in loop 97, 0.21163522012578617
+AUD TV 0.26163522012578616, ss 42
+AG*(4,1) = 398
+AG*(4,2) = 94
+AG*(4,5) = 121
+AG*(1,2) = 1242
+AG*(3,2) = 38
+AG*(3,5) = 49
+AG*(4,1) = 398
+AG*(4,2) = 94
+AG*(4,5) = 121
+NL(4,2) = 94, AG*'s used 0
+NL(4,5) = 99, AG*'s used 94
+NL(4,1) = 99, AG*'s used 121
+Max in loop 121, 0.26163522012578616
+Breaking out of inner loop 121 > 97
+Sample size to show min tv of 0.08081761006289308 is 65
+AUD TV 0.21163522012578617, ss 91
+AG*(4,1) = 334
+AG*(4,2) = 76
+AG*(4,5) = 95
+AG*(1,2) = 275
+AG*(1,5) = 3996
+AG*(3,2) = 38
+AG*(3,5) = 49
+AG*(4,1) = 334
+AG*(4,2) = 76
+AG*(4,5) = 95
+NL(4,2) = 76, AG*'s used 0
+NL(4,5) = 80, AG*'s used 76
+NL(4,1) = 89, AG*'s used 95
+Max in loop 95, 0.21163522012578617
+AUD TV 0.26163522012578616, ss 42
+AG*(4,1) = 364
+AG*(4,2) = 92
+AG*(4,5) = 118
+AG*(1,2) = 987
+AG*(3,2) = 38
+AG*(3,5) = 49
+AG*(4,1) = 364
+AG*(4,2) = 92
+AG*(4,5) = 118
+NL(4,2) = 92, AG*'s used 0
+NL(4,5) = 96, AG*'s used 92
+NL(4,1) = 91, AG*'s used 118
+Max in loop 118, 0.26163522012578616
+Breaking out of inner loop 118 > 95
+New mintv = 0.13081761006289308
+Sample size to show min tv of 0.13081761006289308 is 160
+Sample size required for audit is 95 ballots
+------------------------------------------------
+Assertion set BEFORE filtering:
+(2, 'MT', None, (0.21163522012578617, 91))
+(2, 'LT', None, (0.08081761006289308, 65))
+(3, 'NL', 1, 76)
+(3, 'NL', 0, 95)
+(3, 'AG*', 1, 76)
+(2, 'QT', None, 35)
+(3, 'NL', 4, 80)
+(3, 'AG*', 4, 95)
+------------------------------------------------
+Final set of assertions AFTER filtering:
+(2, 'MT', None, (0.21163522012578617, 91))
+(2, 'LT', None, (0.08081761006289308, 65))
+(3, 'NL', 1, 76)
+(3, 'NL', 0, 95)
+(3, 'AG*', 1, 76)
+(2, 'QT', None, 35)
+(3, 'NL', 4, 80)
+(3, 'AG*', 4, 95)
+------------------------------------------------
+Explanations for AG* inclusion:
+   Explanation for (3, 'AG*', 1, 76): []
+   Explanation for (3, 'AG*', 4, 95): []
+------------------------------------------------

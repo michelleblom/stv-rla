@@ -1,0 +1,223 @@
+VALID BALLOTS 5931
+Winner 5
+Winner 1
+Computing AG relationships
+4 AG 6 = 76
+4 AG 7 = 219
+5 AG 6 = 30
+5 AG 7 = 39
+5 AG 8 = 166
+2 AG 6 = 363
+1 AG 6 = 32
+1 AG 7 = 41
+1 AG 8 = 229
+Ruling out candidates: [(6, 32), (7, 41), (8, 229)]
+STAGE 1 ASN (Ruling out candidates): 229
+ALTERNATE OUTCOME PAIR: 3,4
+   (1) can we show that 5 NL 4?
+        a. margin -0.10127578261113945
+      no
+   (1) can we show that 5 NL 3?
+        a. margin -0.055583656494126776
+      no
+   (1) can we show that 2 NL 4?
+        a. margin -0.4103861068959702
+      no
+   (1) can we show that 2 NL 3?
+        a. margin -0.06384533243410262
+      no
+   (1) can we show that 1 NL 4?
+        a. margin 0.0008992300342836046
+      yes, 5931, ags used 229 = 5931
+   (1) can we show that 1 NL 3?
+        a. margin -0.05743831843983549
+      no
+      Best assertion(s) require sample: 5931
+
+ALTERNATE OUTCOME PAIR: 3,5
+   (1) can we show that 4 NL 5?
+        a. margin -0.1650087112909564
+      no
+   (1) can we show that 4 NL 3?
+        a. margin -0.1581520822795477
+      no
+   (1) can we show that 2 NL 5?
+        a. margin -0.43758781543303527
+      no
+   (1) can we show that 2 NL 3?
+        a. margin -0.05743831843983749
+      no
+   (1) can we show that 1 NL 5?
+        a. margin -0.1376383971224634
+      no
+   (1) can we show that 1 NL 3?
+        a. margin -0.05496543584555813
+      no
+
+ALTERNATE OUTCOME PAIR: 3,2
+   (1) can we show that 4 NL 2?
+        a. margin -0.12341932220536223
+      no
+   (1) can we show that 4 NL 3?
+        a. margin -0.124374754116788
+      no
+   (1) can we show that 5 NL 2?
+        a. margin -0.021469117068510624
+      no
+   (1) can we show that 5 NL 3?
+        a. margin -0.017928398808520818
+      no
+   (1) can we show that 1 NL 2?
+        a. margin -0.020457483279940458
+      no
+   (1) can we show that 1 NL 3?
+        a. margin -0.021412915191366677
+      no
+
+ALTERNATE OUTCOME PAIR: 3,1
+   (1) can we show that 4 NL 1?
+        a. margin -0.27746866745349297
+      no
+   (1) can we show that 4 NL 3?
+        a. margin -0.15848929354240426
+      no
+   (1) can we show that 5 NL 1?
+        a. margin -0.06272129489124934
+      no
+   (1) can we show that 5 NL 3?
+        a. margin -0.05226774574270776
+      no
+   (1) can we show that 2 NL 1?
+        a. margin -0.4430955993930198
+      no
+   (1) can we show that 2 NL 3?
+        a. margin -0.060360816051256094
+      no
+
+ALTERNATE OUTCOME PAIR: 4,5
+   (1) can we show that 3 NL 5?
+        a. margin -0.42173888607879395
+      no
+   (1) can we show that 3 NL 4?
+        a. margin -0.378126229416061
+      no
+   (1) can we show that 2 NL 5?
+        a. margin -0.39616703197886693
+      no
+   (1) can we show that 2 NL 4?
+        a. margin -0.346821783847579
+      no
+   (1) can we show that 1 NL 5?
+        a. margin -0.10723318158826689
+      no
+   (1) can we show that 1 NL 4?
+        a. margin 0.008936098465687214
+      yes, 235, ags used 229 = 235
+      Best assertion(s) require sample: 235
+
+ALTERNATE OUTCOME PAIR: 4,2
+   (1) can we show that 3 NL 2?
+        a. margin -0.1536559321081319
+      no
+   (1) can we show that 3 NL 4?
+        a. margin -0.44129713932445336
+      no
+   (1) can we show that 5 NL 2?
+        a. margin -0.046928567414151634
+      no
+   (1) can we show that 5 NL 4?
+        a. margin -0.09824088124543351
+      no
+   (1) can we show that 1 NL 2?
+        a. margin -0.0458607317484403
+      no
+   (1) can we show that 1 NL 4?
+        a. margin 0.002360478839993796
+      yes, 4508, ags used 229 = 4508
+      Best assertion(s) require sample: 4508
+
+ALTERNATE OUTCOME PAIR: 4,1
+   (1) can we show that 3 NL 1?
+        a. margin -0.4317428202101943
+      no
+   (1) can we show that 3 NL 4?
+        a. margin -0.37840723880177596
+      no
+   (1) can we show that 5 NL 1?
+        a. margin -0.05749452031697888
+      no
+   (1) can we show that 5 NL 4?
+        a. margin -0.051087506322711196
+      no
+   (1) can we show that 2 NL 1?
+        a. margin -0.40201202720170737
+      no
+   (1) can we show that 2 NL 4?
+        a. margin -0.34777721575900633
+      no
+
+ALTERNATE OUTCOME PAIR: 5,2
+   (1) can we show that 3 NL 2?
+        a. margin -0.150564828865284
+      no
+   (1) can we show that 3 NL 5?
+        a. margin -0.4644523127072443
+      no
+   (1) can we show that 4 NL 2?
+        a. margin -0.1471365143595793
+      no
+   (1) can we show that 4 NL 5?
+        a. margin -0.1660203450795259
+      no
+   (1) can we show that 1 NL 2?
+        a. margin -0.04479289608273018
+      no
+   (1) can we show that 1 NL 5?
+        a. margin -0.13775080087674862
+      no
+
+ALTERNATE OUTCOME PAIR: 2,1
+   (1) can we show that 3 NL 1?
+        a. margin -0.47181475861293765
+      no
+   (1) can we show that 3 NL 2?
+        a. margin -0.14618108244815375
+      no
+   (1) can we show that 4 NL 1?
+        a. margin -0.27522059236778507
+      no
+   (1) can we show that 4 NL 2?
+        a. margin -0.14539425616815593
+      no
+   (1) can we show that 5 NL 1?
+        a. margin -0.06013600854268519
+      no
+   (1) can we show that 5 NL 2?
+        a. margin -0.0433316472770191
+      no
+
+RULE OUT PAIR STAGE ASN 5931
+------------------------------------------------
+Alternate outcome cannot be ruled out: 3,5
+Alternate outcome cannot be ruled out: 3,2
+Alternate outcome cannot be ruled out: 3,1
+Alternate outcome cannot be ruled out: 4,1
+Alternate outcome cannot be ruled out: 5,2
+Alternate outcome cannot be ruled out: 2,1
+Full audit not possible
+PARTIAL audit sample size: 5931
+------------------------------------------------
+Final set of assertions generated:
+(4, 'AG', 5, 30)
+1 NL 4 = 5931 [rules out (3, 4), G = {5, 6, 7}, O = set()]
+
+(4, 'AG', 6, 39)
+(0, 'AG', 6, 41)
+(4, 'AG', 7, 166)
+(0, 'AG', 5, 32)
+1 NL 4 = 4508 [rules out (4, 2), G = {5, 6, 7}, O = set()]
+1 NL 4 = 235 [rules out (4, 5), G = {5, 6, 7}, O = set()]
+(0, 'AG', 7, 229)
+[] are verified winners with these assertions.
+[1, 2, 3, 4, 5] remain as potential winners in this audit.
+------------------------------------------------

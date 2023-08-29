@@ -1,0 +1,84 @@
+VALID BALLOTS 8869
+Winner 1
+Winner 2
+Computing AG relationships
+11 AG 3 = 110
+11 AG 6 = 1582
+1 AG 3 = 17
+1 AG 10 = 18
+1 AG 5 = 20
+1 AG 6 = 18
+1 AG 8 = 19
+1 AG 7 = 48
+1 AG 11 = 24
+9 AG 3 = 114
+9 AG 10 = 126
+9 AG 5 = 97
+9 AG 6 = 140
+2 AG 3 = 20
+2 AG 10 = 21
+2 AG 5 = 19
+2 AG 6 = 20
+2 AG 8 = 30
+2 AG 7 = 26
+2 AG 11 = 45
+2 AG 9 = 40
+Ruling out candidates: [(3, 20), (10, 21), (5, 20), (6, 20), (8, 30), (7, 48), (11, 45)]
+STAGE 1 ASN (Ruling out candidates): 48
+ALTERNATE OUTCOME PAIR: 1,9
+   (1) can we show that 2 NL 9?
+        a. margin 0.11985567707746148
+      yes, 33, ags used 30 = 33
+   (1) can we show that 2 NL 1?
+        a. margin -0.18750704701770238
+      no
+   (1) can we show that 2 NL 9?
+        a. margin 0.11985567707746148
+      yes, 33, ags used 30 = 33
+   (1) can we show that 2 NL 1?
+        a. margin -0.18750704701770238
+      no
+      Best assertion(s) require sample: 33
+
+ALTERNATE OUTCOME PAIR: 9,2
+   (1) can we show that 1 NL 2?
+        a. margin -0.0411169992859044
+      no
+   (1) can we show that 1 NL 9?
+        a. margin 0.009095350847519557
+      yes, 84, ags used 48 = 84
+      Best assertion(s) require sample: 84
+
+ALTERNATE OUTCOME PAIR: 9,2
+   (1) can we show that 1 NL 2?
+        a. margin -0.0411169992859044
+      no
+   (1) can we show that 1 NL 9?
+        a. margin 0.009095350847519557
+      yes, 84, ags used 48 = 84
+      Best assertion(s) require sample: 84
+
+RULE OUT PAIR STAGE ASN 84
+------------------------------------------------
+FULL audit sample size: 84
+------------------------------------------------
+Final set of assertions generated:
+(0, 'AG', 7, 19)
+(1, 'AG', 4, 19)
+(1, 'AG', 9, 21)
+(1, 'AG', 7, 30)
+(1, 'AG', 2, 20)
+(0, 'AG', 5, 18)
+1 NL 9 = 84 [rules out (9, 2), G = {2, 4, 5, 6, 7, 9, 10}, O = set()]
+(1, 'AG', 5, 20)
+(0, 'AG', 9, 18)
+(0, 'AG', 2, 17)
+(1, 'AG', 10, 45)
+(0, 'AG', 6, 48)
+(0, 'AG', 4, 20)
+2 NL 9 = 33 [rules out (1, 9), G = {2, 4, 5, 6, 7, 9}, O = set()]
+
+(0, 'AG', 10, 24)
+(1, 'AG', 6, 26)
+All winners are verified in audit.
+------------------------------------------------

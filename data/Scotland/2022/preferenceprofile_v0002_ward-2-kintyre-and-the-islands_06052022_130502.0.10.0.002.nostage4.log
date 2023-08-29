@@ -1,0 +1,98 @@
+VALID BALLOTS 2889
+Winner 4
+Winner 3
+Computing AG relationships
+4 AG 2 = 40
+4 AG 5 = 76
+3 AG 2 = 226
+3 AG 5 = 84
+Ruling out candidates: [(2, 226), (5, 84)]
+STAGE 1 ASN (Ruling out candidates): 226
+ALTERNATE OUTCOME PAIR: 6,4
+   (1) can we show that 1 NL 4?
+        a. margin -0.2058382369908851
+      no
+   (1) can we show that 1 NL 6?
+        a. margin -0.13522556824737508
+      no
+   (1) can we show that 3 NL 4?
+        a. margin -0.12691819545402105
+      no
+   (1) can we show that 3 NL 6?
+        a. margin -0.04672897196261672
+      no
+
+ALTERNATE OUTCOME PAIR: 6,1
+   (1) can we show that 4 NL 1?
+        a. margin -0.03403715241721472
+      no
+   (1) can we show that 4 NL 6?
+        a. margin -0.014076381677627925
+      no
+   (1) can we show that 3 NL 1?
+        a. margin -0.1302642206068998
+      no
+   (1) can we show that 3 NL 6?
+        a. margin -0.04684435214030236
+      no
+
+ALTERNATE OUTCOME PAIR: 6,3
+   (1) can we show that 4 NL 3?
+        a. margin -0.07534325602861425
+      no
+   (1) can we show that 4 NL 6?
+        a. margin -0.012576439367716574
+      no
+   (1) can we show that 1 NL 3?
+        a. margin -0.2187608168916585
+      no
+   (1) can we show that 1 NL 6?
+        a. margin -0.13603322949117325
+      no
+
+ALTERNATE OUTCOME PAIR: 4,1
+   (1) can we show that 6 NL 1?
+        a. margin -0.19937694704049824
+      no
+   (1) can we show that 6 NL 4?
+        a. margin -0.2272989500403828
+      no
+   (1) can we show that 3 NL 1?
+        a. margin -0.10984192915657065
+      no
+   (1) can we show that 3 NL 4?
+        a. margin -0.11976462443752167
+      no
+
+ALTERNATE OUTCOME PAIR: 1,3
+   (1) can we show that 6 NL 3?
+        a. margin -0.24333679473866388
+      no
+   (1) can we show that 6 NL 1?
+        a. margin -0.22510672666435916
+      no
+   (1) can we show that 4 NL 3?
+        a. margin -0.08018922349140412
+      no
+   (1) can we show that 4 NL 1?
+        a. margin -0.0376139379254643
+      no
+
+RULE OUT PAIR STAGE ASN 0
+------------------------------------------------
+Alternate outcome cannot be ruled out: 6,4
+Alternate outcome cannot be ruled out: 6,1
+Alternate outcome cannot be ruled out: 6,3
+Alternate outcome cannot be ruled out: 4,1
+Alternate outcome cannot be ruled out: 1,3
+Full audit not possible
+PARTIAL audit sample size: 226
+------------------------------------------------
+Final set of assertions generated:
+(3, 'AG', 4, 76)
+(2, 'AG', 4, 84)
+(3, 'AG', 1, 40)
+(2, 'AG', 1, 226)
+[] are verified winners with these assertions.
+[1, 3, 4, 6] remain as potential winners in this audit.
+------------------------------------------------

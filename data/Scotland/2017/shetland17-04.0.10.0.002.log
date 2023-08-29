@@ -1,0 +1,56 @@
+VALID BALLOTS 973
+Winner 4
+Winner 2
+Computing AG relationships
+4 AG 3 = 30
+4 AG 1 = 103
+2 AG 3 = 50
+Ruling out candidates: [(3, 50)]
+STAGE 1 ASN (Ruling out candidates): 50
+ALTERNATE OUTCOME PAIR: 4,1
+   (1) can we show that 2 NL 1?
+        a. margin 0.017814319972593307
+      yes, 110, ags used 50 = 110
+   (1) can we show that 2 NL 4?
+        a. margin -0.17985611510791366
+      no
+   (1) can we show that 2 NL 1?
+        a. margin 0.017814319972593307
+      yes, 110, ags used 50 = 110
+   (1) can we show that 2 NL 4?
+        a. margin -0.17985611510791366
+      no
+      Best assertion(s) require sample: 110
+
+ALTERNATE OUTCOME PAIR: 1,2
+   (1) can we show that 4 NL 2?
+        a. margin -0.04796163069544368
+      no
+   (1) can we show that 4 NL 1?
+        a. margin 0.06337786913326493
+      yes, 56, ags used 30 = 56
+      Best assertion(s) require sample: 56
+
+ALTERNATE OUTCOME PAIR: 1,2
+   (1) can we show that 4 NL 2?
+        a. margin -0.04796163069544368
+      no
+   (1) can we show that 4 NL 1?
+        a. margin 0.06337786913326493
+      yes, 56, ags used 30 = 56
+      Best assertion(s) require sample: 56
+
+RULE OUT PAIR STAGE ASN 110
+------------------------------------------------
+EXAMINING WAYS TO REDUCE COST OF AUDIT
+------------------------------------------------
+FULL audit sample size: 110
+------------------------------------------------
+Final set of assertions generated:
+(3, 'AG', 2, 30)
+4 NL 1 = 56 [rules out (1, 2), G = {2}, O = set()]
+2 NL 1 = 110 [rules out (4, 1), G = {2}, O = set()]
+
+(1, 'AG', 2, 50)
+All winners are verified in audit.
+------------------------------------------------

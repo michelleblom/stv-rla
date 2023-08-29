@@ -1,0 +1,237 @@
+VALID BALLOTS 7717
+Winner 1
+Winner 10
+Computing AG relationships
+2 AG 4 = 2286
+7 AG 4 = 43
+7 AG 6 = 100
+7 AG 3 = 99
+7 AG 8 = 105
+9 AG 4 = 45
+9 AG 6 = 67
+9 AG 3 = 844
+9 AG 8 = 64
+1 AG 4 = 31
+1 AG 6 = 54
+1 AG 3 = 52
+1 AG 8 = 57
+1 AG 2 = 85
+5 AG 4 = 32
+5 AG 6 = 58
+5 AG 3 = 50
+5 AG 8 = 69
+5 AG 2 = 450
+10 AG 4 = 39
+10 AG 6 = 56
+10 AG 3 = 170
+10 AG 8 = 47
+Ruling out candidates: [(4, 32), (6, 56), (3, 52), (8, 57), (2, 450)]
+STAGE 1 ASN (Ruling out candidates): 450
+ALTERNATE OUTCOME PAIR: 7,9
+   (1) can we show that 1 NL 9?
+        a. margin -0.13295322016327582
+      no
+   (1) can we show that 1 NL 7?
+        a. margin -0.0977495572545467
+      no
+   (1) can we show that 5 NL 9?
+        a. margin -0.14444300462183113
+      no
+   (1) can we show that 5 NL 7?
+        a. margin -0.15157012656040803
+      no
+   (1) can we show that 10 NL 9?
+        a. margin -0.10617251954559292
+      no
+   (1) can we show that 10 NL 7?
+        a. margin -0.25877931838797463
+      no
+
+ALTERNATE OUTCOME PAIR: 7,1
+   (1) can we show that 9 NL 1?
+        a. margin -0.26141419377132846
+      no
+   (1) can we show that 9 NL 7?
+        a. margin -0.23735475789382798
+      no
+   (1) can we show that 5 NL 1?
+        a. margin -0.14837372035765284
+      no
+   (1) can we show that 5 NL 7?
+        a. margin -0.11476826055030165
+      no
+   (1) can we show that 10 NL 1?
+        a. margin -0.23722517385858155
+      no
+   (1) can we show that 10 NL 7?
+        a. margin -0.21212906569910606
+      no
+
+ALTERNATE OUTCOME PAIR: 7,5
+   (1) can we show that 9 NL 5?
+        a. margin -0.19692453889680894
+      no
+   (1) can we show that 9 NL 7?
+        a. margin -0.2489741263876305
+      no
+   (1) can we show that 1 NL 5?
+        a. margin -0.07554749254891868
+      no
+   (1) can we show that 1 NL 7?
+        a. margin -0.07299900652239877
+      no
+   (1) can we show that 10 NL 5?
+        a. margin -0.18202237484342
+      no
+   (1) can we show that 10 NL 7?
+        a. margin -0.2259081681136893
+      no
+
+ALTERNATE OUTCOME PAIR: 7,10
+   (1) can we show that 9 NL 10?
+        a. margin -0.15126776381149942
+      no
+   (1) can we show that 9 NL 7?
+        a. margin -0.2804630469526155
+      no
+   (1) can we show that 1 NL 10?
+        a. margin -0.18362057794479758
+      no
+   (1) can we show that 1 NL 7?
+        a. margin -0.09304133730724518
+      no
+   (1) can we show that 5 NL 10?
+        a. margin -0.18353418858796655
+      no
+   (1) can we show that 5 NL 7?
+        a. margin -0.1486760831065621
+      no
+
+ALTERNATE OUTCOME PAIR: 9,1
+   (1) can we show that 7 NL 1?
+        a. margin -0.1427584121636225
+      no
+   (1) can we show that 7 NL 9?
+        a. margin -0.18940866485249075
+      no
+   (1) can we show that 5 NL 1?
+        a. margin -0.18297265776856342
+      no
+   (1) can we show that 5 NL 9?
+        a. margin -0.14046909420759457
+      no
+   (1) can we show that 10 NL 1?
+        a. margin -0.2797287374195503
+      no
+   (1) can we show that 10 NL 9?
+        a. margin -0.10107554749255021
+      no
+
+ALTERNATE OUTCOME PAIR: 9,5
+   (1) can we show that 7 NL 5?
+        a. margin -0.1377046347889953
+      no
+   (1) can we show that 7 NL 9?
+        a. margin -0.18288626841173272
+      no
+   (1) can we show that 1 NL 5?
+        a. margin -0.07338775862813829
+      no
+   (1) can we show that 1 NL 9?
+        a. margin -0.12254330266511315
+      no
+   (1) can we show that 10 NL 5?
+        a. margin -0.20884627013951873
+      no
+   (1) can we show that 10 NL 9?
+        a. margin -0.10569737808302127
+      no
+
+ALTERNATE OUTCOME PAIR: 9,10
+   (1) can we show that 7 NL 10?
+        a. margin -0.20236706837717744
+      no
+   (1) can we show that 7 NL 9?
+        a. margin -0.15709904539760822
+      no
+   (1) can we show that 1 NL 10?
+        a. margin -0.1468187119346912
+      no
+   (1) can we show that 1 NL 9?
+        a. margin -0.0973608051488073
+      no
+   (1) can we show that 5 NL 10?
+        a. margin -0.15061984363526537
+      no
+   (1) can we show that 5 NL 9?
+        a. margin -0.11433631376614528
+      no
+
+ALTERNATE OUTCOME PAIR: 1,5
+   (1) can we show that 7 NL 5?
+        a. margin -0.13666796250701996
+      no
+   (1) can we show that 7 NL 1?
+        a. margin -0.1340330871236679
+      no
+   (1) can we show that 9 NL 5?
+        a. margin -0.19882510474709558
+      no
+   (1) can we show that 9 NL 1?
+        a. margin -0.2737678717981956
+      no
+   (1) can we show that 10 NL 5?
+        a. margin -0.18370696730162905
+      no
+   (1) can we show that 10 NL 1?
+        a. margin -0.2510042762731637
+      no
+
+ALTERNATE OUTCOME PAIR: 5,10
+   (1) can we show that 7 NL 10?
+        a. margin -0.22707442443091175
+      no
+   (1) can we show that 7 NL 5?
+        a. margin -0.13610643168761716
+      no
+   (1) can we show that 9 NL 10?
+        a. margin -0.1377478294674116
+      no
+   (1) can we show that 9 NL 5?
+        a. margin -0.22141592155846446
+      no
+   (1) can we show that 1 NL 10?
+        a. margin -0.16876160856982592
+      no
+   (1) can we show that 1 NL 5?
+        a. margin -0.07140080342101973
+      no
+
+RULE OUT PAIR STAGE ASN 0
+------------------------------------------------
+Alternate outcome cannot be ruled out: 7,9
+Alternate outcome cannot be ruled out: 7,1
+Alternate outcome cannot be ruled out: 7,5
+Alternate outcome cannot be ruled out: 7,10
+Alternate outcome cannot be ruled out: 9,1
+Alternate outcome cannot be ruled out: 9,5
+Alternate outcome cannot be ruled out: 9,10
+Alternate outcome cannot be ruled out: 1,5
+Alternate outcome cannot be ruled out: 5,10
+Full audit not possible
+PARTIAL audit sample size: 450
+------------------------------------------------
+Final set of assertions generated:
+(0, 'AG', 2, 52)
+(4, 'AG', 1, 450)
+(4, 'AG', 3, 32)
+(0, 'AG', 5, 54)
+(0, 'AG', 3, 31)
+(9, 'AG', 7, 47)
+(4, 'AG', 2, 50)
+(0, 'AG', 7, 57)
+(0, 'AG', 1, 85)
+(9, 'AG', 5, 56)
+[] are verified winners with these assertions.
+[1, 5, 7, 9, 10] remain as potential winners in this audit.
+------------------------------------------------

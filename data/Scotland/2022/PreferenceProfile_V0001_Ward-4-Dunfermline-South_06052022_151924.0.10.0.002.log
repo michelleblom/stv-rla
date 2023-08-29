@@ -1,0 +1,590 @@
+VALID BALLOTS 7793
+Winner 2
+Winner 5
+Computing AG relationships
+8 AG 6 = 1070
+1 AG 9 = 37
+1 AG 6 = 51
+1 AG 4 = 312
+2 AG 9 = 36
+2 AG 6 = 48
+2 AG 4 = 185
+2 AG 10 = 852
+3 AG 9 = 40
+3 AG 6 = 34
+3 AG 10 = 90
+3 AG 8 = 110
+5 AG 9 = 40
+5 AG 6 = 36
+5 AG 7 = 60
+5 AG 10 = 116
+5 AG 8 = 258
+Ruling out candidates: [(9, 37), (6, 36), (4, 312), (10, 116), (8, 258)]
+STAGE 1 ASN (Ruling out candidates): 312
+ALTERNATE OUTCOME PAIR: 7,1
+   (1) can we show that 2 NL 1?
+        a. margin -0.04812010778904163
+      no
+   (1) can we show that 2 NL 7?
+        a. margin 0.08606013944137869
+      yes, 53, ags used 60 = 60
+   (1) can we show that 3 NL 1?
+        a. margin -0.11869626587963567
+      no
+   (1) can we show that 3 NL 7?
+        a. margin 0.12237478078617459
+      yes, 37, ags used 60 = 60
+   (1) can we show that 5 NL 1?
+        a. margin -0.1484237991359768
+      no
+   (1) can we show that 5 NL 7?
+        a. margin 0.07981521878608944
+      yes, 56, ags used 40 = 56
+      Best assertion(s) require sample: 56
+
+ALTERNATE OUTCOME PAIR: 7,2
+   (1) can we show that 1 NL 2?
+        a. margin -0.07305701698105149
+      no
+   (1) can we show that 1 NL 7?
+        a. margin 0.08028572650669363
+      yes, 57, ags used 60 = 60
+   (1) can we show that 3 NL 2?
+        a. margin -0.13956969930279317
+      no
+   (1) can we show that 3 NL 7?
+        a. margin 0.12254587450275833
+      yes, 37, ags used 60 = 60
+   (1) can we show that 5 NL 2?
+        a. margin -0.16899781855511364
+      no
+   (1) can we show that 5 NL 7?
+        a. margin 0.08109842166046444
+      yes, 55, ags used 40 = 55
+      Best assertion(s) require sample: 55
+
+ALTERNATE OUTCOME PAIR: 7,3
+   (1) can we show that 1 NL 3?
+        a. margin -0.21202788827580288
+      no
+   (1) can we show that 1 NL 7?
+        a. margin 0.08554685829162789
+      yes, 53, ags used 60 = 60
+   (1) can we show that 2 NL 3?
+        a. margin -0.19367808717224844
+      no
+   (1) can we show that 2 NL 7?
+        a. margin 0.09213396638008353
+      yes, 49, ags used 60 = 60
+   (1) can we show that 5 NL 3?
+        a. margin -0.12314470251080023
+      no
+   (1) can we show that 5 NL 7?
+        a. margin 0.08332263997604672
+      yes, 54, ags used 40 = 54
+      Best assertion(s) require sample: 54
+
+ALTERNATE OUTCOME PAIR: 7,5
+   (1) can we show that 1 NL 5?
+        a. margin -0.21442320030796902
+      no
+   (1) can we show that 1 NL 7?
+        a. margin -0.08712947517002612
+      no
+   (1) can we show that 2 NL 5?
+        a. margin -0.19611617263356007
+      no
+   (1) can we show that 2 NL 7?
+        a. margin -0.06873690063732574
+      no
+   (1) can we show that 3 NL 5?
+        a. margin -0.09226228666752256
+      no
+   (1) can we show that 3 NL 7?
+        a. margin 0.024851362333716986
+      yes, 184, ags used 110 = 184
+      Best assertion(s) require sample: 184
+
+ALTERNATE OUTCOME PAIR: 1,2
+   (1) can we show that 7 NL 2?
+        a. margin -0.3180632191282776
+      no
+   (1) can we show that 7 NL 1?
+        a. margin -0.2988151760126607
+      no
+   (1) can we show that 3 NL 2?
+        a. margin -0.09016638863937898
+      no
+   (1) can we show that 3 NL 1?
+        a. margin -0.07215877496899026
+      no
+   (1) can we show that 5 NL 2?
+        a. margin -0.08062791393986213
+      no
+   (1) can we show that 5 NL 1?
+        a. margin -0.06296248770264035
+      no
+
+ALTERNATE OUTCOME PAIR: 1,3
+   (1) can we show that 7 NL 3?
+        a. margin -0.33589973908208126
+      no
+   (1) can we show that 7 NL 1?
+        a. margin -0.3403909491423929
+      no
+   (1) can we show that 2 NL 3?
+        a. margin -0.19709996150391373
+      no
+   (1) can we show that 2 NL 1?
+        a. margin -0.04397108516189818
+      no
+   (1) can we show that 5 NL 3?
+        a. margin -0.07660721160015449
+      no
+   (1) can we show that 5 NL 1?
+        a. margin -0.10483767483639184
+      no
+
+ALTERNATE OUTCOME PAIR: 1,5
+   (1) can we show that 7 NL 5?
+        a. margin -0.3908208221053071
+      no
+   (1) can we show that 7 NL 1?
+        a. margin -0.3444116514820992
+      no
+   (1) can we show that 2 NL 5?
+        a. margin -0.20377261645066091
+      no
+   (1) can we show that 2 NL 1?
+        a. margin -0.04341503058300267
+      no
+   (1) can we show that 3 NL 5?
+        a. margin -0.08973865434792005
+      no
+   (1) can we show that 3 NL 1?
+        a. margin -0.11382009495701306
+      no
+
+ALTERNATE OUTCOME PAIR: 2,3
+   (1) can we show that 7 NL 3?
+        a. margin -0.3338038410539367
+      no
+   (1) can we show that 7 NL 2?
+        a. margin -0.361521023140425
+      no
+   (1) can we show that 1 NL 3?
+        a. margin -0.2140810128748024
+      no
+   (1) can we show that 1 NL 2?
+        a. margin -0.06749647119209601
+      no
+   (1) can we show that 5 NL 3?
+        a. margin -0.07481072757603036
+      no
+   (1) can we show that 5 NL 2?
+        a. margin -0.12404294452286269
+      no
+
+ALTERNATE OUTCOME PAIR: 3,5
+   (1) can we show that 7 NL 5?
+        a. margin -0.37734719192437594
+      no
+   (1) can we show that 7 NL 3?
+        a. margin -0.33778176996449805
+      no
+   (1) can we show that 1 NL 5?
+        a. margin -0.19453355575516518
+      no
+   (1) can we show that 1 NL 3?
+        a. margin -0.1915821891441043
+      no
+   (1) can we show that 2 NL 5?
+        a. margin -0.17622652808075645
+      no
+   (1) can we show that 2 NL 3?
+        a. margin -0.17340348175713283
+      no
+
+RULE OUT PAIR STAGE ASN 184
+------------------------------------------------
+EXAMINING WAYS TO REDUCE COST OF AUDIT
+ALTERNATE OUTCOME PAIR: 4,7
+   (1) can we show that 1 NL 7?
+        a. margin 0.08007185936096484
+      yes, 57, ags used 60 = 60
+   (1) can we show that 1 NL 4?
+        a. margin 0.016638863937721515
+      yes, 128, ags used 185 = 185
+   (1) can we show that 2 NL 7?
+        a. margin 0.08640232687454508
+      yes, 53, ags used 60 = 60
+   (1) can we show that 2 NL 4?
+        a. margin 0.02677616664527971
+      yes, 151, ags used 48 = 151
+   (1) can we show that 3 NL 7?
+        a. margin 0.12074939047863431
+      yes, 37, ags used 60 = 60
+   (1) can we show that 3 NL 4?
+        a. margin 0.03109628298900713
+      yes, 147, ags used 110 = 147
+   (1) can we show that 5 NL 7?
+        a. margin 0.07784764104538211
+      yes, 58, ags used 40 = 58
+   (1) can we show that 5 NL 4?
+        a. margin 0.11086872834595152
+      yes, 41, ags used 185 = 185
+      Best assertion(s) require sample: 58
+
+ALTERNATE OUTCOME PAIR: 4,1
+   (1) can we show that 7 NL 1?
+        a. margin -0.3412891911544548
+      no
+   (1) can we show that 7 NL 4?
+        a. margin -0.06257752684032802
+      no
+   (1) can we show that 2 NL 1?
+        a. margin -0.05509217673980982
+      no
+   (1) can we show that 2 NL 4?
+        a. margin 0.02647675264125926
+      yes, 152, ags used 48 = 152
+   (1) can we show that 3 NL 1?
+        a. margin -0.11407673553188813
+      no
+   (1) can we show that 3 NL 4?
+        a. margin 0.012960349031180263
+      yes, 83, ags used 110 = 110
+   (1) can we show that 5 NL 1?
+        a. margin -0.10492322169468393
+      no
+   (1) can we show that 5 NL 4?
+        a. margin 0.006929295521620249
+      yes, 32, ags used 185 = 185
+      Best assertion(s) require sample: 110
+
+ALTERNATE OUTCOME PAIR: 4,2
+   (1) can we show that 7 NL 2?
+        a. margin -0.3631464134479657
+      no
+   (1) can we show that 7 NL 4?
+        a. margin -0.06698319004234676
+      no
+   (1) can we show that 1 NL 2?
+        a. margin -0.07994353907352802
+      no
+   (1) can we show that 1 NL 4?
+        a. margin 0.01830702767440817
+      yes, 216, ags used 51 = 216
+   (1) can we show that 3 NL 2?
+        a. margin -0.1350357158133373
+      no
+   (1) can we show that 3 NL 4?
+        a. margin 0.009880662132681461
+      yes, 88, ags used 110 = 110
+   (1) can we show that 5 NL 2?
+        a. margin -0.12519782710979965
+      no
+   (1) can we show that 5 NL 4?
+        a. margin 0.005047264639204796
+      yes, 103, ags used 258 = 258
+      Best assertion(s) require sample: 110
+
+ALTERNATE OUTCOME PAIR: 4,3
+   (1) can we show that 7 NL 3?
+        a. margin -0.3429145814619954
+      no
+   (1) can we show that 7 NL 4?
+        a. margin -0.04640917062320937
+      no
+   (1) can we show that 1 NL 3?
+        a. margin -0.22310620642456902
+      no
+   (1) can we show that 1 NL 4?
+        a. margin 0.027203900936737302
+      yes, 152, ags used 51 = 152
+   (1) can we show that 2 NL 3?
+        a. margin -0.20642456905770123
+      no
+   (1) can we show that 2 NL 4?
+        a. margin 0.03661405534881634
+      yes, 114, ags used 48 = 114
+   (1) can we show that 5 NL 3?
+        a. margin -0.08280935882629714
+      no
+   (1) can we show that 5 NL 4?
+        a. margin 0.0023525386030192053
+      yes, 30, ags used 185 = 185
+      Best assertion(s) require sample: 114
+
+ALTERNATE OUTCOME PAIR: 4,5
+   (1) can we show that 7 NL 5?
+        a. margin -0.401599726250053
+      no
+   (1) can we show that 7 NL 4?
+        a. margin -0.05329569271568546
+      no
+   (1) can we show that 1 NL 5?
+        a. margin -0.23054878309594096
+      no
+   (1) can we show that 1 NL 4?
+        a. margin 0.02510800290859172
+      yes, 164, ags used 51 = 164
+   (1) can we show that 2 NL 5?
+        a. margin -0.21361050515419822
+      no
+   (1) can we show that 2 NL 4?
+        a. margin 0.03515975875785826
+      yes, 118, ags used 48 = 118
+   (1) can we show that 3 NL 5?
+        a. margin -0.09850720732281137
+      no
+   (1) can we show that 3 NL 4?
+        a. margin 0.03738397707344121
+      yes, 122, ags used 110 = 122
+      Best assertion(s) require sample: 118
+
+3 ruled out by pairs, sample size 118
+STAGE 1 ASN NOW 258
+NEW RULE OUT PAIR STAGE ASN 184
+ALTERNATE OUTCOME PAIR: 8,4
+   (1) can we show that 7 NL 4?
+        a. margin -0.053808973865434706
+      no
+   (1) can we show that 7 NL 8?
+        a. margin -0.08079900765644388
+      no
+   (1) can we show that 1 NL 4?
+        a. margin 0.01805038709953366
+      yes, 123, ags used 185 = 185
+   (1) can we show that 1 NL 8?
+        a. margin 0.022413276872406795
+      yes, 204, ags used 110 = 204
+   (1) can we show that 2 NL 4?
+        a. margin 0.02823046323623757
+      yes, 144, ags used 48 = 144
+   (1) can we show that 2 NL 8?
+        a. margin 0.026690619786988057
+      yes, 171, ags used 110 = 171
+   (1) can we show that 3 NL 4?
+        a. margin 0.13460798152187836
+      yes, 34, ags used 185 = 185
+   (1) can we show that 3 NL 8?
+        a. margin 0.04204628085033568
+      yes, 76, ags used 90 = 90
+   (1) can we show that 5 NL 4?
+        a. margin 0.14307712049274968
+      yes, 32, ags used 185 = 185
+   (1) can we show that 5 NL 8?
+        a. margin 0.018307027674408394
+      yes, 95, ags used 60 = 95
+      Best assertion(s) require sample: 90
+
+ALTERNATE OUTCOME PAIR: 8,7
+   (1) can we show that 4 NL 7?
+        a. margin -0.05346678643226843
+      no
+   (1) can we show that 4 NL 8?
+        a. margin -0.08439197570469237
+      no
+   (1) can we show that 1 NL 7?
+        a. margin 0.08481970999614985
+      yes, 54, ags used 60 = 60
+   (1) can we show that 1 NL 8?
+        a. margin 0.023225972026177155
+      yes, 197, ags used 110 = 197
+   (1) can we show that 2 NL 7?
+        a. margin 0.09136404465545955
+      yes, 50, ags used 60 = 60
+   (1) can we show that 2 NL 8?
+        a. margin 0.027546088369904353
+      yes, 166, ags used 110 = 166
+   (1) can we show that 3 NL 7?
+        a. margin 0.12365798366054981
+      yes, 37, ags used 60 = 60
+   (1) can we show that 3 NL 8?
+        a. margin 0.04277342914581439
+      yes, 75, ags used 90 = 90
+   (1) can we show that 5 NL 7?
+        a. margin 0.08199666367252667
+      yes, 55, ags used 40 = 55
+   (1) can we show that 5 NL 8?
+        a. margin 0.018349801103554553
+      yes, 64, ags used 110 = 110
+      Best assertion(s) require sample: 55
+
+ALTERNATE OUTCOME PAIR: 8,1
+   (1) can we show that 4 NL 1?
+        a. margin -0.34227298002480855
+      no
+   (1) can we show that 4 NL 8?
+        a. margin -0.08434920227554665
+      no
+   (1) can we show that 7 NL 1?
+        a. margin -0.3466786432268273
+      no
+   (1) can we show that 7 NL 8?
+        a. margin -0.08054236708156903
+      no
+   (1) can we show that 2 NL 1?
+        a. margin -0.048248428076479
+      no
+   (1) can we show that 2 NL 8?
+        a. margin 0.02669061978698828
+      yes, 171, ags used 110 = 171
+   (1) can we show that 3 NL 1?
+        a. margin -0.16104196073399202
+      no
+   (1) can we show that 3 NL 8?
+        a. margin 0.04277342914581439
+      yes, 75, ags used 90 = 90
+   (1) can we show that 5 NL 1?
+        a. margin -0.13974079301937636
+      no
+   (1) can we show that 5 NL 8?
+        a. margin 0.01856366824928357
+      yes, 95, ags used 60 = 95
+      Best assertion(s) require sample: 90
+
+ALTERNATE OUTCOME PAIR: 8,2
+   (1) can we show that 4 NL 2?
+        a. margin -0.36554172548013175
+      no
+   (1) can we show that 4 NL 8?
+        a. margin -0.0843064288464006
+      no
+   (1) can we show that 7 NL 2?
+        a. margin -0.36866418580777616
+      no
+   (1) can we show that 7 NL 8?
+        a. margin -0.08058514051071475
+      no
+   (1) can we show that 1 NL 2?
+        a. margin -0.07297147012275973
+      no
+   (1) can we show that 1 NL 8?
+        a. margin 0.02237050344326108
+      yes, 204, ags used 110 = 204
+   (1) can we show that 3 NL 2?
+        a. margin -0.18234312844860756
+      no
+   (1) can we show that 3 NL 8?
+        a. margin 0.04247401514179372
+      yes, 76, ags used 90 = 90
+   (1) can we show that 5 NL 2?
+        a. margin -0.1603148124385131
+      no
+   (1) can we show that 5 NL 8?
+        a. margin 0.018948629111595894
+      yes, 94, ags used 60 = 94
+      Best assertion(s) require sample: 90
+
+ALTERNATE OUTCOME PAIR: 8,3
+   (1) can we show that 4 NL 3?
+        a. margin -0.3661405534881732
+      no
+   (1) can we show that 4 NL 8?
+        a. margin -0.11835407844646895
+      no
+   (1) can we show that 7 NL 3?
+        a. margin -0.3304675135805636
+      no
+   (1) can we show that 7 NL 8?
+        a. margin -0.11488943068565816
+      no
+   (1) can we show that 1 NL 3?
+        a. margin -0.1970144146456222
+      no
+   (1) can we show that 1 NL 8?
+        a. margin 0.015141793917617496
+      yes, 302, ags used 258 = 302
+   (1) can we show that 2 NL 3?
+        a. margin -0.17883570725865094
+      no
+   (1) can we show that 2 NL 8?
+        a. margin 0.028144916377945473
+      yes, 162, ags used 258 = 258
+   (1) can we show that 5 NL 3?
+        a. margin -0.101330253646435
+      no
+   (1) can we show that 5 NL 8?
+        a. margin 0.03332050130458919
+      yes, 72, ags used 60 = 72
+      Best assertion(s) require sample: 72
+
+ALTERNATE OUTCOME PAIR: 8,5
+   (1) can we show that 4 NL 5?
+        a. margin -0.3872706274862051
+      no
+   (1) can we show that 4 NL 8?
+        a. margin -0.1052654091278502
+      no
+   (1) can we show that 7 NL 5?
+        a. margin -0.39471320415757694
+      no
+   (1) can we show that 7 NL 8?
+        a. margin -0.08811326404037823
+      no
+   (1) can we show that 1 NL 5?
+        a. margin -0.20980366996022093
+      no
+   (1) can we show that 1 NL 8?
+        a. margin 0.02977030668548597
+      yes, 154, ags used 110 = 154
+   (1) can we show that 2 NL 5?
+        a. margin -0.19153941571495803
+      no
+   (1) can we show that 2 NL 8?
+        a. margin 0.03417596988750504
+      yes, 134, ags used 110 = 134
+   (1) can we show that 3 NL 5?
+        a. margin -0.1342657940887123
+      no
+   (1) can we show that 3 NL 8?
+        a. margin 0.049488857521707175
+      yes, 88, ags used 40 = 88
+      Best assertion(s) require sample: 88
+
+7 ruled out by pairs, sample size 90
+STAGE 1 ASN NOW 116
+NEW RULE OUT PAIR STAGE ASN 184
+------------------------------------------------
+Alternate outcome cannot be ruled out: 1,2
+Alternate outcome cannot be ruled out: 1,3
+Alternate outcome cannot be ruled out: 1,5
+Alternate outcome cannot be ruled out: 2,3
+Alternate outcome cannot be ruled out: 3,5
+Full audit not possible
+PARTIAL audit sample size: 184
+------------------------------------------------
+Final set of assertions generated:
+(2, 'AG', 9, 90)
+(4, 'AG', 8, 40)
+2 NL 4 = 118 [rules out (4, 5), G = {8, 5}, O = set()]
+(4, 'AG', 9, 116)
+(4, 'AG', 5, 36)
+3 NL 8 = 90 [rules out (8, 1), G = {8, 9, 5}, O = set()]
+(2, 'AG', 5, 34)
+3 NL 4 = 110 [rules out (4, 1), G = {8, 9, 5, 7}, O = set()]
+(1, 'AG', 8, 36)
+5 NL 7 = 55 [rules out (7, 2), G = {8, 5}, O = set()]
+3 NL 8 = 88 [rules out (8, 5), G = {8, 5}, O = set()]
+3 NL 7 = 184 [rules out (7, 5), G = {8, 9, 5, 7}, O = set()]
+5 NL 7 = 54 [rules out (7, 3), G = {8, 5}, O = set()]
+(0, 'AG', 8, 37)
+(1, 'AG', 5, 48)
+3 NL 4 = 110 [rules out (4, 2), G = {8, 9, 5, 7}, O = set()]
+5 NL 7 = 58 [rules out (4, 7), G = {8, 5}, O = set()]
+
+5 NL 7 = 55 [rules out (8, 7), G = {8, 5}, O = set()]
+
+2 NL 4 = 114 [rules out (4, 3), G = {8, 5}, O = set()]
+(2, 'AG', 8, 40)
+(2, 'AG', 7, 110)
+(4, 'AG', 6, 60)
+3 NL 8 = 90 [rules out (8, 4), G = {8, 9, 5}, O = set()]
+3 NL 8 = 90 [rules out (8, 2), G = {8, 9, 5}, O = set()]
+5 NL 7 = 56 [rules out (7, 1), G = {8, 5}, O = set()]
+5 NL 8 = 72 [rules out (8, 3), G = {8, 5, 6}, O = set()]
+[] are verified winners with these assertions.
+[1, 2, 3, 5] remain as potential winners in this audit.
+------------------------------------------------

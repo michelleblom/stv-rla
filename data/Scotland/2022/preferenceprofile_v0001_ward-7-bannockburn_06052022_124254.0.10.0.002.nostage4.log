@@ -1,0 +1,233 @@
+VALID BALLOTS 3679
+Winner 4
+Winner 2
+Computing AG relationships
+6 AG 3 = 61
+6 AG 5 = 850
+1 AG 3 = 36
+1 AG 5 = 58
+1 AG 7 = 151
+4 AG 3 = 25
+4 AG 5 = 40
+4 AG 7 = 47
+4 AG 6 = 218
+2 AG 3 = 43
+2 AG 5 = 147
+2 AG 7 = 52
+2 AG 8 = 143
+Ruling out candidates: [(3, 36), (5, 58), (7, 52)]
+STAGE 1 ASN (Ruling out candidates): 58
+ALTERNATE OUTCOME PAIR: 8,6
+   (1) can we show that 1 NL 6?
+        a. margin 0.014224879949261915
+      yes, 314, ags used 218 = 314
+   (1) can we show that 1 NL 8?
+        a. margin 0.08217812811452396
+      yes, 55, ags used 143 = 143
+   (1) can we show that 4 NL 6?
+        a. margin 0.021110809096674732
+      yes, 150, ags used 47 = 150
+   (1) can we show that 4 NL 8?
+        a. margin 0.16000724834647095
+      yes, 28, ags used 143 = 143
+   (1) can we show that 2 NL 6?
+        a. margin -0.017214822868533042
+      no
+   (1) can we show that 2 NL 8?
+        a. margin 0.03406722841351839
+      yes, 115, ags used 52 = 115
+      Best assertion(s) require sample: 115
+
+ALTERNATE OUTCOME PAIR: 8,1
+   (1) can we show that 6 NL 1?
+        a. margin -0.22252423665851195
+      no
+   (1) can we show that 6 NL 8?
+        a. margin 0.04285584850955915
+      yes, 106, ags used 143 = 143
+   (1) can we show that 4 NL 1?
+        a. margin -0.04294645284044518
+      no
+   (1) can we show that 4 NL 8?
+        a. margin 0.16354081725106484
+      yes, 27, ags used 143 = 143
+   (1) can we show that 2 NL 1?
+        a. margin -0.17006432907492974
+      no
+   (1) can we show that 2 NL 8?
+        a. margin 0.03886925795053031
+      yes, 102, ags used 52 = 102
+      Best assertion(s) require sample: 102
+
+ALTERNATE OUTCOME PAIR: 8,4
+   (1) can we show that 6 NL 4?
+        a. margin -0.2598532209839629
+      no
+   (1) can we show that 6 NL 8?
+        a. margin 0.05164446860559968
+      yes, 88, ags used 143 = 143
+   (1) can we show that 1 NL 4?
+        a. margin -0.17921536649451852
+      no
+   (1) can we show that 1 NL 8?
+        a. margin 0.09332246081362716
+      yes, 48, ags used 143 = 143
+   (1) can we show that 2 NL 4?
+        a. margin -0.20077919724562832
+      no
+   (1) can we show that 2 NL 8?
+        a. margin 0.047476669384797
+      yes, 86, ags used 52 = 86
+      Best assertion(s) require sample: 86
+
+ALTERNATE OUTCOME PAIR: 8,2
+   (1) can we show that 6 NL 2?
+        a. margin -0.21210473860650503
+      no
+   (1) can we show that 6 NL 8?
+        a. margin -0.1426112168161633
+      no
+   (1) can we show that 1 NL 2?
+        a. margin -0.13056084080819008
+      no
+   (1) can we show that 1 NL 8?
+        a. margin -0.06432907492978068
+      no
+   (1) can we show that 4 NL 2?
+        a. margin 0.0009966476397584856
+      yes, 3679, ags used 218 = 3679
+   (1) can we show that 4 NL 8?
+        a. margin 0.01993295279514462
+      yes, 156, ags used 47 = 156
+      Best assertion(s) require sample: 156
+
+ALTERNATE OUTCOME PAIR: 6,1
+   (1) can we show that 8 NL 1?
+        a. margin -0.29564193168433417
+      no
+   (1) can we show that 8 NL 6?
+        a. margin -0.13817160460269984
+      no
+   (1) can we show that 4 NL 1?
+        a. margin -0.07148681706985516
+      no
+   (1) can we show that 4 NL 6?
+        a. margin 0.030805472501586273
+      yes, 114, ags used 47 = 114
+   (1) can we show that 2 NL 1?
+        a. margin -0.07184923439340363
+      no
+   (1) can we show that 2 NL 6?
+        a. margin 0.02056718311135297
+      yes, 191, ags used 147 = 191
+      Best assertion(s) require sample: 114
+
+ALTERNATE OUTCOME PAIR: 6,4
+   (1) can we show that 8 NL 4?
+        a. margin -0.3286219081272085
+      no
+   (1) can we show that 8 NL 6?
+        a. margin -0.18392679170064286
+      no
+   (1) can we show that 1 NL 4?
+        a. margin -0.17513817160460232
+      no
+   (1) can we show that 1 NL 6?
+        a. margin -0.009151037419588226
+      no
+   (1) can we show that 2 NL 4?
+        a. margin -0.10772854942466203
+      no
+   (1) can we show that 2 NL 6?
+        a. margin 0.019751744133370108
+      yes, 198, ags used 147 = 198
+      Best assertion(s) require sample: 198
+
+ALTERNATE OUTCOME PAIR: 6,2
+   (1) can we show that 8 NL 2?
+        a. margin -0.2515176225423572
+      no
+   (1) can we show that 8 NL 6?
+        a. margin -0.14686962036785334
+      no
+   (1) can we show that 1 NL 2?
+        a. margin -0.15457098849325002
+      no
+   (1) can we show that 1 NL 6?
+        a. margin 0.015040318927245222
+      yes, 297, ags used 218 = 297
+   (1) can we show that 4 NL 2?
+        a. margin -0.06369484461357244
+      no
+   (1) can we show that 4 NL 6?
+        a. margin 0.022651082721754312
+      yes, 143, ags used 47 = 143
+      Best assertion(s) require sample: 143
+
+ALTERNATE OUTCOME PAIR: 1,4
+   (1) can we show that 8 NL 4?
+        a. margin -0.32291383528132644
+      no
+   (1) can we show that 8 NL 1?
+        a. margin -0.2915647367944185
+      no
+   (1) can we show that 6 NL 4?
+        a. margin -0.2455377367038144
+      no
+   (1) can we show that 6 NL 1?
+        a. margin -0.20041677992207962
+      no
+   (1) can we show that 2 NL 4?
+        a. margin -0.10265470689498979
+      no
+   (1) can we show that 2 NL 1?
+        a. margin -0.06931231312856723
+      no
+
+ALTERNATE OUTCOME PAIR: 1,2
+   (1) can we show that 8 NL 2?
+        a. margin -0.2414605418138982
+      no
+   (1) can we show that 8 NL 1?
+        a. margin -0.31231312856754545
+      no
+   (1) can we show that 6 NL 2?
+        a. margin -0.223249071305608
+      no
+   (1) can we show that 6 NL 1?
+        a. margin -0.20694029174594497
+      no
+   (1) can we show that 4 NL 2?
+        a. margin -0.011597354353537703
+      no
+   (1) can we show that 4 NL 1?
+        a. margin -0.031711515810455504
+      no
+
+RULE OUT PAIR STAGE ASN 198
+------------------------------------------------
+Alternate outcome cannot be ruled out: 1,4
+Alternate outcome cannot be ruled out: 1,2
+Full audit not possible
+PARTIAL audit sample size: 198
+------------------------------------------------
+Final set of assertions generated:
+2 NL 8 = 86 [rules out (8, 4), G = {2, 6}, O = set()]
+2 NL 8 = 115 [rules out (8, 6), G = {2, 6}, O = set()]
+(0, 'AG', 4, 58)
+(1, 'AG', 6, 52)
+4 NL 8 = 156 [rules out (8, 2), G = {2, 4, 6}, O = set()]
+4 NL 6 = 114 [rules out (6, 1), G = {2, 4, 6}, O = set()]
+2 NL 6 = 198 [rules out (6, 4), G = {2, 4, 6, 7}, O = set()]
+(3, 'AG', 6, 47)
+(3, 'AG', 2, 25)
+(1, 'AG', 7, 143)
+2 NL 8 = 102 [rules out (8, 1), G = {2, 6}, O = set()]
+(1, 'AG', 4, 147)
+4 NL 6 = 143 [rules out (6, 2), G = {2, 4, 6}, O = set()]
+(1, 'AG', 2, 43)
+(0, 'AG', 2, 36)
+(3, 'AG', 4, 40)
+[] are verified winners with these assertions.
+[1, 2, 4] remain as potential winners in this audit.
+------------------------------------------------

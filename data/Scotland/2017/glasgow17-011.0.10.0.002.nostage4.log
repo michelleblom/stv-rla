@@ -1,0 +1,111 @@
+VALID BALLOTS 6704
+Winner 1
+Winner 7
+Computing AG relationships
+8 AG 5 = 49
+8 AG 6 = 54
+1 AG 5 = 26
+1 AG 6 = 27
+1 AG 2 = 4789
+1 AG 4 = 78
+3 AG 5 = 32
+3 AG 6 = 34
+3 AG 4 = 56
+7 AG 5 = 20
+7 AG 6 = 21
+7 AG 2 = 52
+7 AG 4 = 45
+Ruling out candidates: [(5, 26), (6, 27), (2, 4789), (4, 56)]
+STAGE 1 ASN (Ruling out candidates): 4789
+ALTERNATE OUTCOME PAIR: 8,1
+   (1) can we show that 3 NL 1?
+        a. margin -0.2278739061256989
+      no
+   (1) can we show that 3 NL 8?
+        a. margin -0.18222951471758142
+      no
+   (1) can we show that 7 NL 1?
+        a. margin -0.06866547334924633
+      no
+   (1) can we show that 7 NL 8?
+        a. margin -0.0011435958631659249
+      no
+
+ALTERNATE OUTCOME PAIR: 8,3
+   (1) can we show that 1 NL 3?
+        a. margin -0.12808273667462244
+      no
+   (1) can we show that 1 NL 8?
+        a. margin -0.06707438345266659
+      no
+   (1) can we show that 7 NL 3?
+        a. margin -0.038534208432777106
+      no
+   (1) can we show that 7 NL 8?
+        a. margin -0.04773269689737514
+      no
+
+ALTERNATE OUTCOME PAIR: 8,7
+   (1) can we show that 1 NL 7?
+        a. margin -0.16686555290374017
+      no
+   (1) can we show that 1 NL 8?
+        a. margin -0.03495425616547709
+      no
+   (1) can we show that 3 NL 7?
+        a. margin -0.2512430389817051
+      no
+   (1) can we show that 3 NL 8?
+        a. margin -0.19252187748608152
+      no
+
+ALTERNATE OUTCOME PAIR: 1,3
+   (1) can we show that 8 NL 3?
+        a. margin -0.2235481304693714
+      no
+   (1) can we show that 8 NL 1?
+        a. margin -0.1979415274463009
+      no
+   (1) can we show that 7 NL 3?
+        a. margin -0.030777645186952918
+      no
+   (1) can we show that 7 NL 1?
+        a. margin -0.09636038186157514
+      no
+
+ALTERNATE OUTCOME PAIR: 3,7
+   (1) can we show that 8 NL 7?
+        a. margin -0.25636435958631487
+      no
+   (1) can we show that 8 NL 3?
+        a. margin -0.20942720763722988
+      no
+   (1) can we show that 1 NL 7?
+        a. margin -0.1483194112967393
+      no
+   (1) can we show that 1 NL 3?
+        a. margin -0.10660302307080705
+      no
+
+RULE OUT PAIR STAGE ASN 0
+------------------------------------------------
+Alternate outcome cannot be ruled out: 8,1
+Alternate outcome cannot be ruled out: 8,3
+Alternate outcome cannot be ruled out: 8,7
+Alternate outcome cannot be ruled out: 1,3
+Alternate outcome cannot be ruled out: 3,7
+Full audit not possible
+PARTIAL audit sample size: 4789
+------------------------------------------------
+Final set of assertions generated:
+(0, 'AG', 1, 4789)
+(0, 'AG', 4, 26)
+(2, 'AG', 3, 56)
+(6, 'AG', 5, 21)
+(6, 'AG', 1, 52)
+(0, 'AG', 5, 27)
+(6, 'AG', 4, 20)
+(6, 'AG', 3, 45)
+[] are verified winners with these assertions.
+[1, 3, 7, 8] remain as potential winners in this audit.
+------------------------------------------------

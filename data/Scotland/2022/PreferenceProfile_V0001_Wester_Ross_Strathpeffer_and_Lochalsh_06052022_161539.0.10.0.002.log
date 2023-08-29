@@ -1,0 +1,142 @@
+VALID BALLOTS 5411
+Winner 2
+Winner 4
+Computing AG relationships
+Ruling out candidates: []
+STAGE 1 ASN (Ruling out candidates): 0
+ALTERNATE OUTCOME PAIR: 3,2
+   (1) can we show that 1 NL 2?
+        a. margin -0.28078605310170635
+      no
+   (1) can we show that 1 NL 3?
+        a. margin -0.15191277028275718
+      no
+   (1) can we show that 4 NL 2?
+        a. margin -0.23612394505020606
+      no
+   (1) can we show that 4 NL 3?
+        a. margin -0.10700425060062868
+      no
+   (1) can we show that 4 NL 2?
+        a. margin -0.23612394505020606
+      no
+   (1) can we show that 4 NL 3?
+        a. margin -0.10700425060062868
+      no
+
+ALTERNATE OUTCOME PAIR: 3,1
+   (1) can we show that 2 NL 1?
+        a. margin -0.11618308384155751
+      no
+   (1) can we show that 2 NL 3?
+        a. margin 0.012813404792705763
+      yes, 352, ags used 0 = 352
+   (1) can we show that 4 NL 1?
+        a. margin -0.03264954105833817
+      no
+   (1) can we show that 4 NL 3?
+        a. margin -0.15240559354401517
+      no
+   (1) can we show that 4 NL 1?
+        a. margin -0.03264954105833817
+      no
+   (1) can we show that 4 NL 3?
+        a. margin -0.15240559354401517
+      no
+      Best assertion(s) require sample: 352
+
+ALTERNATE OUTCOME PAIR: 3,4
+   (1) can we show that 2 NL 4?
+        a. margin -0.11495102568841253
+      no
+   (1) can we show that 2 NL 3?
+        a. margin 0.018480872297172324
+      yes, 246, ags used 0 = 246
+   (1) can we show that 1 NL 4?
+        a. margin -0.13312388344729853
+      no
+   (1) can we show that 1 NL 3?
+        a. margin -0.19651327542660013
+      no
+      Best assertion(s) require sample: 246
+
+ALTERNATE OUTCOME PAIR: 3,4
+   (1) can we show that 2 NL 4?
+        a. margin -0.11495102568841253
+      no
+   (1) can we show that 2 NL 3?
+        a. margin 0.018480872297172324
+      yes, 246, ags used 0 = 246
+   (1) can we show that 1 NL 4?
+        a. margin -0.13312388344729853
+      no
+   (1) can we show that 1 NL 3?
+        a. margin -0.19651327542660013
+      no
+      Best assertion(s) require sample: 246
+
+ALTERNATE OUTCOME PAIR: 2,1
+   (1) can we show that 3 NL 1?
+        a. margin -0.30881537608575116
+      no
+   (1) can we show that 3 NL 2?
+        a. margin -0.3737448407564836
+      no
+   (1) can we show that 4 NL 1?
+        a. margin -0.0210065915111195
+      no
+   (1) can we show that 4 NL 2?
+        a. margin -0.2568841249306967
+      no
+   (1) can we show that 4 NL 1?
+        a. margin -0.0210065915111195
+      no
+   (1) can we show that 4 NL 2?
+        a. margin -0.2568841249306967
+      no
+
+ALTERNATE OUTCOME PAIR: 1,4
+   (1) can we show that 3 NL 4?
+        a. margin -0.27604262921209866
+      no
+   (1) can we show that 3 NL 1?
+        a. margin -0.26156594591264704
+      no
+   (1) can we show that 2 NL 4?
+        a. margin -0.06862563913016706
+      no
+   (1) can we show that 2 NL 1?
+        a. margin -0.05421055873837255
+      no
+
+ALTERNATE OUTCOME PAIR: 1,4
+   (1) can we show that 3 NL 4?
+        a. margin -0.27604262921209866
+      no
+   (1) can we show that 3 NL 1?
+        a. margin -0.26156594591264704
+      no
+   (1) can we show that 2 NL 4?
+        a. margin -0.06862563913016706
+      no
+   (1) can we show that 2 NL 1?
+        a. margin -0.05421055873837255
+      no
+
+RULE OUT PAIR STAGE ASN 352
+------------------------------------------------
+EXAMINING WAYS TO REDUCE COST OF AUDIT
+------------------------------------------------
+Alternate outcome cannot be ruled out: 3,2
+Alternate outcome cannot be ruled out: 2,1
+Alternate outcome cannot be ruled out: 1,4
+Alternate outcome cannot be ruled out: 1,4
+Full audit not possible
+PARTIAL audit sample size: 352
+------------------------------------------------
+Final set of assertions generated:
+2 NL 3 = 246 [rules out (3, 4), G = set(), O = set()]
+2 NL 3 = 352 [rules out (3, 1), G = set(), O = set()]
+[] are verified winners with these assertions.
+[1, 2, 3, 4] remain as potential winners in this audit.
+------------------------------------------------

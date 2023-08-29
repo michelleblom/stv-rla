@@ -1,0 +1,119 @@
+VALID BALLOTS 4213
+Winner 7
+Winner 1
+Computing AG relationships
+8 AG 3 = 101
+5 AG 3 = 24
+5 AG 2 = 143
+5 AG 4 = 30
+5 AG 6 = 55
+5 AG 8 = 296
+7 AG 3 = 27
+7 AG 2 = 391
+7 AG 4 = 35
+7 AG 6 = 74
+1 AG 3 = 26
+1 AG 2 = 70
+1 AG 4 = 57
+1 AG 6 = 42
+Ruling out candidates: [(3, 26), (2, 143), (4, 35), (6, 55)]
+STAGE 1 ASN (Ruling out candidates): 143
+ALTERNATE OUTCOME PAIR: 8,5
+   (1) can we show that 7 NL 5?
+        a. margin -0.08995964870638462
+      no
+   (1) can we show that 7 NL 8?
+        a. margin 0.006408734868264654
+      yes, 283, ags used 74 = 283
+   (1) can we show that 1 NL 5?
+        a. margin -0.217896985521006
+      no
+   (1) can we show that 1 NL 8?
+        a. margin -0.022628372497823457
+      no
+      Best assertion(s) require sample: 283
+
+ALTERNATE OUTCOME PAIR: 8,7
+   (1) can we show that 5 NL 7?
+        a. margin -0.058548935833530824
+      no
+   (1) can we show that 5 NL 8?
+        a. margin 0.021758050478677404
+      yes, 124, ags used 55 = 124
+   (1) can we show that 1 NL 7?
+        a. margin -0.2138618561595057
+      no
+   (1) can we show that 1 NL 8?
+        a. margin 0.1542052377561518
+      yes, 29, ags used 296 = 296
+      Best assertion(s) require sample: 124
+
+ALTERNATE OUTCOME PAIR: 8,1
+   (1) can we show that 5 NL 1?
+        a. margin -0.07548065511511948
+      no
+   (1) can we show that 5 NL 8?
+        a. margin 0.0356832027850309
+      yes, 90, ags used 55 = 90
+   (1) can we show that 7 NL 1?
+        a. margin -0.10198591660732637
+      no
+   (1) can we show that 7 NL 8?
+        a. margin 0.02199541102935365
+      yes, 144, ags used 74 = 144
+      Best assertion(s) require sample: 90
+
+ALTERNATE OUTCOME PAIR: 5,7
+   (1) can we show that 8 NL 7?
+        a. margin -0.3275575599335385
+      no
+   (1) can we show that 8 NL 5?
+        a. margin -0.33918822691668604
+      no
+   (1) can we show that 1 NL 7?
+        a. margin -0.16362053959965084
+      no
+   (1) can we show that 1 NL 5?
+        a. margin -0.16923807263232804
+      no
+
+ALTERNATE OUTCOME PAIR: 5,1
+   (1) can we show that 8 NL 1?
+        a. margin -0.2704327874040665
+      no
+   (1) can we show that 8 NL 5?
+        a. margin -0.3922778700846583
+      no
+   (1) can we show that 7 NL 1?
+        a. margin -0.10570456523459137
+      no
+   (1) can we show that 7 NL 5?
+        a. margin -0.08434211567370797
+      no
+
+RULE OUT PAIR STAGE ASN 283
+------------------------------------------------
+EXAMINING WAYS TO REDUCE COST OF AUDIT
+------------------------------------------------
+Alternate outcome cannot be ruled out: 5,7
+Alternate outcome cannot be ruled out: 5,1
+Full audit not possible
+PARTIAL audit sample size: 283
+------------------------------------------------
+Final set of assertions generated:
+(0, 'AG', 5, 42)
+(4, 'AG', 3, 30)
+7 NL 8 = 283 [rules out (8, 5), G = {2, 3, 5}, O = set()]
+5 NL 8 = 90 [rules out (8, 1), G = {2, 3, 5}, O = set()]
+5 NL 8 = 124 [rules out (8, 7), G = {2, 3, 5}, O = set()]
+(4, 'AG', 2, 24)
+(0, 'AG', 2, 26)
+(6, 'AG', 2, 27)
+(6, 'AG', 5, 74)
+(6, 'AG', 3, 35)
+(4, 'AG', 1, 143)
+(4, 'AG', 5, 55)
+(0, 'AG', 1, 70)
+[] are verified winners with these assertions.
+[1, 5, 7] remain as potential winners in this audit.
+------------------------------------------------

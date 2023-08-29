@@ -1,0 +1,106 @@
+VALID BALLOTS 4198
+Winner 2
+Winner 3
+Computing AG relationships
+2 AG 7 = 23
+2 AG 5 = 41
+2 AG 1 = 77
+2 AG 6 = 1208
+3 AG 5 = 262
+3 AG 1 = 149
+3 AG 6 = 231
+Ruling out candidates: [(5, 262), (1, 149), (6, 1208)]
+STAGE 1 ASN (Ruling out candidates): 1208
+ALTERNATE OUTCOME PAIR: 7,2
+   (1) can we show that 4 NL 2?
+        a. margin -0.15936160076226713
+      no
+   (1) can we show that 4 NL 7?
+        a. margin -0.03557249483881186
+      no
+   (1) can we show that 3 NL 2?
+        a. margin -0.06320470065110306
+      no
+   (1) can we show that 3 NL 7?
+        a. margin 0.0038113387327300963
+      yes, 92, ags used 231 = 231
+      Best assertion(s) require sample: 231
+
+ALTERNATE OUTCOME PAIR: 7,4
+   (1) can we show that 2 NL 4?
+        a. margin -0.17508337303477817
+      no
+   (1) can we show that 2 NL 7?
+        a. margin 0.19612513895505757
+      yes, 23, ags used 0 = 23
+   (1) can we show that 3 NL 4?
+        a. margin -0.014610131808797555
+      no
+   (1) can we show that 3 NL 7?
+        a. margin 0.17690963951087846
+      yes, 25, ags used 23 = 25
+      Best assertion(s) require sample: 23
+
+ALTERNATE OUTCOME PAIR: 7,3
+   (1) can we show that 2 NL 3?
+        a. margin -0.1765126250595519
+      no
+   (1) can we show that 2 NL 7?
+        a. margin 0.19707797363824087
+      yes, 23, ags used 0 = 23
+   (1) can we show that 4 NL 3?
+        a. margin -0.18659679212323277
+      no
+   (1) can we show that 4 NL 7?
+        a. margin 0.13744640304907096
+      yes, 33, ags used 23 = 33
+      Best assertion(s) require sample: 23
+
+ALTERNATE OUTCOME PAIR: 2,4
+   (1) can we show that 7 NL 4?
+        a. margin -0.46172780689217097
+      no
+   (1) can we show that 7 NL 2?
+        a. margin -0.34500555820231915
+      no
+   (1) can we show that 3 NL 4?
+        a. margin -0.0019850722566302492
+      no
+   (1) can we show that 3 NL 2?
+        a. margin -0.06923932031125901
+      no
+
+ALTERNATE OUTCOME PAIR: 4,3
+   (1) can we show that 7 NL 3?
+        a. margin -0.41575353342861765
+      no
+   (1) can we show that 7 NL 4?
+        a. margin -0.40566936636493633
+      no
+   (1) can we show that 2 NL 3?
+        a. margin -0.08591392726695102
+      no
+   (1) can we show that 2 NL 4?
+        a. margin -0.07408289661743572
+      no
+
+RULE OUT PAIR STAGE ASN 231
+------------------------------------------------
+Alternate outcome cannot be ruled out: 2,4
+Alternate outcome cannot be ruled out: 4,3
+Full audit not possible
+PARTIAL audit sample size: 1208
+------------------------------------------------
+Final set of assertions generated:
+(2, 'AG', 5, 231)
+(1, 'AG', 0, 77)
+(1, 'AG', 5, 1208)
+2 NL 7 = 23 [rules out (7, 3), G = set(), O = set()]
+(2, 'AG', 4, 262)
+3 NL 7 = 231 [rules out (7, 2), G = {0, 5}, O = set()]
+(1, 'AG', 4, 41)
+2 NL 7 = 23 [rules out (7, 4), G = set(), O = set()]
+(2, 'AG', 0, 149)
+[] are verified winners with these assertions.
+[2, 3, 4] remain as potential winners in this audit.
+------------------------------------------------

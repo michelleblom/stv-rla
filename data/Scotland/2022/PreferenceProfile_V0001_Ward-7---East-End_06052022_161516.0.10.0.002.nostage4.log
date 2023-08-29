@@ -1,0 +1,29 @@
+VALID BALLOTS 4117
+Winner 2
+Winner 4
+Computing AG relationships
+2 AG 3 = 31
+2 AG 6 = 18
+2 AG 5 = 23
+2 AG 1 = 32
+4 AG 3 = 33
+4 AG 6 = 43
+4 AG 5 = 341
+4 AG 1 = 36
+Ruling out candidates: [(3, 33), (6, 43), (5, 341), (1, 36)]
+STAGE 1 ASN (Ruling out candidates): 341
+RULE OUT PAIR STAGE ASN 0
+------------------------------------------------
+FULL audit sample size: 341
+------------------------------------------------
+Final set of assertions generated:
+(1, 'AG', 0, 32)
+(3, 'AG', 5, 43)
+(3, 'AG', 2, 33)
+(1, 'AG', 2, 31)
+(3, 'AG', 4, 341)
+(1, 'AG', 4, 23)
+(3, 'AG', 0, 36)
+(1, 'AG', 5, 18)
+All winners are verified in audit.
+------------------------------------------------

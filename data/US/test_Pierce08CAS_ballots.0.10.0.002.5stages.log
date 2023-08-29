@@ -211,16 +211,16 @@ Full audit not possible
 PARTIAL audit sample size: 5335
 ------------------------------------------------
 Final set of assertions generated:
-(121, 'AG', 123, 109)
-(121, 'AG', 40, 24)
-(124, 'AG', 40, 24)
-120 NL 125 = 263 [rules out (125, 121), G = [], O = []]
-(124, 'AG', 123, 435)
-120 NL 125 = 154 [rules out (125, 124), G = [], O = []]
-(120, 'AG', 123, 47)
-124 NL 125 = 5335 [rules out (125, 120), G = [], O = []]
-(120, 'AG', 40, 18)
-120 NL 125 = 230 [rules out (125, 122), G = [], O = []]
+(1, 'AG', 0, 18)
+(5, 'AG', 0, 24)
+120 NL 125 = 230 [rules out (125, 122), G = {0, 4}, O = set()]
+120 NL 125 = 154 [rules out (125, 124), G = {0, 4}, O = set()]
+(2, 'AG', 4, 109)
+(5, 'AG', 4, 435)
+120 NL 125 = 263 [rules out (125, 121), G = {0, 4}, O = set()]
+(2, 'AG', 0, 24)
+124 NL 125 = 5335 [rules out (125, 120), G = {0, 4}, O = set()]
+(1, 'AG', 4, 47)
 [] are verified winners with these assertions.
 [120, 121, 122, 124] remain as potential winners in this audit.
 ------------------------------------------------

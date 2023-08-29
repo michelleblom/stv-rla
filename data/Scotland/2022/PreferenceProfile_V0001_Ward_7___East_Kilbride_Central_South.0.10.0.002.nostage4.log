@@ -1,0 +1,72 @@
+VALID BALLOTS 5202
+Winner 4
+Winner 1
+Computing AG relationships
+6 AG 7 = 118
+9 AG 7 = 59
+9 AG 2 = 174
+4 AG 7 = 20
+4 AG 2 = 25
+4 AG 3 = 29
+4 AG 5 = 150
+4 AG 6 = 29
+4 AG 9 = 114
+1 AG 7 = 18
+1 AG 2 = 17
+1 AG 3 = 28
+1 AG 5 = 23
+1 AG 6 = 34
+Ruling out candidates: [(7, 20), (2, 25), (3, 29), (5, 150), (6, 34)]
+STAGE 1 ASN (Ruling out candidates): 150
+ALTERNATE OUTCOME PAIR: 9,4
+   (1) can we show that 1 NL 4?
+        a. margin -0.05946430859925678
+      no
+   (1) can we show that 1 NL 9?
+        a. margin 0.0021145713187236126
+      yes, 164, ags used 34 = 164
+   (1) can we show that 1 NL 4?
+        a. margin -0.05946430859925678
+      no
+   (1) can we show that 1 NL 9?
+        a. margin 0.0021145713187236126
+      yes, 164, ags used 34 = 164
+      Best assertion(s) require sample: 164
+
+ALTERNATE OUTCOME PAIR: 9,1
+   (1) can we show that 4 NL 1?
+        a. margin -0.16660258874791734
+      no
+   (1) can we show that 4 NL 9?
+        a. margin 0.05363321799307941
+      yes, 50, ags used 29 = 50
+      Best assertion(s) require sample: 50
+
+ALTERNATE OUTCOME PAIR: 9,1
+   (1) can we show that 4 NL 1?
+        a. margin -0.16660258874791734
+      no
+   (1) can we show that 4 NL 9?
+        a. margin 0.05363321799307941
+      yes, 50, ags used 29 = 50
+      Best assertion(s) require sample: 50
+
+RULE OUT PAIR STAGE ASN 164
+------------------------------------------------
+FULL audit sample size: 164
+------------------------------------------------
+Final set of assertions generated:
+(0, 'AG', 4, 23)
+(3, 'AG', 1, 25)
+(3, 'AG', 2, 29)
+(0, 'AG', 5, 34)
+(3, 'AG', 6, 20)
+(3, 'AG', 5, 29)
+1 NL 9 = 164 [rules out (9, 4), G = {1, 2, 4, 5, 6}, O = set()]
+(0, 'AG', 6, 18)
+(0, 'AG', 1, 17)
+(0, 'AG', 2, 28)
+(3, 'AG', 4, 150)
+4 NL 9 = 50 [rules out (9, 1), G = {1, 2, 5, 6}, O = set()]
+All winners are verified in audit.
+------------------------------------------------

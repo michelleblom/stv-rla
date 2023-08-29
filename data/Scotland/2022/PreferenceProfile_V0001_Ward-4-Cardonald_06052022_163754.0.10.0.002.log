@@ -1,0 +1,73 @@
+VALID BALLOTS 8572
+Winner 6
+Winner 4
+Computing AG relationships
+9 AG 2 = 156
+9 AG 8 = 239
+6 AG 2 = 20
+6 AG 1 = 35
+6 AG 8 = 20
+6 AG 3 = 29
+6 AG 7 = 40
+6 AG 9 = 32
+4 AG 2 = 20
+4 AG 1 = 25
+4 AG 8 = 27
+4 AG 3 = 146
+4 AG 7 = 27
+Ruling out candidates: [(2, 20), (1, 35), (8, 27), (3, 146), (7, 40)]
+STAGE 1 ASN (Ruling out candidates): 146
+ALTERNATE OUTCOME PAIR: 9,6
+   (1) can we show that 4 NL 6?
+        a. margin -0.08422771815212504
+      no
+   (1) can we show that 4 NL 9?
+        a. margin 0.009877119303154158
+      yes, 598, ags used 146 = 598
+   (1) can we show that 4 NL 6?
+        a. margin -0.08422771815212504
+      no
+   (1) can we show that 4 NL 9?
+        a. margin 0.009877119303154158
+      yes, 598, ags used 146 = 598
+      Best assertion(s) require sample: 598
+
+ALTERNATE OUTCOME PAIR: 9,4
+   (1) can we show that 6 NL 4?
+        a. margin -0.143257116192254
+      no
+   (1) can we show that 6 NL 9?
+        a. margin 0.14714574583916584
+      yes, 25, ags used 29 = 29
+      Best assertion(s) require sample: 29
+
+ALTERNATE OUTCOME PAIR: 9,4
+   (1) can we show that 6 NL 4?
+        a. margin -0.143257116192254
+      no
+   (1) can we show that 6 NL 9?
+        a. margin 0.14714574583916584
+      yes, 25, ags used 29 = 29
+      Best assertion(s) require sample: 29
+
+RULE OUT PAIR STAGE ASN 598
+------------------------------------------------
+EXAMINING WAYS TO REDUCE COST OF AUDIT
+------------------------------------------------
+FULL audit sample size: 598
+------------------------------------------------
+Final set of assertions generated:
+(3, 'AG', 6, 27)
+(3, 'AG', 7, 27)
+(5, 'AG', 7, 20)
+(3, 'AG', 1, 20)
+(5, 'AG', 6, 40)
+4 NL 9 = 598 [rules out (9, 6), G = {0, 1, 2, 6, 7}, O = set()]
+6 NL 9 = 29 [rules out (9, 4), G = {1, 2, 7}, O = set()]
+(5, 'AG', 1, 20)
+(5, 'AG', 2, 29)
+(5, 'AG', 0, 35)
+(3, 'AG', 0, 25)
+(3, 'AG', 2, 146)
+All winners are verified in audit.
+------------------------------------------------

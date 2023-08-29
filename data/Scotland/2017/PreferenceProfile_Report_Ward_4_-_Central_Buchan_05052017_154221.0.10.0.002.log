@@ -1,0 +1,79 @@
+VALID BALLOTS 4850
+58 ballot checks required to assert that first winner has a quota's worth of votes
+AUD TV 0.15564159292035398, ss 103
+AG*(2,3) = 43
+AG*(2,4) = 139
+AG*(1,4) = 59
+AG*(1,5) = 882
+AG*(2,3) = 43
+AG*(2,4) = 139
+NL(2,3) = 43, AG*'s used 0
+NL(2,4) = 40, AG*'s used 43
+Max in loop 103, 0.15564159292035398
+AUD TV 0.205641592920354, ss 48
+AG*(2,3) = 43
+AG*(2,4) = 190
+AG*(1,4) = 59
+AG*(1,5) = 882
+AG*(2,3) = 43
+AG*(2,4) = 190
+NL(2,3) = 43, AG*'s used 0
+NL(2,4) = 43, AG*'s used 43
+Max in loop 58, 0.205641592920354
+AUD TV 0.255641592920354, ss 30
+AG*(2,3) = 44
+AG*(2,4) = 297
+AG*(1,4) = 59
+AG*(1,5) = 882
+AG*(2,3) = 44
+AG*(2,4) = 297
+NL(2,3) = 44, AG*'s used 0
+NL(2,4) = 47, AG*'s used 44
+Max in loop 58, 0.255641592920354
+AUD TV 0.305641592920354, ss 21
+AG*(2,3) = 44
+AG*(2,4) = 871
+AG*(1,4) = 59
+AG*(1,5) = 882
+AG*(2,3) = 44
+AG*(2,4) = 871
+NL(2,3) = 44, AG*'s used 0
+NL(2,4) = 52, AG*'s used 44
+Max in loop 58, 0.305641592920354
+AUD TV 0.35564159292035397, ss 15
+AG*(2,3) = 45
+AG*(1,4) = 59
+AG*(1,5) = 882
+AG*(2,3) = 45
+NL(2,3) = 45, AG*'s used 0
+NL(2,4) = 58, AG*'s used 45
+Max in loop 58, 0.35564159292035397
+AUD TV 0.40564159292035395, ss 12
+AG*(2,3) = 45
+AG*(1,4) = 59
+AG*(1,5) = 882
+AG*(2,3) = 45
+NL(2,3) = 45, AG*'s used 0
+NL(2,4) = 65, AG*'s used 45
+Max in loop 65, 0.40564159292035395
+Breaking out of inner loop 65 > 58
+Sample size to show min tv of 0.05282079646017699 is 109
+Sample size required for audit is 58 ballots
+------------------------------------------------
+Assertion set BEFORE filtering:
+(1, 'NL', 2, 45)
+(1, 'AG*', 2, 45)
+(0, 'MT', None, (0.35564159292035397, 15))
+(0, 'QT', None, 58)
+(1, 'NL', 3, 58)
+------------------------------------------------
+Final set of assertions AFTER filtering:
+(1, 'NL', 2, 45)
+(1, 'AG*', 2, 45)
+(0, 'MT', None, (0.35564159292035397, 15))
+(0, 'QT', None, 58)
+(1, 'NL', 3, 58)
+------------------------------------------------
+Explanations for AG* inclusion:
+   Explanation for (1, 'AG*', 2, 45): []
+------------------------------------------------
