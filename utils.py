@@ -96,6 +96,29 @@ def read_outcome(path, cid2num):
     return outcome
 
 
+def get_stats_blt(path):
+    ncands, seats = 0, 0
+
+    try:
+        with open(path, "r") as finput:
+            ncands, seats = [int(t) for t in finput.readline().strip().split()]
+        
+    except Exception as e:
+        print(path)
+        print(e)
+
+    return ncands, seats 
+        
+def get_stats_json(path):
+    ncands, seats = 0, 0
+    with open(path, "r") as cvr:
+        data = json.load(cvr)
+        ncands = len(data["metadata"]["candidates"])
+        seats = int(data["metadata"]["vacancies"])
+
+    return ncands, seats
+
+
 def read_ballots_blt(path):
     ballots = []
     candidates = []
@@ -110,17 +133,17 @@ def read_ballots_blt(path):
 
         split_idx = lines.index("0")
 
-        ballot_strs = lines[:split_idx]
-        cand_strs = lines[split_idx+1:-1]
+        ballot_strs = lines[1:split_idx]
+        cand_strs = lines[split_idx+1:split_idx+1+cands]
 
         for i in range(len(cand_strs)):
-            cand = Candidate(i, cand_strs[i])
-            cand.name = str(clist[i])
+            cand = Candidate(i, i+1)
+            cand.name = cand_strs[i]
             cand.group_id = -1
             cand.position = -1
 
             candidates.append(cand)
-            cid2num[clist[i]] = i
+            cid2num[cand.id] = i
 
 
         bcntr = 0
@@ -129,16 +152,16 @@ def read_ballots_blt(path):
             toks = [int(t) for t in bline.split()]
 
             n = toks[0]
-            prefs = toks[1:-1]
+            prefs = [cid2num[p] for p in toks[1:-1]]
 
             ballot = Ballot(bcntr, n, prefs)
             ballots.append(ballot)
 
-            fpcand = candidates[cprefs[0]]
+            fpcand = candidates[prefs[0]]
             fpcand.ballots.append(bcntr)
-            fpcand.fp_votes += votes
+            fpcand.fp_votes += n
 
-            total_votes += votes
+            total_votes += n
 
             for p in prefs:
                 candidates[p].mentions.append(bcntr)
@@ -498,7 +521,9 @@ def next_cand(prefs, excluded):
 
 def simulate_stv(ballots, candidates, nseats, order_c, order_a, order_q, \
     winners, log=None):
-    
+   
+    # SIMULATING WITH US TRANSFER RULES AT PRESENT
+ 
     totvotes = 0
     if log != None:
         print("First preference tallies: ", file=log)
@@ -695,11 +720,7 @@ def distribute_surplus(elect, candidates, ballots, log):
 
     if elect.surplus < 0.001: return
 
-
-    # Compute total number of papers in candidates tally
-    totalpapers = sum([ballots[bid].votes for bid,_ in elect.bweights])
-
-    tvalue = elect.surplus/totalpapers
+    tvalue = elect.surplus/elect.sim_votes
 
     if log != None:
         print("Transfer value is {}".format(tvalue), file=log)
@@ -707,13 +728,13 @@ def distribute_surplus(elect, candidates, ballots, log):
     # Each ballot in elect's tally now has value of 'tvalue'
     totransfer = [[] for c in candidates]
 
-    for bid,_ in elect.bweights:
+    for bid,w in elect.bweights:
         blt = ballots[bid]
 
         nextc = next_candidate(blt.prefs, elect.num, candidates)
 
         if nextc != -1:
-            totransfer[nextc].append((bid, tvalue))
+            totransfer[nextc].append((bid, tvalue*w))
 
     for cand in candidates:
         tlist = totransfer[cand.num]
@@ -771,40 +792,65 @@ def eliminate_candidate(toelim, candidates, ballots, log):
                     total, toelim.name, cand.name), file=log)
 
 
-def print_summary(candidates,id2group, seats, quota, order_c, order_a,\
-    order_q, winners):
-    print(f"Candidates,{len(candidates)},Groups,{len(id2group)}")
-    print(f"Seats,{seats}")
-    print(f"Quota,{quota}")
-    
+def print_summary(candidates, id2group, seats, quota, order_c, order_a,\
+    order_q, winners, voters, prefix, verbose=False):
+
     order_c_ids = [str(candidates[c].id) for c in order_c]
 
-    order_c_str = "Outcome-ns"
-    order_a_str = "Outcome-ns"
 
-    for i in range(len(candidates)):
-        order_c_str += "," + order_c_ids[i]
-        order_a_str += "," + str(order_a[i])
+    # Generate .otc file
+    with open(prefix + ".otc", "w") as otcfile:
+        order_c_str = order_c_ids[0]
+        order_a_str = str(order_a[0])
 
+        for i in range(1, len(candidates)):
+            order_c_str += "," + order_c_ids[i]
+            order_a_str += "," + str(order_a[i])
+
+        print(order_c_str, file=otcfile)
+        print(order_a_str, file=otcfile)
+
+    # Generate .voters file
+    with open(prefix + ".voters", "w") as vfile:
+        print(voters, file=vfile)
+
+    # Generate .quota file
+    with open(prefix + ".quota", "w") as qfile:
+        print(quota, file=qfile)
     
-    print(order_c_str)
-    print(order_a_str)
 
-    for w in winners:
-        print("Quota,{},{}".format(w, order_q[w]))
+    if verbose:
+        print(f"Candidates,{len(candidates)},Groups,{len(id2group)}")
+        print(f"Seats,{seats}")
+        print(f"Quota,{quota}")
+    
 
-    for i in range(len(id2group)):
-        gstr = "Group,{},Candidates".format(i)
+        order_c_str = "Outcome-ns"
+        order_a_str = "Outcome-ns"
 
-        group = id2group[i] 
-        for cnum in group.cands:
-            gstr += "," + str(candidates[cnum].id)
+        for i in range(len(candidates)):
+            order_c_str += "," + order_c_ids[i]
+            order_a_str += "," + str(order_a[i])
 
-        print(gstr)
+        print(order_c_str)
+        print(order_a_str)
 
-    for cand in candidates:
-        islast = 1 if id2group[cand.group_id].cands[-1] == cand.num else 0
+        for w in winners:
+            print("Quota,{},{}".format(w, order_q[w]))
 
-        print("Candidates,{},{},{},{},{},{},({})".format(cand.id,cand.num_atls,\
-            cand.num_btls,cand.group_id,cand.position-1,islast,cand.name))
+        for i in range(len(id2group)):
+            gstr = "Group,{},Candidates".format(i)
+
+            group = id2group[i] 
+            for cnum in group.cands:
+                gstr += "," + str(candidates[cnum].id)
+
+            print(gstr)
+
+        for cand in candidates:
+            islast = 1 if id2group[cand.group_id].cands[-1] == cand.num else 0
+
+            print("Candidates,{},{},{},{},{},{},({})".format(cand.id, \
+                cand.num_atls, cand.num_btls, cand.group_id, \
+                cand.position-1, islast, cand.name))
     
