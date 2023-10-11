@@ -1468,17 +1468,22 @@ if __name__ == "__main__":
 
                                     pot_margin_inc += b.votes*0.5
 
-                                elif min_tv > 0 and  len(prefs) > 1 and \
+                                
+                                elif len(prefs) > 1 and \
                                     prefs[:2] == [fw.num, sw.num]:
-                                    base_contrib = 0.5*b.votes
-                                    alt_contrib = b.votes * ((1 + min_tv)/2.0)
-                                    dconfig = alt_contrib - base_contrib
 
-                                    if dconfig > 0:
-                                        helpful_ags.append((max_ags_here, \
-                                            dconfig, descs))
+                                    val = min_tv if b.prefs[0] == fw.num else 1
 
-                                        pot_margin_inc += dconfig
+                                    if val > 0:
+                                        base_contrib = 0.5*b.votes
+                                        alt_contrib = b.votes*((1+min_tv)/2.0)
+                                        dconfig = alt_contrib - base_contrib
+
+                                        if dconfig > 0:
+                                            helpful_ags.append((max_ags_here, \
+                                                dconfig, descs))
+
+                                            pot_margin_inc += dconfig
 
                         else:
                             assorter += 0.5*b.votes
@@ -1846,11 +1851,15 @@ if __name__ == "__main__":
             print("Alternate outcome cannot be ruled out: {},{}".format(\
                 c1o.id, c2o.id), file=log)
 
+        partial_asn = asn_overall
         if asn_overall >= args.voters:
             asn_overall = np.inf
             print("Full audit not possible", file=log)
-            print("PARTIAL audit sample size: {}".format(max(max_sample_size,\
-                max(max_rule_out_ss, pair_stage_asn))), file=log)
+
+            partial_asn = max(max_sample_size, max(max_rule_out_ss, \
+                pair_stage_asn))
+
+            print("PARTIAL audit sample size: {}".format(partial_asn), file=log)
         else:        
             print("FULL audit sample size: {}".format(asn_overall), file=log)
         
@@ -1894,10 +1903,10 @@ if __name__ == "__main__":
  
 
         if remcase:
-            print("CASEC,{},{},{},{},{}".format(args.data, ncand, \
-                valid_ballots, args.quota, asn_overall))
+            print("CASEC,{},{},{},{},{},{}".format(args.data, ncand, \
+                valid_ballots, args.quota, asn_overall, partial_asn))
         else:
-            print("CASEB,{},{},{},{},{}".format(args.data, ncand, \
-                valid_ballots, args.quota, asn_overall))
+            print("CASEB,{},{},{},{},{},{}".format(args.data, ncand, \
+                valid_ballots, args.quota, asn_overall, partial_asn))
 
     log.close() 
