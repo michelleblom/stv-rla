@@ -347,6 +347,8 @@ if __name__ == "__main__":
  
         thresh = 1.0/(args.seats + 1);
     
+        qts = set()
+
         act_tvs = {}
         min_tvs = {}
         for fw in fws:
@@ -354,11 +356,15 @@ if __name__ == "__main__":
             print("{} ballot checks required to assert that winner {} "\
                 " has a quota's worth of votes".format(ss, fw.id), file=log)
 
-            assertions_used.add((fw.num, "QT", None, ss))
+            qts.add((fw.num, "QT", None, ss))
             max_sample_size = max(max_sample_size, ss)
 
             act_tvs[fw.num] = (fw.fp_votes - args.quota)/fw.fp_votes
             min_tvs[fw.num] = 0
+
+        qts_sample_size = max_sample_size
+
+        assertions_used.update(qts)
 
         if max_sample_size >= args.voters:
             max_sample_size = np.inf 
@@ -377,8 +383,9 @@ if __name__ == "__main__":
                 print(asstn, file=log)
             print("----------------------------------------------",file=log)
 
-            print("1Q,{},{},{},{},{}".format(args.data, ncand, valid_ballots, \
-                args.quota, max_sample_size))
+            print("1Q,{},{},{},{},[{}],[{},{}],{}".format(args.data, ncand, \
+                valid_ballots,args.quota,len(winners_on_fp),\
+                len(qts), qts_sample_size, max_sample_size))
             exit()
 
         # Increment to use when stepping through candidate upper/lower
@@ -817,8 +824,12 @@ if __name__ == "__main__":
                         best_outer_exp[asstn]), file=log)
             print("------------------------------------------------",file=log)
 
-        print("1Q,{},{},{},{},{}".format(args.data, ncand, valid_ballots, \
-            args.quota, max_sample_size))
+        
+
+        print("1Q,{},{},{},{},[{}],[{},{}],{}".format(args.data, ncand, \
+            valid_ballots, \
+            args.quota, len(winners_on_fp), len(qts), qts_sample_size, \
+            max_sample_size))
 
 
     log.close() 
