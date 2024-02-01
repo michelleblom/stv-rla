@@ -124,7 +124,7 @@ def merge_helpful_ags(helpful_ags, exp_merged_total):
 
 
 def compute_ag_stars(winners, losers, candidates, ballots, ag_matrix, \
-    first_winners, min_tvs, aud_tvs, INVALID, args, log=None):
+    first_winners, min_tvs, aud_tvs, INVALID, args, desc):
 
     for w in winners:
         cand_w = candidates[w]
@@ -198,9 +198,8 @@ def compute_ag_stars(winners, losers, candidates, ballots, ag_matrix, \
 
                 ag_matrix[w][c] = ss
 
-                if log != None:
-                    print("AG*({},{}) = {}".format(cand_w.id, cand_c.id, \
-                        ss), file=log)
+                desc += "AG*({},{}) = {}\n".format(cand_w.id, \
+                    cand_c.id, ss)
 
 
 def get_max_ballot_weight(prefs, first_winners, aud_tv):
@@ -220,6 +219,294 @@ def get_max_ballot_weight(prefs, first_winners, aud_tv):
         return max(weights), fw_prefix
 
 
+def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
+    INVALID,max_sample_size,ballots,min_tvs,ows,fws,losers,winners,aud_tvs):
+
+    np.seterr(all='ignore')
+
+    ag_matrix = [[None for c in candidates] for o in candidates]
+
+    desc = "---------------------------------------------\n"
+    desc += "START INNER LOOP\n"
+
+    inner_loop_assertions = set()
+    max_this_loop = 0
+    max_ss_mt = 0
+
+    # Check that TVs of the first winners i are at most aud_TV[i]
+    for f in winners_on_fp:
+        fw_i = candidates[f]
+        aud_tv_i = aud_tvs[f]
+
+        a = 1 / (1 - aud_tv_i)
+        thresholdT = a * valid_ballots / (args.seats + 1)
+        thresholdProp = thresholdT / valid_ballots
+        threshold = 1 - thresholdProp
+        
+        tally_others = valid_ballots - fw_i.fp_votes
+
+        ss_i = ssm_sample_size(threshold,tally_others,INVALID,args)
+
+        desc += "AUD TV for {}, {}, ss {}\n".format(fw_i.id, \
+            aud_tv_i, ss_i)
+
+        inner_loop_assertions.add((fw_i.num, "MT", None, \
+            (aud_tv_i, ss_i)))
+
+        max_ss_mt = max(max_ss_mt, ss_i)
+
+    max_this_loop = max(max_ss_mt, max_sample_size)
+
+    # For remaining winners, is it the case that they cannot be 
+    # eliminated prior to all reported losers? We will
+    # look at this from TWO perspectives. (1) compute AG*'s
+    # between the remaining winner r and opponents using our upper
+    # and lower bounds on the initial winner's transfer value. If 
+    # we can form enough AG*'s, we can verify the winner.
+    # (2) Forming NL assertions, potentially making use of our
+    #  set of AG* relationships. We will use the 
+    # cheaper of the two options.
+    compute_ag_stars([ow_i.num for ow_i in ows], losers, \
+        candidates, ballots, ag_matrix, winners_on_fp, min_tvs, \
+        aud_tvs, INVALID, args, desc)
+
+    compute_ag_stars(losers, losers,  candidates, ballots, \
+        ag_matrix, winners_on_fp, min_tvs, aud_tvs, INVALID, \
+        args, desc)
+
+    max_with_nls = 0
+    # explanations: map between AG* and the NL's that they
+    # are supporting. NOTE: Explanations currently not working.
+    explans = {}
+    for ow_i in ows:
+        ags = {c : ag_matrix[ow_i.num][c] for c in losers \
+            if ag_matrix[ow_i.num][c] != None}
+                
+        # Determine NL's between original losers and winner ow_i
+        for c in cands:
+            if c in winners:
+                continue
+
+            cand_c = candidates[c]
+
+            curr_nl = (ow_i.num, "NL", c)
+
+            min_ow_i = 0 # Min tally for ow_i.
+            max_c = 0 # Max tally for candidate c.
+
+            # Keep running tally of total votes we can increase the
+            # margin of assertion 'ow_i' NL 'c' with 'AG*' 
+            # relationships
+            pot_margin_inc = 0
+
+            helpful_ags = []
+
+            # Assertion: min_ow_i > maxc
+            assorter = INVALID*0.5
+            for b in ballots:
+                if b.prefs != []:
+                    if b.prefs[0] == ow_i.num:
+                        assorter += b.votes
+                        min_ow_i += b.votes
+                        continue
+
+                if b.prefs[0] == c:
+                    max_c += b.votes
+                    continue
+
+                # is this a ballot for 'c' over 'ow_i'?
+                c_in = c in b.prefs
+                ow_in = ow_i.num in b.prefs
+
+                weight, fwprefix = get_max_ballot_weight(b.prefs,\
+                    winners_on_fp, aud_tvs)
+
+                c_idx=b.prefs.index(c) if c_in else np.inf
+                o_idx=b.prefs.index(ow_i.num) if ow_in else np.inf
+
+                if c_in and c_idx < o_idx:
+                    # These ballots could not go to 'ow' but may go
+                    # to 'c'.
+
+                    # Could we exclude ballots by using an AG*?
+                    is_ag, ag_asn, descs = rule_out_for_max(\
+                        b.prefs, c, ag_matrix, winners, candidates)
+                            
+                    contrib = b.votes*((1-weight)/2.0)
+
+                    if is_ag:
+                        alt_contrib = b.votes*0.5
+                        helpful_ags.append((ag_asn, alt_contrib -\
+                            contrib, descs))
+                        pot_margin_inc += alt_contrib-contrib
+
+                    assorter += contrib
+                    max_c += b.votes
+
+                elif ow_in:
+                    # Check if all candidates before ow_i are
+                    # first winners.
+                    if b.prefs[len(fwprefix)] == ow_i.num:
+                        # Give votes to ow_i at minimum of the 
+                        # transfer values of first winners.
+                        minval = min([min_tvs[f] for f in fwprefix])
+                        min_ow_i += minval * b.votes
+                        assorter += b.votes * ((1 + minval)/2.0)
+                    else:
+                        # If we remove all cand 'd' for which ow AG*
+                        # d that appear before ow in the ballot,
+                        # will 'ow' be the first ranked cand? If so,
+                        # we could add these ballots to the min
+                        # tally of 'ow'.
+                        prefs = b.prefs[:]
+
+                        descs = set()
+                        max_ags_here = 0
+                                           
+                        for d,dval in ags.items():
+                            if d in prefs:
+                                idx_d = prefs.index(d)
+                                if idx_d < o_idx:
+                                    prefs.remove(d)
+                                    o_idx -= 1
+                                    rag = (ow_i.num,"AG*",d,dval)
+                                    descs.add(rag)
+                                    if rag in explans:
+                                        explans[rag].add(curr_nl)
+                                    else:
+                                        explans[rag]=set([curr_nl])
+                                    max_ags_here=max(max_ags_here,\
+                                        dval)
+
+                        assorter += 0.5*b.votes
+
+                        if prefs != [] and prefs[0] == ow_i.num:
+                            # These ballots would have originally
+                            # had a contribution of 0.5 to the
+                            # assorter. By utilising these AG*'s we
+                            # can increase the contribution of these
+                            # ballots to 1 each.
+                            helpful_ags.append((max_ags_here,  \
+                                0.5*b.votes, descs))
+
+                            pot_margin_inc += b.votes*0.5
+
+                        else:
+                            fwprefix = []
+                            minws = []
+                            for p in prefs:
+                                if p in winners_on_fp:
+                                    fwprefix.append(p)
+                                    minws.append(min_tvs[p])
+                                else:
+                                    break
+
+                            if fwprefix != [] and \
+                                prefs[len(fwprefix)] == ow_i.num:
+                                minval = min(minws) if b.prefs[0]\
+                                    in winners_on_fp else 1
+
+                                base_contrib = 0.5*b.votes
+                                alt_contrib = b.votes * ((1 + \
+                                    minval)/2.0)
+                                dconfig = alt_contrib-base_contrib
+
+                                if dconfig > 0:
+                                    helpful_ags.append(\
+                                        (max_ags_here, \
+                                        dconfig, descs))
+
+                                    pot_margin_inc += dconfig
+                else:
+                    assorter += 0.5*b.votes
+
+            # Max ASN of any AG*'s used to increase assorter 
+            # margins when forming NLs.
+            max_ags_used = 0  
+            merged_helpful_ags = merge_helpful_ags(helpful_ags, \
+                pot_margin_inc)
+
+            # Incorporate use of  AG*'s that either make the
+            # assertion possible, or whose ASN is already
+            # within/equal to current lower bound on audit
+            # difficulty.
+            while assorter/args.voters <= 0.5 and \
+                merged_helpful_ags != []:
+            
+                ag_asn, extra_contrib, descs = \
+                    merged_helpful_ags.pop(0)
+
+                assorter += extra_contrib
+                max_ags_used = max(max_ags_used, ag_asn)
+
+                inner_loop_assertions.update(descs)
+
+                for ag in descs:
+                    if ag in explans:
+                        explans[ag].add(curr_nl)
+                    else:
+                        explans[ag] = set([curr_nl])
+
+
+            # Can we reduce the sample size required for the
+            # assertion by including more AG*'s?
+            amean = assorter/args.voters
+            if amean > 0.5:
+                # Current sample size for assertion
+                ss = sample_size(amean, args) 
+
+                # Go through remaining AG*'s 
+                for ag_asn, extra_contrib, descs in \
+                    merged_helpful_ags:
+                    if ss < ag_asn:
+                        break
+
+                    # would reducing margin by votes reduce sample
+                    # size by more than increase caused by including
+                    # AG*?
+                    assorter += extra_contrib
+                    amean = assorter/args.voters
+
+                    ss  = sample_size(amean, args)
+                    max_ags_used = max(max_ags_used, ag_asn)
+            
+                    inner_loop_assertions.update(descs)
+
+                    for ag in descs:
+                        if ag in explans:
+                            explans[ag].add(curr_nl)
+                        else:
+                            explans[ag] = set([curr_nl])
+                    
+                max_with_nls=max(max_with_nls,max(max_ags_used,ss))
+                desc += "NL({},{}) = {}, AG*'s used {}\n".format(\
+                    ow_i.id, cand_c.id, ss, max_ags_used)
+
+                inner_loop_assertions.add((ow_i.num, "NL", c, \
+                    max(ss,max_ags_used)))
+            else:
+                max_with_nls = np.inf
+                desc += "NL({},{}) NOT POSSIBLE\n".format(\
+                    ow_i.id, cand_c.id)
+
+    max_this_loop=max(max_this_loop,max(max_ss_mt,max_with_nls))
+
+    desc += "Max in loop {}, {}\n".format(max_this_loop, {f.id : \
+        aud_tvs[f.num] for f in fws})
+
+    return max_this_loop, max_ss_mt, desc, aud_tvs, inner_loop_assertions, explans
+
+
+def create_upper_neighbours(curr_aud_tvs, winners_on_fp, deltat, maxtv):
+    nboors = []
+
+    for fw in winners_on_fp:
+        new_aud_tvs = curr_aud_tvs.copy()
+        if new_aud_tvs[fw] + deltat < maxtv:
+            new_aud_tvs[fw] += deltat
+            nboors.append(new_aud_tvs)
+
+    return nboors
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -263,6 +550,7 @@ if __name__ == "__main__":
     # Input: increment to use when exploring candidate lower and upper 
     # bounds on first winner's transfer value (for 1-quota method).
     parser.add_argument('-deltat', dest='deltat', default=0.05, type=float)
+    parser.add_argument('-deltam', dest='deltam', default=0.05, type=float)
     
     args = parser.parse_args()
 
@@ -391,6 +679,7 @@ if __name__ == "__main__":
         # Increment to use when stepping through candidate upper/lower
         # bounds on first winners' transfer values.
         deltat = args.deltat 
+        deltam = args.deltam 
 
         max_in_outer_loop = np.inf
 
@@ -418,7 +707,7 @@ if __name__ == "__main__":
                     mintv_ss_i = ssm_sample_size(thresh, fw_i.fp_votes, \
                         INVALID, args)
                     print("Sample size to show min tv of {} is {}".format(\
-                        min_tv_i, mintv_ss), file=log)
+                        min_tv_i, mintv_ss_i), file=log)
 
                     if mintv_ss_i >= max_in_outer_loop:
                         breakout = True
@@ -430,315 +719,53 @@ if __name__ == "__main__":
             if breakout:
                 break
 
-            aud_tvs = {fw : act_tvs[fw] + deltat for fw in winners_on_fp} 
-
             max_in_loop = np.inf
 
             best_inner_assertions = None
             best_inner_explanations = None
 
-            # MAIN LOOP OF ONE QUOTA METHOD
-            while any([aud_tvs[fw] < maxtv for fw in winners_on_fp]):
-                print("---------------------------------------------",file=log)
-                print("START INNER LOOP", file=log)
+            curr_aud_tvs = {fw : act_tvs[fw] + deltat for fw in winners_on_fp}
+            tv_ub_nboors = [curr_aud_tvs] + create_upper_neighbours(curr_aud_tvs, \
+                winners_on_fp, deltat, maxtv)
+ 
+            improved = True
+            while improved and tv_ub_nboors != []:
 
-                inner_loop_assertions = set()
-                max_this_loop = 0
-                max_ss_mt = 0
+                # Run inner loop for each setting of tv upper bounds
+                # we are interested in. Establish what leads to the 
+                # best audit.
+                with Pool(processes=args.cpus) as pool:
+                    max_ss = max(max_sample_size, mintv_ss)
+                    func = partial(inner_loop, winners_on_fp, args, \
+                        candidates, cands, valid_ballots, INVALID, max_ss,\
+                        ballots, min_tvs, ows, fws, losers, winners)
 
-                # Check that TVs of the first winners i are at most aud_TV[i]
-                for f in winners_on_fp:
-                    fw_i = candidates[f]
-                    aud_tv_i = aud_tvs[f]
+                    results = pool.map(func, tv_ub_nboors)
 
-                    a = 1 / (1 - aud_tv_i)
-                    thresholdT = a * valid_ballots / (args.seats + 1)
-                    thresholdProp = thresholdT / valid_ballots
-                    threshold = 1 - thresholdProp
-        
-                    tally_others = valid_ballots - fw_i.fp_votes
+                improved = False
+                min_uts = np.inf
+                min_this_loop = np.inf
+                for max_this_loop, uts_ss, desc, nb_aud_tvs, \
+                    inner_loop_assertions, explans in results:
 
-                    ss_i = ssm_sample_size(threshold,tally_others,INVALID,args)
+                    min_uts = min(min_uts, uts_ss)
+                    min_this_loop = min(min_this_loop, max_this_loop)
 
-                    print("AUD TV for {}, {}, ss {}".format(fw_i.id, \
-                        aud_tv_i, ss_i), file=log)
+                    print(desc, file=log)
+                    if max_this_loop <= max_in_loop:
+                        best_inner_assertions = inner_loop_assertions
+                        best_inner_explanations = explans
+                        max_in_loop = max_this_loop
+                        curr_aud_tvs = nb_aud_tvs
+                        improved = True
 
-                    inner_loop_assertions.add((fw_i.num, "MT", None, \
-                        (aud_tv_i, ss_i)))
-
-                    max_ss_mt = max(max_ss_mt, ss_i)
-
-                max_this_loop = max(max_ss_mt, max(mintv_ss, max_sample_size))
-
-                # For remaining winners, is it the case that they cannot be 
-                # eliminated prior to all reported losers? We will
-                # look at this from TWO perspectives. (1) compute AG*'s
-                # between the remaining winner r and opponents using our upper
-                # and lower bounds on the initial winner's transfer value. If 
-                # we can form enough AG*'s, we can verify the winner.
-                # (2) Forming NL assertions, potentially making use of our
-                #  set of AG* relationships. We will use the 
-                # cheaper of the two options.
-                compute_ag_stars([ow_i.num for ow_i in ows], losers, \
-                    candidates, ballots, ag_matrix, winners_on_fp, min_tvs, \
-                    aud_tvs, INVALID, args, log=log)
-
-                compute_ag_stars(losers, losers,  candidates, ballots, \
-                    ag_matrix, winners_on_fp, min_tvs, aud_tvs, INVALID, \
-                    args, log=log)
-
-                max_with_nls = 0
-                # explanations: map between AG* and the NL's that they
-                # are supporting. NOTE: Explanations currently not working.
-                explans = {}
-                for ow_i in ows:
-                    ags = {c : ag_matrix[ow_i.num][c] for c in losers \
-                        if ag_matrix[ow_i.num][c] != None}
-                
-                    # Determine NL's between original losers and winner ow_i
-                    for c in cands:
-                        if c in winners:
-                            continue
-
-                        cand_c = candidates[c]
-
-                        curr_nl = (ow_i.num, "NL", c)
-
-                        min_ow_i = 0 # Min tally for ow_i.
-                        max_c = 0 # Max tally for candidate c.
-
-                        # Keep running tally of total votes we can increase the
-                        # margin of assertion 'ow_i' NL 'c' with 'AG*' 
-                        # relationships
-                        pot_margin_inc = 0
-
-                        helpful_ags = []
-
-                        # Assertion: min_ow_i > maxc
-                        assorter = INVALID*0.5
-                        for b in ballots:
-                            if b.prefs != []:
-                                if b.prefs[0] == ow_i.num:
-                                    assorter += b.votes
-                                    min_ow_i += b.votes
-                                    continue
-
-                            if b.prefs[0] == c:
-                                max_c += b.votes
-                                continue
-
-                            # is this a ballot for 'c' over 'ow_i'?
-                            c_in = c in b.prefs
-                            ow_in = ow_i.num in b.prefs
-
-                            weight, fwprefix = get_max_ballot_weight(b.prefs,\
-                                winners_on_fp, aud_tvs)
-
-                            c_idx=b.prefs.index(c) if c_in else np.inf
-                            o_idx=b.prefs.index(ow_i.num) if ow_in else np.inf
-
-                            if c_in and c_idx < o_idx:
-                                # These ballots could not go to 'ow' but may go
-                                # to 'c'.
-
-                                # Could we exclude ballots by using an AG*?
-                                is_ag, ag_asn, descs = rule_out_for_max(\
-                                    b.prefs, c, ag_matrix, winners, candidates)
-                            
-                                contrib = b.votes*((1-weight)/2.0)
-
-                                if is_ag:
-                                    alt_contrib = b.votes*0.5
-                                    helpful_ags.append((ag_asn, alt_contrib -\
-                                        contrib, descs))
-                                    pot_margin_inc += alt_contrib-contrib
-
-                                assorter += contrib
-                                max_c += b.votes
-
-                            elif ow_in:
-                                # Check if all candidates before ow_i are
-                                # first winners.
-                                if b.prefs[len(fwprefix)] == ow_i.num:
-                                    # Give votes to ow_i at minimum of the 
-                                    # transfer values of first winners.
-                                    minval = min([min_tvs[f] for f in fwprefix])
-                                    min_ow_i += minval * b.votes
-                                    assorter += b.votes * ((1 + minval)/2.0)
-                                else:
-                                    # If we remove all cand 'd' for which ow AG*
-                                    # d that appear before ow in the ballot,
-                                    # will 'ow' be the first ranked cand? If so,
-                                    # we could add these ballots to the min
-                                    # tally of 'ow'.
-                                    prefs = b.prefs[:]
-
-                                    descs = set()
-                                    max_ags_here = 0
-                                            
-                                    for d,dval in ags.items():
-                                        if d in prefs:
-                                            idx_d = prefs.index(d)
-                                            if idx_d < o_idx:
-                                                prefs.remove(d)
-                                                o_idx -= 1
-                                                rag = (ow_i.num,"AG*",d,dval)
-                                                descs.add(rag)
-                                                if rag in explans:
-                                                    explans[rag].add(curr_nl)
-                                                else:
-                                                    explans[rag]=set([curr_nl])
-                                                max_ags_here=max(max_ags_here,\
-                                                    dval)
-
-                                    assorter += 0.5*b.votes
-
-                                    if prefs != [] and prefs[0] == ow_i.num:
-                                        # These ballots would have originally
-                                        # had a contribution of 0.5 to the
-                                        # assorter. By utilising these AG*'s we
-                                        # can increase the contribution of these
-                                        # ballots to 1 each.
-                                        helpful_ags.append((max_ags_here,  \
-                                            0.5*b.votes, descs))
-
-                                        pot_margin_inc += b.votes*0.5
-
-                                    else:
-                                        fwprefix = []
-                                        minws = []
-                                        for p in prefs:
-                                            if p in winners_on_fp:
-                                                fwprefix.append(p)
-                                                minws.append(min_tvs[p])
-                                            else:
-                                                break
-
-                                        if fwprefix != [] and \
-                                            prefs[len(fwprefix)] == ow_i.num:
-                                            minval = min(minws) if b.prefs[0]\
-                                                in winners_on_fp else 1
-
-                                            base_contrib = 0.5*b.votes
-                                            alt_contrib = b.votes * ((1 + \
-                                                minval)/2.0)
-                                            dconfig = alt_contrib-base_contrib
-
-                                            if dconfig > 0:
-                                                helpful_ags.append(\
-                                                    (max_ags_here, \
-                                                    dconfig, descs))
-
-                                                pot_margin_inc += dconfig
-                            else:
-                                assorter += 0.5*b.votes
-
-                        # Max ASN of any AG*'s used to increase assorter 
-                        # margins when forming NLs.
-                        max_ags_used = 0  
-                        merged_helpful_ags = merge_helpful_ags(helpful_ags, \
-                            pot_margin_inc)
-
-                        # Incorporate use of  AG*'s that either make the
-                        # assertion possible, or whose ASN is already
-                        # within/equal to current lower bound on audit
-                        # difficulty.
-                        while assorter/args.voters <= 0.5 and \
-                            merged_helpful_ags != []:
-                        
-                            ag_asn, extra_contrib, descs = \
-                                merged_helpful_ags.pop(0)
-
-                            assorter += extra_contrib
-                            max_ags_used = max(max_ags_used, ag_asn)
-
-                            inner_loop_assertions.update(descs)
-
-                            for ag in descs:
-                                if ag in explans:
-                                    explans[ag].add(curr_nl)
-                                else:
-                                    explans[ag] = set([curr_nl])
-
-
-                        # Can we reduce the sample size required for the
-                        # assertion by including more AG*'s?
-                        amean = assorter/args.voters
-                        if amean > 0.5:
-                            # Current sample size for assertion
-                            ss = sample_size(amean, args) 
-
-                            # Go through remaining AG*'s 
-                            for ag_asn, extra_contrib, descs in \
-                                merged_helpful_ags:
-                                if ss < ag_asn:
-                                    break
-
-                                # would reducing margin by votes reduce sample
-                                # size by more than increase caused by including
-                                # AG*?
-                                assorter += extra_contrib
-                                amean = assorter/args.voters
-
-                                ss  = sample_size(amean, args)
-                                max_ags_used = max(max_ags_used, ag_asn)
-                        
-                                inner_loop_assertions.update(descs)
-
-                                for ag in descs:
-                                    if ag in explans:
-                                        explans[ag].add(curr_nl)
-                                    else:
-                                        explans[ag] = set([curr_nl])
-                                
-                            max_with_nls=max(max_with_nls,max(max_ags_used,ss))
-                            print("NL({},{}) = {}, AG*'s used {}".format(\
-                                ow_i.id, cand_c.id, ss, max_ags_used), file=log)
-    
-                            inner_loop_assertions.add((ow_i.num, "NL", c, \
-                                max(ss,max_ags_used)))
-                        else:
-                            max_with_nls = np.inf
-                            print("NL({},{}) NOT POSSIBLE".format(\
-                                ow_i.id, cand_c.id),file=log)
-
-                max_this_loop=max(max_this_loop,max(max_ss_mt,max_with_nls))
-
-                print("Max in loop {}, {}".format(max_this_loop, {f.id : \
-                    aud_tvs[f.num] for f in fws}), file=log)
-
-                if max_this_loop <= max_in_loop:
-                    best_inner_assertions = inner_loop_assertions
-                    best_inner_explanations = explans
-                    max_in_loop = max_this_loop
-
-                    if max_with_nls >= max_ss_mt:
-                        # Contuining in loop will not improve overall
-                        # audit.
-                        print("Breaking out of inner loop {} > {}".format(\
-                            max_this_loop, max_in_loop), file=log)
-                        break
-
-
-                    # Add deltat to the smallest of aud_tvs
-                    fmin, fminv = None, None
-                    for f in winners_on_fp:
-                        if fmin == None:
-                            fmin = f
-                            fminv = aud_tvs[f]
-                        else:
-                            v = aud_tvs[f]
-                            if v < fminv:
-                                fmin = f
-                                fminv = v
-
-                    aud_tvs[fmin] += deltat
-                else:
-                    print("Breaking out of inner loop {} > {}".format(\
-                        max_this_loop, max_in_loop), file=log)
+                if min_uts < min_this_loop:
                     break
 
-            
+                tv_ub_nboors = create_upper_neighbours(curr_aud_tvs,\
+                    winners_on_fp, deltat, maxtv)
+
+                
             if max_in_loop <= max_in_outer_loop:
                 max_in_outer_loop = max_in_loop
                 best_outer_assertions = lts
@@ -753,7 +780,7 @@ if __name__ == "__main__":
             zeros = [f for f in winners_on_fp if min_tvs[f] == 0]
             if zeros != []:
                 f = zeros[0]
-                min_tvs[f] = act_tvs[f]/2.0
+                min_tvs[f] = act_tvs[f]/2
             else:
                 fmin, fminv = None, None
                 for f in winners_on_fp:
@@ -766,7 +793,7 @@ if __name__ == "__main__":
                             fmin = f
                             fminv = v
 
-                min_tvs[fmin] += deltat
+                min_tvs[fmin] += deltam
                 print("New mintv, {} = {}".format(candidates[fmin].id, \
                     min_tvs[fmin]),file=log)
 
