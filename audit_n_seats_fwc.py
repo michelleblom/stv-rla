@@ -23,6 +23,7 @@ import sys
 from functools import partial
 
 from multiprocessing import Pool
+from multiprocessing.pool import ThreadPool
 
 from utils import read_outcome, sample_size, ssm_sample_size,\
     tally_vs_tally_sample_size, read_ballots_txt, index_of, next_cand, \
@@ -494,7 +495,8 @@ def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
     desc += "Max in loop {}, {}\n".format(max_this_loop, {f.id : \
         aud_tvs[f.num] for f in fws})
 
-    return max_this_loop, max_ss_mt, desc, aud_tvs, inner_loop_assertions, explans
+    return max_this_loop, max_ss_mt, desc, aud_tvs, inner_loop_assertions, \
+        explans
 
 
 def create_upper_neighbours(curr_aud_tvs, winners_on_fp, deltat, maxtv):
@@ -507,6 +509,102 @@ def create_upper_neighbours(curr_aud_tvs, winners_on_fp, deltat, maxtv):
             nboors.append(new_aud_tvs)
 
     return nboors
+
+
+def outer_loop(args, ows, fws, losers, winners, winners_on_fp,  \
+    candidates, cands, valid_ballots, INVALID, ballots, max_ss, deltat, \
+    deltam, maxtv, act_tvs, min_tvs):
+   
+    np.seterr(all='ignore')
+ 
+    outerdesc = "------------------------------------------------\n"
+    outerdesc += "START OUTER LOOP, min_tvs {}\n".format({f.id : \
+        min_tvs[f.num] for f in fws})
+    mintv_ss = 0
+   
+    lts = set()
+
+    for fw_i in fws:
+        min_tv_i = min_tvs[fw_i.num]
+
+        if min_tv_i > 0:
+            mintally = args.quota / (1 - min_tv_i)
+            thresh = mintally/valid_ballots
+
+            mintv_ss_i = ssm_sample_size(thresh, fw_i.fp_votes, \
+                INVALID, args)
+            outerdesc += "Sample size to show min tv of {} is {}\n".format(\
+                min_tv_i, mintv_ss_i)
+
+            lts.add((fw_i.num, "LT", None, (min_tv_i, mintv_ss_i)))
+            mintv_ss = max(mintv_ss, mintv_ss_i)
+
+    max_in_loop = np.inf
+
+    best_inner_assertions = None
+    best_inner_explanations = None
+
+    curr_aud_tvs = {fw : act_tvs[fw] + deltat for fw in winners_on_fp}
+    tv_ub_nboors = [curr_aud_tvs] + create_upper_neighbours(curr_aud_tvs, \
+        winners_on_fp, deltat, maxtv)
+
+    improved = True
+    while improved and tv_ub_nboors != []:
+
+        # Run inner loop for each setting of tv upper bounds
+        # we are interested in. Establish what leads to the 
+        # best audit.
+        with ThreadPool(processes=args.cpus) as pool:
+            max_ss = max(max_sample_size, mintv_ss)
+            func = partial(inner_loop, winners_on_fp, args, \
+                candidates, cands, valid_ballots, INVALID, max_ss,\
+                ballots, min_tvs, ows, fws, losers, winners)
+
+            results = pool.map(func, tv_ub_nboors)
+
+        improved = False
+        min_uts = np.inf
+        min_this_loop = np.inf
+        for max_this_loop, uts_ss, desc, nb_aud_tvs, \
+            inner_loop_assertions, explans in results:
+
+            min_uts = min(min_uts, uts_ss)
+            min_this_loop = min(min_this_loop, max_this_loop)
+
+            outerdesc += desc
+            if max_this_loop <= max_in_loop:
+                best_inner_assertions = inner_loop_assertions
+                best_inner_explanations = explans
+                max_in_loop = max_this_loop
+                curr_aud_tvs = nb_aud_tvs
+                improved = True
+
+        if min_uts < min_this_loop:
+            break
+
+        tv_ub_nboors = create_upper_neighbours(curr_aud_tvs,\
+            winners_on_fp, deltat, maxtv)
+
+    outerdesc += "Output of outer loop is: {}".format(max_in_loop)
+
+    return max_in_loop, min_tvs, outerdesc, lts, mintv_ss,\
+        best_inner_assertions, best_inner_explanations
+
+
+def create_lower_neighbours(curr_min_tvs, winners_on_fp, \
+    deltam, act_tvs):
+
+    nboors = []
+
+    for fw in winners_on_fp:
+        new_min_tvs = curr_min_tvs.copy()
+        if new_min_tvs[fw] > 0:
+            new_min_tvs[fw] = max(0, new_min_tvs[fw] - deltam)
+            nboors.append(new_min_tvs)
+            
+    return nboors
+        
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -530,7 +628,7 @@ if __name__ == "__main__":
     parser.add_argument('-s', dest='seed', default=9368663, type=int)
     
     # Input: number of cpus to use if parallelising tasks.
-    parser.add_argument('-cpus', dest='cpus', default=6, type=int)
+    parser.add_argument('-cpus', dest='cpus', default=9, type=int)
 
     # Input: number of seats in election (default is 2)
     parser.add_argument('-seats', dest='seats', default=2, type=int)
@@ -549,8 +647,8 @@ if __name__ == "__main__":
     
     # Input: increment to use when exploring candidate lower and upper 
     # bounds on first winner's transfer value (for 1-quota method).
-    parser.add_argument('-deltat', dest='deltat', default=0.05, type=float)
-    parser.add_argument('-deltam', dest='deltam', default=0.05, type=float)
+    parser.add_argument('-deltat', dest='deltat', default=0.005, type=float)
+    parser.add_argument('-deltam', dest='deltam', default=0.005, type=float)
     
     args = parser.parse_args()
 
@@ -688,115 +786,47 @@ if __name__ == "__main__":
 
         nfws = len(fws)
 
-        while any([min_tvs[f] < act_tvs[f] for f in winners_on_fp]):
-            print("------------------------------------------------",file=log)
-            print("START OUTER LOOP, min_tvs {}".format({f.id : min_tvs[f.num]\
-                for f in fws}), file=log)
-            mintv_ss = 0
-           
-            lts = set()
+        curr_min_tvs = {fw : max(0, act_tvs[fw]-deltam) for fw in winners_on_fp}
+        tv_lb_nboors = [curr_min_tvs] + create_lower_neighbours(curr_min_tvs, \
+            winners_on_fp, deltam, act_tvs)
+ 
+        outer_improved = True
+        while outer_improved and tv_lb_nboors != []:
 
-            breakout = False
-            for fw_i in fws:
-                min_tv_i = min_tvs[fw_i.num]
+            with ThreadPool(processes=args.cpus) as pool:
+                func = partial(outer_loop, args, ows, fws, losers, winners,\
+                    winners_on_fp, candidates, cands, valid_ballots, \
+                    INVALID, ballots, max_sample_size, deltat, deltam, \
+                    maxtv, act_tvs)
 
-                if min_tv_i > 0:
-                    mintally = args.quota / (1 - min_tv_i)
-                    thresh = mintally/valid_ballots
+                results = pool.map(func, tv_lb_nboors)
 
-                    mintv_ss_i = ssm_sample_size(thresh, fw_i.fp_votes, \
-                        INVALID, args)
-                    print("Sample size to show min tv of {} is {}".format(\
-                        min_tv_i, mintv_ss_i), file=log)
+            outer_improved = False
+            min_lts = np.inf
+            min_this_loop = np.inf
 
-                    if mintv_ss_i >= max_in_outer_loop:
-                        breakout = True
-                        break
+            for max_in_loop, nb_min_tvs, outerdescs, lts, lts_ss, \
+                best_inner_assertions, best_inner_explanations in results:
+            
+                min_lts = min(min_lts, lts_ss)
+                min_this_loop = min(min_this_loop, max_in_loop)
 
-                    lts.add((fw_i.num, "LT", None, (min_tv_i, mintv_ss_i)))
-                    mintv_ss = max(mintv_ss, mintv_ss_i)
+                print(outerdescs, file=log)
+                if max_in_loop <= max_in_outer_loop:
+                    max_in_outer_loop = max_in_loop
+                    best_outer_assertions = lts
+                    best_outer_assertions.update(best_inner_assertions)
+                    best_outer_exp = best_inner_explanations
+                    curr_min_tvs = nb_min_tvs
+                    outer_improved = True
 
-            if breakout:
+            if min_lts < min_this_loop:
                 break
 
-            max_in_loop = np.inf
+            tv_lb_nboors = create_lower_neighbours(curr_min_tvs,\
+                winners_on_fp, deltam, act_tvs)
 
-            best_inner_assertions = None
-            best_inner_explanations = None
-
-            curr_aud_tvs = {fw : act_tvs[fw] + deltat for fw in winners_on_fp}
-            tv_ub_nboors = [curr_aud_tvs] + create_upper_neighbours(curr_aud_tvs, \
-                winners_on_fp, deltat, maxtv)
- 
-            improved = True
-            while improved and tv_ub_nboors != []:
-
-                # Run inner loop for each setting of tv upper bounds
-                # we are interested in. Establish what leads to the 
-                # best audit.
-                with Pool(processes=args.cpus) as pool:
-                    max_ss = max(max_sample_size, mintv_ss)
-                    func = partial(inner_loop, winners_on_fp, args, \
-                        candidates, cands, valid_ballots, INVALID, max_ss,\
-                        ballots, min_tvs, ows, fws, losers, winners)
-
-                    results = pool.map(func, tv_ub_nboors)
-
-                improved = False
-                min_uts = np.inf
-                min_this_loop = np.inf
-                for max_this_loop, uts_ss, desc, nb_aud_tvs, \
-                    inner_loop_assertions, explans in results:
-
-                    min_uts = min(min_uts, uts_ss)
-                    min_this_loop = min(min_this_loop, max_this_loop)
-
-                    print(desc, file=log)
-                    if max_this_loop <= max_in_loop:
-                        best_inner_assertions = inner_loop_assertions
-                        best_inner_explanations = explans
-                        max_in_loop = max_this_loop
-                        curr_aud_tvs = nb_aud_tvs
-                        improved = True
-
-                if min_uts < min_this_loop:
-                    break
-
-                tv_ub_nboors = create_upper_neighbours(curr_aud_tvs,\
-                    winners_on_fp, deltat, maxtv)
-
-                
-            if max_in_loop <= max_in_outer_loop:
-                max_in_outer_loop = max_in_loop
-                best_outer_assertions = lts
-                best_outer_assertions.update(best_inner_assertions)
-                best_outer_exp = best_inner_explanations
-            else:
-                print("Breaking out of outer loop", file=log)
-                break    
-
-            # If there is a min_tv for a candidate that is 0, set it to
-            # act_tv/2 for that candidate
-            zeros = [f for f in winners_on_fp if min_tvs[f] == 0]
-            if zeros != []:
-                f = zeros[0]
-                min_tvs[f] = act_tvs[f]/2
-            else:
-                fmin, fminv = None, None
-                for f in winners_on_fp:
-                    if fmin == None:
-                        fmin = f
-                        fminv = min_tvs[f]
-                    else:
-                        v = min_tvs[f]
-                        if v < fminv:
-                            fmin = f
-                            fminv = v
-
-                min_tvs[fmin] += deltam
-                print("New mintv, {} = {}".format(candidates[fmin].id, \
-                    min_tvs[fmin]),file=log)
-
+        
         assertions_used.update(best_outer_assertions)
         assertions_text = [(candidates[w].id, n, candidates[l].id \
             if l != None else None) for w,n,l,_ in assertions_used]
@@ -822,7 +852,6 @@ if __name__ == "__main__":
                     filtered.append(exp)
 
             best_outer_exp[asstn] = filtered
-
 
         max_sample_size = max(max_sample_size, max_in_outer_loop)
 
