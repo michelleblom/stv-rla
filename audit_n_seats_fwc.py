@@ -275,14 +275,51 @@ def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
         ag_matrix, winners_on_fp, min_tvs, aud_tvs, INVALID, \
         args, desc)
 
-    max_with_nls = 0
-    # explanations: map between AG* and the NL's that they
-    # are supporting. NOTE: Explanations currently not working.
-    explans = {}
+    qthresh = 1.0/(args.seats + 1);
+
     for ow_i in ows:
         ags = {c : ag_matrix[ow_i.num][c] for c in losers \
             if ag_matrix[ow_i.num][c] != None}
-                
+               
+        # Can we show that ow_i's first preferences plus all the 
+        # ballots that would flow from candidates l for which
+        # AG*(ow_i, l) is greater than a quota? 
+        totvotes = 0
+        ss_ag_iqx = 0
+        ss_iqx = np.inf
+
+        iqx_assertions = set()
+        for b in ballots:
+            value = 1
+            for p in b.prefs:
+                if p in ags:
+                    ss_ag_iqx = max(ss_ag_iqx, ags[p])
+                    iqx_assertions.add((ow_i.num,"AG*",p,ags[p]))
+                    continue
+                elif p == ow_i.num:
+                    totvotes += value * b.votes
+
+                elif p in winners_on_fp:
+                    if value == 1:
+                        value = min_tvs[p]
+                    continue
+
+                break
+
+        # Note: can do same thing with AG*'s here as later, only
+        # use helpful ones. 
+
+        if totvotes > args.quota:
+            ss = ssm_sample_size(thresh, totvotes, INVALID, args)
+            iqx_assertions.add((ow_i.num, "IQX", None, ss))
+            desc += "Can form IQX({}) with sample size {}\n".format(\
+                ow_i.id, ss) 
+            ss_iqx = max(ss, ss_ag_iqx)
+            
+
+        nl_assertion_set = set()
+        max_with_nls_i = 0
+
         # Determine NL's between original losers and winner ow_i
         for c in cands:
             if c in winners:
@@ -372,10 +409,6 @@ def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
                                     o_idx -= 1
                                     rag = (ow_i.num,"AG*",d,dval)
                                     descs.add(rag)
-                                    if rag in explans:
-                                        explans[rag].add(curr_nl)
-                                    else:
-                                        explans[rag]=set([curr_nl])
                                     max_ags_here=max(max_ags_here,\
                                         dval)
 
@@ -440,13 +473,7 @@ def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
                 assorter += extra_contrib
                 max_ags_used = max(max_ags_used, ag_asn)
 
-                inner_loop_assertions.update(descs)
-
-                for ag in descs:
-                    if ag in explans:
-                        explans[ag].add(curr_nl)
-                    else:
-                        explans[ag] = set([curr_nl])
+                nl_assertion_set.update(descs)
 
 
             # Can we reduce the sample size required for the
@@ -471,32 +498,32 @@ def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
                     ss  = sample_size(amean, args)
                     max_ags_used = max(max_ags_used, ag_asn)
             
-                    inner_loop_assertions.update(descs)
+                    nl_assertion_set.update(descs)
 
-                    for ag in descs:
-                        if ag in explans:
-                            explans[ag].add(curr_nl)
-                        else:
-                            explans[ag] = set([curr_nl])
-                    
-                max_with_nls=max(max_with_nls,max(max_ags_used,ss))
+                max_with_nls_i=max(max_with_nls_i,max(max_ags_used,ss))
                 desc += "NL({},{}) = {}, AG*'s used {}\n".format(\
                     ow_i.id, cand_c.id, ss, max_ags_used)
 
-                inner_loop_assertions.add((ow_i.num, "NL", c, \
+                nl_assertion_set.add((ow_i.num, "NL", c, \
                     max(ss,max_ags_used)))
             else:
-                max_with_nls = np.inf
+                max_with_nls_i = np.inf
                 desc += "NL({},{}) NOT POSSIBLE\n".format(\
                     ow_i.id, cand_c.id)
 
-    max_this_loop=max(max_this_loop,max(max_ss_mt,max_with_nls))
-
+        if ss_iqx < max_with_nls_i:
+            desc += "CHOOSE IQX over NLs\n"
+            max_this_loop = max(max_this_loop, ss_iqx)
+            inner_loop_assertions.update(iqx_assertions)
+        else:
+            max_this_loop = max(max_this_loop, max_with_nls_i)
+            inner_loop_assertions.update(nl_assertion_set)
+            
+        
     desc += "Max in loop {}, {}\n".format(max_this_loop, {f.id : \
         aud_tvs[f.num] for f in fws})
 
-    return max_this_loop, max_ss_mt, desc, aud_tvs, inner_loop_assertions, \
-        explans
+    return max_this_loop, max_ss_mt, desc, aud_tvs, inner_loop_assertions
 
 
 def create_upper_neighbours(curr_aud_tvs, winners_on_fp, deltat, maxtv):
@@ -542,7 +569,6 @@ def outer_loop(args, ows, fws, losers, winners, winners_on_fp,  \
     max_in_loop = np.inf
 
     best_inner_assertions = None
-    best_inner_explanations = None
 
     curr_aud_tvs = {fw : act_tvs[fw] + deltat for fw in winners_on_fp}
     tv_ub_nboors = [curr_aud_tvs] + create_upper_neighbours(curr_aud_tvs, \
@@ -566,7 +592,7 @@ def outer_loop(args, ows, fws, losers, winners, winners_on_fp,  \
         min_uts = np.inf
         min_this_loop = np.inf
         for max_this_loop, uts_ss, desc, nb_aud_tvs, \
-            inner_loop_assertions, explans in results:
+            inner_loop_assertions in results:
 
             min_uts = min(min_uts, uts_ss)
             min_this_loop = min(min_this_loop, max_this_loop)
@@ -574,7 +600,6 @@ def outer_loop(args, ows, fws, losers, winners, winners_on_fp,  \
             outerdesc += desc
             if max_this_loop <= max_in_loop:
                 best_inner_assertions = inner_loop_assertions
-                best_inner_explanations = explans
                 max_in_loop = max_this_loop
                 curr_aud_tvs = nb_aud_tvs
                 improved = True
@@ -588,7 +613,7 @@ def outer_loop(args, ows, fws, losers, winners, winners_on_fp,  \
     outerdesc += "Output of outer loop is: {}".format(max_in_loop)
 
     return max_in_loop, min_tvs, outerdesc, lts, mintv_ss,\
-        best_inner_assertions, best_inner_explanations
+        best_inner_assertions
 
 
 def create_lower_neighbours(curr_min_tvs, winners_on_fp, \
@@ -782,7 +807,6 @@ if __name__ == "__main__":
         max_in_outer_loop = np.inf
 
         best_outer_assertions = set()
-        best_outer_exp = set()
 
         nfws = len(fws)
 
@@ -806,7 +830,7 @@ if __name__ == "__main__":
             min_this_loop = np.inf
 
             for max_in_loop, nb_min_tvs, outerdescs, lts, lts_ss, \
-                best_inner_assertions, best_inner_explanations in results:
+                best_inner_assertions in results:
             
                 min_lts = min(min_lts, lts_ss)
                 min_this_loop = min(min_this_loop, max_in_loop)
@@ -816,7 +840,6 @@ if __name__ == "__main__":
                     max_in_outer_loop = max_in_loop
                     best_outer_assertions = lts
                     best_outer_assertions.update(best_inner_assertions)
-                    best_outer_exp = best_inner_explanations
                     curr_min_tvs = nb_min_tvs
                     outer_improved = True
 
@@ -845,14 +868,6 @@ if __name__ == "__main__":
 
             final_assertions.append(assrt)
 
-        for asstn in best_outer_exp:
-            filtered = []
-            for exp in best_outer_exp[asstn]:
-                if exp in final_assertions:
-                    filtered.append(exp)
-
-            best_outer_exp[asstn] = filtered
-
         max_sample_size = max(max_sample_size, max_in_outer_loop)
 
         if max_sample_size >= args.voters:
@@ -872,15 +887,6 @@ if __name__ == "__main__":
             for asstn in final_assertions:
                 print(asstn, file=log)
 
-            print("------------------------------------------------",file=log)
-            print("Explanations for AG* inclusion:", file=log)
-            for asstn in final_assertions:
-                if asstn in best_outer_exp:
-                    print("   Explanation for {}: {}".format(asstn, \
-                        best_outer_exp[asstn]), file=log)
-            print("------------------------------------------------",file=log)
-
-        
 
         print("1Q,{},{},{},{},[{}],[{},{}],{}".format(args.data, ncand, \
             valid_ballots, \
