@@ -234,6 +234,8 @@ def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
     max_this_loop = 0
     max_ss_mt = 0
 
+    winners_verified = []
+
     # Check that TVs of the first winners i are at most aud_TV[i]
     for f in winners_on_fp:
         fw_i = candidates[f]
@@ -248,6 +250,9 @@ def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
 
         ss_i = ssm_sample_size(threshold,tally_others,INVALID,args)
 
+        if ss_i != np.inf:
+            winners_verified.append(f)
+
         desc += "AUD TV for {}, {}, ss {}\n".format(fw_i.id, \
             aud_tv_i, ss_i)
 
@@ -257,6 +262,7 @@ def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
         max_ss_mt = max(max_ss_mt, ss_i)
 
     max_this_loop = max(max_ss_mt, max_sample_size)
+    partial_ss = max_this_loop
 
     # For remaining winners, is it the case that they cannot be 
     # eliminated prior to all reported losers? We will
@@ -291,17 +297,20 @@ def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
         iqx_assertions = set()
         for b in ballots:
             value = 1
+
+            if b.prefs[0] in winners_on_fp:
+                value = min_tvs[b.prefs[0]]
+
             for p in b.prefs:
                 if p in ags:
                     ss_ag_iqx = max(ss_ag_iqx, ags[p])
                     iqx_assertions.add((ow_i.num,"AG*",p,ags[p]))
                     continue
+
                 elif p == ow_i.num:
                     totvotes += value * b.votes
 
                 elif p in winners_on_fp:
-                    if value == 1:
-                        value = min_tvs[p]
                     continue
 
                 break
@@ -511,6 +520,10 @@ def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
                 desc += "NL({},{}) NOT POSSIBLE\n".format(\
                     ow_i.id, cand_c.id)
 
+        if ss_iqx < args.voters or max_with_nls_i < args.voters:
+            winners_verified.append(ow_i.num)
+            partial_ss = max(partial_ss, min(ss_iqx, max_with_nls_i))
+
         if ss_iqx < max_with_nls_i:
             desc += "CHOOSE IQX over NLs\n"
             max_this_loop = max(max_this_loop, ss_iqx)
@@ -523,7 +536,8 @@ def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
     desc += "Max in loop {}, {}\n".format(max_this_loop, {f.id : \
         aud_tvs[f.num] for f in fws})
 
-    return max_this_loop, max_ss_mt, desc, aud_tvs, inner_loop_assertions
+    return max_this_loop, max_ss_mt, desc, aud_tvs, inner_loop_assertions,\
+        winners_verified, partial_ss
 
 
 def create_upper_neighbours(curr_aud_tvs, winners_on_fp, deltat, maxtv):
@@ -574,6 +588,9 @@ def outer_loop(args, ows, fws, losers, winners, winners_on_fp,  \
     tv_ub_nboors = [curr_aud_tvs] + create_upper_neighbours(curr_aud_tvs, \
         winners_on_fp, deltat, maxtv)
 
+    curr_winners_verified = []
+    best_partial_ss = np.inf
+
     improved = True
     while improved and tv_ub_nboors != []:
 
@@ -592,7 +609,7 @@ def outer_loop(args, ows, fws, losers, winners, winners_on_fp,  \
         min_uts = np.inf
         min_this_loop = np.inf
         for max_this_loop, uts_ss, desc, nb_aud_tvs, \
-            inner_loop_assertions in results:
+            inner_loop_assertions, winners_verified, partial_ss in results:
 
             min_uts = min(min_uts, uts_ss)
             min_this_loop = min(min_this_loop, max_this_loop)
@@ -602,6 +619,8 @@ def outer_loop(args, ows, fws, losers, winners, winners_on_fp,  \
                 best_inner_assertions = inner_loop_assertions
                 max_in_loop = max_this_loop
                 curr_aud_tvs = nb_aud_tvs
+                curr_winners_verified = winners_verified
+                best_partial_ss = partial_ss
                 improved = True
 
         if min_uts < min_this_loop:
@@ -613,7 +632,7 @@ def outer_loop(args, ows, fws, losers, winners, winners_on_fp,  \
     outerdesc += "Output of outer loop is: {}".format(max_in_loop)
 
     return max_in_loop, min_tvs, outerdesc, lts, mintv_ss,\
-        best_inner_assertions
+        best_inner_assertions, curr_winners_verified, best_partial_ss
 
 
 def create_lower_neighbours(curr_min_tvs, winners_on_fp, \
@@ -762,16 +781,26 @@ if __name__ == "__main__":
 
         act_tvs = {}
         min_tvs = {}
+
+        remove_from_fws = []
         for fw in fws:
             ss = ssm_sample_size(thresh, fw.fp_votes, INVALID, args)
             print("{} ballot checks required to assert that winner {} "\
                 " has a quota's worth of votes".format(ss, fw.id), file=log)
 
-            qts.add((fw.num, "QT", None, ss))
-            max_sample_size = max(max_sample_size, ss)
+            if ss >= args.voters:
+               remove_from_fws.append(fw)
+            else: 
+                qts.add((fw.num, "QT", None, ss))
+                max_sample_size = max(max_sample_size, ss)
 
-            act_tvs[fw.num] = (fw.fp_votes - args.quota)/fw.fp_votes
-            min_tvs[fw.num] = 0
+                act_tvs[fw.num] = (fw.fp_votes - args.quota)/fw.fp_votes
+                min_tvs[fw.num] = 0
+
+        for fw in remove_from_fws:
+            fws.remove(fw)
+            winners_on_fp.remove(fw.num)
+            ows.append(fw)
 
         qts_sample_size = max_sample_size
 
@@ -780,8 +809,14 @@ if __name__ == "__main__":
         if max_sample_size >= args.voters:
             max_sample_size = np.inf 
 
-        if max_sample_size == np.inf:
+        if max_sample_size == np.inf or fws == []:
             print("No audit possible.", file=log)
+
+            print("1Q,{},{},{},{},[{}],[{},{}],{},[{},{}]".format(args.data, \
+                ncand,valid_ballots,args.quota,len(fws),\
+                len(qts), qts_sample_size, max_sample_size, len(fws),\
+                max_sample_size))
+
             exit()
 
         if len(fws) == args.seats:
@@ -794,9 +829,10 @@ if __name__ == "__main__":
                 print(asstn, file=log)
             print("----------------------------------------------",file=log)
 
-            print("1Q,{},{},{},{},[{}],[{},{}],{}".format(args.data, ncand, \
-                valid_ballots,args.quota,len(winners_on_fp),\
-                len(qts), qts_sample_size, max_sample_size))
+            print("1Q,{},{},{},{},[{}],[{},{}],{},[{},{}]".format(args.data, \
+                ncand,valid_ballots,args.quota,len(fws),\
+                len(qts), qts_sample_size, max_sample_size, len(fws),\
+                max_sample_size))
             exit()
 
         # Increment to use when stepping through candidate upper/lower
@@ -807,12 +843,15 @@ if __name__ == "__main__":
         max_in_outer_loop = np.inf
 
         best_outer_assertions = set()
+        best_partial_ss = np.inf
 
         nfws = len(fws)
 
         curr_min_tvs = {fw : max(0, act_tvs[fw]-deltam) for fw in winners_on_fp}
         tv_lb_nboors = [curr_min_tvs] + create_lower_neighbours(curr_min_tvs, \
             winners_on_fp, deltam, act_tvs)
+
+        curr_winners_verified = []
  
         outer_improved = True
         while outer_improved and tv_lb_nboors != []:
@@ -830,7 +869,7 @@ if __name__ == "__main__":
             min_this_loop = np.inf
 
             for max_in_loop, nb_min_tvs, outerdescs, lts, lts_ss, \
-                best_inner_assertions in results:
+                best_inner_assertions, winners_verified, partial_ss in results:
             
                 min_lts = min(min_lts, lts_ss)
                 min_this_loop = min(min_this_loop, max_in_loop)
@@ -840,7 +879,9 @@ if __name__ == "__main__":
                     max_in_outer_loop = max_in_loop
                     best_outer_assertions = lts
                     best_outer_assertions.update(best_inner_assertions)
+                    curr_winners_verified = winners_verified
                     curr_min_tvs = nb_min_tvs
+                    best_partial_ss = partial_ss
                     outer_improved = True
 
             if min_lts < min_this_loop:
@@ -888,10 +929,10 @@ if __name__ == "__main__":
                 print(asstn, file=log)
 
 
-        print("1Q,{},{},{},{},[{}],[{},{}],{}".format(args.data, ncand, \
-            valid_ballots, \
-            args.quota, len(winners_on_fp), len(qts), qts_sample_size, \
-            max_sample_size))
+        print("1Q,{},{},{},{},[{}],[{},{}],{},[{},{}]".format(args.data,\
+            ncand, valid_ballots, args.quota, len(winners_on_fp), len(qts),\
+            qts_sample_size, max_sample_size, len(curr_winners_verified),\
+            best_partial_ss))
 
 
     log.close() 
