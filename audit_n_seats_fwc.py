@@ -221,7 +221,7 @@ def get_max_ballot_weight(prefs, first_winners, aud_tv):
 
 
 def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
-    INVALID,max_sample_size,ballots,min_tvs,ows,fws,losers,winners,aud_tvs):
+    INVALID,max_sample_size,ballots,min_tvs,ows,fws,losers,winners, aud_tvs):
 
     np.seterr(all='ignore')
 
@@ -236,6 +236,8 @@ def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
 
     winners_verified = []
 
+    ut_asns = {}
+
     # Check that TVs of the first winners i are at most aud_TV[i]
     for f in winners_on_fp:
         fw_i = candidates[f]
@@ -249,6 +251,7 @@ def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
         tally_others = valid_ballots - fw_i.fp_votes
 
         ss_i = ssm_sample_size(threshold,tally_others,INVALID,args)
+        ut_asns[f] = (aud_tv_i, ss_i)
 
         if ss_i != np.inf:
             winners_verified.append(f)
@@ -261,7 +264,6 @@ def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
 
         max_ss_mt = max(max_ss_mt, ss_i)
 
-    max_this_loop = max(max_ss_mt, max_sample_size)
     partial_ss = max_this_loop
 
     # For remaining winners, is it the case that they cannot be 
@@ -532,12 +534,15 @@ def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
             max_this_loop = max(max_this_loop, max_with_nls_i)
             inner_loop_assertions.update(nl_assertion_set)
             
-        
-    desc += "Max in loop {}, {}\n".format(max_this_loop, {f.id : \
-        aud_tvs[f.num] for f in fws})
+       
+    max_in_loop = max(max_this_loop, max(max_ss_mt, max_sample_size)) 
+    partial_ss = max(partial_ss, max(max_ss_mt, max_sample_size))
 
-    return max_this_loop, max_ss_mt, desc, aud_tvs, inner_loop_assertions,\
-        winners_verified, partial_ss
+    desc += "Max in loop {}, {}, partial {}\n".format(max_in_loop, {f.id : \
+        aud_tvs[f.num] for f in fws}, partial_ss)
+
+    return max_in_loop, max_ss_mt, max_this_loop, desc, aud_tvs, \
+        inner_loop_assertions, winners_verified, partial_ss, ut_asns
 
 
 def create_upper_neighbours(curr_aud_tvs, winners_on_fp, deltat, maxtv):
@@ -554,7 +559,7 @@ def create_upper_neighbours(curr_aud_tvs, winners_on_fp, deltat, maxtv):
 
 def outer_loop(args, ows, fws, losers, winners, winners_on_fp,  \
     candidates, cands, valid_ballots, INVALID, ballots, max_ss, deltat, \
-    deltam, maxtv, act_tvs, min_tvs):
+    deltam, maxtv, act_tvs, starting_uts, min_tvs):
    
     np.seterr(all='ignore')
  
@@ -584,7 +589,15 @@ def outer_loop(args, ows, fws, losers, winners, winners_on_fp,  \
 
     best_inner_assertions = None
 
-    curr_aud_tvs = {fw : act_tvs[fw] + deltat for fw in winners_on_fp}
+    # TODO: Keep track of sample sizes of TV points for winners_on_fp. 
+    # Use to start each inner loop at a setting that is near the best
+    # found partial audit ASN. 
+
+    if starting_uts == None:
+        curr_aud_tvs = {fw : act_tvs[fw] + deltat for fw in winners_on_fp}
+    else:
+        curr_aud_tvs = starting_uts.copy()
+
     tv_ub_nboors = [curr_aud_tvs] + create_upper_neighbours(curr_aud_tvs, \
         winners_on_fp, deltat, maxtv)
 
@@ -592,47 +605,63 @@ def outer_loop(args, ows, fws, losers, winners, winners_on_fp,  \
     best_partial_ss = np.inf
 
     improved = True
+    partial_improved = True
+
+    all_ut_asns = {f : set() for f in winners_on_fp}
+
     while improved and tv_ub_nboors != []:
 
         # Run inner loop for each setting of tv upper bounds
         # we are interested in. Establish what leads to the 
         # best audit.
         with ThreadPool(processes=args.cpus) as pool:
-            max_ss = max(max_sample_size, mintv_ss)
             func = partial(inner_loop, winners_on_fp, args, \
-                candidates, cands, valid_ballots, INVALID, max_ss,\
+                candidates, cands, valid_ballots, INVALID, max_sample_size,\
                 ballots, min_tvs, ows, fws, losers, winners)
 
             results = pool.map(func, tv_ub_nboors)
 
         improved = False
-        min_uts = np.inf
+        partial_improved = False
         min_this_loop = np.inf
-        for max_this_loop, uts_ss, desc, nb_aud_tvs, \
-            inner_loop_assertions, winners_verified, partial_ss in results:
 
-            min_uts = min(min_uts, uts_ss)
-            min_this_loop = min(min_this_loop, max_this_loop)
+        for max_this_loop, uts_ss, asn_exc_lts, desc, nb_aud_tvs, \
+            inner_loop_assertions, winners_verified, partial_ss, \
+            ut_asns in results:
+
+            for f,utfs in ut_asns.items():
+                all_ut_asns[f].add(utfs)
+
+            min_this_loop = min(max_this_loop, min_this_loop)
 
             outerdesc += desc
-            if max_this_loop <= max_in_loop:
+            if max_this_loop < max_in_loop or (max_this_loop == \
+                max_in_loop and partial_ss <= best_partial_ss):
                 best_inner_assertions = inner_loop_assertions
                 max_in_loop = max_this_loop
                 curr_aud_tvs = nb_aud_tvs
                 curr_winners_verified = winners_verified
+            
+                if partial_ss < best_partial_ss:
+                    partial_improved = True
+                
                 best_partial_ss = partial_ss
                 improved = True
 
-        if min_uts < min_this_loop:
+        if mintv_ss > best_partial_ss:
             break
 
         tv_ub_nboors = create_upper_neighbours(curr_aud_tvs,\
             winners_on_fp, deltat, maxtv)
 
-    outerdesc += "Output of outer loop is: {}".format(max_in_loop)
+    max_in_loop = max(max_in_loop, mintv_ss)
+
+    outerdesc += "Output of outer loop is: {}, partial exc lts {}\n".format(\
+        max_in_loop, best_partial_ss)
 
     return max_in_loop, min_tvs, outerdesc, lts, mintv_ss,\
-        best_inner_assertions, curr_winners_verified, best_partial_ss
+        best_inner_assertions, curr_winners_verified,  max(best_partial_ss, \
+        mintv_ss), best_partial_ss, all_ut_asns
 
 
 def create_lower_neighbours(curr_min_tvs, winners_on_fp, \
@@ -829,8 +858,8 @@ if __name__ == "__main__":
                 print(asstn, file=log)
             print("----------------------------------------------",file=log)
 
-            print("1Q,{},{},{},{},[{}],[{},{}],{},[{},{}]".format(args.data, \
-                ncand,valid_ballots,args.quota,len(fws),\
+            print("1Q,{},{},{},{},[{},{}],{},[{},{}]".format(args.data, \
+                ncand,valid_ballots,args.quota,\
                 len(qts), qts_sample_size, max_sample_size, len(fws),\
                 max_sample_size))
             exit()
@@ -854,41 +883,68 @@ if __name__ == "__main__":
         curr_winners_verified = []
  
         outer_improved = True
+        partial_improved = True
+
+        starting_uts = None 
+
         while outer_improved and tv_lb_nboors != []:
 
             with ThreadPool(processes=args.cpus) as pool:
                 func = partial(outer_loop, args, ows, fws, losers, winners,\
                     winners_on_fp, candidates, cands, valid_ballots, \
                     INVALID, ballots, max_sample_size, deltat, deltam, \
-                    maxtv, act_tvs)
+                    maxtv, act_tvs, starting_uts)
 
                 results = pool.map(func, tv_lb_nboors)
 
             outer_improved = False
+            partial_improved = False
             min_lts = np.inf
-            min_this_loop = np.inf
+            min_partial_exc_lts = np.inf
+
+            all_ut_asns = {f : set() for f in winners_on_fp}
 
             for max_in_loop, nb_min_tvs, outerdescs, lts, lts_ss, \
-                best_inner_assertions, winners_verified, partial_ss in results:
-            
+                best_inner_assertions, winners_verified, partial_ss,\
+                partial_ss_exc_lts, ut_asns in results:
+
+                for f,asns in ut_asns.items():
+                    all_ut_asns[f].update(asns)
+
                 min_lts = min(min_lts, lts_ss)
-                min_this_loop = min(min_this_loop, max_in_loop)
+                min_partial_exc_lts = min(min_partial_exc_lts, \
+                    partial_ss_exc_lts)
 
                 print(outerdescs, file=log)
-                if max_in_loop <= max_in_outer_loop:
+                if max_in_loop < max_in_outer_loop or (max_in_loop == \
+                    max_in_outer_loop and partial_ss <= best_partial_ss):
                     max_in_outer_loop = max_in_loop
                     best_outer_assertions = lts
                     best_outer_assertions.update(best_inner_assertions)
                     curr_winners_verified = winners_verified
                     curr_min_tvs = nb_min_tvs
+
+                    if partial_ss < best_partial_ss:
+                        partial_improved = True
+
                     best_partial_ss = partial_ss
                     outer_improved = True
 
-            if min_lts < min_this_loop:
+            if min_lts <= min_partial_exc_lts:
                 break
 
             tv_lb_nboors = create_lower_neighbours(curr_min_tvs,\
                 winners_on_fp, deltam, act_tvs)
+
+            starting_uts = {f : None for f in winners_on_fp}
+
+            for f in winners_on_fp:
+                # Find the smallest ut whose asn is <= best partial asn
+                filtered = [(utf,utf_asn) for (utf,utf_asn) in \
+                    all_ut_asns[f] if utf_asn <= best_partial_ss]
+                filtered.sort()
+
+                starting_uts[f] = filtered[0][0]
 
         
         assertions_used.update(best_outer_assertions)
@@ -928,9 +984,9 @@ if __name__ == "__main__":
             for asstn in final_assertions:
                 print(asstn, file=log)
 
-
-        print("1Q,{},{},{},{},[{}],[{},{}],{},[{},{}]".format(args.data,\
-            ncand, valid_ballots, args.quota, len(winners_on_fp), len(qts),\
+ 
+        print("1Q,{},{},{},{},[{},{}],{},[{},{}]".format(args.data,\
+            ncand, valid_ballots, args.quota, len(qts),\
             qts_sample_size, max_sample_size, len(curr_winners_verified),\
             best_partial_ss))
 
