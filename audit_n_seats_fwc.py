@@ -124,6 +124,65 @@ def merge_helpful_ags(helpful_ags, exp_merged_total):
     return merged_helpful_ags
 
 
+def compute_ag_matrix(candidates, ballots, ag_matrix, \
+    INVALID, args, log=None):
+
+    for cand_w in candidates:
+        w = cand_w.num
+
+        for cand_c in candidates:
+            c = cand_c.num
+
+            if c == w:
+                continue
+
+            min_w = 0
+            max_c = 0
+
+            # assertion: fpc(w) > maxc
+            assorter = INVALID*0.5 # h(b) = ((b_w - b_c) + 1)/2
+            for b in ballots:
+                if b.prefs != []:
+                    if b.prefs[0] == w:
+                        # assorter value is 1 per vote
+                        assorter += b.votes
+                        min_w += b.votes
+                        continue
+
+                    if b.prefs[0] == c: 
+                        # assorter value is 0 per vote
+                        max_c += b.votes
+                        continue
+
+                # Default contribution of each instance of ballot type
+                # to assorter.
+                contrib = 0.5 * b.votes 
+
+                for p in b.prefs:
+                    if p == w:
+                        break
+
+                    if p == c:
+                        contrib = 0
+                        max_c += b.votes
+                        break
+
+                assorter += contrib
+
+            # Compute assorter margin
+            amean = assorter/args.voters
+
+            if amean > 0.5:
+                ss = sample_size(amean, args)
+
+                ag_matrix[cand_w.num][c] = ss
+
+                if log != None:
+                    print("AG({},{}) = {}".format(cand_w.id, cand_c.id, \
+                        ss), file=log)
+
+
+
 def compute_ag_stars(winners, losers, candidates, ballots, ag_matrix, \
     first_winners, min_tvs, aud_tvs, INVALID, args, desc):
 
@@ -221,7 +280,8 @@ def get_max_ballot_weight(prefs, first_winners, aud_tv):
 
 
 def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
-    INVALID,max_sample_size,ballots,min_tvs,ows,fws,losers,winners, aud_tvs):
+    INVALID,max_sample_size,ballots,min_tvs,ows,fws,losers,winners, \
+    straight_iqx_verified, aud_tvs):
 
     np.seterr(all='ignore')
 
@@ -297,34 +357,77 @@ def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
         ss_iqx = np.inf
 
         iqx_assertions = set()
+        helpful_ags = []
+        pot_margin_inc = 0
         for b in ballots:
+            if b.prefs[0] == ow_i.num:
+                totvotes += b.votes
+                continue
+            
+            if not ow_i.num in b.prefs:
+                continue
+
             value = 1
 
             if b.prefs[0] in winners_on_fp:
                 value = min_tvs[b.prefs[0]]
 
-            for p in b.prefs:
-                if p in ags:
-                    ss_ag_iqx = max(ss_ag_iqx, ags[p])
-                    iqx_assertions.add((ow_i.num,"AG*",p,ags[p]))
-                    continue
+            prefs = [p for p in b.prefs if not p in winners_on_fp]
 
-                elif p == ow_i.num:
-                    totvotes += value * b.votes
+            if prefs[0] == ow_i.num:
+                totvotes += value*b.votes
+                continue
 
-                elif p in winners_on_fp:
-                    continue
+            descs = set()
+            max_ags_here = 0
+                                           
+            o_idx = prefs.index(ow_i.num)                 
+            for d,dval in ags.items():
+                if d in prefs:
+                    idx_d = prefs.index(d)
+                    if idx_d < o_idx:
+                        prefs.remove(d)
+                        o_idx -= 1
+                        rag = (ow_i.num,"AG*",d,dval)
+                        descs.add(rag)
+                        max_ags_here=max(max_ags_here,dval)
 
-                break
+            if prefs[0] == ow_i.num:
+                helpful_ags.append((max_ags_here, value*b.votes, descs))
+                pot_margin_inc += value*b.votes
 
-        # Note: can do same thing with AG*'s here as later, only
-        # use helpful ones. 
+        ss_ag_iqx = 0
+        merged_helpful_ags = merge_helpful_ags(helpful_ags, \
+            pot_margin_inc)
+
+        while totvotes < args.quota and \
+            merged_helpful_ags != []:
+            
+            ag_asn, extra_contrib, descs = merged_helpful_ags.pop(0)
+
+            totvotes += extra_contrib
+            ss_ag_iqx = max(ss_ag_iqx, ag_asn)
+
+            iqx_assertions.update(descs)
+
 
         if totvotes > args.quota:
-            ss = ssm_sample_size(thresh, totvotes, INVALID, args)
+            ss = ssm_sample_size(qthresh, totvotes, INVALID, args)
+
+            for ag_asn, extra_contrib, descs in merged_helpful_ags:
+                if ss < ag_asn:
+                    break
+
+                totvotes += extra_contrib
+                ss = ssm_sample_size(qthresh, totvotes, INVALID, args)
+
+                ss_ag_iqx = max(ss_ag_iqx, ag_asn)
+                iqx_assertions.update(descs)
+
+
             iqx_assertions.add((ow_i.num, "IQX", None, ss))
-            desc += "Can form IQX({}) with sample size {}\n".format(\
-                ow_i.id, ss) 
+            desc += "Can form IQX({}) with sample size {}, AG*s\n".format(\
+                ow_i.id, ss, ss_ag_iqx) 
             ss_iqx = max(ss, ss_ag_iqx)
             
 
@@ -522,11 +625,21 @@ def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
                 desc += "NL({},{}) NOT POSSIBLE\n".format(\
                     ow_i.id, cand_c.id)
 
-        if ss_iqx < args.voters or max_with_nls_i < args.voters:
-            winners_verified.append(ow_i.num)
-            partial_ss = max(partial_ss, min(ss_iqx, max_with_nls_i))
+        straight_iqx_asn = straight_iqx_verified[ow_i.num][0] if \
+            ow_i.num in straight_iqx_verified else np.inf
 
-        if ss_iqx < max_with_nls_i:
+        if ss_iqx < args.voters or max_with_nls_i < args.voters or \
+            straight_iqx_asn < args.voters:
+            winners_verified.append(ow_i.num)
+            partial_ss = max(partial_ss, min([ss_iqx, max_with_nls_i,\
+                straight_iqx_asn])) 
+
+        if straight_iqx_asn < ss_iqx and straight_iqx_asn < max_with_nls_i:
+            desc += "CHOOSE STRAIGHT IQX\n"
+            max_this_loop = max(max_this_loop, straight_iqx_asn)
+            inner_loop_assertions.update(straight_iqx_verified[ow_i.num][1])
+        
+        elif ss_iqx < max_with_nls_i:
             desc += "CHOOSE IQX over NLs\n"
             max_this_loop = max(max_this_loop, ss_iqx)
             inner_loop_assertions.update(iqx_assertions)
@@ -559,7 +672,7 @@ def create_upper_neighbours(curr_aud_tvs, winners_on_fp, deltat, maxtv):
 
 def outer_loop(args, ows, fws, losers, winners, winners_on_fp,  \
     candidates, cands, valid_ballots, INVALID, ballots, max_ss, deltat, \
-    deltam, maxtv, act_tvs, starting_uts, min_tvs):
+    deltam, maxtv, act_tvs, starting_uts, straight_iqx_verified, min_tvs):
    
     np.seterr(all='ignore')
  
@@ -617,7 +730,7 @@ def outer_loop(args, ows, fws, losers, winners, winners_on_fp,  \
         with ThreadPool(processes=args.cpus) as pool:
             func = partial(inner_loop, winners_on_fp, args, \
                 candidates, cands, valid_ballots, INVALID, max_sample_size,\
-                ballots, min_tvs, ows, fws, losers, winners)
+                ballots,min_tvs,ows,fws,losers,winners,straight_iqx_verified)
 
             results = pool.map(func, tv_ub_nboors)
 
@@ -795,6 +908,104 @@ if __name__ == "__main__":
         # For storing computing AG*'s
         ag_matrix = [[None for c in candidates] for o in candidates]
 
+
+        # First option -- can we just show that IQX(w) for each reported
+        # winner?
+        compute_ag_matrix(candidates, ballots, ag_matrix, INVALID, args, \
+            log = log)
+
+        straight_iqx_asn = 0
+        straight_iqx_verified = {}
+
+        qthresh = 1.0/(args.seats + 1);
+
+        iqx_assertions = set()
+        for w in winners:
+            ags = {c : ag_matrix[w][c] for c in losers \
+                if ag_matrix[w][c] != None}
+               
+            totvotes = 0
+            ss_iqx = np.inf
+
+            assertions = set()
+
+            helpful_ags = []
+            pot_margin_inc = 0
+            for b in ballots:
+                if b.prefs[0] == w:
+                    totvotes += b.votes
+                    continue
+
+                prefs = b.prefs[:]
+                if not w in prefs:
+                    continue
+
+                descs = set()
+                max_ags_here = 0
+                          
+                o_idx = prefs.index(w)                 
+                for d,dval in ags.items():
+                    if d in prefs:
+                        idx_d = prefs.index(d)
+                        if idx_d < o_idx:
+                            prefs.remove(d)
+                            o_idx -= 1
+                            rag = (w,"AG",d,dval)
+                            descs.add(rag)
+                            max_ags_here=max(max_ags_here,dval)
+
+                if prefs[0] == w:
+                    helpful_ags.append((max_ags_here, b.votes, descs))
+                    pot_margin_inc += b.votes
+
+            ss_ag_iqx = 0
+            merged_helpful_ags = merge_helpful_ags(helpful_ags, \
+                pot_margin_inc)
+
+            # Incorporate use of  AG*'s that either make the
+            # assertion possible, or whose ASN is already
+            # within/equal to current lower bound on audit
+            # difficulty.
+            while totvotes < args.quota and \
+                merged_helpful_ags != []:
+            
+                ag_asn, extra_contrib, descs = \
+                    merged_helpful_ags.pop(0)
+
+                totvotes += extra_contrib
+                ss_ag_iqx = max(ss_ag_iqx, ag_asn)
+
+                assertions.update(descs)
+
+            
+            if totvotes > args.quota:
+                ss = ssm_sample_size(qthresh, totvotes, INVALID, args)
+
+                for ag_asn, extra_contrib, descs in \
+                    merged_helpful_ags:
+                    if ss < ag_asn:
+                        break
+
+                    totvotes += extra_contrib
+                    ss = ssm_sample_size(qthresh, totvotes, INVALID, args)
+
+                    ss_ag_iqx = max(ss_ag_iqx, ag_asn)
+                    assertions.update(descs)
+
+                assertions.add((w, "IQX", None, ss))
+                ss_iqx = max(ss, ss_ag_iqx)
+                print("Can form IQX({}) with sample size {} AGs {}\n".format(\
+                    candidates[w].id, ss, ss_ag_iqx), file=log) 
+
+                if ss_iqx < args.voters:
+                    straight_iqx_verified[w] = (ss_iqx, assertions)
+
+                iqx_assertions.update(assertions)
+
+
+            straight_iqx_asn = max(straight_iqx_asn, ss_iqx);
+
+
         # Check that all winners that won on first preferences have a FP
         # greater than a quota.
         fws = [candidates[w] for w in winners_on_fp]
@@ -807,6 +1018,7 @@ if __name__ == "__main__":
         thresh = 1.0/(args.seats + 1);
     
         qts = set()
+        qts_verified = {}
 
         act_tvs = {}
         min_tvs = {}
@@ -822,6 +1034,8 @@ if __name__ == "__main__":
             else: 
                 qts.add((fw.num, "QT", None, ss))
                 max_sample_size = max(max_sample_size, ss)
+
+                qts_verified[fw.num] = (ss, (fw.num, "QT", None, ss))
 
                 act_tvs[fw.num] = (fw.fp_votes - args.quota)/fw.fp_votes
                 min_tvs[fw.num] = 0
@@ -839,13 +1053,23 @@ if __name__ == "__main__":
             max_sample_size = np.inf 
 
         if max_sample_size == np.inf or fws == []:
-            print("No audit possible.", file=log)
+            if straight_iqx_asn != np.inf:
+                print("--------------------------------------------",file=log)
+                print("Assertion set:", file=log)
+                for asstn in iqx_assertions:
+                    print(asstn, file=log)
+ 
+                print("1Q,{},{},{},{},{},{},{},{},{}".format(args.data,\
+                    ncand, valid_ballots, args.quota, len(qts),\
+                        qts_sample_size, straight_iqx_asn, len(winners),\
+                        straight_iqx_asn))
+            else:
+                print("No audit possible.", file=log)
 
-            print("1Q,{},{},{},{},[{}],[{},{}],{},[{},{}]".format(args.data, \
-                ncand,valid_ballots,args.quota,len(fws),\
-                len(qts), qts_sample_size, max_sample_size, len(fws),\
-                max_sample_size))
-
+                print("1Q,{},{},{},{},{},{},{},{},{}".format(args.data, \
+                    ncand,valid_ballots,args.quota,\
+                    len(qts), qts_sample_size, max_sample_size, len(fws),\
+                    max_sample_size))
             exit()
 
         if len(fws) == args.seats:
@@ -858,7 +1082,7 @@ if __name__ == "__main__":
                 print(asstn, file=log)
             print("----------------------------------------------",file=log)
 
-            print("1Q,{},{},{},{},[{},{}],{},[{},{}]".format(args.data, \
+            print("1Q,{},{},{},{},{},{},{},{},{}".format(args.data, \
                 ncand,valid_ballots,args.quota,\
                 len(qts), qts_sample_size, max_sample_size, len(fws),\
                 max_sample_size))
@@ -893,7 +1117,7 @@ if __name__ == "__main__":
                 func = partial(outer_loop, args, ows, fws, losers, winners,\
                     winners_on_fp, candidates, cands, valid_ballots, \
                     INVALID, ballots, max_sample_size, deltat, deltam, \
-                    maxtv, act_tvs, starting_uts)
+                    maxtv, act_tvs, starting_uts, straight_iqx_verified)
 
                 results = pool.map(func, tv_lb_nboors)
 
@@ -948,6 +1172,49 @@ if __name__ == "__main__":
 
         
         assertions_used.update(best_outer_assertions)
+
+        max_sample_size = max(max_sample_size, max_in_outer_loop)
+
+        if max_sample_size >= args.voters:
+            max_sample_size = np.inf 
+
+        if straight_iqx_asn >= args.voters:
+            straight_iqx_asn = np.inf
+
+        if straight_iqx_asn < max_sample_size:
+            print("Straight IQX assertions best.", file=log)
+            assertions_used = iqx_assertions
+            max_sample_size = straight_iqx_asn
+
+
+        if len(straight_iqx_verified) > len(curr_winners_verified):
+            print("WEIRD SITUATION: more in siv than cwv")
+
+        if [c for c in straight_iqx_verified if not 
+            c in curr_winners_verified] != []:
+            print("WEIRD SITUATION: c in siv not in cwv");
+
+
+        s1 = set([k for k in straight_iqx_verified])
+        s2 = set(curr_winners_verified)
+        s3 = set([k for k in qts_verified])
+        
+        qts_verified_asn = max([qts_verified[w][0] for w in \
+                qts_verified])
+
+        if s2 == s3 and best_partial_ss > qts_verified_asn:
+            print("Revert to straight IQ partial audit.", file=log)
+            best_partial_ss = qts_verified_asn
+
+        partial_iqx = max([straight_iqx_verified[w][0] for w in \
+                straight_iqx_verified])
+
+        if s1 == s2:
+            if partial_iqx < best_partial_ss:
+                print("Revert to straight IQX partial audit.", file=log)
+                best_partial_ss = partial_iqx
+
+
         assertions_text = [(candidates[w].id, n, candidates[l].id \
             if l != None else None) for w,n,l,_ in assertions_used]
 
@@ -965,11 +1232,6 @@ if __name__ == "__main__":
 
             final_assertions.append(assrt)
 
-        max_sample_size = max(max_sample_size, max_in_outer_loop)
-
-        if max_sample_size >= args.voters:
-            max_sample_size = np.inf 
-
         print("Sample size required for audit is {} ballots".format(\
             max_sample_size), file=log)
 
@@ -985,7 +1247,7 @@ if __name__ == "__main__":
                 print(asstn, file=log)
 
  
-        print("1Q,{},{},{},{},[{},{}],{},[{},{}]".format(args.data,\
+        print("1Q,{},{},{},{},{},{},{},{},{}".format(args.data,\
             ncand, valid_ballots, args.quota, len(qts),\
             qts_sample_size, max_sample_size, len(curr_winners_verified),\
             best_partial_ss))
