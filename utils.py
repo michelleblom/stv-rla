@@ -544,7 +544,7 @@ def simulate_stv(ballots, candidates, nseats, order_c, order_a, order_q, \
         totvotes += cand.sim_votes
 
         if log != None:
-            print(f"    Candidate {cand.id} {cand.sim_votes}", file=log)
+            print(f"    Candidate {cand.name} {cand.sim_votes}", file=log)
 
     # Step 1: Determine quota
     quota = (int)(1.0 + (totvotes/(nseats+1.0))) 
@@ -646,6 +646,12 @@ def simulate_stv(ballots, candidates, nseats, order_c, order_a, order_q, \
             new_surpluses = []
 
             while surpluses != []:
+
+                for cand in candidates:
+                    if cand.standing:
+                        if log != None:
+                            print("Candidate {} has {} votes".format(cand.name,\
+                                cand.sim_votes), file=log)
                 # Start with candidate with the largest surplus
                 elect = surpluses.pop(0)
 
@@ -664,6 +670,8 @@ def simulate_stv(ballots, candidates, nseats, order_c, order_a, order_q, \
                 if currseat < nseats:
                     # Distribute surplus
                     distribute_surplus(elect, candidates, ballots, log)
+
+
 
                 next_surpluses = []
                 for cand in candidates:
