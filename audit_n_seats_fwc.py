@@ -331,23 +331,24 @@ def form_NL(candidates, c, ow_i, ags, ballots, INVALID, winners_on_fp, \
         o_idx=b.prefs.index(ow_i.num) if ow_in else np.inf
 
         if c_in and c_idx < o_idx:
-            # These ballots could not go to 'ow' but may go
-            # to 'c'.
-
-            # Could we exclude ballots by using an AG*?
-            is_ag, ag_asn, descs = rule_out_for_max(\
-                b.prefs, c, ag_matrix, winners, candidates)
+            # These ballots could not go to 'ow' but may go to 'c'.
+            if weight == 0:
+                # There is someone still assumed to be standing before 'c'
+                assorter += 0.5*b.votes
+            else:
+                # Could we exclude ballots by using an AG*?
+                is_ag, ag_asn, descs = rule_out_for_max(\
+                    b.prefs, c, ag_matrix, winners, candidates)
                     
-            contrib = b.votes*((1-weight)/2.0)
+                contrib = b.votes*((1-weight)/2.0)
 
-            if is_ag:
-                alt_contrib = b.votes*0.5
-                helpful_ags.append((ag_asn, alt_contrib -\
-                    contrib, descs))
-                pot_margin_inc += alt_contrib-contrib
+                if is_ag:
+                    alt_contrib = b.votes*0.5
+                    helpful_ags.append((ag_asn, alt_contrib - contrib, descs))
+                    pot_margin_inc += alt_contrib-contrib
 
-            assorter += contrib
-            max_c += b.votes
+                assorter += contrib
+                max_c += b.votes
 
         elif ow_in:
             # Check if all candidates before ow_i are
@@ -361,7 +362,7 @@ def form_NL(candidates, c, ow_i, ags, ballots, INVALID, winners_on_fp, \
                 assorter += b.votes
              
             elif exprefs[0] == ow_i.num and b.prefs[0] in fwprefix:
-                minval = min_tvs[fwprefix[0]] #min([min_tvs[f] for f in fwprefix])
+                minval = min_tvs[fwprefix[0]]
                 min_ow_i += minval * b.votes
                 assorter += b.votes * ((1 + minval)/2.0)
             else:
@@ -383,8 +384,7 @@ def form_NL(candidates, c, ow_i, ags, ballots, INVALID, winners_on_fp, \
                             o_idx -= 1
                             rag = (ow_i.num,"AG*",d,dval)
                             descs.add(rag)
-                            max_ags_here=max(max_ags_here,\
-                                dval)
+                            max_ags_here=max(max_ags_here,dval)
 
                 assorter += 0.5*b.votes
 
@@ -394,35 +394,30 @@ def form_NL(candidates, c, ow_i, ags, ballots, INVALID, winners_on_fp, \
                     # assorter. By utilising these AG*'s we
                     # can increase the contribution of these
                     # ballots to 1 each.
-                    helpful_ags.append((max_ags_here,  \
-                        0.5*b.votes, descs))
+                    helpful_ags.append((max_ags_here, 0.5*b.votes, descs))
 
                     pot_margin_inc += b.votes*0.5
 
                 else:
                     fwprefix = []
-                    minws = []
+                    minws = {}
                     for p in prefs:
                         if p in winners_on_fp:
                             fwprefix.append(p)
-                            minws.append(min_tvs[p])
+                            minws[p] = min_tvs[p]
                         else:
                             break
 
-                    if fwprefix != [] and \
-                        prefs[len(fwprefix)] == ow_i.num:
-                        minval = min(minws) if b.prefs[0]\
+                    if fwprefix != [] and prefs[len(fwprefix)] == ow_i.num:
+                        minval = minws[b.prefs[0]] if b.prefs[0]\
                             in winners_on_fp else 1
 
                         base_contrib = 0.5*b.votes
-                        alt_contrib = b.votes * ((1 + \
-                            minval)/2.0)
+                        alt_contrib = b.votes * ((1 + minval)/2.0)
                         dconfig = alt_contrib-base_contrib
 
                         if dconfig > 0:
-                            helpful_ags.append(\
-                                (max_ags_here, \
-                                dconfig, descs))
+                            helpful_ags.append((max_ags_here, dconfig, descs))
 
                             pot_margin_inc += dconfig
         else:
@@ -431,18 +426,14 @@ def form_NL(candidates, c, ow_i, ags, ballots, INVALID, winners_on_fp, \
     # Max ASN of any AG*'s used to increase assorter 
     # margins when forming NLs.
     max_ags_used = 0  
-    merged_helpful_ags = merge_helpful_ags(helpful_ags, \
-        pot_margin_inc)
+    merged_helpful_ags = merge_helpful_ags(helpful_ags, pot_margin_inc)
 
     # Incorporate use of  AG*'s that either make the
     # assertion possible, or whose ASN is already
     # within/equal to current lower bound on audit
     # difficulty.
-    while assorter/args.voters <= 0.5 and \
-        merged_helpful_ags != []:
-    
-        ag_asn, extra_contrib, descs = \
-            merged_helpful_ags.pop(0)
+    while assorter/args.voters <= 0.5 and merged_helpful_ags != []:
+        ag_asn, extra_contrib, descs = merged_helpful_ags.pop(0)
 
         assorter += extra_contrib
         max_ags_used = max(max_ags_used, ag_asn)
