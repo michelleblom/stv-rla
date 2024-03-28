@@ -269,7 +269,7 @@ def get_max_ballot_weight(prefs, first_winners, aud_tv, elected, maxtv,\
     fw_prefix = []
 
     if prefs[0] in elected:
-        return maxtv, []
+        return maxtv, [] # Reducing this will be helpful! 
 
     for p in prefs:
         if p in eliminated:
@@ -289,6 +289,129 @@ def get_max_ballot_weight(prefs, first_winners, aud_tv, elected, maxtv,\
     else:
         return weights[0], fw_prefix
 
+
+def establish_max_tvalue_nonfw(w, candidates, ballots, winners_on_fp, \
+    min_tvs, aud_tvs, ag_matrix, maxtv, INVALID, args, curr_asn):
+    
+    info = ""
+
+    # Verify that 'w' did not receive a quota on first preference NIQ(w)
+    # We need to do this as this approach of bounding w's transfer value
+    # relies on them receiving a quota by the distribution of votes from
+    # another candidate (either via a surplus or elimination).
+    cand_w = candidates[w]
+
+    if cand_w.fp_votes >= args.quota:
+        info = "Cannot form NIQ({}) as they have a quota on FPs\n".format(\
+            cand_w.id)
+        return maxtv, 0, set(), info
+
+    # Show that total of everyone ELSE's fp votes is more than seats-1 quotas.
+    thresh = 1 - (1.0/(args.seats + 1));
+    
+    valid_ballots = args.voters - INVALID
+    others_total = valid_ballots - cand_w.fp_votes
+
+    asn = ssm_sample_size(thresh, others_total, INVALID, args)
+
+    if asn >= args.voters:
+        info = "Cannot form NIQ({}); too expensive.\n".format(cand_w.id)
+        return maxtv, 0, set(), info
+        
+    # Find how much each candidate would transfer to w on their elimination
+    # (if they are not a candidate in winners_on_fp, or election otherwise).
+    max_surpluses = {}
+    max_overall = 0
+    for cand in candidates:
+        c = cand.num
+
+        if c == w:
+            continue
+            
+        # Use aud_tvs as maximum transfer value for any ballot that 
+        # has a candidate in winners_on_fp as first preference and 1 
+        # otherwise.
+        transfer = 0
+
+        tot_not_t = 0
+        tot_v = 0
+
+        for b in ballots:
+            if b.prefs == []:
+                continue
+
+            win = b.prefs.index(w) if w in b.prefs else np.inf
+            cin = b.prefs.index(c) if c in b.prefs else np.inf
+
+            p = b.prefs[0]
+            weight = aud_tvs[p] if p in winners_on_fp else 1
+
+            if w in b.prefs and c in b.prefs:
+                widx = b.prefs.index(w) 
+                cidx = b.prefs.index(c) 
+
+                if cidx < widx:
+                    transfer += weight * b.votes
+                else:
+                    tot_not_t += weight * b.votes    
+
+            else:
+                tot_not_t += weight * b.votes 
+
+            tot_v += (1 - weight) * b.votes   
+
+        max_surpluses[c] = (transfer, tot_not_t, tot_v)
+        max_overall = max(max_overall, transfer)
+           
+    # Try and establish a max_tr_tv that would cost less than or equal
+    # to 'curr_asn' to verify in an audit.
+    delta = 25
+    max_tr_tv_ss = np.inf
+    bar = max_overall
+    aset = set()
+    desc = ""
+
+    while max_tr_tv_ss > curr_asn and bar + delta < valid_ballots:
+        bar += delta
+        thresh = bar/valid_ballots
+
+        # We want to show that the bucket of votes in the category "will
+        # transfer to w in the event of election/elimination" is less than
+        # bar.
+
+        max_tr_tv_ss = 0
+        a = 1/(2 * (1-thresh))
+
+        aset = set()
+
+        desc = "MAX SURPLUS ASSERTIONS:\n"
+
+        for c,(s,tnt,tv) in max_surpluses.items():
+            # We want to show that p_s < thresh
+            # so p_tnt > t where t = 1 - thresh
+
+            amean = (0.5*INVALID + tnt*a + 0.5*tv)/args.voters 
+            
+            ss = sample_size(amean, args)
+  
+            max_tr_tv_ss = max(ss, max_tr_tv_ss)
+
+            aset.add((c, "SP[{}]".format(s), None, ss))
+            desc += "SP[{}]({}) with ASN {}\n".format(s, candidates[c].id, ss)
+        
+    max_tr_tv = maxtv
+    if max_tr_tv_ss <= curr_asn:
+        max_tr_tv = (bar/(bar+args.quota))
+        info += desc
+        info += "Reduce maxtv for {} to {} ASN {}".format(cand_w.id, \
+            max_tr_tv, max_tr_tv_ss)
+
+    if max_tr_tv < maxtv: 
+        return max_tr_tv, max_tr_tv_ss, aset, info
+ 
+    # Return established maximum on transfer value, asn to verify this,
+    # set of assertions required to establish this, logging info
+    return maxtv, 0, set(), info
 
 def form_NL(candidates, c, ow_i, ags, ballots, INVALID, winners_on_fp, \
     min_tvs, aud_tvs, ag_matrix, winners, maxtv, elected, eliminated, standing):
@@ -323,6 +446,8 @@ def form_NL(candidates, c, ow_i, ags, ballots, INVALID, winners_on_fp, \
         c_in = c in b.prefs
         ow_in = ow_i.num in b.prefs
 
+        # Reducing upper bound on 'elected's transfer values down
+        # from maxtv will likely be helpful.
         weight, fwprefix = get_max_ballot_weight(b.prefs,\
             winners_on_fp, aud_tvs, elected, maxtv, \
             eliminated, standing)
@@ -469,7 +594,6 @@ def form_NL(candidates, c, ow_i, ags, ballots, INVALID, winners_on_fp, \
         asn = max(ss, max_ags_used)
 
         if asn >= args.voters:
-            asn = np.inf
             return False, np.inf, None, "NL would require full hand count"
 
         desc = "NL({},{}) = {}, AG*'s used {}\n".format(\
@@ -648,7 +772,6 @@ def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
     newly_verified = []
     could_not_verify = []
 
-    #losers = [o.num for o in ows] + [c for c in cands if not c in winners]
     for ow_i in ows:
         ags = {c : ag_matrix[ow_i.num][c] for c in losers \
             if ag_matrix[ow_i.num][c] != None}
@@ -710,8 +833,21 @@ def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
         else:
             could_not_verify.append(ow_i.num)
 
+    nv_maxtvs = {}
+
+    for nv in newly_verified:
+        max_tr_tv, max_tr_tv_asn, max_tr_tv_aset, max_tr_tv_info = \
+            establish_max_tvalue_nonfw(nv, candidates, ballots, winners_on_fp,\
+            min_tvs, aud_tvs, ag_matrix, maxtv, INVALID, args, \
+            max(partial_ss, max_sample_size))
+
+        desc += max_tr_tv_info
+
+        nv_maxtvs[nv] = (max_tr_tv, max_tr_tv_asn, max_tr_tv_aset)
 
     if could_not_verify != []:
+        max_this_loop = partial_ss
+
         # This addition allows us to audit 5 more instances of the 3 seat
         # Scotland 17-22 data set that satisfies first winner criterion.
         for ow in could_not_verify:
@@ -726,21 +862,28 @@ def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
                     # Can we generate NL under two assumptions about the
                     # candidate nv? ie. that they have already been elected, 
                     # or are still standing?
+
+                    mtv, mtv_asn, mtv_aset = nv_maxtvs[nv]
+
+                    # For the first case, it will likely help if we can reduce
+                    # maxtv for 'nv'
                     s2, asn2, aset2, info2 = form_NL(candidates, c, ow_i, ags, \
                         ballots, INVALID, winners_on_fp, min_tvs, aud_tvs,\
-                        ag_matrix, winners, maxtv, [nv], [], []) # elected
+                        ag_matrix, winners, mtv, [nv], [], []) # elected
                     s3, asn3, aset3, info3 = form_NL(candidates, c, ow_i, ags, \
                         ballots, INVALID, winners_on_fp, min_tvs, aud_tvs, \
-                        ag_matrix, winners, maxtv, [], [], [nv]) # standing
+                        ag_matrix, winners, mtv, [], [], [nv]) # standing
 
                     if s2 and s3:
                         desc += "Can show {} NL-R[{}] {}\n".format(ow_i.id, \
                             candidates[nv].id, candidates[c].id)
 
                         successNLc = True
-                        asn = max(asn2, asn3)
+                        asn = max(mtv_asn, max(asn2, asn3))
                         aset = aset2
                         aset.update(aset3) 
+                        aset.update(mtv_aset)
+
                         desc += info2
                         desc += info3
 
@@ -758,7 +901,57 @@ def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
                 partial_ss = max(partial_ss, asn)
                 inner_loop_assertions.update(aset)
             else:
-                max_this_loop = np.inf
+                # Try iterate over other losers instead.
+                successNL = True
+                asn = 0
+                aset = set()
+
+                for c in losers:
+                    successNLc = False
+                    if c == ow_i.num:
+                        continue
+
+                    for cd in losers:
+                        if c == cd or cd == ow_i.num: 
+                            continue
+                
+                        s1, asn1, aset1, info1 = form_NL(candidates, c, ow_i, 
+                            ags, ballots, INVALID, winners_on_fp, min_tvs, 
+                            aud_tvs, ag_matrix, winners, maxtv, [cd],[],[])
+                        s2, asn2, aset2, info2 = form_NL(candidates, c, ow_i, 
+                            ags, ballots, INVALID, winners_on_fp, min_tvs, 
+                            aud_tvs, ag_matrix, winners, maxtv, [],[cd],[])
+                        s3, asn3, aset3, info3 = form_NL(candidates, c, ow_i, 
+                            ags, ballots, INVALID, winners_on_fp, min_tvs, 
+                            aud_tvs, ag_matrix, winners, maxtv, [],[],[cd])
+
+                        if s1 and s2 and s3:
+                            desc += "Can show {} NL-R[{}] {}\n".format(ow_i.id,\
+                                candidates[cd].id, candidates[c].id)
+
+                            successNLc = True
+                            asn = max(asn1, max(asn2, asn3))
+                            aset = aset1
+                            aset.update(aset2) 
+                            aset.update(aset3) 
+                            desc += info1
+                            desc += info2
+                            desc += info3
+
+                        if successNLc:
+                            break
+
+                    if not successNLc:
+                        successNL = False
+                        break
+
+                if successNL:
+                    winners_verified.append(ow)
+                    max_this_loop = max(max_this_loop, asn)
+                    partial_ss = max(partial_ss, asn)
+                    inner_loop_assertions.update(aset)
+                else:
+                    max_this_loop = np.inf
         
        
     max_in_loop = max(max_this_loop, max(max_ss_mt, max_sample_size)) 
@@ -1014,6 +1207,7 @@ if __name__ == "__main__":
             if seats < args.seats:
                 runner_up = c
             losers.append(c)
+
 
     max_sample_size = 0
 
@@ -1326,7 +1520,8 @@ if __name__ == "__main__":
 
         if s2 == s3 and best_partial_ss > qts_verified_asn:
             print("Revert to straight IQ partial audit.", file=log)
-            best_partial_ss = qts_verified_asn
+            best_partial_ss = qts_verified_asn  
+            max_sample_size = qts_verified_asn
 
         partial_iqx = max([straight_iqx_verified[w][0] for w in \
                 straight_iqx_verified])
@@ -1335,6 +1530,7 @@ if __name__ == "__main__":
             if partial_iqx < best_partial_ss:
                 print("Revert to straight IQX partial audit.", file=log)
                 best_partial_ss = partial_iqx
+                max_sample_size = partial_iqx
 
 
         assertions_text = [(candidates[w].id, n, candidates[l].id \
