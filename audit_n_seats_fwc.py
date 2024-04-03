@@ -371,7 +371,7 @@ def establish_max_tvalue_nonfw(w, candidates, ballots, winners_on_fp, \
     aset = set()
     desc = ""
 
-    while max_tr_tv_ss > curr_asn and bar + delta < valid_ballots:
+    while max_tr_tv_ss > max(asn, curr_asn) and bar + delta < valid_ballots:
         bar += delta
         thresh = bar/valid_ballots
 
@@ -394,7 +394,7 @@ def establish_max_tvalue_nonfw(w, candidates, ballots, winners_on_fp, \
             
             ss = sample_size(amean, args)
   
-            max_tr_tv_ss = max(ss, max_tr_tv_ss)
+            max_tr_tv_ss = max(asn, max(ss, max_tr_tv_ss))
 
             aset.add((c, "SP[{}]".format(s), None, ss))
             desc += "SP[{}]({}) with ASN {}\n".format(s, candidates[c].id, ss)
@@ -901,57 +901,7 @@ def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
                 partial_ss = max(partial_ss, asn)
                 inner_loop_assertions.update(aset)
             else:
-                # Try iterate over other losers instead.
-                successNL = True
-                asn = 0
-                aset = set()
-
-                for c in losers:
-                    successNLc = False
-                    if c == ow_i.num:
-                        continue
-
-                    for cd in losers:
-                        if c == cd or cd == ow_i.num: 
-                            continue
-                
-                        s1, asn1, aset1, info1 = form_NL(candidates, c, ow_i, 
-                            ags, ballots, INVALID, winners_on_fp, min_tvs, 
-                            aud_tvs, ag_matrix, winners, maxtv, [cd],[],[])
-                        s2, asn2, aset2, info2 = form_NL(candidates, c, ow_i, 
-                            ags, ballots, INVALID, winners_on_fp, min_tvs, 
-                            aud_tvs, ag_matrix, winners, maxtv, [],[cd],[])
-                        s3, asn3, aset3, info3 = form_NL(candidates, c, ow_i, 
-                            ags, ballots, INVALID, winners_on_fp, min_tvs, 
-                            aud_tvs, ag_matrix, winners, maxtv, [],[],[cd])
-
-                        if s1 and s2 and s3:
-                            desc += "Can show {} NL-R[{}] {}\n".format(ow_i.id,\
-                                candidates[cd].id, candidates[c].id)
-
-                            successNLc = True
-                            asn = max(asn1, max(asn2, asn3))
-                            aset = aset1
-                            aset.update(aset2) 
-                            aset.update(aset3) 
-                            desc += info1
-                            desc += info2
-                            desc += info3
-
-                        if successNLc:
-                            break
-
-                    if not successNLc:
-                        successNL = False
-                        break
-
-                if successNL:
-                    winners_verified.append(ow)
-                    max_this_loop = max(max_this_loop, asn)
-                    partial_ss = max(partial_ss, asn)
-                    inner_loop_assertions.update(aset)
-                else:
-                    max_this_loop = np.inf
+                max_this_loop = np.inf
         
        
     max_in_loop = max(max_this_loop, max(max_ss_mt, max_sample_size)) 
@@ -1521,16 +1471,20 @@ if __name__ == "__main__":
         if s2 == s3 and best_partial_ss > qts_verified_asn:
             print("Revert to straight IQ partial audit.", file=log)
             best_partial_ss = qts_verified_asn  
-            max_sample_size = qts_verified_asn
+
+            if len(s3) == args.seats:
+                max_sample_size = best_partial_ss
 
         partial_iqx = max([straight_iqx_verified[w][0] for w in \
                 straight_iqx_verified])
 
         if s1 == s2:
             if partial_iqx < best_partial_ss:
-                print("Revert to straight IQX partial audit.", file=log)
+                print("Revert to IQX partial audit.", file=log)
                 best_partial_ss = partial_iqx
-                max_sample_size = partial_iqx
+           
+                if len(s1) == args.seats:
+                    max_sample_size = best_partial_ss
 
 
         assertions_text = [(candidates[w].id, n, candidates[l].id \
