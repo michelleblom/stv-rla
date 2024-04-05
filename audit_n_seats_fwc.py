@@ -293,7 +293,7 @@ def get_max_ballot_weight(prefs, first_winners, aud_tv, elected, maxtv,\
 def establish_max_tvalue_nonfw(w, candidates, ballots, winners_on_fp, \
     min_tvs, aud_tvs, ag_matrix, maxtv, INVALID, args, curr_asn):
     
-    info = ""
+    info = " curr_asn = {}\n".format(curr_asn)
 
     # Verify that 'w' did not receive a quota on first preference NIQ(w)
     # We need to do this as this approach of bounding w's transfer value
@@ -322,6 +322,22 @@ def establish_max_tvalue_nonfw(w, candidates, ballots, winners_on_fp, \
     # (if they are not a candidate in winners_on_fp, or election otherwise).
     max_surpluses = {}
     max_overall = 0
+
+    tot_vote = 0
+
+    # Assuming a context where each ballot may have a value < 1 
+    weighted_ballots = []
+    for b in ballots:
+        if b.prefs == []:
+            continue
+
+        p = b.prefs[0]
+        weight = aud_tvs[p] if p in winners_on_fp else 1
+
+        tot_vote += weight*b.votes
+
+        weighted_ballots.append((b, weight))
+
     for cand in candidates:
         c = cand.num
 
@@ -332,35 +348,36 @@ def establish_max_tvalue_nonfw(w, candidates, ballots, winners_on_fp, \
         # has a candidate in winners_on_fp as first preference and 1 
         # otherwise.
         transfer = 0
-
         tot_not_t = 0
-        tot_v = 0
 
-        for b in ballots:
+        # Record contribution of ballot type to "Not transfer" category, to
+        # total vote, and number of ballots of that type.
+        details = []
+
+        for (b,v) in weighted_ballots:
             if b.prefs == []:
                 continue
 
             win = b.prefs.index(w) if w in b.prefs else np.inf
             cin = b.prefs.index(c) if c in b.prefs else np.inf
 
-            p = b.prefs[0]
-            weight = aud_tvs[p] if p in winners_on_fp else 1
-
             if w in b.prefs and c in b.prefs:
                 widx = b.prefs.index(w) 
                 cidx = b.prefs.index(c) 
 
                 if cidx < widx:
-                    transfer += weight * b.votes
+                    details.append((0, v, b.votes)) 
+                    transfer += v * b.votes
                 else:
-                    tot_not_t += weight * b.votes    
+                    details.append((v, v, b.votes))
+                    tot_not_t += v * b.votes
 
             else:
-                tot_not_t += weight * b.votes 
+                details.append((v, v, b.votes))
+                tot_not_t += v * b.votes
 
-            tot_v += (1 - weight) * b.votes   
 
-        max_surpluses[c] = (transfer, tot_not_t, tot_v)
+        max_surpluses[c] = (transfer, tot_not_t, details)
         max_overall = max(max_overall, transfer)
            
     # Try and establish a max_tr_tv that would cost less than or equal
@@ -371,39 +388,46 @@ def establish_max_tvalue_nonfw(w, candidates, ballots, winners_on_fp, \
     aset = set()
     desc = ""
 
-    while max_tr_tv_ss > max(asn, curr_asn) and bar + delta < valid_ballots:
+    while max_tr_tv_ss > max(asn, curr_asn) and bar + delta < tot_vote:
         bar += delta
-        thresh = bar/valid_ballots
+        thresh = (tot_vote - bar)/tot_vote
 
         # We want to show that the bucket of votes in the category "will
         # transfer to w in the event of election/elimination" is less than
         # bar.
 
         max_tr_tv_ss = 0
-        a = 1/(2 * (1-thresh))
-
         aset = set()
 
         desc = "MAX SURPLUS ASSERTIONS:\n"
 
-        for c,(s,tnt,tv) in max_surpluses.items():
+        for c,(s,tnt,details) in max_surpluses.items():
             # We want to show that p_s < thresh
             # so p_tnt > t where t = 1 - thresh
+            amean = 0.5*INVALID
 
-            amean = (0.5*INVALID + tnt*a + 0.5*tv)/args.voters 
+            for cont_tnt, cont_v, num in details:
+                amean += num*(((cont_tnt - thresh*cont_v) + thresh)/(2*thresh))
+
+            amean /= args.voters
             
             ss = sample_size(amean, args)
   
-            max_tr_tv_ss = max(asn, max(ss, max_tr_tv_ss))
+            max_tr_tv_ss = max(ss, max_tr_tv_ss)
 
-            aset.add((c, "SP[{}]".format(s), None, ss))
-            desc += "SP[{}]({}) with ASN {}\n".format(s, candidates[c].id, ss)
+            aset.add((c, "SP[{}]".format(bar), None, ss))
+            desc += "SP[{},{}]({}) with ASN {}\n".format(bar, s, \
+                candidates[c].id, ss)
+
+
+
+    max_tr_tv_ss = max(asn, max_tr_tv_ss)
         
     max_tr_tv = maxtv
     if max_tr_tv_ss <= curr_asn:
         max_tr_tv = (bar/(bar+args.quota))
         info += desc
-        info += "Reduce maxtv for {} to {} ASN {}".format(cand_w.id, \
+        info += "Reduce maxtv for {} to {} ASN {}\n".format(cand_w.id, \
             max_tr_tv, max_tr_tv_ss)
 
     if max_tr_tv < maxtv: 
@@ -707,7 +731,7 @@ def compute_iqx(candidates, ow_i, ag_matrix, ballots, INVALID, args, min_tvs,
 
 
 def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
-    INVALID,max_sample_size,ballots,min_tvs,ows,fws,losers,winners, \
+    INVALID,max_sample_size,mintv_ss,ballots,min_tvs,ows,fws,losers,winners, \
     straight_iqx_verified, runner_up, aud_tvs):
 
     np.seterr(all='ignore')
@@ -835,11 +859,16 @@ def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
 
     nv_maxtvs = {}
 
+    ub = max(partial_ss, max_sample_size)
+    outer_asn = max(mintv_ss, max_ss_mt)
+
+    if outer_asn < args.voters:
+        ub = max(ub, outer_asn)
+
     for nv in newly_verified:
         max_tr_tv, max_tr_tv_asn, max_tr_tv_aset, max_tr_tv_info = \
             establish_max_tvalue_nonfw(nv, candidates, ballots, winners_on_fp,\
-            min_tvs, aud_tvs, ag_matrix, maxtv, INVALID, args, \
-            max(partial_ss, max_sample_size))
+            min_tvs, aud_tvs, ag_matrix, maxtv, INVALID, args, ub)
 
         desc += max_tr_tv_info
 
@@ -987,8 +1016,8 @@ def outer_loop(args, ows, fws, losers, winners, winners_on_fp,  \
         with ThreadPool(processes=args.cpus) as pool:
             func = partial(inner_loop, winners_on_fp, args, \
                 candidates, cands, valid_ballots, INVALID, max_sample_size,\
-                ballots,min_tvs,ows,fws,losers,winners,straight_iqx_verified,\
-                runner_up)
+                mintv_ss, ballots, min_tvs, ows, fws, losers, winners,\
+                straight_iqx_verified, runner_up)
 
             results = pool.map(func, tv_ub_nboors)
 
