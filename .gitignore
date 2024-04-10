@@ -1,0 +1,8 @@
+misc/
+__pycache__/
+data/
+*.txt
+*.log
+*.sh
+*.csv
+results/
