@@ -53,7 +53,7 @@ from utils import read_outcome, sample_size, ssm_sample_size,\
 # return:
 #
 #     False, np.inf
-def rule_out_for_max(prefs, loser, ag_matrix, winners, candidates):
+def rule_out_for_max(prefs, loser, ag_matrix, nl_matrix, winners, candidates):
     ag_min_ss = np.inf
     ag_present = False
 
@@ -68,14 +68,18 @@ def rule_out_for_max(prefs, loser, ag_matrix, winners, candidates):
             continue
 
         ag = ag_matrix[p][loser]
+        nl,nl_supp = nl_matrix[p][loser] if nl_matrix != None else (None,set())
         if ag != None and ag != np.inf:
             ag_present = True
             ags_used.add((p,"AG",loser, ag))
             ag_min_ss = min(ag_min_ss, ag)
 
+        elif nl != None and nl != np.inf:
+            ag_present = True
+            ags_used.update(nl_supp)
+            ag_min_ss = min(ag_min_ss, nl)
+
     return False, np.inf, set()
-
-
         
 
 # Merge a sequence of AG relationships that could be used to increase the
@@ -437,8 +441,9 @@ def establish_max_tvalue_nonfw(w, candidates, ballots, winners_on_fp, \
     # set of assertions required to establish this, logging info
     return maxtv, 0, set(), info
 
-def form_NL(candidates, c, ow_i, ags, ballots, INVALID, winners_on_fp, \
-    min_tvs, aud_tvs, ag_matrix, winners, maxtv, elected, eliminated, standing):
+def form_NL(candidates, c, ow_i, ags, nls, ballots, INVALID, winners_on_fp, \
+    min_tvs, aud_tvs, ag_matrix, nl_matrix, winners, maxtv, elected, \
+    eliminated,standing):
     
     cand_c = candidates[c]
 
@@ -487,7 +492,7 @@ def form_NL(candidates, c, ow_i, ags, ballots, INVALID, winners_on_fp, \
             else:
                 # Could we exclude ballots by using an AG*?
                 is_ag, ag_asn, descs = rule_out_for_max(\
-                    b.prefs, c, ag_matrix, winners, candidates)
+                    b.prefs, c, ag_matrix, nl_matrix, winners, candidates)
                     
                 contrib = b.votes*((1-weight)/2.0)
 
@@ -533,6 +538,15 @@ def form_NL(candidates, c, ow_i, ags, ballots, INVALID, winners_on_fp, \
                             o_idx -= 1
                             rag = (ow_i.num,"AG*",d,dval)
                             descs.add(rag)
+                            max_ags_here=max(max_ags_here,dval)
+
+                for d,(dval,dset) in nls.items():
+                    if d in prefs:
+                        idx_d = prefs.index(d)
+                        if idx_d < o_idx:
+                            prefs.remove(d)
+                            o_idx -= 1
+                            descs.update(dset)
                             max_ags_here=max(max_ags_here,dval)
 
                 assorter += 0.5*b.votes
@@ -628,8 +642,8 @@ def form_NL(candidates, c, ow_i, ags, ballots, INVALID, winners_on_fp, \
 
         return True, max(max_ags_used,ss), nl_assertion_set, desc
     else:
-        desc = "NL({},{}) NOT POSSIBLE\n".format(\
-            ow_i.id, cand_c.id)
+        desc = "NL({},{}) NOT POSSIBLE, AMEAN {}\n".format(\
+            ow_i.id, cand_c.id, amean)
 
         return False, np.inf, None, desc
 
@@ -796,6 +810,8 @@ def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
     newly_verified = []
     could_not_verify = []
 
+    nl_matrix = [[(None,set()) for c in candidates] for o in candidates]
+
     for ow_i in ows:
         ags = {c : ag_matrix[ow_i.num][c] for c in losers \
             if ag_matrix[ow_i.num][c] != None}
@@ -816,8 +832,8 @@ def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
                 continue
 
             successNL, asn, aset, info = form_NL(candidates, c, ow_i, ags, \
-                ballots, INVALID, winners_on_fp, min_tvs, aud_tvs, ag_matrix,\
-                winners, maxtv, [], [], [])
+                {}, ballots, INVALID, winners_on_fp, min_tvs, aud_tvs, ag_matrix,\
+                None, winners, maxtv, [], [], [])
 
             desc += info
 
@@ -825,6 +841,7 @@ def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
 
             if successNL:
                 nl_assertion_set.update(aset)
+                nl_matrix[ow_i.num][c] = (asn, aset)
 
 
         straight_iqx_asn = straight_iqx_verified[ow_i.num][0] if \
@@ -877,62 +894,82 @@ def inner_loop(winners_on_fp, args, candidates, cands, valid_ballots,\
     if could_not_verify != []:
         max_this_loop = partial_ss
 
-        # This addition allows us to audit 5 more instances of the 3 seat
-        # Scotland 17-22 data set that satisfies first winner criterion.
-        for ow in could_not_verify:
-            successNL = True
-            asn = 0
-            aset = set()
+        improvement = True
+        while improvement and could_not_verify != []:
 
-            for c in losers:
-                successNLc = False
-            
-                for nv in newly_verified:
-                    # Can we generate NL under two assumptions about the
-                    # candidate nv? ie. that they have already been elected, 
-                    # or are still standing?
+            improvement = False
+            new_could_not_verify = []
 
-                    mtv, mtv_asn, mtv_aset = nv_maxtvs[nv]
+            for ow in could_not_verify:
+                successNL = True
+                asn = 0
+                aset = set()
 
-                    # For the first case, it will likely help if we can reduce
-                    # maxtv for 'nv'
-                    s2, asn2, aset2, info2 = form_NL(candidates, c, ow_i, ags, \
-                        ballots, INVALID, winners_on_fp, min_tvs, aud_tvs,\
-                        ag_matrix, winners, mtv, [nv], [], []) # elected
-                    s3, asn3, aset3, info3 = form_NL(candidates, c, ow_i, ags, \
-                        ballots, INVALID, winners_on_fp, min_tvs, aud_tvs, \
-                        ag_matrix, winners, mtv, [], [], [nv]) # standing
+                nls = {c : nl_matrix[ow][c] for c in losers \
+                    if nl_matrix[ow][c][0] != None}
 
-                    if s2 and s3:
-                        desc += "Can show {} NL-R[{}] {}\n".format(ow_i.id, \
-                            candidates[nv].id, candidates[c].id)
+                for c in losers:
+                    successNLc = False
+                
+                    for nv in newly_verified:
+                        # Can we generate NL under two assumptions about the
+                        # candidate nv? ie. that they have already been elected, 
+                        # or are still standing?
 
-                        successNLc = True
-                        asn = max(mtv_asn, max(asn2, asn3))
-                        aset = aset2
-                        aset.update(aset3) 
-                        aset.update(mtv_aset)
+                        mtv, mtv_asn, mtv_aset = nv_maxtvs[nv]
 
-                        desc += info2
-                        desc += info3
+                        # For the first case, it will likely help if we can reduce
+                        # maxtv for 'nv'
+                        s2, asn2, aset2, info2 = form_NL(candidates, c, ow_i, ags, \
+                            nls, ballots, INVALID, winners_on_fp, min_tvs, aud_tvs,\
+                            ag_matrix, nl_matrix, winners, mtv, [nv], [], []) # elected
+                        s3, asn3, aset3, info3 = form_NL(candidates, c, ow_i, ags, \
+                            nls, ballots, INVALID, winners_on_fp, min_tvs, aud_tvs, \
+                            ag_matrix, nl_matrix, winners, mtv, [], [], [nv]) # standing
 
-                    if successNLc:
+                        if s2 and s3:
+                            desc += "Can show {} NL-R[{}] {}\n".format(ow_i.id, \
+                                candidates[nv].id, candidates[c].id)
+
+                            successNLc = True
+                            asn = max(mtv_asn, max(asn2, asn3))
+                            aset = aset2
+                            aset.update(aset3) 
+                            aset.update(mtv_aset)
+
+                            desc += info2
+                            desc += info3
+
+                        else:
+                            desc += "CANNOT show {} NL-R[{}] {}\n".format(\
+                                ow_i.id, candidates[nv].id, candidates[c].id)
+                            desc += info2
+                            desc += info3
+
+                        if successNLc:
+                            break
+
+                    if not successNLc:
+                        successNL = False
                         break
 
-                if not successNLc:
-                    successNL = False
-                    break
 
+                if successNL:
+                    winners_verified.append(ow)
+                    max_this_loop = max(max_this_loop, asn)
+                    partial_ss = max(partial_ss, asn)
+                    inner_loop_assertions.update(aset)
 
-            if successNL:
-                winners_verified.append(ow)
-                max_this_loop = max(max_this_loop, asn)
-                partial_ss = max(partial_ss, asn)
-                inner_loop_assertions.update(aset)
-            else:
-                max_this_loop = np.inf
-        
+                    nl_matrix[ow][c] = (asn, set(aset))
+                    improvement = True
+                else:
+                    new_could_not_verify.append(ow)        
        
+            could_not_verify = new_could_not_verify[:]
+
+    if could_not_verify != []:
+        max_this_loop = np.inf
+
     max_in_loop = max(max_this_loop, max(max_ss_mt, max_sample_size)) 
     partial_ss = max(partial_ss, max(max_ss_mt, max_sample_size))
 
