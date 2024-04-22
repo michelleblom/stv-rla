@@ -483,8 +483,10 @@ def ssm_sample_size(threshold, tally, invalid, args):
     
     amean = (tally*share + 0.5*invalid)/args.voters
 
-    sam_size = sample_size(amean, args, upper_bound = share)
-    return sam_size
+    if amean <= 0.5:
+        return np.inf
+
+    return sample_size(amean, args, upper_bound = share)
 
 
 def tally_vs_tally_sample_size(tally1, tally2, valid_votes, args):
@@ -670,7 +672,8 @@ def simulate_stv(ballots, candidates, nseats, order_c, order_a, order_q, \
                 if currseat < nseats:
                     # Distribute surplus
                     distribute_surplus(elect, candidates, ballots, log)
-
+                
+                elect.standing = 0
 
 
                 next_surpluses = []
