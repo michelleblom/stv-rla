@@ -31,52 +31,6 @@ from utils import read_outcome, sample_size, ssm_sample_size,\
     read_ballots_stv, simulate_stv
 
 
-
-# Determine if there is a reported loser 'd' for which 'd' AG loser, based 
-# on the AG relationships in ag_matrix, preferenced before 'loser' in
-# the preference ranking 'prefs'. Return a boolean indicating whether
-# there is such a candidate 'd', and the ASN of the cheapest AG 
-# relationship (if there are multiple such 'd's).
-#
-#     ag_matrix[d][loser] will give ASN of 'd' AG loser or None if 
-#         such an assertion does not exist.
-#
-# The function returns pair:
-#
-#     ag_present, ag_min_ss
-#
-# where ag_present is a boolean indicating whether we found a 
-# 'd' such that 'd' AG loser, and 'd' is preferenced before loser
-# in prefs.
-#
-# If loser is not present in the ranking 'prefs' the function will
-# return:
-#
-#     False, np.inf
-#
-# Note that the set winners contains the set of reported winners for the 
-# contest.
-def rule_out_for_max(prefs, loser, ag_matrix, winners):
-    ag_min_ss = np.inf
-    ag_present = False
-
-    ags_used = set()
-
-    for p in prefs:
-        if p == loser:
-            return ag_present, ag_min_ss, ags_used
-
-        if p in winners:
-            # 'loser' could still get this vote as it could skip over 'p'
-            continue
-
-        ag = ag_matrix[p][loser]
-        if ag != None and ag != np.inf:
-            ag_present = True
-            ags_used.add((p,"AG",loser, ag))
-            ag_min_ss = min(ag_min_ss, ag)
-
-    return False, np.inf, set()
         
 
 # Merge a sequence of AG relationships that could be used to increase the
@@ -255,15 +209,8 @@ def compute_ag_stars(winners, losers, candidates, ballots, ag_matrix, \
                 if not counted and c in b.prefs:
                     # Determine if we should give the votes to the maximum
                     # tally of 'c' and at what value.
-                    weight = 1
-
-                    # Check if all candidates prior to 'c' in the preference
-                    # ranking are first winners. If so, we weight the votes
-                    # at the maximum transfer value of the first candidate in
-                    # 'prior'.
-                    prior = b.prefs[:b.prefs.index(c)]
-                    if prior != [] and all([p in first_winners for p in prior]):
-                        weight = aud_tvs[prior[0]]                
+                    weight = aud_tvs[b.prefs[0]] if b.prefs != [] and \
+                        b.prefs[0] in first_winners else 1
 
                     for p in b.prefs:
                         if p == w:
@@ -284,8 +231,7 @@ def compute_ag_stars(winners, losers, candidates, ballots, ag_matrix, \
 
                 ag_matrix[w][c] = ss
 
-                desc += "AG*({},{}) = {}\n".format(cand_w.id, \
-                    cand_c.id, ss)
+                desc += "AG*({},{}) = {}\n".format(cand_w.id, cand_c.id, ss)
 
 
 
@@ -334,22 +280,26 @@ def form_NL(candidates, c, ow_i, ags, ballots, INVALID, winners_on_fp, \
         c_in = c in b.prefs
         ow_in = ow_i.num in b.prefs
 
-        weight = 1
+        weight = aud_tvs[b.prefs[0]] if b.prefs != [] and \
+            b.prefs[0] in winners_on_fp else 1
 
         c_idx=b.prefs.index(c) if c_in else np.inf
         o_idx=b.prefs.index(ow_i.num) if ow_in else np.inf
 
         if c_in and c_idx < o_idx:
-            # Could we exclude ballots by using an AG?
-            is_ag, ag_asn, descs = rule_out_for_max(b.prefs, c, ag_matrix, \
-                winners)
+            # Could we exclude ballots by using an AG? THIS IS FINE 
+            # FOR TWO SEATS BUT LESS SO FOR N SEATS IN GENERAL.
+            # Need to be sure that there is a  d for which
+            # AG(d, c) and where d appears before c on the ballot. 
+            #is_ag, ag_asn, descs = rule_out_for_max(b.prefs, c, ag_matrix, \
+            #    winners, definite_losers)
                     
             contrib = b.votes*((1-weight)/2.0)
 
-            if is_ag:
-                alt_contrib = b.votes*0.5
-                helpful_ags.append((ag_asn, alt_contrib - contrib, descs))
-                pot_margin_inc += alt_contrib-contrib
+            #if is_ag:
+            #    alt_contrib = b.votes*0.5
+            #    helpful_ags.append((ag_asn, alt_contrib - contrib, descs))
+            #    pot_margin_inc += alt_contrib-contrib
 
             assorter += contrib
             max_c += b.votes
@@ -375,22 +325,22 @@ def form_NL(candidates, c, ow_i, ags, ballots, INVALID, winners_on_fp, \
                     # that appear before ow in the ballot, will 'ow' be the 
                     # first ranked cand? If so, we could add these ballots to 
                     # the min tally of 'ow'.
+                    # When we are forming o NL c we are considering any point
+                    # at which o could be eliminated. At this point, any 
+                    # candidate d for which o AG/AG* d must also be eliminated.
                     prefs = [p for p in b.prefs if not p in winners_on_fp]
 
+                    # Note that it is possible one of the d for which o AG/AG* d
+                    # is actually a true winner. In this case, the value of the
+                    # ballot to 'o' may be less than 'minval'. However, in
+                    # this case o must be a winner.
                     descs = set()
                     max_ags_here = 0
 
-                    other_winners=[w for w in winners if not w in winners_on_fp]
-                    skip = False
-                                   
                     for d,dval in ags.items():
                         if d in prefs:
                             idx_d = prefs.index(d)
                             if idx_d < o_idx:
-                                if d in other_winners:
-                                    skip = True
-                                    break
-
                                 prefs.remove(d)
                                 o_idx -= 1
                                 rag = (ow_i.num,"AG*",d,dval)
@@ -400,15 +350,14 @@ def form_NL(candidates, c, ow_i, ags, ballots, INVALID, winners_on_fp, \
 
                     assorter += 0.5*b.votes
 
-                    if not skip:
-                        if prefs != [] and prefs[0] == ow_i.num:
-                            base_contrib = 0.5*b.votes
-                            alt_contrib = b.votes * ((1 + minval)/2.0)
-                            dconfig = alt_contrib-base_contrib
+                    if prefs != [] and prefs[0] == ow_i.num:
+                        base_contrib = 0.5*b.votes
+                        alt_contrib = b.votes * ((1 + minval)/2.0)
+                        dconfig = alt_contrib-base_contrib
 
-                            if dconfig > 0:
-                                helpful_ags.append((max_ags_here,dconfig,descs))
-                                pot_margin_inc += dconfig
+                        if dconfig > 0:
+                            helpful_ags.append((max_ags_here,dconfig,descs))
+                            pot_margin_inc += dconfig
 
         else:
             assorter += 0.5*b.votes
@@ -597,8 +546,6 @@ def compute_iqx(candidates, ow_i, ag_matrix, ballots, INVALID, args, min_tvs,
         return True, ss_iqx, iqx_assertions, desc
 
     return False, ss_iqx, set(), desc
-    
-
 
                             
 
