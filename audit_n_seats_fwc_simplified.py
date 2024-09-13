@@ -30,7 +30,57 @@ from utils import read_outcome, sample_size, ssm_sample_size,\
     read_ballots_json, read_ballots_txt, read_ballots_blt, \
     read_ballots_stv, simulate_stv
 
+# Determine if there is a reported loser 'd' for which 'd' AG loser, based 
+# on the AG relationships in ag_matrix, preferenced before 'loser' in
+# the preference ranking 'prefs'. Return a boolean indicating whether
+# there is such a candidate 'd', and the ASN of the cheapest AG 
+# relationship (if there are multiple such 'd's).
+#
+#     ag_matrix[d][loser] will give ASN of 'd' AG loser or None if 
+#         such an assertion does not exist.
+#
+# The function returns pair:
+#
+#     ag_present, ag_min_ss
+#
+# where ag_present is a boolean indicating whether we found a 
+# 'd' such that 'd' AG loser, and 'd' is preferenced before loser
+# in prefs.
+#
+# If loser is not present in the ranking 'prefs' the function will
+# return:
+#
+#     False, np.inf
+#
+# Note that the set winners contains the set of reported winners for the 
+# contest.
+def rule_out_for_max(prefs, loser, ag_matrix, nl_matrix, winners):
+    ag_min_ss = np.inf
+    ag_present = False
 
+    ags_used = set()
+
+    for p in prefs:
+        if p == loser:
+            return ag_present, ag_min_ss, ags_used
+
+        if p in winners:
+            # 'loser' could still get this vote as it could skip over 'p'
+            continue
+
+        ag = ag_matrix[p][loser]
+        nl,nl_supp = nl_matrix[p][loser] if nl_matrix != None else (None,set())
+        if ag != None and ag != np.inf:
+            ag_present = True
+            ags_used.add((p,"AG",loser, ag))
+            ag_min_ss = min(ag_min_ss, ag)
+
+        elif nl != None and nl != np.inf:
+            ag_present = True
+            ags_used.update(nl_supp)
+            ag_min_ss = min(ag_min_ss, nl)
+
+    return False, np.inf, set()
         
 
 # Merge a sequence of AG relationships that could be used to increase the
@@ -239,6 +289,7 @@ def compute_ag_stars(winners, losers, candidates, ballots, ag_matrix, \
 #
 # candidates    is the set of candidates in the election
 # ags           is the set of candidates d for which AG*(ow_i, d, ...) 
+# nls           is the set of candidates d for which ow_i NL d 
 # ballots       is the set of cast ballot types in the election
 # INVALID       is the number of invalid ballots cast in the election
 # winners_on_fp is the set of candidates that won on first preferences
@@ -247,9 +298,10 @@ def compute_ag_stars(winners, losers, candidates, ballots, ag_matrix, \
 # aud_tvs       is a map between first preference winner and an upper bound
 #                  on their transfer value
 # ag_matrix     is a matrix of precomputed AG relationships
+# nl_matrix     is a matrix of precomputed NL relationships
 # winners       is the full set of reported winners
-def form_NL(candidates, c, ow_i, ags, ballots, INVALID, winners_on_fp, \
-    min_tvs, aud_tvs, ag_matrix, winners):
+def form_NL(candidates, c, ow_i, ags, nls, ballots, INVALID, winners_on_fp, \
+    min_tvs, aud_tvs, ag_matrix, nl_matrix, winners):
     
     cand_c = candidates[c]
 
@@ -292,7 +344,7 @@ def form_NL(candidates, c, ow_i, ags, ballots, INVALID, winners_on_fp, \
             # Need to be sure that there is a  d for which
             # AG(d, c) and where d appears before c on the ballot. 
             #is_ag, ag_asn, descs = rule_out_for_max(b.prefs, c, ag_matrix, \
-            #    winners, definite_losers)
+            #    nl_matrix, winners)
                     
             contrib = b.votes*((1-weight)/2.0)
 
@@ -345,6 +397,15 @@ def form_NL(candidates, c, ow_i, ags, ballots, INVALID, winners_on_fp, \
                                 o_idx -= 1
                                 rag = (ow_i.num,"AG*",d,dval)
                                 descs.add(rag)
+                                max_ags_here=max(max_ags_here,dval)
+
+                    for d,(dval,dset) in nls.items():
+                        if d in prefs:
+                            idx_d = prefs.index(d)
+                            if idx_d < o_idx:
+                                prefs.remove(d)
+                                o_idx -= 1
+                                descs.update(dset)
                                 max_ags_here=max(max_ags_here,dval)
 
 
@@ -636,8 +697,8 @@ def inner_loop(winners_on_fp, args, seats, candidates, cands, valid_ballots,\
         for c in cands:
             if c in winners:
                 continue
-            successNL, asn, aset, info = form_NL(candidates, c, ow_i, ags, \
-                ballots,INVALID,winners_on_fp, min_tvs,aud_tvs,ag_matrix,\
+            successNL, asn, aset, info = form_NL(candidates, c, ow_i, ags, {},\
+                ballots,INVALID,winners_on_fp, min_tvs,aud_tvs,ag_matrix, None,\
                 winners)
 
             desc += info
@@ -678,6 +739,54 @@ def inner_loop(winners_on_fp, args, seats, candidates, cands, valid_ballots,\
            
         else:
             could_not_verify.append(ow_i.num)
+
+    if could_not_verify != []:
+        max_this_loop = partial_ss
+
+        improvement = True
+        while improvement:
+
+            improvement = False
+            ow_list = could_not_verify[:]
+
+            for ow in ow_list:
+                asn = 0
+                aset = set()
+
+                nls = {c : nl_matrix[ow][c] for c in cands \
+                    if nl_matrix[ow][c][0] != None}
+
+                successNL = True
+
+                for c in losers:
+
+                    if nl_matrix[ow][c][0] != None:
+                        continue
+                
+                    s2, asn2, aset2, info2 = form_NL(candidates, c, ow_i, ags, \
+                        nls, ballots, INVALID, winners_on_fp, min_tvs, aud_tvs,\
+                        ag_matrix, nl_matrix, winners) 
+
+                    if s2:
+                        desc += "Can show {} NL-R {}\n".format(ow_i.id, \
+                            candidates[c].id)
+
+                        desc += info2
+
+                        nl_matrix[ow][c] = (asn2, set(aset2))
+                        asn = max(asn, asn2)
+                        aset.update(aset2)
+
+                        improvement = True
+                    else:
+                        successNL = False
+
+                if successNL:
+                    could_not_verify.remove(ow)
+                    winners_verified.append(ow)
+                    max_this_loop = max(max_this_loop, asn)
+                    partial_ss = max(partial_ss, asn)
+                    inner_loop_assertions.update(aset)
 
     if could_not_verify != []:
         max_this_loop = np.inf
@@ -931,7 +1040,8 @@ if __name__ == "__main__":
     assertions_used = set()
 
     if outcome.action[0] != 1:
-        print("Election does not satisfy first winner criterion.")
+        print("{},Election does not satisfy first winner criterion.".format(
+            args.data))
         exit()
 
     else: 
@@ -1089,15 +1199,15 @@ if __name__ == "__main__":
                 for asstn in iqx_assertions:
                     print(asstn, file=log)
  
-                print("1Q,{},{},{},{},{},{},{},{},{}".format(args.data,\
-                    ncand, valid_ballots, args.quota, len(qts),\
+                print("1Q,{},{},{},{},{},{},{},{},{},{}".format(seats,\
+                    args.data, ncand, valid_ballots, args.quota, len(qts),\
                         qts_sample_size, straight_iqx_asn, len(winners),\
                         straight_iqx_asn))
             else:
                 print("No audit possible.", file=log)
 
-                print("1Q,{},{},{},{},{},{},{},{},{}".format(args.data, \
-                    ncand,valid_ballots,args.quota,\
+                print("1Q,{},{},{},{},{},{},{},{},{},{}".format(seats,\
+                    args.data, ncand,valid_ballots,args.quota,\
                     len(qts), qts_sample_size, max_sample_size, len(fws),\
                     max_sample_size))
             exit()
@@ -1112,7 +1222,7 @@ if __name__ == "__main__":
                 print(asstn, file=log)
             print("----------------------------------------------",file=log)
 
-            print("1Q,{},{},{},{},{},{},{},{},{}".format(args.data, \
+            print("1Q,{},{},{},{},{},{},{},{},{},{}".format(seats, args.data, \
                 ncand,valid_ballots,args.quota,\
                 len(qts), qts_sample_size, max_sample_size, len(fws),\
                 max_sample_size))
@@ -1283,7 +1393,7 @@ if __name__ == "__main__":
                 print(asstn, file=log)
 
  
-        print("1Q,{},{},{},{},{},{},{},{},{}".format(args.data,\
+        print("1Q,{},{},{},{},{},{},{},{},{},{}".format(seats,args.data,\
             ncand, valid_ballots, args.quota, len(qts),\
             qts_sample_size, max_sample_size, len(curr_winners_verified),\
             best_partial_ss))
