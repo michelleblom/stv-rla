@@ -187,11 +187,12 @@ def compute_ag_matrix(candidates, ballots, ag_matrix, INVALID, args, log=None):
             if amean > 0.5:
                 ss = sample_size(amean, args)
 
-                ag_matrix[w][c] = ss
+                if ss < min(args.voters, args.max_samples):
+                    ag_matrix[w][c] = ss
 
-                if log != None:
-                    print("AG({},{}) = {}".format(cand_w.id, cand_c.id, \
-                        ss), file=log)
+                    if log != None:
+                        print("AG({},{}) = {}".format(cand_w.id, cand_c.id, \
+                            ss), file=log)
 
 
 # For each reported winner w and reported loser w, determine if we can show 
@@ -279,9 +280,10 @@ def compute_ag_stars(winners, losers, candidates, ballots, ag_matrix, \
             if amean > 0.5:
                 ss = sample_size(amean, args)
 
-                ag_matrix[w][c] = ss
+                if ss < min(args.voters, args.max_samples):
+                    ag_matrix[w][c] = ss
 
-                desc += "AG*({},{}) = {}\n".format(cand_w.id, cand_c.id, ss)
+                    desc += "AG*({},{}) = {}\n".format(cand_w.id, cand_c.id, ss)
 
 
 
@@ -300,8 +302,9 @@ def compute_ag_stars(winners, losers, candidates, ballots, ag_matrix, \
 # ag_matrix     is a matrix of precomputed AG relationships
 # nl_matrix     is a matrix of precomputed NL relationships
 # winners       is the full set of reported winners
+# args          command line arguments
 def form_NL(candidates, c, ow_i, ags, nls, ballots, INVALID, winners_on_fp, \
-    min_tvs, aud_tvs, ag_matrix, nl_matrix, winners):
+    min_tvs, aud_tvs, ag_matrix, nl_matrix, winners, args):
     
     cand_c = candidates[c]
 
@@ -466,8 +469,8 @@ def form_NL(candidates, c, ow_i, ags, nls, ballots, INVALID, winners_on_fp, \
 
         asn = max(ss, max_ags_used)
 
-        if asn >= args.voters:
-            return False, np.inf, None, "NL would require full hand count"
+        if asn >= min(args.voters, args.max_samples):
+            return False, np.inf, None, "NL too expensive"
 
         desc = "NL({},{}) = {}, AG/AG*'s used {}\n".format(\
             ow_i.id, cand_c.id, ss, max_ags_used)
@@ -598,13 +601,13 @@ def compute_iqx(candidates, ow_i, ag_matrix, ballots, INVALID, args, min_tvs,
             ss_ag_iqx = max(ss_ag_iqx, ag_asn)
             iqx_assertions.update(descs)
 
-
-        iqx_assertions.add((ow_i.num, "IQX", None, ss))
-        desc = "Can form IQX({}) with sample size {}, AG*s {}\n".format(\
+        if max(ss, ss_ag_iqx) < min(args.voters, args.max_samples):
+            iqx_assertions.add((ow_i.num, "IQX", None, ss))
+            desc = "Can form IQX({}) with sample size {}, AG*s {}\n".format(\
             ow_i.id, ss, ss_ag_iqx) 
-        ss_iqx = max(ss, ss_ag_iqx)
+            ss_iqx = max(ss, ss_ag_iqx)
 
-        return True, ss_iqx, iqx_assertions, desc
+            return True, ss_iqx, iqx_assertions, desc
 
     return False, ss_iqx, set(), desc
 
@@ -626,6 +629,8 @@ def inner_loop(winners_on_fp, args, seats, candidates, cands, valid_ballots,\
     max_this_loop = 0
     max_ss_mt = 0
 
+    ss_ub = min(args.voters, args.max_samples)
+
     winners_verified = winners_on_fp[:]
 
     ut_asns = {}
@@ -643,6 +648,7 @@ def inner_loop(winners_on_fp, args, seats, candidates, cands, valid_ballots,\
         tally_others = valid_ballots - fw_i.fp_votes
 
         ss_i = ssm_sample_size(threshold,tally_others,INVALID,args)
+
         ut_asns[f] = (aud_tv_i, ss_i)
 
         desc += "AUD TV for {}, {}, ss {}\n".format(fw_i.id, \
@@ -652,6 +658,18 @@ def inner_loop(winners_on_fp, args, seats, candidates, cands, valid_ballots,\
             (aud_tv_i, ss_i)))
 
         max_ss_mt = max(max_ss_mt, ss_i)
+
+
+    # NOTE: we do not want to short circuit at this point, as later
+    # logic that determines whether to keep searching will want to consider
+    # ASNs of remaining required assertions.
+
+    #if max_ss_mt >= ss_ub:
+    #    desc += "At least one MT is too expensive\n"
+
+    #    return np.inf, np.inf, np.inf, desc, aud_tvs, \
+    #        inner_loop_assertions, winners_verified, np.inf, ut_asns
+
 
     partial_ss = 0
 
@@ -699,7 +717,7 @@ def inner_loop(winners_on_fp, args, seats, candidates, cands, valid_ballots,\
                 continue
             successNL, asn, aset, info = form_NL(candidates, c, ow_i, ags, {},\
                 ballots,INVALID,winners_on_fp, min_tvs,aud_tvs,ag_matrix, None,\
-                winners)
+                winners, args)
 
             desc += info
 
@@ -713,8 +731,9 @@ def inner_loop(winners_on_fp, args, seats, candidates, cands, valid_ballots,\
         straight_iqx_asn = straight_iqx_verified[ow_i.num][0] if \
             ow_i.num in straight_iqx_verified else np.inf
 
-        if ss_iqx < args.voters or max_with_nls_i < args.voters or \
-            straight_iqx_asn < args.voters:
+        if ss_iqx < ss_ub or max_with_nls_i < ss_ub or \
+            straight_iqx_asn < ss_ub:
+
             winners_verified.append(ow_i.num)
             newly_verified.append(ow_i.num)
             partial_ss = max(partial_ss, min([ss_iqx, max_with_nls_i,\
@@ -765,7 +784,7 @@ def inner_loop(winners_on_fp, args, seats, candidates, cands, valid_ballots,\
                 
                     s2, asn2, aset2, info2 = form_NL(candidates, c, ow_i, ags, \
                         nls, ballots, INVALID, winners_on_fp, min_tvs, aud_tvs,\
-                        ag_matrix, nl_matrix, winners) 
+                        ag_matrix, nl_matrix, winners, args) 
 
                     if s2:
                         desc += "Can show {} NL-R {}\n".format(ow_i.id, \
@@ -841,6 +860,23 @@ def outer_loop(args, seats, ows, fws, losers, winners, winners_on_fp,  \
             lts.add((fw_i.num, "LT", None, (min_tv_i, mintv_ss_i)))
             mintv_ss = max(mintv_ss, mintv_ss_i)
 
+    curr_winners_verified = []
+    best_partial_ss = np.inf
+
+    improved = True
+    partial_improved = True
+
+    all_ut_asns = {f : set() for f in winners_on_fp}
+
+    # NOTE: we do not want to short circuit at this point, as later
+    # logic that determines whether to keep searching will want to consider
+    # ASNs of remaining required assertions.
+    #if mintv_ss >= min(args.voters, args.max_samples):
+    #    outerdesc += "At least one LT is too expensive\n"
+
+    #    return np.inf, min_tvs, outerdesc, lts, mintv_ss,\
+    #        set(), [],  np.inf, np.inf, all_ut_asns
+
     max_in_loop = np.inf
 
     best_inner_assertions = None
@@ -853,13 +889,6 @@ def outer_loop(args, seats, ows, fws, losers, winners, winners_on_fp,  \
     tv_ub_nboors = [curr_aud_tvs] + create_upper_neighbours(curr_aud_tvs, \
         winners_on_fp, deltat, maxtv)
 
-    curr_winners_verified = []
-    best_partial_ss = np.inf
-
-    improved = True
-    partial_improved = True
-
-    all_ut_asns = {f : set() for f in winners_on_fp}
 
     while improved and tv_ub_nboors != []:
 
@@ -965,6 +994,9 @@ if __name__ == "__main__":
     # Input: Total voters (used to express total valid+informal ballots)
     parser.add_argument('-voters', dest='voters', type=int)
 
+    # Input: Max sample size
+    parser.add_argument('-maxs', dest='max_samples', type=int, default=2500)
+    
     # Output: Log file 
     parser.add_argument('-log', dest='log', type=str)
     
@@ -1004,6 +1036,8 @@ if __name__ == "__main__":
 
 
     np.seterr(all='ignore')
+
+    ss_ub = min(args.voters, args.max_samples)
 
     # Read STV outcome file
     outcome = read_outcome(args.outcome, cid2num)
@@ -1132,18 +1166,21 @@ if __name__ == "__main__":
                     ss_ag_iqx = max(ss_ag_iqx, ag_asn)
                     assertions.update(descs)
 
-                assertions.add((w, "IQX", None, ss))
                 ss_iqx = max(ss, ss_ag_iqx)
-                print("Can form IQX({}) with sample size {} AGs {}\n".format(\
-                    candidates[w].id, ss, ss_ag_iqx), file=log) 
+                if ss_iqx < ss_ub:
+                    assertions.add((w, "IQX", None, ss))
+                    print(\
+                        "Can form IQX({}) with sample size {} AGs {}\n".format(\
+                        candidates[w].id, ss, ss_ag_iqx), file=log) 
 
-                if ss_iqx < args.voters:
                     straight_iqx_verified[w] = (ss_iqx, assertions)
 
-                iqx_assertions.update(assertions)
-
-
-            straight_iqx_asn = max(straight_iqx_asn, ss_iqx);
+                    iqx_assertions.update(assertions)
+                    straight_iqx_asn = max(straight_iqx_asn, ss_iqx);
+                else:
+                    straight_iqx_asn = np.inf
+            else:
+                straight_iqx_asn = np.inf
 
 
         # Check that all winners that won on first preferences have a FP
@@ -1169,7 +1206,7 @@ if __name__ == "__main__":
             print("{} ballot checks required to assert that winner {} "\
                 " has a quota's worth of votes".format(ss, fw.id), file=log)
 
-            if ss >= args.voters:
+            if ss >= ss_ub:
                remove_from_fws.append(fw)
             else: 
                 qts.add((fw.num, "QT", None, ss))
@@ -1189,7 +1226,7 @@ if __name__ == "__main__":
 
         assertions_used.update(qts)
 
-        if max_sample_size >= args.voters:
+        if max_sample_size >= ss_ub:
             max_sample_size = np.inf 
 
         if max_sample_size == np.inf or fws == []:
@@ -1313,12 +1350,16 @@ if __name__ == "__main__":
         
         assertions_used.update(best_outer_assertions)
 
+        print(max_sample_size, file=log)
+        print(max_in_outer_loop, file=log)
+        print(straight_iqx_asn, file=log)
+
         max_sample_size = max(max_sample_size, max_in_outer_loop)
 
-        if max_sample_size >= args.voters:
+        if max_sample_size >= ss_ub:
             max_sample_size = np.inf 
 
-        if straight_iqx_asn >= args.voters:
+        if straight_iqx_asn >= ss_ub:
             straight_iqx_asn = np.inf
 
         if straight_iqx_asn < max_sample_size:
@@ -1326,14 +1367,7 @@ if __name__ == "__main__":
             assertions_used = iqx_assertions
             max_sample_size = straight_iqx_asn
 
-
-        if len(straight_iqx_verified) > len(curr_winners_verified):
-            print("WEIRD SITUATION: more in siv than cwv")
-
-        if [c for c in straight_iqx_verified if not 
-            c in curr_winners_verified] != []:
-            print("WEIRD SITUATION: c in siv not in cwv");
-
+            curr_winners_verified = straight_iqx_verified
 
         s1 = set([k for k in straight_iqx_verified])
         s2 = set(curr_winners_verified)
