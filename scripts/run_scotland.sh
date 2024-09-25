@@ -14,7 +14,7 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-for instance in data/Scotland/*.txt; do
+for instance in data/Scotland/2007/*.txt; do
     bn="${instance%%.*}"
     voters=`cat "${bn}.voters"`
     quota=`cat "${bn}.quota"`

@@ -343,6 +343,7 @@ def read_ballots_txt(path):
 
     return candidates,ballots,{},cid2num,total_votes
 
+
 def read_ballots_json(path):
     ballots = []
     candidates = []

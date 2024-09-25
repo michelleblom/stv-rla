@@ -14,7 +14,10 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+for instance in data/Scotland/2017/*.blt; do
+    python3.9 gen_summary.py -d "${instance}"  
+done
 for instance in data/Scotland/2022/*.blt; do
-    python gen_summary.py -d "${instance}" -seats 2 
+    python3.9 gen_summary.py -d "${instance}"  
 done
 
