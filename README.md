@@ -14,7 +14,9 @@ An additional variation has been implemented for 2 seat elections:
 
 3) Some US jurisdictions do a batch elimination step before proceeding with the STV algorithm. Basically, this batch eliminates all candidates that cannot mathematically win. We can verify this in an audit. What happens now is that we generate assertions to verify the batch elimination step, and then proceed with either (1) or (2) above.
 
-This repository also contains work for constructing RLAs for 3+ STV elections, where at least one winner has reached a quota on their first preferences.
+This repository also contains work for constructing RLAs for 3+ STV elections,
+where at least one winner has reached a quota on their first preferences. This
+work is in the file audit_n_seats_fwc_simplified.py.	
 
 
 
