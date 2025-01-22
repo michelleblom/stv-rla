@@ -32,8 +32,8 @@ from utils import read_outcome, sample_size, ssm_sample_size,\
 
 
 
-# Determine if there is a candidate 'd' for which 'd' AG loser, based 
-# on the AG relationships in neb_matrix, preferenced before 'loser' in
+# Determine if there is a reported loser 'd' for which 'd' AG loser, based 
+# on the AG relationships in ag_matrix, preferenced before 'loser' in
 # the preference ranking 'prefs'. Return a boolean indicating whether
 # there is such a candidate 'd', and the ASN of the cheapest AG 
 # relationship (if there are multiple such 'd's).
@@ -45,7 +45,7 @@ from utils import read_outcome, sample_size, ssm_sample_size,\
 #
 #     ag_present, ag_min_ss
 #
-# where neb_present is a boolean indicating whether we found a 
+# where ag_present is a boolean indicating whether we found a 
 # 'd' such that 'd' AG loser, and 'd' is preferenced before loser
 # in prefs.
 #
@@ -53,6 +53,9 @@ from utils import read_outcome, sample_size, ssm_sample_size,\
 # return:
 #
 #     False, np.inf
+#
+# Note that the set winners contains the set of reported winners for the 
+# contest.
 def rule_out_for_max(prefs, loser, ag_matrix, nl_matrix, winners, candidates):
     ag_min_ss = np.inf
     ag_present = False
@@ -85,10 +88,11 @@ def rule_out_for_max(prefs, loser, ag_matrix, nl_matrix, winners, candidates):
 # Merge a sequence of AG relationships that could be used to increase the
 # assorter margin of an NL.
 #
-# Input list 'helpful_ags' will be a list of (asn, extra),
-# where 'asn' is the cost of auditing the AG assertion, and 'extra' is 
-# the increase to the assorter total if we incorporate those AGs. This 
-# function takes a list of these AGs, and merges consecutive entries if: the
+# Input list 'helpful_ags' will be a list of (asn, extra, desc),
+# where 'asn' is the cost of auditing the AG assertion, 'extra' is 
+# the increase to the assorter total if we incorporate those AGs, and 'desc'
+# is a set of textual descriptions of the assertions. This 
+# function takes a list of these AGs, and merges consecutive entries if the
 # ASN is the same. 
 def merge_helpful_ags(helpful_ags, exp_merged_total):
     helpful_ags.sort()
@@ -392,8 +396,6 @@ def establish_max_tvalue_nonfw(w, candidates, ballots, winners_on_fp, \
     aset = set()
     desc = ""
 
-    #valid_vote = args.voters - INVALID
-    #while max_tr_tv_ss > max(asn, curr_asn) and bar + delta < valid_vote: #tot_vote:
     while max_tr_tv_ss > max(asn, curr_asn) and bar + delta < tot_vote:
 
         bar += delta
@@ -431,10 +433,6 @@ def establish_max_tvalue_nonfw(w, candidates, ballots, winners_on_fp, \
             aset.add((c, "SP[{}]".format(bar), None, ss))
             desc += "SP[{},{}]({}) with ASN {}\n".format(bar, s, \
                 candidates[c].id, ss)
-
-      #  if max_tr_tv_ss != np.inf and max_tr_tv_ss < 2*max(asn, curr_asn):
-      #      break
-
 
     max_tr_tv_ss = max(asn, max_tr_tv_ss)
         

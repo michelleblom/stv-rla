@@ -1869,7 +1869,10 @@ if __name__ == "__main__":
         for asstn in set(assertions_used):
             print(asstn, file=log)
 
+        known_winners = set() # [w for w,_ in known_winners])
+        candidate_winners = set()
         if cannot_rule_out == []:
+            known_winners = set(winners)
             print("All winners are verified in audit.", file=log)
         else:
             known_winners = set() # [w for w,_ in known_winners])
@@ -1903,10 +1906,14 @@ if __name__ == "__main__":
  
 
         if remcase:
-            print("CASEC,{},{},{},{},{},{}".format(args.data, ncand, \
-                valid_ballots, args.quota, asn_overall, partial_asn))
+            print("CASEC,{},{},{},{},{},{},{},{},{}".format(args.data, ncand, \
+                valid_ballots, args.quota, asn_overall, partial_asn, \
+                len(known_winners), len(candidate_winners), \
+                len(cands) - len(known_winners) - len(candidate_winners)))
         else:
-            print("CASEB,{},{},{},{},{},{}".format(args.data, ncand, \
-                valid_ballots, args.quota, asn_overall, partial_asn))
+            print("CASEB,{},{},{},{},{},{},{},{},{}".format(args.data, ncand, \
+                valid_ballots, args.quota, asn_overall, partial_asn,\
+                len(known_winners), len(candidate_winners), \
+                len(cands) - len(known_winners) - len(candidate_winners)))
 
     log.close() 
