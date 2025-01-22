@@ -88,8 +88,8 @@ PARTIAL audit sample size: 507
 ------------------------------------------------
 Final set of assertions generated:
 2 NL 5 = 507 [rules out (5, 4), G = {0}, O = set()]
-(1, 'AG', 0, 97)
 (2, 'AG', 0, 191)
+(1, 'AG', 0, 97)
 [] are verified winners with these assertions.
 [2, 3, 4, 5] remain as potential winners in this audit.
 ------------------------------------------------

@@ -94,20 +94,20 @@ RULE OUT PAIR STAGE ASN 1067
 FULL audit sample size: 1067
 ------------------------------------------------
 Final set of assertions generated:
-(4, 'AG', 6, 42)
-(4, 'AG', 5, 66)
-(7, 'AG', 3, 89)
+(7, 'AG', 5, 325)
+(7, 'AG', 6, 74)
 5 NL 2 = 66 [rules out (2, 1), G = {2, 5, 6}, O = set()]
 8 NL 1 = 1067 [rules out (5, 1), G = {2, 3, 5, 6}, O = set()]
 
-8 NL 2 = 97 [rules out (2, 5), G = {2, 3, 6}, O = set()]
 5 NL 1 = 136 [rules out (8, 1), G = {2, 3, 5, 6}, O = set()]
 
-(4, 'AG', 2, 42)
+(4, 'AG', 5, 66)
+(7, 'AG', 3, 89)
 (4, 'AG', 3, 75)
+(4, 'AG', 6, 42)
 5 NL 2 = 66 [rules out (2, 8), G = {2, 5, 6}, O = set()]
+8 NL 2 = 97 [rules out (2, 5), G = {2, 3, 6}, O = set()]
 (7, 'AG', 2, 43)
-(7, 'AG', 5, 325)
-(7, 'AG', 6, 74)
+(4, 'AG', 2, 42)
 All winners are verified in audit.
 ------------------------------------------------

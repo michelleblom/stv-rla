@@ -209,11 +209,11 @@ Full audit not possible
 PARTIAL audit sample size: 113
 ------------------------------------------------
 Final set of assertions generated:
-(7, 'AG', 5, 113)
-(2, 'AG', 3, 29)
+(7, 'AG', 3, 34)
 (7, 'AG', 6, 84)
 (2, 'AG', 6, 56)
-(7, 'AG', 3, 34)
+(7, 'AG', 5, 113)
+(2, 'AG', 3, 29)
 (2, 'AG', 5, 70)
 [] are verified winners with these assertions.
 [1, 2, 3, 5, 8] remain as potential winners in this audit.

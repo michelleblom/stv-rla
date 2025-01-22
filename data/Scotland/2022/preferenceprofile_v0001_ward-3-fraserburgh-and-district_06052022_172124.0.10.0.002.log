@@ -56,13 +56,13 @@ NEW RULE OUT PAIR STAGE ASN 93
 FULL audit sample size: 93
 ------------------------------------------------
 Final set of assertions generated:
-1 NL 4 = 93 [rules out (4, 5), G = {1, 2, 5}, O = set()]
+(0, 'AG', 1, 45)
 (4, 'AG', 5, 17)
 (4, 'AG', 2, 24)
-(0, 'AG', 1, 45)
 5 NL 4 = 37 [rules out (4, 1), G = {1, 2, 5}, O = set()]
 (4, 'AG', 1, 29)
-(0, 'AG', 5, 19)
 (0, 'AG', 2, 47)
+(0, 'AG', 5, 19)
+1 NL 4 = 93 [rules out (4, 5), G = {1, 2, 5}, O = set()]
 All winners are verified in audit.
 ------------------------------------------------

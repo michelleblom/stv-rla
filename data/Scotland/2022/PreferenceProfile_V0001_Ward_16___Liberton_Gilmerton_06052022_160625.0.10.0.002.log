@@ -608,46 +608,46 @@ NEW RULE OUT PAIR STAGE ASN 170
 FULL audit sample size: 170
 ------------------------------------------------
 Final set of assertions generated:
-1 NL 10 = 33 [rules out (10, 6), G = {1, 3, 7}, O = set()]
-1 NL 7 = 33 [rules out (9, 7), G = {1, 3, 7}, O = set()]
-
-(0, 'AG', 1, 21)
 (4, 'AG', 3, 33)
-5 NL 7 = 170 [rules out (7, 1), G = {1, 3, 5, 7, 8}, O = set()]
-1 NL 7 = 32 [rules out (7, 5), G = {1, 3, 7}, O = set()]
-1 NL 10 = 33 [rules out (9, 10), G = {1, 3, 7}, O = set()]
+1 NL 7 = 34 [rules out (10, 7), G = {1, 3, 7}, O = set()]
 
+(0, 'AG', 3, 25)
 1 NL 3 = 37 [rules out (6, 3), G = {1, 3, 6, 7, 9}, O = set()]
 
-1 NL 5 = 70 [rules out (6, 5), G = {1, 2, 3, 6, 7, 9}, O = set()]
+1 NL 9 = 39 [rules out (9, 5), G = {1, 3, 6, 7, 9}, O = set()]
+5 NL 6 = 38 [rules out (9, 6), G = {1, 3, 7}, O = set()]
 
-5 NL 10 = 52 [rules out (10, 1), G = {1, 3, 5, 7}, O = set()]
-(0, 'AG', 2, 70)
 (4, 'AG', 1, 29)
-(0, 'AG', 6, 37)
-1 NL 10 = 32 [rules out (10, 5), G = {1, 3, 7}, O = set()]
-(4, 'AG', 7, 25)
-1 NL 10 = 31 [rules out (10, 3), G = {1, 3, 7}, O = set()]
-5 NL 3 = 96 [rules out (1, 3), G = {1, 3, 5, 7}, O = set()]
-
 1 NL 3 = 37 [rules out (5, 3), G = {1, 3, 6, 7, 9}, O = set()]
 
+(0, 'AG', 2, 70)
+(0, 'AG', 1, 21)
+1 NL 7 = 34 [rules out (7, 3), G = {1, 3, 7}, O = set()]
+1 NL 10 = 31 [rules out (10, 3), G = {1, 3, 7}, O = set()]
+1 NL 7 = 34 [rules out (7, 6), G = {1, 3, 7}, O = set()]
+(0, 'AG', 6, 37)
+5 NL 9 = 44 [rules out (9, 1), G = {1, 3, 5, 7}, O = set()]
+1 NL 7 = 32 [rules out (7, 5), G = {1, 3, 7}, O = set()]
+1 NL 5 = 70 [rules out (6, 5), G = {1, 2, 3, 6, 7, 9}, O = set()]
+
 (0, 'AG', 9, 37)
+5 NL 3 = 96 [rules out (1, 3), G = {1, 3, 5, 7}, O = set()]
+
 5 NL 6 = 39 [rules out (1, 6), G = {1, 3, 7}, O = set()]
 
 (0, 'AG', 7, 23)
-1 NL 7 = 34 [rules out (10, 7), G = {1, 3, 7}, O = set()]
+5 NL 10 = 52 [rules out (10, 1), G = {1, 3, 5, 7}, O = set()]
+1 NL 10 = 32 [rules out (10, 5), G = {1, 3, 7}, O = set()]
+1 NL 7 = 33 [rules out (9, 7), G = {1, 3, 7}, O = set()]
 
-5 NL 9 = 44 [rules out (9, 1), G = {1, 3, 5, 7}, O = set()]
-5 NL 6 = 38 [rules out (9, 6), G = {1, 3, 7}, O = set()]
-
-1 NL 9 = 39 [rules out (9, 5), G = {1, 3, 6, 7, 9}, O = set()]
+(4, 'AG', 7, 25)
 (4, 'AG', 8, 170)
-1 NL 7 = 34 [rules out (7, 6), G = {1, 3, 7}, O = set()]
-1 NL 7 = 34 [rules out (7, 3), G = {1, 3, 7}, O = set()]
-(0, 'AG', 3, 25)
-(4, 'AG', 5, 44)
+1 NL 10 = 33 [rules out (10, 6), G = {1, 3, 7}, O = set()]
 1 NL 3 = 37 [rules out (9, 3), G = {1, 3, 6, 7, 9}, O = set()]
+
+(4, 'AG', 5, 44)
+5 NL 7 = 170 [rules out (7, 1), G = {1, 3, 5, 7, 8}, O = set()]
+1 NL 10 = 33 [rules out (9, 10), G = {1, 3, 7}, O = set()]
 
 All winners are verified in audit.
 ------------------------------------------------

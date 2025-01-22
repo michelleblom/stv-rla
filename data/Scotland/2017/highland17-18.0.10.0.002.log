@@ -1076,33 +1076,33 @@ Full audit not possible
 PARTIAL audit sample size: 860
 ------------------------------------------------
 Final set of assertions generated:
-5 NL 9 = 227 [rules out (9, 4), G = {0, 6, 7}, O = set()]
+(4, 'AG', 8, 775)
+5 NL 9 = 227 [rules out (9, 2), G = {0, 6, 7}, O = set()]
+5 NL 9 = 227 [rules out (9, 10), G = {0, 6, 7}, O = set()]
+5 NL 10 = 328 [rules out (10, 2), G = {0, 6, 7}, O = set()]
+5 NL 1 = 169 [rules out (1, 4), G = {6, 7}, O = set()]
+5 NL 1 = 181 [rules out (1, 6), G = {6, 7}, O = set()]
+5 NL 9 = 227 [rules out (9, 6), G = {0, 6, 7}, O = set()]
+5 NL 3 = 289 [rules out (3, 6), G = {0, 6, 7}, O = set()]
+5 NL 1 = 130 [rules out (1, 10), G = {6, 7}, O = set()]
 5 NL 10 = 320 [rules out (4, 10), G = {0, 6, 7}, O = set()]
 
-5 NL 9 = 227 [rules out (9, 6), G = {0, 6, 7}, O = set()]
 (4, 'AG', 6, 36)
-5 NL 3 = 860 [rules out (3, 4), G = {0, 8, 6, 7}, O = set()]
 5 NL 10 = 615 [rules out (3, 10), G = {0, 6, 7}, O = set()]
 
-5 NL 3 = 289 [rules out (3, 6), G = {0, 6, 7}, O = set()]
-5 NL 1 = 163 [rules out (1, 2), G = {6, 7}, O = set()]
 5 NL 10 = 602 [rules out (10, 6), G = {0, 6, 7}, O = set()]
-5 NL 1 = 130 [rules out (1, 10), G = {6, 7}, O = set()]
-5 NL 9 = 227 [rules out (9, 2), G = {0, 6, 7}, O = set()]
-(4, 'AG', 0, 227)
-5 NL 9 = 227 [rules out (9, 3), G = {0, 6, 7}, O = set()]
-5 NL 9 = 227 [rules out (9, 10), G = {0, 6, 7}, O = set()]
-5 NL 3 = 808 [rules out (3, 2), G = {0, 8, 6, 7}, O = set()]
 (5, 'AG', 7, 69)
 5 NL 1 = 180 [rules out (1, 3), G = {6, 7}, O = set()]
+5 NL 1 = 163 [rules out (1, 2), G = {6, 7}, O = set()]
+5 NL 3 = 860 [rules out (3, 4), G = {0, 8, 6, 7}, O = set()]
+(4, 'AG', 0, 227)
 (4, 'AG', 7, 28)
+(1, 'AG', 6, 158)
+5 NL 3 = 808 [rules out (3, 2), G = {0, 8, 6, 7}, O = set()]
 5 NL 1 = 188 [rules out (9, 1), G = {6, 7}, O = set()]
 
-5 NL 1 = 169 [rules out (1, 4), G = {6, 7}, O = set()]
-(4, 'AG', 8, 775)
-(1, 'AG', 6, 158)
-5 NL 10 = 328 [rules out (10, 2), G = {0, 6, 7}, O = set()]
-5 NL 1 = 181 [rules out (1, 6), G = {6, 7}, O = set()]
+5 NL 9 = 227 [rules out (9, 3), G = {0, 6, 7}, O = set()]
+5 NL 9 = 227 [rules out (9, 4), G = {0, 6, 7}, O = set()]
 [] are verified winners with these assertions.
 [1, 2, 3, 4, 5, 6, 9, 10] remain as potential winners in this audit.
 ------------------------------------------------

@@ -33,15 +33,15 @@ RULE OUT PAIR STAGE ASN 1064
 FULL audit sample size: 1064
 ------------------------------------------------
 Final set of assertions generated:
-(5, 'AG', 3, 55)
-(2, 'AG', 4, 31)
-6 NL 2 = 146 [rules out (3, 2), G = {0, 3, 4}, O = set()]
-
-3 NL 2 = 1064 [rules out (6, 2), G = {0, 3, 4}, O = set()]
-
 (5, 'AG', 4, 87)
 (2, 'AG', 3, 70)
+(5, 'AG', 3, 55)
+(2, 'AG', 4, 31)
 (5, 'AG', 0, 47)
+3 NL 2 = 1064 [rules out (6, 2), G = {0, 3, 4}, O = set()]
+
+6 NL 2 = 146 [rules out (3, 2), G = {0, 3, 4}, O = set()]
+
 (2, 'AG', 0, 81)
 All winners are verified in audit.
 ------------------------------------------------

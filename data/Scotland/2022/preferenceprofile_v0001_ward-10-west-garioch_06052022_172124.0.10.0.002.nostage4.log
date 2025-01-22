@@ -303,20 +303,20 @@ RULE OUT PAIR STAGE ASN 291
 FULL audit sample size: 291
 ------------------------------------------------
 Final set of assertions generated:
-2 NL 5 = 28 [rules out (5, 1), G = {5}, O = set()]
+2 NL 4 = 108 [rules out (4, 7), G = {4, 5}, O = set()]
 7 NL 5 = 87 [rules out (5, 2), G = {2, 5}, O = set()]
-2 NL 5 = 28 [rules out (5, 4), G = {5}, O = set()]
 7 NL 1 = 113 [rules out (1, 2), G = {2, 5}, O = set()]
+2 NL 1 = 49 [rules out (1, 7), G = {4, 5}, O = set()]
 7 NL 4 = 291 [rules out (2, 4), G = {2, 5}, O = set()]
 
 (6, 'AG', 2, 87)
-2 NL 1 = 61 [rules out (1, 4), G = {4, 5}, O = set()]
-(1, 'AG', 5, 19)
-(6, 'AG', 5, 33)
-2 NL 4 = 108 [rules out (4, 7), G = {4, 5}, O = set()]
 (1, 'AG', 2, 114)
-2 NL 1 = 49 [rules out (1, 7), G = {4, 5}, O = set()]
-(1, 'AG', 4, 30)
+(6, 'AG', 5, 33)
+2 NL 5 = 28 [rules out (5, 1), G = {5}, O = set()]
+2 NL 1 = 61 [rules out (1, 4), G = {4, 5}, O = set()]
 2 NL 5 = 27 [rules out (5, 7), G = {5}, O = set()]
+2 NL 5 = 28 [rules out (5, 4), G = {5}, O = set()]
+(1, 'AG', 4, 30)
+(1, 'AG', 5, 19)
 All winners are verified in audit.
 ------------------------------------------------

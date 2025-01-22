@@ -203,13 +203,13 @@ New mintv = 0.08339882121807465
 Sample size required for audit is inf ballots
 ------------------------------------------------
 Assertion set BEFORE filtering:
-(1, 'QT', None, 92)
 (1, 'MT', None, (0.6167976424361493, 4))
+(1, 'QT', None, 92)
 (1, 'LT', None, (0.03339882121807466, 176))
 ------------------------------------------------
 Final set of assertions AFTER filtering:
-(1, 'QT', None, 92)
 (1, 'MT', None, (0.6167976424361493, 4))
+(1, 'QT', None, 92)
 (1, 'LT', None, (0.03339882121807466, 176))
 ------------------------------------------------
 Explanations for AG* inclusion:

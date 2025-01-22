@@ -143,16 +143,16 @@ FULL audit sample size: 5661
 ------------------------------------------------
 Final set of assertions generated:
 2 NL 4 = 37 [rules out (4, 1), G = set(), O = set()]
-(1, 'AG', 7, 54)
-1 NL 7 = 1433 [rules out (7, 2), G = {2, 4, 7}, O = set()]
-(0, 'AG', 7, 24)
-2 NL 4 = 33 [rules out (4, 7), G = set(), O = set()]
-(1, 'AG', 2, 60)
-(1, 'AG', 4, 65)
-(0, 'AG', 4, 28)
-2 NL 7 = 39 [rules out (7, 1), G = {3}, O = set()]
 (0, 'AG', 2, 146)
 (1, 'AG', 3, 39)
+2 NL 4 = 33 [rules out (4, 7), G = set(), O = set()]
+2 NL 7 = 39 [rules out (7, 1), G = {3}, O = set()]
+1 NL 7 = 1433 [rules out (7, 2), G = {2, 4, 7}, O = set()]
+(1, 'AG', 7, 54)
+(1, 'AG', 2, 60)
+(1, 'AG', 4, 65)
 1 NL 4 = 5661 [rules out (4, 2), G = {2, 4, 7}, O = set()]
+(0, 'AG', 4, 28)
+(0, 'AG', 7, 24)
 All winners are verified in audit.
 ------------------------------------------------

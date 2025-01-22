@@ -140,17 +140,17 @@ EXAMINING WAYS TO REDUCE COST OF AUDIT
 FULL audit sample size: 391
 ------------------------------------------------
 Final set of assertions generated:
-(1, 'AG', 3, 241)
-1 NL 6 = 41 [rules out (6, 2), G = {3, 4}, O = set()]
+1 NL 5 = 35 [rules out (5, 2), G = {3}, O = set()]
 (0, 'AG', 3, 26)
-(1, 'AG', 5, 60)
-(1, 'AG', 2, 69)
-(0, 'AG', 2, 77)
 1 NL 5 = 36 [rules out (6, 5), G = {3}, O = set()]
 
-1 NL 5 = 35 [rules out (5, 2), G = {3}, O = set()]
-(0, 'AG', 4, 41)
-2 NL 5 = 391 [rules out (5, 1), G = {2, 3, 5}, O = set()]
+(1, 'AG', 5, 60)
+(1, 'AG', 3, 241)
+1 NL 6 = 41 [rules out (6, 2), G = {3, 4}, O = set()]
 2 NL 6 = 53 [rules out (6, 1), G = set(), O = set()]
+(1, 'AG', 2, 69)
+(0, 'AG', 4, 41)
+(0, 'AG', 2, 77)
+2 NL 5 = 391 [rules out (5, 1), G = {2, 3, 5}, O = set()]
 All winners are verified in audit.
 ------------------------------------------------

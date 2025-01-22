@@ -204,8 +204,8 @@ PARTIAL audit sample size: 247
 Final set of assertions generated:
 2 NL 4 = 172 [rules out (4, 3), G = set(), O = set()]
 2 NL 4 = 104 [rules out (4, 5), G = set(), O = set()]
-2 NL 4 = 135 [rules out (4, 1), G = set(), O = set()]
 1 NL 4 = 247 [rules out (4, 2), G = set(), O = set()]
+2 NL 4 = 135 [rules out (4, 1), G = set(), O = set()]
 [] are verified winners with these assertions.
 [1, 2, 3, 5] remain as potential winners in this audit.
 ------------------------------------------------

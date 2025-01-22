@@ -51,15 +51,15 @@ RULE OUT PAIR STAGE ASN 106
 FULL audit sample size: 312
 ------------------------------------------------
 Final set of assertions generated:
-(2, 'AG', 7, 32)
-3 NL 5 = 106 [rules out (5, 4), G = {0, 1, 5, 7}, O = set()]
-4 NL 5 = 47 [rules out (5, 3), G = set(), O = set()]
-(3, 'AG', 7, 133)
-(3, 'AG', 5, 262)
-(3, 'AG', 1, 63)
-(3, 'AG', 0, 312)
-(2, 'AG', 1, 39)
-(2, 'AG', 0, 46)
 (2, 'AG', 5, 41)
+(2, 'AG', 1, 39)
+(3, 'AG', 5, 262)
+(2, 'AG', 7, 32)
+(3, 'AG', 1, 63)
+4 NL 5 = 47 [rules out (5, 3), G = set(), O = set()]
+3 NL 5 = 106 [rules out (5, 4), G = {0, 1, 5, 7}, O = set()]
+(3, 'AG', 7, 133)
+(2, 'AG', 0, 46)
+(3, 'AG', 0, 312)
 All winners are verified in audit.
 ------------------------------------------------

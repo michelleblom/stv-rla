@@ -134,14 +134,14 @@ RULE OUT PAIR STAGE ASN 140
 FULL audit sample size: 140
 ------------------------------------------------
 Final set of assertions generated:
-3 NL 1 = 78 [rules out (1, 2), G = set(), O = set()]
 (2, 'AG', 0, 140)
-2 NL 1 = 101 [rules out (1, 3), G = {3}, O = set()]
-(1, 'AG', 3, 31)
 2 NL 4 = 30 [rules out (3, 4), G = set(), O = set()]
 
 3 NL 4 = 31 [rules out (1, 4), G = set(), O = {1}]
 
+2 NL 1 = 101 [rules out (1, 3), G = {3}, O = set()]
 3 NL 4 = 140 [rules out (4, 2), G = {0}, O = set()]
+3 NL 1 = 78 [rules out (1, 2), G = set(), O = set()]
+(1, 'AG', 3, 31)
 All winners are verified in audit.
 ------------------------------------------------

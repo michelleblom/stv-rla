@@ -2260,58 +2260,58 @@ Full audit not possible
 PARTIAL audit sample size: 719
 ------------------------------------------------
 Final set of assertions generated:
-8 NL 11 = 81 [rules out (11, 4), G = {0}, O = set()]
-8 NL 2 = 167 [rules out (2, 10), G = {0, 10}, O = set()]
-8 NL 2 = 123 [rules out (2, 4), G = {0, 10}, O = set()]
-8 NL 4 = 243 [rules out (7, 4), G = {0, 10}, O = set()]
-
-8 NL 3 = 330 [rules out (3, 5), G = {0, 1, 10}, O = set()]
-(7, 'AG', 0, 66)
-(7, 'AG', 9, 374)
-8 NL 10 = 216 [rules out (9, 10), G = {0, 10}, O = set()]
-
 8 NL 3 = 330 [rules out (9, 3), G = {0, 1, 10}, O = set()]
 
-8 NL 2 = 200 [rules out (2, 5), G = {0, 10}, O = set()]
-8 NL 11 = 97 [rules out (11, 5), G = {0}, O = set()]
-(4, 'AG', 0, 197)
-8 NL 11 = 92 [rules out (11, 10), G = {0}, O = set()]
-(7, 'AG', 1, 330)
-8 NL 3 = 258 [rules out (3, 6), G = {0, 10}, O = set()]
-8 NL 4 = 223 [rules out (9, 4), G = {0, 10}, O = set()]
-
-8 NL 11 = 86 [rules out (11, 6), G = {0}, O = set()]
-8 NL 9 = 374 [rules out (9, 5), G = {0, 1, 10, 9}, O = set()]
 8 NL 10 = 210 [rules out (7, 10), G = {0, 10}, O = set()]
 
+8 NL 4 = 243 [rules out (7, 4), G = {0, 10}, O = set()]
+
+8 NL 11 = 87 [rules out (11, 9), G = {0}, O = set()]
+8 NL 11 = 81 [rules out (11, 4), G = {0}, O = set()]
+8 NL 6 = 719 [rules out (6, 5), G = {0, 1, 3, 9, 10}, O = set()]
 (7, 'AG', 10, 106)
 8 NL 4 = 292 [rules out (4, 5), G = {0, 10}, O = set()]
-8 NL 11 = 93 [rules out (11, 3), G = {0}, O = set()]
-8 NL 10 = 176 [rules out (10, 5), G = {0, 10}, O = set()]
-8 NL 10 = 194 [rules out (10, 4), G = {0, 10}, O = set()]
-8 NL 11 = 87 [rules out (11, 9), G = {0}, O = set()]
-8 NL 9 = 364 [rules out (9, 7), G = {0, 1, 10}, O = set()]
-(7, 'AG', 3, 719)
-8 NL 4 = 239 [rules out (6, 4), G = {0, 10}, O = set()]
-
-8 NL 4 = 258 [rules out (3, 4), G = {0, 10}, O = set()]
-
+8 NL 11 = 92 [rules out (11, 2), G = {0}, O = set()]
 8 NL 2 = 183 [rules out (9, 2), G = {0, 10}, O = set()]
 
-8 NL 9 = 364 [rules out (9, 6), G = {0, 1, 10}, O = set()]
+8 NL 2 = 200 [rules out (2, 5), G = {0, 10}, O = set()]
 8 NL 11 = 89 [rules out (11, 7), G = {0}, O = set()]
-8 NL 7 = 330 [rules out (7, 6), G = {0, 1, 10}, O = set()]
+8 NL 11 = 97 [rules out (11, 5), G = {0}, O = set()]
+(7, 'AG', 3, 719)
+(4, 'AG', 0, 197)
 8 NL 3 = 237 [rules out (3, 7), G = {0, 10}, O = set()]
-8 NL 7 = 374 [rules out (7, 5), G = {0, 1, 10, 9}, O = set()]
-8 NL 6 = 719 [rules out (6, 5), G = {0, 1, 3, 9, 10}, O = set()]
-8 NL 10 = 193 [rules out (10, 6), G = {0, 10}, O = set()]
-8 NL 10 = 188 [rules out (3, 10), G = {0, 10}, O = set()]
+8 NL 10 = 216 [rules out (9, 10), G = {0, 10}, O = set()]
 
-8 NL 2 = 191 [rules out (2, 7), G = {0, 10}, O = set()]
+8 NL 11 = 92 [rules out (11, 10), G = {0}, O = set()]
 8 NL 2 = 194 [rules out (3, 2), G = {0, 10}, O = set()]
 
+8 NL 10 = 188 [rules out (3, 10), G = {0, 10}, O = set()]
+
 8 NL 2 = 179 [rules out (2, 6), G = {0, 10}, O = set()]
-8 NL 11 = 92 [rules out (11, 2), G = {0}, O = set()]
+8 NL 2 = 191 [rules out (2, 7), G = {0, 10}, O = set()]
+8 NL 11 = 93 [rules out (11, 3), G = {0}, O = set()]
+8 NL 2 = 167 [rules out (2, 10), G = {0, 10}, O = set()]
+8 NL 4 = 239 [rules out (6, 4), G = {0, 10}, O = set()]
+
+8 NL 2 = 123 [rules out (2, 4), G = {0, 10}, O = set()]
+(7, 'AG', 0, 66)
+(7, 'AG', 9, 374)
+8 NL 7 = 374 [rules out (7, 5), G = {0, 1, 10, 9}, O = set()]
+8 NL 10 = 194 [rules out (10, 4), G = {0, 10}, O = set()]
+8 NL 3 = 330 [rules out (3, 5), G = {0, 1, 10}, O = set()]
+8 NL 10 = 193 [rules out (10, 6), G = {0, 10}, O = set()]
+8 NL 11 = 86 [rules out (11, 6), G = {0}, O = set()]
+(7, 'AG', 1, 330)
+8 NL 9 = 364 [rules out (9, 7), G = {0, 1, 10}, O = set()]
+8 NL 9 = 364 [rules out (9, 6), G = {0, 1, 10}, O = set()]
+8 NL 4 = 258 [rules out (3, 4), G = {0, 10}, O = set()]
+
+8 NL 9 = 374 [rules out (9, 5), G = {0, 1, 10, 9}, O = set()]
+8 NL 7 = 330 [rules out (7, 6), G = {0, 1, 10}, O = set()]
+8 NL 3 = 258 [rules out (3, 6), G = {0, 10}, O = set()]
+8 NL 10 = 176 [rules out (10, 5), G = {0, 10}, O = set()]
+8 NL 4 = 223 [rules out (9, 4), G = {0, 10}, O = set()]
+
 [8] are verified winners with these assertions.
 [2, 3, 4, 5, 6, 7, 9, 10, 11] remain as potential winners in this audit.
 ------------------------------------------------

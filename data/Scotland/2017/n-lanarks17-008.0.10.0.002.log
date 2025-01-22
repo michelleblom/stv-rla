@@ -600,20 +600,20 @@ Full audit not possible
 PARTIAL audit sample size: 98
 ------------------------------------------------
 Final set of assertions generated:
-(1, 'AG', 3, 42)
-2 NL 7 = 44 [rules out (7, 3), G = {3, 4}, O = set()]
-(0, 'AG', 4, 51)
 2 NL 4 = 41 [rules out (4, 7), G = set(), O = set()]
-(1, 'AG', 4, 44)
-2 NL 7 = 44 [rules out (7, 8), G = {3, 4}, O = set()]
-2 NL 4 = 39 [rules out (4, 3), G = set(), O = set()]
-2 NL 4 = 40 [rules out (4, 8), G = set(), O = set()]
-2 NL 4 = 39 [rules out (4, 6), G = set(), O = set()]
 (2, 'AG', 4, 46)
+2 NL 4 = 39 [rules out (4, 3), G = set(), O = set()]
+(0, 'AG', 4, 51)
+(1, 'AG', 4, 44)
+2 NL 4 = 38 [rules out (4, 1), G = set(), O = set()]
+(1, 'AG', 3, 42)
+2 NL 7 = 44 [rules out (7, 6), G = {3, 4}, O = set()]
+2 NL 4 = 39 [rules out (4, 6), G = set(), O = set()]
+2 NL 7 = 44 [rules out (7, 8), G = {3, 4}, O = set()]
+2 NL 7 = 44 [rules out (7, 3), G = {3, 4}, O = set()]
+2 NL 4 = 40 [rules out (4, 8), G = set(), O = set()]
 2 NL 7 = 43 [rules out (7, 1), G = {3}, O = set()]
 1 NL 4 = 98 [rules out (4, 2), G = {4}, O = set()]
-2 NL 7 = 44 [rules out (7, 6), G = {3, 4}, O = set()]
-2 NL 4 = 38 [rules out (4, 1), G = set(), O = set()]
 [] are verified winners with these assertions.
 [1, 2, 3, 6, 7, 8] remain as potential winners in this audit.
 ------------------------------------------------

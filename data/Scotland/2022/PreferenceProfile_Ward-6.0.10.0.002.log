@@ -128,13 +128,13 @@ NEW RULE OUT PAIR STAGE ASN 72
 FULL audit sample size: 72
 ------------------------------------------------
 Final set of assertions generated:
-1 NL 3 = 36 [rules out (3, 2), G = set(), O = set()]
 2 NL 3 = 61 [rules out (3, 1), G = {5}, O = set()]
 (0, 'AG', 2, 37)
-(0, 'AG', 5, 56)
 2 NL 4 = 72 [rules out (4, 1), G = {5}, O = set()]
-1 NL 4 = 37 [rules out (4, 2), G = {2}, O = set()]
 1 NL 3 = 35 [rules out (3, 4), G = set(), O = set()]
+(0, 'AG', 5, 56)
+1 NL 3 = 36 [rules out (3, 2), G = set(), O = set()]
 (1, 'AG', 5, 61)
+1 NL 4 = 37 [rules out (4, 2), G = {2}, O = set()]
 All winners are verified in audit.
 ------------------------------------------------

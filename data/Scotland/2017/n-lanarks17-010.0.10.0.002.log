@@ -138,18 +138,18 @@ Sample size required for audit is 71 ballots
 Assertion set BEFORE filtering:
 (3, 'AG*', 4, 20)
 (0, 'QT', None, 71)
-(3, 'AG*', 2, 23)
-(3, 'NL', 2, 20)
 (0, 'MT', None, (0.6370827285921626, 3))
+(3, 'NL', 2, 20)
 (3, 'NL', 1, 37)
+(3, 'AG*', 2, 23)
 ------------------------------------------------
 Final set of assertions AFTER filtering:
 (3, 'AG*', 4, 20)
 (0, 'QT', None, 71)
-(3, 'AG*', 2, 23)
-(3, 'NL', 2, 20)
 (0, 'MT', None, (0.6370827285921626, 3))
+(3, 'NL', 2, 20)
 (3, 'NL', 1, 37)
+(3, 'AG*', 2, 23)
 ------------------------------------------------
 Explanations for AG* inclusion:
    Explanation for (3, 'AG*', 4, 20): []

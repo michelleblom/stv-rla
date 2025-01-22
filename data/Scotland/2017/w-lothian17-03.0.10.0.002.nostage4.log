@@ -674,10 +674,10 @@ Full audit not possible
 PARTIAL audit sample size: 238
 ------------------------------------------------
 Final set of assertions generated:
-(2, 'AG', 7, 194)
-1 NL 4 = 64 [rules out (4, 5), G = set(), O = set()]
 1 NL 4 = 65 [rules out (4, 2), G = set(), O = set()]
+1 NL 4 = 64 [rules out (4, 5), G = set(), O = set()]
 1 NL 4 = 63 [rules out (4, 3), G = set(), O = set()]
+(2, 'AG', 7, 194)
 (0, 'AG', 7, 238)
 1 NL 4 = 68 [rules out (4, 6), G = set(), O = set()]
 1 NL 4 = 64 [rules out (4, 7), G = set(), O = set()]

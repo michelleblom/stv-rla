@@ -49,15 +49,15 @@ RULE OUT PAIR STAGE ASN 456
 FULL audit sample size: 456
 ------------------------------------------------
 Final set of assertions generated:
-(4, 'AG', 2, 58)
-(0, 'AG', 3, 32)
 (0, 'AG', 5, 30)
-(4, 'AG', 3, 23)
 1 NL 2 = 25 [rules out (5, 2), G = {2}, O = set()]
 
+(4, 'AG', 3, 23)
+(0, 'AG', 3, 32)
+(0, 'AG', 2, 22)
+(4, 'AG', 5, 22)
+(4, 'AG', 2, 58)
 5 NL 2 = 456 [rules out (1, 2), G = {2, 3, 5}, O = set()]
 
-(4, 'AG', 5, 22)
-(0, 'AG', 2, 22)
 All winners are verified in audit.
 ------------------------------------------------

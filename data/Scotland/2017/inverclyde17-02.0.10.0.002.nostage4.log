@@ -90,17 +90,17 @@ RULE OUT PAIR STAGE ASN 53
 FULL audit sample size: 143
 ------------------------------------------------
 Final set of assertions generated:
-(2, 'AG', 1, 143)
-3 NL 4 = 45 [rules out (5, 4), G = {0, 5}, O = set()]
-
-(4, 'AG', 0, 23)
-(4, 'AG', 1, 38)
-(2, 'AG', 5, 34)
+3 NL 6 = 32 [rules out (6, 5), G = set(), O = set()]
 (2, 'AG', 0, 37)
+(2, 'AG', 5, 34)
+3 NL 6 = 33 [rules out (6, 4), G = set(), O = set()]
+(2, 'AG', 1, 143)
+(4, 'AG', 0, 23)
 5 NL 4 = 53 [rules out (3, 4), G = {0, 1}, O = set()]
 
-3 NL 6 = 33 [rules out (6, 4), G = set(), O = set()]
+3 NL 4 = 45 [rules out (5, 4), G = {0, 5}, O = set()]
+
+(4, 'AG', 1, 38)
 5 NL 6 = 50 [rules out (6, 3), G = {0, 1}, O = set()]
-3 NL 6 = 32 [rules out (6, 5), G = set(), O = set()]
 All winners are verified in audit.
 ------------------------------------------------

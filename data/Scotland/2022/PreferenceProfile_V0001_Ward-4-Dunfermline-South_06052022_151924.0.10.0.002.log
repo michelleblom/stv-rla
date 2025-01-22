@@ -557,34 +557,34 @@ Full audit not possible
 PARTIAL audit sample size: 184
 ------------------------------------------------
 Final set of assertions generated:
-(2, 'AG', 9, 90)
-(4, 'AG', 8, 40)
-2 NL 4 = 118 [rules out (4, 5), G = {8, 5}, O = set()]
+3 NL 7 = 184 [rules out (7, 5), G = {8, 9, 5, 7}, O = set()]
+(2, 'AG', 7, 110)
 (4, 'AG', 9, 116)
 (4, 'AG', 5, 36)
-3 NL 8 = 90 [rules out (8, 1), G = {8, 9, 5}, O = set()]
-(2, 'AG', 5, 34)
-3 NL 4 = 110 [rules out (4, 1), G = {8, 9, 5, 7}, O = set()]
-(1, 'AG', 8, 36)
-5 NL 7 = 55 [rules out (7, 2), G = {8, 5}, O = set()]
 3 NL 8 = 88 [rules out (8, 5), G = {8, 5}, O = set()]
-3 NL 7 = 184 [rules out (7, 5), G = {8, 9, 5, 7}, O = set()]
-5 NL 7 = 54 [rules out (7, 3), G = {8, 5}, O = set()]
-(0, 'AG', 8, 37)
-(1, 'AG', 5, 48)
+2 NL 4 = 118 [rules out (4, 5), G = {8, 5}, O = set()]
+5 NL 8 = 72 [rules out (8, 3), G = {8, 5, 6}, O = set()]
 3 NL 4 = 110 [rules out (4, 2), G = {8, 9, 5, 7}, O = set()]
-5 NL 7 = 58 [rules out (4, 7), G = {8, 5}, O = set()]
-
+3 NL 8 = 90 [rules out (8, 4), G = {8, 9, 5}, O = set()]
+(4, 'AG', 6, 60)
+(2, 'AG', 5, 34)
+2 NL 4 = 114 [rules out (4, 3), G = {8, 5}, O = set()]
 5 NL 7 = 55 [rules out (8, 7), G = {8, 5}, O = set()]
 
-2 NL 4 = 114 [rules out (4, 3), G = {8, 5}, O = set()]
+5 NL 7 = 55 [rules out (7, 2), G = {8, 5}, O = set()]
 (2, 'AG', 8, 40)
-(2, 'AG', 7, 110)
-(4, 'AG', 6, 60)
-3 NL 8 = 90 [rules out (8, 4), G = {8, 9, 5}, O = set()]
+(0, 'AG', 8, 37)
 3 NL 8 = 90 [rules out (8, 2), G = {8, 9, 5}, O = set()]
+(1, 'AG', 8, 36)
+(1, 'AG', 5, 48)
+3 NL 4 = 110 [rules out (4, 1), G = {8, 9, 5, 7}, O = set()]
+(4, 'AG', 8, 40)
+3 NL 8 = 90 [rules out (8, 1), G = {8, 9, 5}, O = set()]
+5 NL 7 = 54 [rules out (7, 3), G = {8, 5}, O = set()]
+5 NL 7 = 58 [rules out (4, 7), G = {8, 5}, O = set()]
+
 5 NL 7 = 56 [rules out (7, 1), G = {8, 5}, O = set()]
-5 NL 8 = 72 [rules out (8, 3), G = {8, 5, 6}, O = set()]
+(2, 'AG', 9, 90)
 [] are verified winners with these assertions.
 [1, 2, 3, 5] remain as potential winners in this audit.
 ------------------------------------------------

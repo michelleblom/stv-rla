@@ -143,22 +143,22 @@ RULE OUT PAIR STAGE ASN 87
 FULL audit sample size: 87
 ------------------------------------------------
 Final set of assertions generated:
-(0, 'AG', 1, 18)
-(2, 'AG', 1, 20)
-1 NL 5 = 87 [rules out (5, 3), G = {1, 3, 5, 6, 7}, O = set()]
-3 NL 5 = 27 [rules out (5, 1), G = {1, 3, 7}, O = set()]
-(2, 'AG', 4, 30)
 1 NL 7 = 25 [rules out (3, 7), G = {1, 3, 5}, O = set()]
 
-3 NL 7 = 39 [rules out (7, 1), G = {1, 3, 4, 5, 7}, O = set()]
-(0, 'AG', 3, 20)
-(0, 'AG', 5, 23)
-(2, 'AG', 5, 31)
 (2, 'AG', 3, 18)
-(2, 'AG', 7, 20)
+(0, 'AG', 6, 28)
 (0, 'AG', 7, 32)
+(2, 'AG', 1, 20)
+(2, 'AG', 7, 20)
+3 NL 7 = 39 [rules out (7, 1), G = {1, 3, 4, 5, 7}, O = set()]
+(0, 'AG', 1, 18)
+(2, 'AG', 4, 30)
+(0, 'AG', 3, 20)
+1 NL 5 = 87 [rules out (5, 3), G = {1, 3, 5, 6, 7}, O = set()]
+(2, 'AG', 5, 31)
+3 NL 5 = 27 [rules out (5, 1), G = {1, 3, 7}, O = set()]
+(0, 'AG', 5, 23)
 1 NL 7 = 26 [rules out (5, 7), G = {1, 3, 5}, O = set()]
 
-(0, 'AG', 6, 28)
 All winners are verified in audit.
 ------------------------------------------------

@@ -675,32 +675,32 @@ Full audit not possible
 PARTIAL audit sample size: 4537
 ------------------------------------------------
 Final set of assertions generated:
-(0, 'AG', 7, 230)
-1 NL 3 = 43 [rules out (3, 7), G = {4}, O = set()]
-1 NL 7 = 77 [rules out (7, 2), G = {2, 4}, O = set()]
-(0, 'AG', 4, 42)
-2 NL 3 = 523 [rules out (3, 1), G = set(), O = set()]
-1 NL 4 = 230 [rules out (6, 4), G = {2, 4, 6, 7}, O = set()]
-
-1 NL 8 = 125 [rules out (8, 2), G = {2, 4}, O = set()]
-1 NL 3 = 43 [rules out (3, 6), G = {4}, O = set()]
-1 NL 2 = 230 [rules out (4, 2), G = {2, 4, 6, 7}, O = set()]
-
-1 NL 7 = 89 [rules out (7, 6), G = {2, 4}, O = set()]
-1 NL 7 = 95 [rules out (7, 8), G = {2, 4}, O = set()]
-(0, 'AG', 6, 127)
 1 NL 7 = 62 [rules out (7, 4), G = {2, 4}, O = set()]
-1 NL 3 = 45 [rules out (3, 8), G = {4}, O = set()]
+1 NL 7 = 95 [rules out (7, 8), G = {2, 4}, O = set()]
+(0, 'AG', 2, 48)
+1 NL 8 = 127 [rules out (8, 4), G = {2, 4, 6}, O = set()]
+2 NL 6 = 4537 [rules out (6, 1), G = set(), O = set()]
+1 NL 7 = 89 [rules out (7, 6), G = {2, 4}, O = set()]
+(0, 'AG', 7, 230)
+1 NL 8 = 125 [rules out (8, 2), G = {2, 4}, O = set()]
 (7, 'AG', 4, 712)
+(0, 'AG', 4, 42)
+1 NL 3 = 42 [rules out (3, 2), G = {4}, O = set()]
 1 NL 2 = 230 [rules out (6, 2), G = {2, 4, 6, 7}, O = set()]
 
-2 NL 6 = 4537 [rules out (6, 1), G = set(), O = set()]
-1 NL 3 = 42 [rules out (3, 2), G = {4}, O = set()]
-1 NL 8 = 127 [rules out (8, 4), G = {2, 4, 6}, O = set()]
-(0, 'AG', 2, 48)
-1 NL 3 = 40 [rules out (3, 4), G = set(), O = set()]
+1 NL 3 = 43 [rules out (3, 7), G = {4}, O = set()]
+1 NL 7 = 77 [rules out (7, 2), G = {2, 4}, O = set()]
+1 NL 2 = 230 [rules out (4, 2), G = {2, 4, 6, 7}, O = set()]
+
+2 NL 3 = 523 [rules out (3, 1), G = set(), O = set()]
 1 NL 8 = 127 [rules out (6, 8), G = {2, 4, 6}, O = set()]
 
+(0, 'AG', 6, 127)
+1 NL 4 = 230 [rules out (6, 4), G = {2, 4, 6, 7}, O = set()]
+
+1 NL 3 = 40 [rules out (3, 4), G = set(), O = set()]
+1 NL 3 = 45 [rules out (3, 8), G = {4}, O = set()]
+1 NL 3 = 43 [rules out (3, 6), G = {4}, O = set()]
 [1] are verified winners with these assertions.
 [2, 4, 7, 8] remain as potential winners in this audit.
 ------------------------------------------------

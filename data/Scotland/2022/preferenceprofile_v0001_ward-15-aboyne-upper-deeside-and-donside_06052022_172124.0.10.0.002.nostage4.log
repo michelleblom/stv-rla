@@ -135,8 +135,8 @@ Full audit not possible
 PARTIAL audit sample size: 255
 ------------------------------------------------
 Final set of assertions generated:
-(0, 'AG', 4, 255)
 (1, 'AG', 4, 90)
+(0, 'AG', 4, 255)
 [] are verified winners with these assertions.
 [1, 2, 3, 6] remain as potential winners in this audit.
 ------------------------------------------------

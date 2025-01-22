@@ -132,17 +132,17 @@ NEW RULE OUT PAIR STAGE ASN 35
 FULL audit sample size: 35
 ------------------------------------------------
 Final set of assertions generated:
-(4, 'AG', 5, 19)
 2 NL 1 = 35 [rules out (1, 5), G = {2, 3, 7}, O = set()]
-2 NL 6 = 31 [rules out (6, 5), G = {2, 3, 7}, O = set()]
-(4, 'AG', 2, 27)
-(4, 'AG', 7, 20)
-(1, 'AG', 7, 31)
-(1, 'AG', 2, 31)
+(4, 'AG', 5, 19)
 5 NL 6 = 18 [rules out (6, 1), G = set(), O = set()]
-5 NL 1 = 25 [rules out (1, 2), G = {3, 5, 7}, O = set()]
-5 NL 6 = 18 [rules out (6, 2), G = set(), O = set()]
-(1, 'AG', 3, 28)
+(4, 'AG', 2, 27)
 (4, 'AG', 3, 22)
+5 NL 1 = 25 [rules out (1, 2), G = {3, 5, 7}, O = set()]
+(4, 'AG', 7, 20)
+2 NL 6 = 31 [rules out (6, 5), G = {2, 3, 7}, O = set()]
+(1, 'AG', 7, 31)
+(1, 'AG', 3, 28)
+(1, 'AG', 2, 31)
+5 NL 6 = 18 [rules out (6, 2), G = set(), O = set()]
 All winners are verified in audit.
 ------------------------------------------------

@@ -674,39 +674,39 @@ RULE OUT PAIR STAGE ASN 125
 FULL audit sample size: 125
 ------------------------------------------------
 Final set of assertions generated:
-(3, 'AG', 6, 49)
-5 NL 2 = 51 [rules out (2, 4), G = set(), O = set()]
-5 NL 6 = 52 [rules out (6, 3), G = set(), O = set()]
-(4, 'AG', 5, 56)
+5 NL 3 = 66 [rules out (3, 4), G = {5}, O = set()]
+4 NL 6 = 49 [rules out (6, 5), G = {6}, O = set()]
+(4, 'AG', 0, 125)
+4 NL 1 = 49 [rules out (6, 1), G = {6}, O = set()]
+
 4 NL 7 = 48 [rules out (6, 7), G = set(), O = set()]
 
-4 NL 2 = 49 [rules out (6, 2), G = {6}, O = set()]
+(3, 'AG', 6, 49)
+4 NL 7 = 48 [rules out (3, 7), G = set(), O = set()]
 
 4 NL 1 = 49 [rules out (3, 1), G = {6}, O = set()]
 
-4 NL 3 = 49 [rules out (3, 5), G = {6}, O = set()]
-5 NL 7 = 125 [rules out (7, 4), G = {0, 1, 5}, O = set()]
-4 NL 1 = 49 [rules out (6, 1), G = {6}, O = set()]
-
-4 NL 7 = 48 [rules out (7, 1), G = set(), O = set()]
-5 NL 3 = 66 [rules out (3, 4), G = {5}, O = set()]
-4 NL 1 = 49 [rules out (5, 1), G = {6}, O = set()]
-
-(4, 'AG', 0, 125)
-4 NL 7 = 48 [rules out (2, 7), G = set(), O = set()]
-
-4 NL 2 = 49 [rules out (3, 2), G = {6}, O = set()]
-
-4 NL 2 = 49 [rules out (2, 5), G = {6}, O = set()]
-4 NL 2 = 49 [rules out (2, 1), G = {6}, O = set()]
-4 NL 6 = 49 [rules out (6, 5), G = {6}, O = set()]
-5 NL 6 = 44 [rules out (6, 4), G = set(), O = set()]
-(4, 'AG', 1, 71)
 4 NL 7 = 47 [rules out (5, 7), G = set(), O = set()]
 
-4 NL 7 = 48 [rules out (3, 7), G = set(), O = set()]
-
+4 NL 7 = 48 [rules out (7, 1), G = set(), O = set()]
+5 NL 6 = 52 [rules out (6, 3), G = set(), O = set()]
+4 NL 3 = 49 [rules out (3, 5), G = {6}, O = set()]
+4 NL 2 = 49 [rules out (2, 5), G = {6}, O = set()]
+4 NL 2 = 49 [rules out (2, 1), G = {6}, O = set()]
+(4, 'AG', 1, 71)
 5 NL 1 = 62 [rules out (4, 1), G = {5}, O = set()]
 
+4 NL 2 = 49 [rules out (6, 2), G = {6}, O = set()]
+
+4 NL 7 = 48 [rules out (2, 7), G = set(), O = set()]
+
+4 NL 1 = 49 [rules out (5, 1), G = {6}, O = set()]
+
+5 NL 2 = 51 [rules out (2, 4), G = set(), O = set()]
+5 NL 6 = 44 [rules out (6, 4), G = set(), O = set()]
+(4, 'AG', 5, 56)
+4 NL 2 = 49 [rules out (3, 2), G = {6}, O = set()]
+
+5 NL 7 = 125 [rules out (7, 4), G = {0, 1, 5}, O = set()]
 All winners are verified in audit.
 ------------------------------------------------

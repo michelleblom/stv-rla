@@ -41,18 +41,18 @@ Full audit not possible
 PARTIAL audit sample size: 565
 ------------------------------------------------
 Final set of assertions generated:
+(7, 'AG', 4, 32)
+(3, 'AG', 2, 59)
+8 NL 6 = 565 [rules out (4, 6), G = {0, 1, 2, 4, 6}, O = set()]
+
+(3, 'AG', 0, 468)
+(3, 'AG', 6, 80)
 (7, 'AG', 2, 36)
+(3, 'AG', 4, 42)
 (7, 'AG', 0, 82)
 (3, 'AG', 1, 235)
 (7, 'AG', 6, 51)
-(3, 'AG', 6, 80)
 (7, 'AG', 1, 86)
-(7, 'AG', 4, 32)
-(3, 'AG', 2, 59)
-(3, 'AG', 0, 468)
-8 NL 6 = 565 [rules out (4, 6), G = {0, 1, 2, 4, 6}, O = set()]
-
-(3, 'AG', 4, 42)
 [8] are verified winners with these assertions.
 [4, 6] remain as potential winners in this audit.
 ------------------------------------------------

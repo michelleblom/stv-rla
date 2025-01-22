@@ -97,17 +97,17 @@ PARTIAL audit sample size: 327
 ------------------------------------------------
 Final set of assertions generated:
 2 NL 5 = 170 [rules out (5, 1), G = {2, 3, 5}, O = set()]
+(0, 'AG', 2, 35)
+(1, 'AG', 5, 64)
+(6, 'AG', 2, 21)
+(0, 'AG', 5, 41)
+(1, 'AG', 3, 40)
 (6, 'AG', 5, 24)
+(0, 'AG', 3, 27)
 2 NL 5 = 327 [rules out (7, 5), G = {2, 3, 5}, O = set()]
 
-(1, 'AG', 3, 40)
-(6, 'AG', 3, 26)
-(0, 'AG', 3, 27)
 (1, 'AG', 2, 42)
-(1, 'AG', 5, 64)
-(0, 'AG', 2, 35)
-(0, 'AG', 5, 41)
-(6, 'AG', 2, 21)
+(6, 'AG', 3, 26)
 [] are verified winners with these assertions.
 [1, 2, 5, 7] remain as potential winners in this audit.
 ------------------------------------------------

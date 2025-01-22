@@ -388,11 +388,11 @@ Full audit not possible
 PARTIAL audit sample size: 3015
 ------------------------------------------------
 Final set of assertions generated:
-4 NL 1 = 3015 [rules out (1, 6), G = set(), O = set()]
 6 NL 1 = 287 [rules out (1, 2), G = set(), O = set()]
-6 NL 1 = 923 [rules out (1, 4), G = set(), O = set()]
+4 NL 1 = 3015 [rules out (1, 6), G = set(), O = set()]
 6 NL 1 = 687 [rules out (1, 3), G = set(), O = set()]
 6 NL 1 = 2945 [rules out (1, 5), G = set(), O = set()]
+6 NL 1 = 923 [rules out (1, 4), G = set(), O = set()]
 [] are verified winners with these assertions.
 [2, 3, 4, 5, 6] remain as potential winners in this audit.
 ------------------------------------------------

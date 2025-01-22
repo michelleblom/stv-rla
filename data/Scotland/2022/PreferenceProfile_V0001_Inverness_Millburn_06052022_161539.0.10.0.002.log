@@ -60,15 +60,15 @@ New mintv = 0.19090909090909092
 Sample size required for audit is 118 ballots
 ------------------------------------------------
 Assertion set BEFORE filtering:
+(1, 'NL', 3, 118)
 (0, 'MT', None, (0.2318181818181818, 86))
 (0, 'QT', None, 30)
-(1, 'NL', 3, 118)
 (0, 'LT', None, (0.14090909090909093, 117))
 ------------------------------------------------
 Final set of assertions AFTER filtering:
+(1, 'NL', 3, 118)
 (0, 'MT', None, (0.2318181818181818, 86))
 (0, 'QT', None, 30)
-(1, 'NL', 3, 118)
 (0, 'LT', None, (0.14090909090909093, 117))
 ------------------------------------------------
 Explanations for AG* inclusion:

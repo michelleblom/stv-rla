@@ -1071,43 +1071,43 @@ Full audit not possible
 PARTIAL audit sample size: 307
 ------------------------------------------------
 Final set of assertions generated:
-3 NL 7 = 307 [rules out (8, 7), G = {1, 3, 4}, O = set()]
+3 NL 1 = 204 [rules out (1, 6), G = {1, 4}, O = set()]
+3 NL 1 = 210 [rules out (1, 7), G = {1, 4}, O = set()]
+3 NL 10 = 307 [rules out (8, 10), G = {1, 3, 4}, O = set()]
 
+3 NL 4 = 191 [rules out (4, 6), G = {1, 4}, O = set()]
+3 NL 8 = 307 [rules out (6, 8), G = {1, 3, 4}, O = set()]
+
+(6, 'AG', 4, 114)
 (2, 'AG', 3, 307)
+3 NL 7 = 307 [rules out (9, 7), G = {1, 3, 4}, O = set()]
+
+(2, 'AG', 4, 45)
+(2, 'AG', 1, 52)
 3 NL 1 = 143 [rules out (1, 9), G = {1, 4}, O = set()]
-3 NL 8 = 307 [rules out (9, 8), G = {1, 3, 4}, O = set()]
-
-3 NL 7 = 307 [rules out (6, 7), G = {1, 3, 4}, O = set()]
-
-3 NL 4 = 191 [rules out (1, 4), G = {1, 4}, O = set()]
-
-3 NL 4 = 154 [rules out (4, 7), G = {1, 4}, O = set()]
-3 NL 4 = 159 [rules out (4, 8), G = {1, 4}, O = set()]
 3 NL 7 = 307 [rules out (10, 7), G = {1, 3, 4}, O = set()]
 
-3 NL 8 = 307 [rules out (6, 8), G = {1, 3, 4}, O = set()]
+3 NL 6 = 307 [rules out (9, 6), G = {1, 3, 4}, O = set()]
 
 3 NL 10 = 307 [rules out (6, 10), G = {1, 3, 4}, O = set()]
 
-3 NL 9 = 135 [rules out (9, 10), G = {1, 4}, O = set()]
-3 NL 6 = 307 [rules out (9, 6), G = {1, 3, 4}, O = set()]
+(6, 'AG', 1, 150)
+3 NL 4 = 154 [rules out (4, 7), G = {1, 4}, O = set()]
+3 NL 4 = 191 [rules out (1, 4), G = {1, 4}, O = set()]
 
+3 NL 4 = 159 [rules out (4, 8), G = {1, 4}, O = set()]
+3 NL 8 = 307 [rules out (9, 8), G = {1, 3, 4}, O = set()]
+
+3 NL 1 = 129 [rules out (1, 10), G = {1, 4}, O = set()]
+3 NL 1 = 153 [rules out (1, 8), G = {1, 4}, O = set()]
 3 NL 4 = 200 [rules out (9, 4), G = {1, 4}, O = set()]
 
-3 NL 4 = 191 [rules out (4, 6), G = {1, 4}, O = set()]
-3 NL 10 = 307 [rules out (8, 10), G = {1, 3, 4}, O = set()]
-
-3 NL 1 = 153 [rules out (1, 8), G = {1, 4}, O = set()]
-3 NL 1 = 210 [rules out (1, 7), G = {1, 4}, O = set()]
-3 NL 1 = 129 [rules out (1, 10), G = {1, 4}, O = set()]
-3 NL 7 = 307 [rules out (9, 7), G = {1, 3, 4}, O = set()]
-
 3 NL 4 = 189 [rules out (4, 10), G = {1, 4}, O = set()]
-(6, 'AG', 4, 114)
-(6, 'AG', 1, 150)
-3 NL 1 = 204 [rules out (1, 6), G = {1, 4}, O = set()]
-(2, 'AG', 4, 45)
-(2, 'AG', 1, 52)
+3 NL 7 = 307 [rules out (8, 7), G = {1, 3, 4}, O = set()]
+
+3 NL 7 = 307 [rules out (6, 7), G = {1, 3, 4}, O = set()]
+
+3 NL 9 = 135 [rules out (9, 10), G = {1, 4}, O = set()]
 [3] are verified winners with these assertions.
 [1, 4, 6, 7, 8, 9, 10] remain as potential winners in this audit.
 ------------------------------------------------

@@ -571,31 +571,31 @@ EXAMINING WAYS TO REDUCE COST OF AUDIT
 FULL audit sample size: 682
 ------------------------------------------------
 Final set of assertions generated:
-4 NL 8 = 138 [rules out (8, 1), G = {8, 2, 5}, O = set()]
-(3, 'AG', 7, 310)
-1 NL 5 = 78 [rules out (5, 4), G = {8, 2}, O = set()]
-1 NL 2 = 89 [rules out (2, 4), G = {8, 2, 4}, O = set()]
-(0, 'AG', 2, 29)
-4 NL 6 = 121 [rules out (1, 6), G = {8, 2}, O = set()]
-
-1 NL 2 = 89 [rules out (8, 2), G = {8, 2, 4}, O = set()]
-
-(0, 'AG', 4, 89)
-1 NL 6 = 682 [rules out (6, 4), G = {8, 2, 4}, O = set()]
-1 NL 2 = 89 [rules out (2, 6), G = {8, 2, 4}, O = set()]
-1 NL 5 = 81 [rules out (8, 5), G = {8, 2}, O = set()]
-
-1 NL 5 = 78 [rules out (2, 5), G = {8, 2}, O = set()]
-
-4 NL 6 = 99 [rules out (8, 6), G = {8, 2}, O = set()]
-
-(0, 'AG', 8, 25)
-1 NL 8 = 121 [rules out (8, 4), G = {8, 2, 4}, O = set()]
-(3, 'AG', 8, 27)
-1 NL 5 = 80 [rules out (5, 6), G = {8, 2}, O = set()]
-(3, 'AG', 5, 138)
-4 NL 5 = 310 [rules out (5, 1), G = {8, 2, 5, 7}, O = set()]
 (3, 'AG', 2, 34)
 4 NL 2 = 300 [rules out (2, 1), G = {8, 2, 5}, O = set()]
+1 NL 2 = 89 [rules out (2, 6), G = {8, 2, 4}, O = set()]
+(3, 'AG', 5, 138)
+(0, 'AG', 4, 89)
+1 NL 2 = 89 [rules out (2, 4), G = {8, 2, 4}, O = set()]
+4 NL 6 = 121 [rules out (1, 6), G = {8, 2}, O = set()]
+
+1 NL 6 = 682 [rules out (6, 4), G = {8, 2, 4}, O = set()]
+4 NL 6 = 99 [rules out (8, 6), G = {8, 2}, O = set()]
+
+(3, 'AG', 8, 27)
+1 NL 8 = 121 [rules out (8, 4), G = {8, 2, 4}, O = set()]
+1 NL 5 = 80 [rules out (5, 6), G = {8, 2}, O = set()]
+(3, 'AG', 7, 310)
+1 NL 5 = 78 [rules out (2, 5), G = {8, 2}, O = set()]
+
+1 NL 5 = 81 [rules out (8, 5), G = {8, 2}, O = set()]
+
+4 NL 5 = 310 [rules out (5, 1), G = {8, 2, 5, 7}, O = set()]
+(0, 'AG', 2, 29)
+4 NL 8 = 138 [rules out (8, 1), G = {8, 2, 5}, O = set()]
+(0, 'AG', 8, 25)
+1 NL 2 = 89 [rules out (8, 2), G = {8, 2, 4}, O = set()]
+
+1 NL 5 = 78 [rules out (5, 4), G = {8, 2}, O = set()]
 All winners are verified in audit.
 ------------------------------------------------

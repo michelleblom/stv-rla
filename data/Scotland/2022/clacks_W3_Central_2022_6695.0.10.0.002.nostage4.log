@@ -673,28 +673,28 @@ Full audit not possible
 PARTIAL audit sample size: 45
 ------------------------------------------------
 Final set of assertions generated:
+1 NL 2 = 24 [rules out (2, 5), G = set(), O = set()]
+1 NL 2 = 24 [rules out (2, 3), G = set(), O = set()]
+1 NL 5 = 30 [rules out (5, 6), G = {1}, O = set()]
 1 NL 3 = 36 [rules out (7, 3), G = {1, 4}, O = set()]
 
-1 NL 2 = 24 [rules out (2, 7), G = set(), O = set()]
 1 NL 7 = 45 [rules out (7, 6), G = {1, 4}, O = set()]
-1 NL 2 = 23 [rules out (2, 4), G = set(), O = set()]
 1 NL 4 = 35 [rules out (3, 4), G = {1, 4}, O = set()]
 
-1 NL 5 = 30 [rules out (5, 6), G = {1}, O = set()]
-1 NL 2 = 24 [rules out (2, 5), G = set(), O = set()]
-(0, 'AG', 1, 24)
 1 NL 2 = 24 [rules out (2, 6), G = set(), O = set()]
+1 NL 5 = 30 [rules out (7, 5), G = {1}, O = set()]
+
+1 NL 3 = 35 [rules out (3, 6), G = {1, 4}, O = set()]
 1 NL 4 = 35 [rules out (6, 4), G = {1, 4}, O = set()]
 
 1 NL 5 = 30 [rules out (5, 3), G = {1}, O = set()]
+(0, 'AG', 4, 35)
+1 NL 2 = 24 [rules out (2, 7), G = set(), O = set()]
+1 NL 2 = 23 [rules out (2, 4), G = set(), O = set()]
+(0, 'AG', 1, 24)
+1 NL 5 = 29 [rules out (5, 4), G = {1}, O = set()]
 1 NL 4 = 35 [rules out (7, 4), G = {1, 4}, O = set()]
 
-1 NL 5 = 30 [rules out (7, 5), G = {1}, O = set()]
-
-(0, 'AG', 4, 35)
-1 NL 2 = 24 [rules out (2, 3), G = set(), O = set()]
-1 NL 5 = 29 [rules out (5, 4), G = {1}, O = set()]
-1 NL 3 = 35 [rules out (3, 6), G = {1, 4}, O = set()]
 [1] are verified winners with these assertions.
 [2, 3, 4, 5, 6, 7] remain as potential winners in this audit.
 ------------------------------------------------

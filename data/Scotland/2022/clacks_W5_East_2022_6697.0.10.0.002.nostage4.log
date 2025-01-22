@@ -138,17 +138,17 @@ RULE OUT PAIR STAGE ASN 119
 FULL audit sample size: 119
 ------------------------------------------------
 Final set of assertions generated:
-(1, 'AG', 5, 104)
-(3, 'AG', 5, 104)
-4 NL 7 = 34 [rules out (2, 7), G = {0}, O = set()]
-
-2 NL 7 = 47 [rules out (7, 4), G = {0, 2}, O = set()]
 2 NL 3 = 25 [rules out (3, 7), G = set(), O = set()]
-4 NL 3 = 119 [rules out (3, 2), G = {0, 5, 6}, O = set()]
-2 NL 3 = 25 [rules out (3, 4), G = set(), O = set()]
+(1, 'AG', 5, 104)
 (3, 'AG', 0, 32)
-(1, 'AG', 2, 26)
+2 NL 7 = 47 [rules out (7, 4), G = {0, 2}, O = set()]
+2 NL 3 = 25 [rules out (3, 4), G = set(), O = set()]
 (3, 'AG', 6, 39)
 (1, 'AG', 0, 34)
+4 NL 3 = 119 [rules out (3, 2), G = {0, 5, 6}, O = set()]
+(1, 'AG', 2, 26)
+4 NL 7 = 34 [rules out (2, 7), G = {0}, O = set()]
+
+(3, 'AG', 5, 104)
 All winners are verified in audit.
 ------------------------------------------------

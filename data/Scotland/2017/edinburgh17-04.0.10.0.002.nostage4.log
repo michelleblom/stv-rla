@@ -672,12 +672,12 @@ Full audit not possible
 PARTIAL audit sample size: 9979
 ------------------------------------------------
 Final set of assertions generated:
-(0, 'AG', 6, 462)
 (1, 'AG', 6, 54)
+2 NL 8 = 708 [rules out (8, 4), G = {6}, O = set()]
 2 NL 8 = 350 [rules out (8, 3), G = {6}, O = set()]
 2 NL 8 = 281 [rules out (8, 1), G = {6}, O = set()]
+(0, 'AG', 6, 462)
 2 NL 8 = 299 [rules out (8, 5), G = {6}, O = set()]
-2 NL 8 = 708 [rules out (8, 4), G = {6}, O = set()]
 2 NL 8 = 9979 [rules out (6, 8), G = {6}, O = set()]
 
 [] are verified winners with these assertions.

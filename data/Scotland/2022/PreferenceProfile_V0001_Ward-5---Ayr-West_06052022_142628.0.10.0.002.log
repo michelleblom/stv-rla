@@ -682,33 +682,33 @@ Full audit not possible
 PARTIAL audit sample size: 237
 ------------------------------------------------
 Final set of assertions generated:
-2 NL 5 = 32 [rules out (5, 9), G = {0}, O = set()]
-2 NL 5 = 32 [rules out (5, 3), G = {0}, O = set()]
+(6, 'AG', 0, 27)
+(6, 'AG', 5, 81)
+(1, 'AG', 5, 108)
+2 NL 5 = 31 [rules out (5, 4), G = {0}, O = set()]
+(7, 'AG', 0, 73)
+2 NL 4 = 33 [rules out (4, 7), G = {0, 4}, O = set()]
+2 NL 9 = 45 [rules out (9, 7), G = {0, 3, 4}, O = set()]
+(1, 'AG', 3, 45)
+2 NL 8 = 45 [rules out (3, 8), G = {0, 3, 4}, O = set()]
+
+2 NL 5 = 30 [rules out (5, 7), G = {0}, O = set()]
+2 NL 8 = 45 [rules out (8, 7), G = {0, 3, 4}, O = set()]
+7 NL 3 = 237 [rules out (2, 3), G = {0, 5}, O = set()]
+
+2 NL 5 = 31 [rules out (5, 8), G = {0}, O = set()]
 2 NL 3 = 45 [rules out (9, 3), G = {0, 3, 4}, O = set()]
 
 2 NL 4 = 35 [rules out (4, 8), G = {0, 4}, O = set()]
 2 NL 3 = 45 [rules out (3, 7), G = {0, 3, 4}, O = set()]
-(7, 'AG', 0, 73)
-2 NL 4 = 33 [rules out (4, 7), G = {0, 4}, O = set()]
-2 NL 5 = 30 [rules out (5, 7), G = {0}, O = set()]
-(6, 'AG', 5, 81)
-2 NL 8 = 45 [rules out (3, 8), G = {0, 3, 4}, O = set()]
-
-8 NL 9 = 120 [rules out (9, 2), G = {0}, O = set()]
-2 NL 4 = 35 [rules out (4, 3), G = {0, 4}, O = set()]
-2 NL 9 = 45 [rules out (9, 7), G = {0, 3, 4}, O = set()]
 (1, 'AG', 4, 33)
-(1, 'AG', 0, 23)
-(1, 'AG', 3, 45)
 2 NL 8 = 45 [rules out (9, 8), G = {0, 3, 4}, O = set()]
 
-7 NL 3 = 237 [rules out (2, 3), G = {0, 5}, O = set()]
-
-2 NL 5 = 31 [rules out (5, 4), G = {0}, O = set()]
-2 NL 8 = 45 [rules out (8, 7), G = {0, 3, 4}, O = set()]
-(1, 'AG', 5, 108)
-2 NL 5 = 31 [rules out (5, 8), G = {0}, O = set()]
-(6, 'AG', 0, 27)
+2 NL 5 = 32 [rules out (5, 9), G = {0}, O = set()]
+(1, 'AG', 0, 23)
+8 NL 9 = 120 [rules out (9, 2), G = {0}, O = set()]
+2 NL 5 = 32 [rules out (5, 3), G = {0}, O = set()]
+2 NL 4 = 35 [rules out (4, 3), G = {0, 4}, O = set()]
 2 NL 4 = 36 [rules out (9, 4), G = {0, 4}, O = set()]
 
 [2] are verified winners with these assertions.

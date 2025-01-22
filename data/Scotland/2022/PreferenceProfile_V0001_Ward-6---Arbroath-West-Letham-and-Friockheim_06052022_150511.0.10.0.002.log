@@ -500,31 +500,31 @@ NEW RULE OUT PAIR STAGE ASN 1568
 FULL audit sample size: 1568
 ------------------------------------------------
 Final set of assertions generated:
-2 NL 1 = 45 [rules out (1, 8), G = {4}, O = set()]
-(1, 'AG', 7, 189)
-(5, 'AG', 4, 31)
-(1, 'AG', 3, 834)
-(5, 'AG', 3, 78)
-6 NL 1 = 54 [rules out (1, 2), G = {8, 4}, O = set()]
-2 NL 1 = 44 [rules out (1, 3), G = {4}, O = set()]
-2 NL 9 = 189 [rules out (9, 6), G = {0, 4, 6, 7}, O = set()]
-6 NL 3 = 55 [rules out (3, 2), G = {8, 4}, O = set()]
-(5, 'AG', 6, 96)
-6 NL 3 = 58 [rules out (3, 8), G = {8, 4}, O = set()]
-6 NL 8 = 1568 [rules out (8, 2), G = {2, 3, 4, 6, 8}, O = set()]
 (1, 'AG', 0, 47)
-2 NL 1 = 43 [rules out (1, 6), G = {4}, O = set()]
 2 NL 3 = 189 [rules out (3, 6), G = {0, 4, 6, 7}, O = set()]
-6 NL 9 = 29 [rules out (9, 8), G = set(), O = set()]
 6 NL 9 = 29 [rules out (9, 3), G = set(), O = set()]
-6 NL 9 = 29 [rules out (9, 2), G = set(), O = set()]
-(1, 'AG', 6, 170)
-(5, 'AG', 2, 225)
-(1, 'AG', 4, 26)
-(5, 'AG', 8, 30)
+6 NL 3 = 58 [rules out (3, 8), G = {8, 4}, O = set()]
 2 NL 8 = 113 [rules out (6, 8), G = {0, 4}, O = set()]
 
+(5, 'AG', 4, 31)
+(1, 'AG', 4, 26)
+(5, 'AG', 8, 30)
+(1, 'AG', 6, 170)
+2 NL 1 = 44 [rules out (1, 3), G = {4}, O = set()]
+6 NL 3 = 55 [rules out (3, 2), G = {8, 4}, O = set()]
 6 NL 9 = 30 [rules out (1, 9), G = set(), O = set()]
 
+(1, 'AG', 3, 834)
+6 NL 9 = 29 [rules out (9, 2), G = set(), O = set()]
+2 NL 1 = 45 [rules out (1, 8), G = {4}, O = set()]
+(5, 'AG', 3, 78)
+2 NL 1 = 43 [rules out (1, 6), G = {4}, O = set()]
+6 NL 9 = 29 [rules out (9, 8), G = set(), O = set()]
+(1, 'AG', 7, 189)
+6 NL 1 = 54 [rules out (1, 2), G = {8, 4}, O = set()]
+(5, 'AG', 6, 96)
+(5, 'AG', 2, 225)
+6 NL 8 = 1568 [rules out (8, 2), G = {2, 3, 4, 6, 8}, O = set()]
+2 NL 9 = 189 [rules out (9, 6), G = {0, 4, 6, 7}, O = set()]
 All winners are verified in audit.
 ------------------------------------------------

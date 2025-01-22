@@ -314,26 +314,26 @@ EXAMINING WAYS TO REDUCE COST OF AUDIT
 FULL audit sample size: 134
 ------------------------------------------------
 Final set of assertions generated:
-(0, 'AG', 9, 35)
-(0, 'AG', 8, 38)
-1 NL 5 = 44 [rules out (5, 6), G = {2, 6, 7, 8, 9}, O = set()]
-2 NL 5 = 134 [rules out (5, 1), G = {2, 5, 6, 7, 9}, O = set()]
-(0, 'AG', 2, 40)
-1 NL 5 = 42 [rules out (5, 2), G = {2, 6, 7, 8, 9}, O = set()]
-(1, 'AG', 2, 99)
-(0, 'AG', 7, 31)
-1 NL 6 = 77 [rules out (6, 2), G = {2, 4, 6, 7, 8, 9}, O = set()]
-(1, 'AG', 9, 28)
-(0, 'AG', 6, 22)
-1 NL 9 = 33 [rules out (9, 5), G = {6, 7}, O = set()]
-(0, 'AG', 4, 67)
+1 NL 9 = 36 [rules out (9, 6), G = {9, 6, 7}, O = set()]
 2 NL 6 = 80 [rules out (1, 6), G = {9, 6, 7}, O = set()]
 
-(1, 'AG', 6, 29)
-(1, 'AG', 5, 123)
-(1, 'AG', 7, 27)
-1 NL 9 = 36 [rules out (9, 6), G = {9, 6, 7}, O = set()]
-1 NL 9 = 35 [rules out (9, 2), G = {9, 6, 7}, O = set()]
 2 NL 9 = 123 [rules out (9, 1), G = {2, 5, 6, 7, 9}, O = set()]
+1 NL 5 = 42 [rules out (5, 2), G = {2, 6, 7, 8, 9}, O = set()]
+(1, 'AG', 7, 27)
+(0, 'AG', 9, 35)
+(0, 'AG', 8, 38)
+1 NL 9 = 33 [rules out (9, 5), G = {6, 7}, O = set()]
+(0, 'AG', 2, 40)
+(0, 'AG', 7, 31)
+(1, 'AG', 6, 29)
+(1, 'AG', 2, 99)
+1 NL 9 = 35 [rules out (9, 2), G = {9, 6, 7}, O = set()]
+1 NL 6 = 77 [rules out (6, 2), G = {2, 4, 6, 7, 8, 9}, O = set()]
+(0, 'AG', 6, 22)
+(1, 'AG', 9, 28)
+1 NL 5 = 44 [rules out (5, 6), G = {2, 6, 7, 8, 9}, O = set()]
+(0, 'AG', 4, 67)
+2 NL 5 = 134 [rules out (5, 1), G = {2, 5, 6, 7, 9}, O = set()]
+(1, 'AG', 5, 123)
 All winners are verified in audit.
 ------------------------------------------------

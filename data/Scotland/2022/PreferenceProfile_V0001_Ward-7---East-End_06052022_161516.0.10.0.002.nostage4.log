@@ -17,13 +17,13 @@ RULE OUT PAIR STAGE ASN 0
 FULL audit sample size: 341
 ------------------------------------------------
 Final set of assertions generated:
-(1, 'AG', 0, 32)
 (3, 'AG', 5, 43)
 (3, 'AG', 2, 33)
 (1, 'AG', 2, 31)
-(3, 'AG', 4, 341)
-(1, 'AG', 4, 23)
 (3, 'AG', 0, 36)
 (1, 'AG', 5, 18)
+(3, 'AG', 4, 341)
+(1, 'AG', 4, 23)
+(1, 'AG', 0, 32)
 All winners are verified in audit.
 ------------------------------------------------

@@ -29,24 +29,24 @@ Sample size to show min tv of 0.01706827309236948 is 373
 Sample size required for audit is 188 ballots
 ------------------------------------------------
 Assertion set BEFORE filtering:
-(3, 'AG*', 2, 120)
+(3, 'NL', 4, 175)
 (3, 'NL', 0, 84)
 (3, 'AG*', 0, 84)
-(3, 'NL', 4, 175)
-(3, 'NL', 2, 84)
+(3, 'AG*', 2, 120)
 (1, 'MT', None, (0.08413654618473895, 122))
+(3, 'NL', 2, 84)
 (1, 'QT', None, 188)
 ------------------------------------------------
 Final set of assertions AFTER filtering:
-(3, 'AG*', 2, 120)
+(3, 'NL', 4, 175)
 (3, 'NL', 0, 84)
 (3, 'AG*', 0, 84)
-(3, 'NL', 4, 175)
-(3, 'NL', 2, 84)
+(3, 'AG*', 2, 120)
 (1, 'MT', None, (0.08413654618473895, 122))
+(3, 'NL', 2, 84)
 (1, 'QT', None, 188)
 ------------------------------------------------
 Explanations for AG* inclusion:
-   Explanation for (3, 'AG*', 2, 120): []
    Explanation for (3, 'AG*', 0, 84): []
+   Explanation for (3, 'AG*', 2, 120): []
 ------------------------------------------------

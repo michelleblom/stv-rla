@@ -675,26 +675,26 @@ Full audit not possible
 PARTIAL audit sample size: 113
 ------------------------------------------------
 Final set of assertions generated:
-4 NL 6 = 73 [rules out (6, 7), G = set(), O = set()]
-4 NL 7 = 113 [rules out (2, 7), G = {4}, O = set()]
-
-(3, 'AG', 4, 105)
-4 NL 5 = 92 [rules out (5, 2), G = set(), O = set()]
-4 NL 1 = 105 [rules out (1, 2), G = {4}, O = set()]
+4 NL 1 = 77 [rules out (1, 7), G = set(), O = set()]
 4 NL 1 = 100 [rules out (1, 6), G = set(), O = set()]
 4 NL 3 = 105 [rules out (2, 3), G = {4}, O = set()]
 
-4 NL 1 = 77 [rules out (1, 7), G = set(), O = set()]
 4 NL 5 = 95 [rules out (6, 5), G = set(), O = set()]
 
-4 NL 6 = 105 [rules out (6, 2), G = {4}, O = set()]
-4 NL 5 = 73 [rules out (5, 3), G = set(), O = set()]
+4 NL 5 = 92 [rules out (5, 2), G = set(), O = set()]
 4 NL 3 = 105 [rules out (6, 3), G = {4}, O = set()]
 
+(3, 'AG', 4, 105)
+4 NL 5 = 73 [rules out (5, 3), G = set(), O = set()]
 4 NL 5 = 89 [rules out (1, 5), G = set(), O = set()]
 
+4 NL 1 = 105 [rules out (1, 2), G = {4}, O = set()]
+4 NL 6 = 105 [rules out (6, 2), G = {4}, O = set()]
 4 NL 5 = 90 [rules out (5, 7), G = set(), O = set()]
 4 NL 3 = 105 [rules out (7, 3), G = {4}, O = set()]
+
+4 NL 6 = 73 [rules out (6, 7), G = set(), O = set()]
+4 NL 7 = 113 [rules out (2, 7), G = {4}, O = set()]
 
 4 NL 3 = 105 [rules out (1, 3), G = {4}, O = set()]
 
